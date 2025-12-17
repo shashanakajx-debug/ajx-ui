@@ -1,0 +1,201 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Font Face Declarations */
+@font-face {
+  font-family: 'Glacial Indifference';
+  src: url('../../public/font/GlacialIndifference-Bold.woff2') format('woff2'),
+       url('../../public/font/GlacialIndifference-Bold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  src: url('../../public/font/Montserrat-Regular.woff2') format('woff2'),
+       url('../../public/font/Montserrat-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* -- Color tokens for Light and Dark mode -- */
+:root {
+  /* Light mode palette */
+  --color-primary: #1A73E8;           /* AJX Blue */
+  --color-secondary: #0A0A0A;         /* Deep Black */
+  --color-accent: #3A8DFF;            /* Electric Blue */
+  --color-background: #FFFFFF;        /* Background */
+  --color-soft-gray: #F4F4F4;         /* Soft Gray */
+  --color-text: #0A0A0A;              /* Text color */
+  --color-text-muted: #666666;        /* Muted text */
+}
+
+/* Toggle dark mode by adding .dark to <html> or top container */
+.dark {
+  --color-primary: #0D1117;           /* Deep Midnight Black */
+  --color-secondary: #1F2937;         /* Slate Gray */
+  --color-accent: #3A8DFF;            /* Electric Blue */
+  --color-background: #0B0C0D;        /* Dark background */
+  --color-soft-gray: #1F2937;         /* Dark soft gray */
+  --color-text: #F3F6FF;              /* Light text */
+  --color-text-muted: #9CA3AF;        /* Muted text for dark mode */
+}
+
+/* Reset / Base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--color-text);
+  background-color: var(--color-background);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Typography - Headings with Glacial Indifference */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Glacial Indifference', sans-serif;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--color-text);
+}
+
+/* Headings sizes */
+h1 { font-size: 64px; }
+h2 { font-size: 40px; }
+h3 { font-size: 28px; }
+h4 { font-size: 24px; }
+h5 { font-size: 20px; }
+h6 { font-size: 18px; }
+
+/* Body text */
+p { 
+  font-family: 'Montserrat', sans-serif; 
+  font-size: 16px; 
+  line-height: 1.6;
+  color: var(--color-text);
+}
+small, .text-small, label { 
+  font-family: 'Montserrat', sans-serif; 
+  font-size: 14px;
+  color: var(--color-text);
+}
+
+/* Responsive Typography */
+@media (max-width: 768px) {
+  h1 { font-size: 48px; }
+  h2 { font-size: 32px; }
+  h3 { font-size: 24px; }
+  body, p { font-size: 16px; }
+}
+
+@media (max-width: 480px) {
+  h1 { font-size: 40px; }
+  h2 { font-size: 28px; }
+  h3 { font-size: 22px; }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { 
+  background: var(--color-soft-gray); 
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-primary);
+  border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-accent);
+}
+
+/* Smooth Scrolling */
+html { scroll-behavior: smooth; }
+
+/* Animation utilities */
+.transition-default { transition: all 0.4s ease-in-out; }
+.transition-quick   { transition: all 0.2s ease-in-out; }
+.transition-medium  { transition: all 0.3s ease-in-out; }
+
+/* Hover effects */
+.hover-lift { transition: transform 0.3s ease; }
+.hover-lift:hover { transform: translateY(-5px); }
+
+/* Button base styles */
+.btn-base {
+  @apply px-6 py-3 rounded-lg font-semibold transition-all duration-400 cursor-pointer inline-flex items-center justify-center;
+  font-family: 'Montserrat', sans-serif;
+  gap: 0.5rem;
+}
+
+.btn-primary {
+  @apply btn-base;
+  background-color: var(--color-primary);
+  color: white;
+}
+.btn-primary:hover {
+  filter: brightness(1.1);
+  box-shadow: 0 8px 20px rgba(26, 115, 232, 0.3);
+}
+
+.btn-secondary {
+  @apply btn-base;
+  background-color: var(--color-secondary);
+  color: white;
+}
+.btn-secondary:hover {
+  filter: brightness(1.2);
+  box-shadow: 0 8px 20px rgba(10, 10, 10, 0.3);
+}
+
+.btn-outline {
+  @apply btn-base border-2;
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+  background-color: transparent;
+}
+.btn-outline:hover {
+  background-color: var(--color-primary);
+  color: white;
+}
+
+/* Card styles */
+.card {
+  background-color: var(--color-background);
+  @apply rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300 p-6;
+  border: 1px solid var(--color-soft-gray);
+}
+
+/* Section padding */
+.section-padding { @apply py-16 md:py-24; }
+
+/* Container */
+.container-custom { @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8; }
+
+/* Gradient text */
+.gradient-text {
+  background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Utility classes */
+.bg-surface {
+  background-color: var(--color-soft-gray);
+}
+.text-muted { 
+  color: var(--color-text-muted); 
+}
