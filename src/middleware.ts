@@ -1,10 +1,32 @@
-import NextAuth from 'next-auth';
-import { authConfig } from '@/auth.config';
+import { NextResponse } from "next/server";
+import type { NextRequest } from "next/server";
+import { getToken } from "next-auth/jwt";
 
-export const { auth: middleware } = NextAuth(authConfig);
+export async function middleware(req: NextRequest) {
+  const { pathname } = req.nextUrl;
+
+  // Allow login page always
+  if (pathname === "/admin/login") {
+    return NextResponse.next();
+  }
+
+  // Protect admin routes
+  if (pathname.startsWith("/admin")) {
+    const token = await getToken({
+      req,
+      secret: process.env.NEXTAUTH_SECRET,
+    });
+
+    if (!token) {
+      return NextResponse.redirect(
+        new URL("/admin/login", req.url) // ✅ SAFE URL
+      );
+    }
+  }
+
+  return NextResponse.next();
+}
 
 export const config = {
-    matcher: [
-        '/admin/:path*', // Protect all admin routes
-    ],
+  matcher: ["/admin/:path*"],
 };
