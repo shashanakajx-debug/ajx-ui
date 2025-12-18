@@ -2,6 +2,7 @@ import { Unbounded, Poppins } from 'next/font/google';
 import './globals.css';
 import { SessionProvider } from 'next-auth/react';
 import { QueryProvider } from '@/providers/QueryProvider';
+import { ThemeProvider } from '@/components/theme-provider';
 import { Toaster } from 'sonner';
 
 const unbounded = Unbounded({
@@ -28,13 +29,25 @@ export default function RootLayout({
     children: React.ReactNode;
 }) {
     return (
-        <html lang="en" className={`${unbounded.variable} ${poppins.variable}`} suppressHydrationWarning>
-            <body className="font-poppins antialiased">
+        <html lang="en" suppressHydrationWarning>
+            <body
+                className={`${unbounded.variable} ${poppins.variable} font-poppins antialiased`}
+            >
                 <QueryProvider>
-                    <SessionProvider>{children}</SessionProvider>
+                    <SessionProvider>
+                        <ThemeProvider
+                            attribute="class"
+                            defaultTheme="system"
+                            enableSystem
+                            disableTransitionOnChange
+                        >
+                            {children}
+                        </ThemeProvider>
+                    </SessionProvider>
                     <Toaster position="top-right" richColors closeButton />
                 </QueryProvider>
             </body>
         </html>
     );
 }
+

@@ -21,30 +21,72 @@
   font-display: swap;
 }
 
-/* -- Color tokens for Light and Dark mode -- */
+/* ===========================
+   COLOR TOKENS - LIGHT & DARK MODE
+   =========================== */
+
 :root {
-  /* Light mode palette */
+  /* ---- Light Mode Colors ---- */
   --color-primary: #1A73E8;           /* AJX Blue */
+  --color-primary-hover: #1557B0;     /* Darker Blue on hover */
   --color-secondary: #0A0A0A;         /* Deep Black */
   --color-accent: #3A8DFF;            /* Electric Blue */
-  --color-background: #FFFFFF;        /* Background */
-  --color-soft-gray: #F4F4F4;         /* Soft Gray */
-  --color-text: #0A0A0A;              /* Text color */
-  --color-text-muted: #666666;        /* Muted text */
+  --color-accent-hover: #2A7DE8;      /* Darker accent */
+  
+  /* Backgrounds */
+  --color-background: #FFFFFF;        /* Main background */
+  --color-surface: #F9FAFB;           /* Cards/Surface */
+  --color-soft-gray: #F4F4F4;         /* Soft Gray areas */
+  
+  /* Text Colors */
+  --color-text: #0A0A0A;              /* Primary text */
+  --color-text-secondary: #4B5563;    /* Secondary text */
+  --color-text-muted: #6B7280;        /* Muted text */
+  
+  /* Borders */
+  --color-border: #E5E7EB;            /* Light borders */
+  --color-border-hover: #D1D5DB;      /* Border on hover */
+  
+  /* Shadows */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
 }
 
-/* Toggle dark mode by adding .dark to <html> or top container */
+/* ---- Dark Mode Colors ---- */
 .dark {
-  --color-primary: #0D1117;           /* Deep Midnight Black */
-  --color-secondary: #1F2937;         /* Slate Gray */
-  --color-accent: #3A8DFF;            /* Electric Blue */
-  --color-background: #0B0C0D;        /* Dark background */
-  --color-soft-gray: #1F2937;         /* Dark soft gray */
-  --color-text: #F3F6FF;              /* Light text */
-  --color-text-muted: #9CA3AF;        /* Muted text for dark mode */
+  --color-primary: #3A8DFF;           /* Brighter blue for dark mode */
+  --color-primary-hover: #6BA5FF;     /* Even brighter on hover */
+  --color-secondary: #E5E7EB;         /* Light gray for secondary in dark */
+  --color-accent: #60A5FA;            /* Lighter accent for visibility */
+  --color-accent-hover: #93C5FD;      /* Lighter on hover */
+  
+  /* Backgrounds */
+  --color-background: #0B0E11;        /* Deep dark background */
+  --color-surface: #161B22;           /* Card/Surface background */
+  --color-soft-gray: #1F2937;         /* Soft gray areas */
+  
+  /* Text Colors */
+  --color-text: #F3F4F6;              /* Light text - highly visible */
+  --color-text-secondary: #D1D5DB;    /* Secondary text */
+  --color-text-muted: #9CA3AF;        /* Muted text */
+  
+  /* Borders */
+  --color-border: #30363D;            /* Dark borders */
+  --color-border-hover: #424A53;      /* Border on hover */
+  
+  /* Shadows - adjusted for dark mode */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.5);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.6);
 }
 
-/* Reset / Base */
+/* ===========================
+   BASE RESET
+   =========================== */
+
 * {
   margin: 0;
   padding: 0;
@@ -63,17 +105,21 @@ body {
   background-color: var(--color-background);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Typography - Headings with Glacial Indifference */
+/* ===========================
+   TYPOGRAPHY
+   =========================== */
+
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Glacial Indifference', sans-serif;
   font-weight: 700;
   line-height: 1.2;
   color: var(--color-text);
+  transition: color 0.3s ease;
 }
 
-/* Headings sizes */
 h1 { font-size: 64px; }
 h2 { font-size: 40px; }
 h3 { font-size: 28px; }
@@ -81,20 +127,36 @@ h4 { font-size: 24px; }
 h5 { font-size: 20px; }
 h6 { font-size: 18px; }
 
-/* Body text */
 p { 
   font-family: 'Montserrat', sans-serif; 
   font-size: 16px; 
   line-height: 1.6;
-  color: var(--color-text);
+  color: var(--color-text-secondary);
+  transition: color 0.3s ease;
 }
+
 small, .text-small, label { 
   font-family: 'Montserrat', sans-serif; 
   font-size: 14px;
-  color: var(--color-text);
+  color: var(--color-text-muted);
+  transition: color 0.3s ease;
 }
 
-/* Responsive Typography */
+/* Link styles */
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: var(--color-primary-hover);
+}
+
+/* ===========================
+   RESPONSIVE TYPOGRAPHY
+   =========================== */
+
 @media (max-width: 768px) {
   h1 { font-size: 48px; }
   h2 { font-size: 32px; }
@@ -108,81 +170,216 @@ small, .text-small, label {
   h3 { font-size: 22px; }
 }
 
-/* Custom Scrollbar */
-::-webkit-scrollbar { width: 10px; }
+/* ===========================
+   CUSTOM SCROLLBAR
+   =========================== */
+
+::-webkit-scrollbar { 
+  width: 12px; 
+}
+
 ::-webkit-scrollbar-track { 
   background: var(--color-soft-gray); 
 }
+
 ::-webkit-scrollbar-thumb {
   background: var(--color-primary);
-  border-radius: 5px;
+  border-radius: 6px;
+  border: 2px solid var(--color-soft-gray);
 }
+
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--color-accent);
+  background: var(--color-primary-hover);
 }
 
-/* Smooth Scrolling */
-html { scroll-behavior: smooth; }
+/* Firefox scrollbar */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-primary) var(--color-soft-gray);
+}
 
-/* Animation utilities */
+/* ===========================
+   SMOOTH SCROLLING
+   =========================== */
+
+html { 
+  scroll-behavior: smooth; 
+}
+
+/* ===========================
+   ANIMATION UTILITIES
+   =========================== */
+
 .transition-default { transition: all 0.4s ease-in-out; }
 .transition-quick   { transition: all 0.2s ease-in-out; }
 .transition-medium  { transition: all 0.3s ease-in-out; }
 
-/* Hover effects */
-.hover-lift { transition: transform 0.3s ease; }
-.hover-lift:hover { transform: translateY(-5px); }
-
-/* Button base styles */
-.btn-base {
-  @apply px-6 py-3 rounded-lg font-semibold transition-all duration-400 cursor-pointer inline-flex items-center justify-center;
-  font-family: 'Montserrat', sans-serif;
-  gap: 0.5rem;
+.hover-lift { 
+  transition: transform 0.3s ease, box-shadow 0.3s ease; 
+}
+.hover-lift:hover { 
+  transform: translateY(-5px); 
+  box-shadow: var(--shadow-lg);
 }
 
+/* ===========================
+   BUTTON STYLES
+   =========================== */
+
+.btn-base {
+  @apply px-6 py-3 rounded-lg font-semibold inline-flex items-center justify-center;
+  font-family: 'Montserrat', sans-serif;
+  gap: 0.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: none;
+  outline: none;
+}
+
+/* Primary Button */
 .btn-primary {
   @apply btn-base;
   background-color: var(--color-primary);
   color: white;
-}
-.btn-primary:hover {
-  filter: brightness(1.1);
-  box-shadow: 0 8px 20px rgba(26, 115, 232, 0.3);
+  box-shadow: var(--shadow-md);
 }
 
+.btn-primary:hover {
+  background-color: var(--color-primary-hover);
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-2px);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Secondary Button */
 .btn-secondary {
   @apply btn-base;
   background-color: var(--color-secondary);
   color: white;
-}
-.btn-secondary:hover {
-  filter: brightness(1.2);
-  box-shadow: 0 8px 20px rgba(10, 10, 10, 0.3);
+  box-shadow: var(--shadow-md);
 }
 
+.dark .btn-secondary {
+  background-color: var(--color-surface);
+  color: var(--color-text);
+  border: 1px solid var(--color-border);
+}
+
+.btn-secondary:hover {
+  filter: brightness(1.2);
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-2px);
+}
+
+/* Outline Button */
 .btn-outline {
-  @apply btn-base border-2;
-  border-color: var(--color-primary);
+  @apply btn-base;
+  border: 2px solid var(--color-primary);
   color: var(--color-primary);
   background-color: transparent;
 }
+
 .btn-outline:hover {
+  background-color: var(--color-primary);
+  color: white;
+  box-shadow: var(--shadow-md);
+}
+
+.dark .btn-outline {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+.dark .btn-outline:hover {
   background-color: var(--color-primary);
   color: white;
 }
 
-/* Card styles */
+/* ===========================
+   CARD STYLES
+   =========================== */
+
 .card {
-  background-color: var(--color-background);
-  @apply rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300 p-6;
-  border: 1px solid var(--color-soft-gray);
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  @apply rounded-xl p-6;
+  box-shadow: var(--shadow-md);
+  transition: all 0.3s ease;
 }
 
+.card:hover {
+  box-shadow: var(--shadow-xl);
+  border-color: var(--color-border-hover);
+  transform: translateY(-2px);
+}
+
+.dark .card {
+  background-color: var(--color-surface);
+  border-color: var(--color-border);
+}
+
+/* ===========================
+   FORM ELEMENTS
+   =========================== */
+
+input, textarea, select {
+  background-color: var(--color-surface);
+  color: var(--color-text);
+  border: 1px solid var(--color-border);
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  font-family: 'Montserrat', sans-serif;
+  transition: all 0.2s ease;
+  width: 100%;
+}
+
+input:focus, textarea:focus, select:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(58, 141, 255, 0.1);
+}
+
+input::placeholder, textarea::placeholder {
+  color: var(--color-text-muted);
+}
+
+/* ===========================
+   UTILITY CLASSES
+   =========================== */
+
 /* Section padding */
-.section-padding { @apply py-16 md:py-24; }
+.section-padding { 
+  @apply py-16 md:py-24; 
+}
 
 /* Container */
-.container-custom { @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8; }
+.container-custom { 
+  @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8; 
+}
+
+/* Background utilities */
+.bg-surface {
+  background-color: var(--color-surface);
+  transition: background-color 0.3s ease;
+}
+
+.bg-soft {
+  background-color: var(--color-soft-gray);
+  transition: background-color 0.3s ease;
+}
+
+/* Text utilities */
+.text-muted { 
+  color: var(--color-text-muted); 
+}
+
+.text-secondary {
+  color: var(--color-text-secondary);
+}
 
 /* Gradient text */
 .gradient-text {
@@ -192,10 +389,78 @@ html { scroll-behavior: smooth; }
   background-clip: text;
 }
 
-/* Utility classes */
-.bg-surface {
-  background-color: var(--color-soft-gray);
+.dark .gradient-text {
+  background: linear-gradient(135deg, #60A5FA, #93C5FD);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
-.text-muted { 
-  color: var(--color-text-muted); 
+
+/* Border utilities */
+.border-custom {
+  border-color: var(--color-border);
+}
+
+/* Shadow utilities */
+.shadow-custom-sm { box-shadow: var(--shadow-sm); }
+.shadow-custom-md { box-shadow: var(--shadow-md); }
+.shadow-custom-lg { box-shadow: var(--shadow-lg); }
+.shadow-custom-xl { box-shadow: var(--shadow-xl); }
+
+/* ===========================
+   SELECTION HIGHLIGHT
+   =========================== */
+
+::selection {
+  background-color: var(--color-primary);
+  color: white;
+}
+
+::-moz-selection {
+  background-color: var(--color-primary);
+  color: white;
+}
+
+/* ===========================
+   FOCUS VISIBLE STYLES
+   =========================== */
+
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* ===========================
+   LOADING STATES
+   =========================== */
+
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--color-soft-gray) 25%,
+    var(--color-border) 50%,
+    var(--color-soft-gray) 75%
+  );
+  background-size: 200% 100%;
+  animation: loading 1.5s ease-in-out infinite;
+}
+
+@keyframes loading {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* ===========================
+   PRINT STYLES
+   =========================== */
+
+@media print {
+  body {
+    background-color: white;
+    color: black;
+  }
+  
+  .no-print {
+    display: none;
+  }
 }

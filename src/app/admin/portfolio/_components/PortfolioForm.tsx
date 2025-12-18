@@ -104,7 +104,7 @@ export default function PortfolioForm({ initialData, isEditing = false }: Portfo
                     label="Client Name"
                     {...register('clientName', { required: 'Client name is required' })}
                     error={errors.clientName?.message}
-                    placeholder="e.g., Acme Corp"
+                    placeholder="e.g., Shashank Ajx"
                 />
             </div>
 

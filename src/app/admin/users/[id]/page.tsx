@@ -120,7 +120,7 @@ export default function EditUserPage(props: { params: Promise<{ id: string }> })
                         value={formData.name}
                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                         required
-                        placeholder="John Doe"
+                        placeholder="Shashank Ajx"
                     />
 
                     <Input
@@ -129,7 +129,7 @@ export default function EditUserPage(props: { params: Promise<{ id: string }> })
                         value={formData.email}
                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                         required
-                        placeholder="john@example.com"
+                        placeholder="shashanakajx@gmail.com"
                     />
 
                     <div className="p-4 bg-gray-50 rounded-lg border border-gray-100 space-y-4">

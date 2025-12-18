@@ -22,7 +22,7 @@ export default function CareerForm({ initialData, isEditing = false }: CareerFor
         defaultValues: {
             title: initialData?.title || '',
             department: initialData?.department || '',
-            location: initialData?.location || 'Remote',
+            location: initialData?.location || 'indore',
             type: initialData?.type || 'Full-time',
             experience: initialData?.experience || '',
             description: initialData?.description || '',
@@ -100,7 +100,7 @@ export default function CareerForm({ initialData, isEditing = false }: CareerFor
                     label="Location"
                     {...register('location', { required: 'Location is required' })}
                     error={errors.location?.message}
-                    placeholder="e.g., Remote, New York"
+                    placeholder="e.g., indore ,(M.P.)"
                 />
             </div>
 

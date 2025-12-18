@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { ThemeToggle } from '@/components/ThemeToggle';
 
 export default function Header() {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -18,9 +19,18 @@ export default function Header() {
     ];
 
     return (
-        <header className="sticky top-0 z-50 bg-white shadow-md">
+        <header
+            className="
+                sticky top-0 z-50
+                bg-[var(--color-surface)]
+                text-[var(--color-text)]
+                shadow-custom-md
+                transition-colors duration-300
+            "
+        >
             <nav className="container-custom py-4">
                 <div className="flex items-center justify-between">
+                    
                     {/* Logo */}
                     <Link href="/" className="flex items-center">
                         <Image
@@ -29,6 +39,7 @@ export default function Header() {
                             width={150}
                             height={50}
                             className="h-12 w-auto"
+                            priority
                         />
                     </Link>
 
@@ -38,65 +49,91 @@ export default function Header() {
                             <Link
                                 key={link.href}
                                 href={link.href}
-                                className="text-[#0A0A0A] hover:text-[#1A73E8] transition-colors font-medium"
+                                className="
+                                    font-medium
+                                    text-[var(--color-text)]
+                                    hover:text-[var(--color-primary)]
+                                    transition-colors
+                                "
                             >
                                 {link.label}
                             </Link>
                         ))}
                     </div>
 
-                    {/* CTA Button */}
-                    <div className="hidden lg:block">
+                    {/* CTA + Theme Toggle */}
+                    <div className="hidden lg:flex items-center gap-4">
+                        <ThemeToggle />
                         <Link href="/contact" className="btn-primary">
                             Get Started
                         </Link>
                     </div>
 
-                    {/* Mobile Menu Toggle */}
-                    <button
-                        className="lg:hidden p-2"
-                        onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                    >
-                        <svg
-                            className="w-6 h-6"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
+                    {/* Mobile Toggle */}
+                    <div className="lg:hidden flex items-center gap-2">
+                        <ThemeToggle />
+                        <button
+                            aria-label="Toggle menu"
+                            className="p-2 text-[var(--color-text)]"
+                            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                         >
-                            {mobileMenuOpen ? (
-                                <path
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    strokeWidth={2}
-                                    d="M6 18L18 6M6 6l12 12"
-                                />
-                            ) : (
-                                <path
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    strokeWidth={2}
-                                    d="M4 6h16M4 12h16M4 18h16"
-                                />
-                            )}
-                        </svg>
-                    </button>
+                            <svg
+                                className="w-6 h-6"
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24"
+                            >
+                                {mobileMenuOpen ? (
+                                    <path
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        strokeWidth={2}
+                                        d="M6 18L18 6M6 6l12 12"
+                                    />
+                                ) : (
+                                    <path
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        strokeWidth={2}
+                                        d="M4 6h16M4 12h16M4 18h16"
+                                    />
+                                )}
+                            </svg>
+                        </button>
+                    </div>
                 </div>
 
                 {/* Mobile Menu */}
                 {mobileMenuOpen && (
-                    <div className="lg:hidden mt-4 pb-4 border-t pt-4">
+                    <div
+                        className="
+                            lg:hidden mt-4 pt-4 pb-4
+                            border-t
+                            border-[var(--color-border)]
+                        "
+                    >
                         <div className="flex flex-col gap-4">
                             {navLinks.map((link) => (
                                 <Link
                                     key={link.href}
                                     href={link.href}
-                                    className="text-[#0A0A0A] hover:text-[#1A73E8] transition-colors font-medium"
                                     onClick={() => setMobileMenuOpen(false)}
+                                    className="
+                                        font-medium
+                                        text-[var(--color-text)]
+                                        hover:text-[var(--color-primary)]
+                                        transition-colors
+                                    "
                                 >
                                     {link.label}
                                 </Link>
                             ))}
-                            <Link href="/contact" className="btn-primary inline-block text-center">
+
+                            <Link
+                                href="/contact"
+                                onClick={() => setMobileMenuOpen(false)}
+                                className="btn-primary text-center"
+                            >
                                 Get Started
                             </Link>
                         </div>

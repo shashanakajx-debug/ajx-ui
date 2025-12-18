@@ -74,7 +74,7 @@ export default function CreateUserPage() {
                         value={formData.name}
                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                         required
-                        placeholder="John Doe"
+                        placeholder="Shashank Ajx"
                     />
 
                     <Input
@@ -83,7 +83,7 @@ export default function CreateUserPage() {
                         value={formData.email}
                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                         required
-                        placeholder="john@example.com"
+                        placeholder="shashanakajx@gmail.com"
                     />
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

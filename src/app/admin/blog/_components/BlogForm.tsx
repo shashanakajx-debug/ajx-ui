@@ -105,7 +105,7 @@ export default function BlogForm({ initialData, isEditing = false }: BlogFormPro
                     label="Author"
                     {...register('author', { required: 'Author is required' })}
                     error={errors.author?.message}
-                    placeholder="e.g., John Doe"
+                    placeholder="e.g., Shashank Ajx"
                 />
 
                 <Input
