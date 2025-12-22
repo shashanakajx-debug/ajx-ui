@@ -8,6 +8,7 @@ import Hero from "@/components/home-designer/Hero";
 import About from "@/components/home-designer/About";
 import Projects from "@/components/home-designer/Projects";
 import Services from "@/components/home-designer/Services";
+import ParallaxDivider from "@/components/home-designer/ParallaxDivider";
 
 import {
   Brain,
@@ -224,6 +225,7 @@ export default function HomePage() {
   return (
     <div className="min-h-screen">
       <Hero />
+      <ParallaxDivider/>
       <About />
       <Services />
 
