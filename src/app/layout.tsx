@@ -30,6 +30,9 @@ export default function RootLayout({
 }) {
     return (
         <html lang="en" suppressHydrationWarning>
+            <head>
+                <script src="https://unpkg.com/@phosphor-icons/web"></script>
+            </head>
             <body
                 className={`${unbounded.variable} ${poppins.variable} font-poppins antialiased`}
             >

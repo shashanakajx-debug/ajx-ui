@@ -1,145 +1,120 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { ThemeToggle } from '@/components/ThemeToggle';
+import { usePathname } from 'next/navigation';
+import ThemeSwitcherButton from './ColorSwitcher'; // From your new code
+import AnimatedButton from '@/components/animation/AnimatedButton'; // From your new code
 
 export default function Header() {
+    const pathname = usePathname();
+    const [isHidden, setIsHidden] = useState(false);
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
+    // Navigation Links from your original code
     const navLinks = [
-        { label: 'Home', href: '/' },
         { label: 'About Us', href: '/about-us' },
         { label: 'Services', href: '/our-services' },
         { label: 'Portfolio', href: '/our-portfolio' },
-        { label: 'Career', href: '/career' },
         { label: 'Blog', href: '/blog' },
         { label: 'Contact', href: '/contact' },
     ];
 
+    // Scroll Logic: Hides or transforms header after 10px scroll
+    useEffect(() => {
+        const handleScroll = () => {
+            const currentScrollPos = window.scrollY; // modern way to get scroll pos
+            setIsHidden(currentScrollPos > 10);
+        };
+
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
+
     return (
-        <header
-            className="
-                sticky top-0 z-50
-                bg-[var(--color-surface)]
-                text-[var(--color-text)]
-                shadow-custom-md
-                transition-colors duration-300
-            "
+        <header 
+            className={`mxd-header fixed top-0 w-full z-50 transition-all duration-300 
+            ${isHidden ? 'mxd-header--scrolled py-2 shadow-lg' : 'py-4'}`}
         >
-            <nav className="container-custom py-4">
-                <div className="flex items-center justify-between">
-                    
-                    {/* Logo */}
-                    <Link href="/" className="flex items-center">
+            <nav className="container-custom flex items-center justify-between">
+                
+                {/* Logo Section */}
+                <div className="flex items-center">
+                    <Link href="/" className="flex items-center gap-2">
                         <Image
                             src="/Ajx-logo.png"
                             alt="AJX Technologies"
                             width={150}
                             height={50}
-                            className="h-12 w-auto"
+                            className="h-10 w-auto"
                             priority
                         />
+                        {/* Optional: Add the "rayo" text style from Header1 if desired */}
+                        <span className="hidden sm:block font-bold text-xl tracking-tight">
+                            AJX
+                        </span>
                     </Link>
+                </div>
 
-                    {/* Desktop Navigation */}
-                    <div className="hidden lg:flex items-center gap-8">
-                        {navLinks.map((link) => (
-                            <Link
-                                key={link.href}
-                                href={link.href}
-                                className="
-                                    font-medium
-                                    text-[var(--color-text)]
-                                    hover:text-[var(--color-primary)]
-                                    transition-colors
-                                "
-                            >
-                                {link.label}
-                            </Link>
-                        ))}
-                    </div>
-
-                    {/* CTA + Theme Toggle */}
-                    <div className="hidden lg:flex items-center gap-4">
-                        <ThemeToggle />
-                        <Link href="/contact" className="btn-primary">
-                            Get Started
+                {/* Desktop Nav - Centered */}
+                <div className="hidden lg:flex items-center gap-8">
+                    {navLinks.map((link) => (
+                        <Link
+                            key={link.href}
+                            href={link.href}
+                            className={`font-medium transition-colors hover:text-[var(--color-primary)] ${
+                                pathname === link.href ? 'text-[var(--color-primary)]' : 'text-[var(--color-text)]'
+                            }`}
+                        >
+                            {link.label}
                         </Link>
+                    ))}
+                </div>
+
+                {/* Controls: Theme + Animated Button */}
+                <div className="flex items-center gap-4">
+                    <ThemeSwitcherButton />
+                    
+                    <div className="hidden sm:block">
+                        <AnimatedButton
+                            text={pathname === '/contact' ? 'Let\'s Talk' : 'Get Started'}
+                            className="btn-primary" // Use your existing CSS class
+                            href="/contact"
+                        >
+                            <i className="ph-bold ph-arrow-up-right ml-2" />
+                        </AnimatedButton>
                     </div>
 
                     {/* Mobile Toggle */}
-                    <div className="lg:hidden flex items-center gap-2">
-                        <ThemeToggle />
-                        <button
-                            aria-label="Toggle menu"
-                            className="p-2 text-[var(--color-text)]"
-                            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                        >
-                            <svg
-                                className="w-6 h-6"
-                                fill="none"
-                                stroke="currentColor"
-                                viewBox="0 0 24 24"
-                            >
-                                {mobileMenuOpen ? (
-                                    <path
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                        strokeWidth={2}
-                                        d="M6 18L18 6M6 6l12 12"
-                                    />
-                                ) : (
-                                    <path
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                        strokeWidth={2}
-                                        d="M4 6h16M4 12h16M4 18h16"
-                                    />
-                                )}
-                            </svg>
-                        </button>
-                    </div>
-                </div>
-
-                {/* Mobile Menu */}
-                {mobileMenuOpen && (
-                    <div
-                        className="
-                            lg:hidden mt-4 pt-4 pb-4
-                            border-t
-                            border-[var(--color-border)]
-                        "
+                    <button 
+                        className="lg:hidden p-2"
+                        onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                     >
-                        <div className="flex flex-col gap-4">
-                            {navLinks.map((link) => (
-                                <Link
-                                    key={link.href}
-                                    href={link.href}
-                                    onClick={() => setMobileMenuOpen(false)}
-                                    className="
-                                        font-medium
-                                        text-[var(--color-text)]
-                                        hover:text-[var(--color-primary)]
-                                        transition-colors
-                                    "
-                                >
-                                    {link.label}
-                                </Link>
-                            ))}
-
-                            <Link
-                                href="/contact"
-                                onClick={() => setMobileMenuOpen(false)}
-                                className="btn-primary text-center"
-                            >
-                                Get Started
-                            </Link>
-                        </div>
-                    </div>
-                )}
+                        {/* Use your previous SVG Icon logic here */}
+                        <span className="sr-only">Toggle Menu</span>
+                        <div className="w-6 h-0.5 bg-current mb-1"></div>
+                        <div className="w-6 h-0.5 bg-current mb-1"></div>
+                        <div className="w-6 h-0.5 bg-current"></div>
+                    </button>
+                </div>
             </nav>
+
+            {/* Mobile Menu Overlay */}
+            {mobileMenuOpen && (
+                <div className="lg:hidden absolute top-full left-0 w-full bg-[var(--color-surface)] border-t p-4 flex flex-col gap-4 shadow-xl">
+                    {navLinks.map((link) => (
+                        <Link 
+                            key={link.href} 
+                            href={link.href} 
+                            onClick={() => setMobileMenuOpen(false)}
+                            className="text-lg font-medium"
+                        >
+                            {link.label}
+                        </Link>
+                    ))}
+                </div>
+            )}
         </header>
     );
 }
