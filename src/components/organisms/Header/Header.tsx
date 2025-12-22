@@ -37,7 +37,7 @@ export default function Header() {
             className={`mxd-header fixed top-0 w-full z-50 transition-all duration-300 
             ${isHidden ? 'mxd-header--scrolled py-2 shadow-lg' : 'py-4'}`}
         >
-            <nav className="container-custom flex items-center justify-between">
+            <nav className="container-custom-box flex items-center justify-between">
                 
                 {/* Logo Section */}
                 <div className="flex items-center">
@@ -47,18 +47,18 @@ export default function Header() {
                             alt="AJX Technologies"
                             width={150}
                             height={50}
-                            className="h-10 w-auto"
+                            className="h-20 w-auto"
                             priority
                         />
                         {/* Optional: Add the "rayo" text style from Header1 if desired */}
-                        <span className="hidden sm:block font-bold text-xl tracking-tight">
+                        <span className="hidden sm:block font-bold text-[23px] tracking-tight">
                             AJX
                         </span>
                     </Link>
                 </div>
 
                 {/* Desktop Nav - Centered */}
-                <div className="hidden lg:flex items-center gap-8">
+                <div className="hidden items-center gap-8">
                     {navLinks.map((link) => (
                         <Link
                             key={link.href}
@@ -79,7 +79,7 @@ export default function Header() {
                     <div className="hidden sm:block">
                         <AnimatedButton
                             text={pathname === '/contact' ? 'Let\'s Talk' : 'Get Started'}
-                            className="btn-primary" // Use your existing CSS class
+                            className="btn-anim btn-default btn-mobile-icon btn-outline slide-right " // Use your existing CSS class
                             href="/contact"
                         >
                             <i className="ph-bold ph-arrow-up-right ml-2" />

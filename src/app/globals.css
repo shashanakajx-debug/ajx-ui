@@ -13,7 +13,6 @@
 #header {
   position: sticky !important;
   top: 0 !important;
-  z-index: 9999 !important;
   width: 100% !important;
   display: block !important;
   visibility: visible !important;
@@ -110,9 +109,6 @@
   border: none !important;
 }
 
-.btn-accent {
-  background-color: var(--color-accent) !important;
-}
 
 .btn-accent:hover {
   background-color: var(--color-accent-hover) !important;
@@ -509,6 +505,7 @@ html {
   background-color: var(--color-primary);
   color: white;
   box-shadow: var(--shadow-md);
+  border-radius: 50px;
 }
 
 .btn-primary:hover {
@@ -701,9 +698,25 @@ textarea::placeholder {
   }
 }
 
-
-
-
 footer.mxd-demo-footer {
     padding-top: 100px;
+}
+
+.mxd-demo-footer__item img {
+    max-width: 56px;
+}
+ 
+footer.mxd-demo-footer {
+    padding-top: 100px;
+}
+ 
+/* ====== HEader CSS */
+ 
+@media only screen and (min-width: 768px) {
+    .mxd-header .container-custom-box{
+        width: -moz-calc(100% - 19.6rem);
+        width: calc(100% - 19.6rem);
+        padding-top: 3rem;
+        margin-left: 6rem;
+    }
 }

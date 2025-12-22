@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
-import AnimatedButton from "@/components/animation/AnimatedButton";
+import AnimatedButton from "../../animation/AnimatedButton";
+
 import {
   Mail,
   Phone,
@@ -98,13 +99,13 @@ export default function Footer1() {
                   that drive business growth.
                 </p>
 
-                <div className="mxd-demo-footer__btn anim-uni-in-up flex gap-2">
+                <div className="mxd-demo-footer__btn anim-uni-in-up mt-[10px]">
                   <AnimatedButton
                     as="a"
                     href="/contact"
-                    className="btn btn-anim btn-default btn-small btn-accent slide-right group"
+                    className="btn btn-anim btn-default btn-small btn-accent slide-right"
                   >
-                    <span className="flex items-center gap-2">
+                    <span className="flex items-center gap-2 ">
                       Get Started
                       <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
                     </span>
@@ -115,10 +116,6 @@ export default function Footer1() {
                     href="/our-portfolio"
                     className="btn btn-anim btn-default btn-small btn-outline slide-right-up group"
                   >
-                    <span className="flex items-center gap-2">
-                      Our Portfolio
-                      <ArrowUpRight className="w-4 h-4 transition-transform group-hover:-translate-y-1" />
-                    </span>
                   </AnimatedButton>
                 </div>
               </div>
@@ -220,7 +217,7 @@ export default function Footer1() {
                 fontSize: "110px",
                 fontWeight: 700,
                 textAlign: "center",
-                opacity: 0.1,
+                // opacity: 0.1,
               }}
             >
               AJX-Technologies
