@@ -1,6 +1,6 @@
 # AJX Technologies - Full Stack Website
 
-A modern, full-stack website for AJX Technologies built with Next.js 15, React 19, TypeScript, and MongoDB. Features a comprehensive admin panel (currently in Demo Mode) for content management and a beautiful, responsive public-facing website.
+A modern, full-stack website for AJX Technologies built with Next.js 15, React 19, TypeScript, and MongoDB. Features a comprehensive admin panel for content management and a beautiful, responsive public-facing website.
 
 
 ## Quick Start

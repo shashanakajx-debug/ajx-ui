@@ -26,6 +26,7 @@ export default function MobileMenu() {
     { title: "Portfolio", href: "/portfolio" },
     { title: "Contact", href: "/contact" },
   ];
+  
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isActive, setIsActive] = useState(false);

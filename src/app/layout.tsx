@@ -34,7 +34,7 @@ export default function RootLayout({
                 <script src="https://unpkg.com/@phosphor-icons/web"></script>
             </head>
             <body
-                className={`${unbounded.variable} ${poppins.variable} font-poppins antialiased`}
+                className={`${unbounded.variable} ${poppins.variable} font-poppins antialiased no-touch`}
             >
                 <QueryProvider>
                     <SessionProvider>

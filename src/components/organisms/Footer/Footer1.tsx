@@ -220,7 +220,7 @@ export default function Footer1() {
                 // opacity: 0.1,
               }}
             >
-              AJX-Technologies
+              AJX-TECHNOLOGIES
             </div>
           </div>
         </div>

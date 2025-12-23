@@ -16,7 +16,7 @@ export default function About() {
                 <div className="mxd-block__image">
                   <Image
                     alt="Photo"
-                    src="/img/avatars/1400x1400_ava-01.webp"
+                    src="/team-collab.png"
                     width={1400}
                     height={1400}
                   />
@@ -45,7 +45,7 @@ export default function About() {
                   <div className="mxd-block__decoration anim-uni-in-up">
                     <Image
                       alt="Decoration"
-                      src="/img/icons/96x96-decor-01.svg"
+                      src="/article-ai.png"
                       width={96}
                       height={96}
                     />

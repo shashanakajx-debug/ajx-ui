@@ -358,7 +358,7 @@
   background-image: url(/img/avatars/1400x1400_ava-01.webp);
 }
 .divider-image-1 {
-  background-image: url(/img/illustrations/1920x1080_divider-01.webp);
+  background-image: url(/1920x1080_divider-01.webp);
 }
 .divider-image-2 {
   background-image: url(/img/illustrations/1920x1080_divider-02.webp);
@@ -388,26 +388,21 @@
   background-image: url(/img/illustrations/2400x1600_divider-10.webp);
 }
 .preview-image-1 {
-  background-image: url(/img/works/preview/1400x1400_prv-01.webp);
+  background-image: url(/1400x1400_prv-01.webp);
 }
 .preview-image-2 {
-  background-image: url(/img/works/preview/1400x1400_prv-02.webp);
+  background-image: url(/1400x1400_prv-02.webp);
 }
 .preview-image-3 {
-  background-image: url(/img/works/preview/1400x1400_prv-03.webp);
+  background-image: url(/1400x1400_prv-03.webp);
 }
 .preview-image-4 {
-  background-image: url(/img/works/preview/1400x1400_prv-04.webp);
+  background-image: url(/1400x1400_prv-04.webp);
 }
 .preview-image-5 {
-  background-image: url(/img/works/preview/1400x1400_prv-05.webp);
+  background-image: url(/1400x1400_prv-05.webp);
 }
-.preview-image-6 {
-  background-image: url(/img/works/preview/1400x1400_prv-06.webp);
-}
-.preview-image-7 {
-  background-image: url(/img/works/preview/1400x1400_prv-07.webp);
-}
+
 .blog-preview-image-1 {
   background-image: url(/img/blog/preview/1000x1250_prv-01.webp);
 }
