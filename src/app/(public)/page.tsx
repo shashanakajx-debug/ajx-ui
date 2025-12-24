@@ -96,16 +96,16 @@ export default function HomePage() {
       <WhyChooseUs />
 
       {/* 9. Our 6-Step Process */}
-      {/* <Process /> */}
+      <Process />
 
       {/* 10. Testimonials */}
-      {/* <Testimonials /> */}
+      <Testimonials />
 
       {/* 11. Blog / Insights */}
-      {/* <Blog /> */}
+      <Blog />
 
       {/* 12. Final Call to Action */}
-      {/* <FinalCta /> */}
+      <FinalCta />
 
       {/* 13. Footer - Already in layout */}
     </div>

@@ -1,23 +1,26 @@
 "use client";
+
 import { ElementType, useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
-// Tip: if SSR complains, use the dynamic import version shown below.
 import Ukiyo from "ukiyojs";
+
 type HtmlTag = keyof HTMLElementTagNameMap;
 
 type UkiyoBgProps<T extends HtmlTag = "div"> = {
-  as?: T; // choose the tag; default "div"
-  className?: string; // your class with background-image
-  scale?: number; // default 1.2
-  speed?: number; // default 1.5
-  willChange?: boolean; // default true
-  wrapperClass?: string; // optional ukiyo wrapper class
+  as?: T;
+  className?: string;
+  style?: React.CSSProperties; // ✅ REQUIRED
+  scale?: number;
+  speed?: number;
+  willChange?: boolean;
+  wrapperClass?: string;
   children?: React.ReactNode;
-} & Omit<React.ComponentPropsWithoutRef<T>, "as" | "className">;
+} & Omit<React.ComponentPropsWithoutRef<T>, "as" | "className" | "style">;
 
 const BackgroundParallax = <T extends HtmlTag = "div">({
   as,
   className,
+  style,
   scale = 1.2,
   speed = 1.5,
   willChange = true,
@@ -26,16 +29,16 @@ const BackgroundParallax = <T extends HtmlTag = "div">({
 }: UkiyoBgProps<T>) => {
   const elRef = useRef<HTMLElement | null>(null);
   const Tag = (as ?? "div") as ElementType;
+
   useLayoutEffect(() => {
     if (!elRef.current) return;
 
-    // Create instance
     const instance = new Ukiyo(elRef.current, {
       scale,
       speed,
       willChange,
       wrapperClass,
-      externalRAF: true, // we’ll drive it with GSAP’s ticker
+      externalRAF: true,
     });
 
     const tick = () => instance.animate();
@@ -48,7 +51,17 @@ const BackgroundParallax = <T extends HtmlTag = "div">({
   }, [scale, speed, willChange, wrapperClass]);
 
   return (
-    <Tag ref={elRef} className={className}>
+    <Tag
+      ref={elRef}
+      className={className}
+      style={{
+        minHeight: "260px", // 🔥 THIS IS NON-NEGOTIABLE
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+        ...style,
+      }}
+    >
       {children}
     </Tag>
   );

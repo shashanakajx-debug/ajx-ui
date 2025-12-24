@@ -160,7 +160,7 @@ export default function MobileMenu() {
                   </p>
                   <div className="menu-promo__video fade-in-up-elm" style={{ transitionDelay: "0.3s" }}>
                     <video className="menu-video" autoPlay loop muted playsInline>
-                      <source src="video/540x310_video-01.mp4" type="video/mp4" />
+                      <source src="/540x310_video-01.mp4" type="video/mp4" />
                     </video>
                   </div>
                 </div>
