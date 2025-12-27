@@ -98,7 +98,7 @@ export default function Services() {
                     <div className="mxd-services-cards__image mxd-services-cards-image-2">
                       <Image
                         alt="Illustration"
-                        src="/img/illustrations/800x800_service-image-02.webp"
+                        src="/services/Creative development.png"
                         width={800}
                         height={800}
                       />
@@ -206,7 +206,7 @@ export default function Services() {
                     <div className="mxd-services-cards__image mxd-services-cards-image-4">
                       <Image
                         alt="Illustration"
-                        src="/img/illustrations/800x800_service-image-04.webp"
+                        src="/services/Brand-identity.png"
                         width={800}
                         height={800}
                       />
@@ -252,7 +252,7 @@ export default function Services() {
                     <div className="mxd-services-cards__image mxd-services-cards-image-5">
                       <Image
                         alt="Illustration"
-                        src="/img/illustrations/800x800_service-image-05.webp"
+                        src="/services/Long-lasting-support.png"
                         width={800}
                         height={800}
                       />

@@ -1,11 +1,36 @@
+"use client";
 import Image from "next/image";
+import { useEffect, useRef } from "react";
 
 import VelocityMarquee from "../animation/VelocityMarquee";
 import RevealText from "../animation/RevealText";
 
 export default function Hero() {
+  const heroRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    const el = heroRef.current;
+    if (!el) return;
+
+    const cssAny = CSS as unknown as {
+      paintWorklet?: { addModule: (url: string) => Promise<void> };
+    };
+
+    if (!cssAny.paintWorklet) return;
+
+    cssAny.paintWorklet.addModule(
+      "https://unpkg.com/css-houdini-ringparticles/dist/ringparticles.js"
+    ).catch(() => { });
+
+    // Set permanent values for the animation
+    el.style.setProperty("--ring-x", "50");
+    el.style.setProperty("--ring-y", "50");
+    el.style.setProperty("--ring-interactive", "1");
+    el.classList.add("interactive");
+  }, []);
+
   return (
-    <div className="mxd-section mxd-hero-section">
+    <div ref={heroRef} className="mxd-section mxd-hero-section mxd-hero-section-bg">
       <div className="mxd-hero-00">
         <div className="mxd-hero-00__wrap">
           {/* top group */}
@@ -13,15 +38,6 @@ export default function Hero() {
             <div className="mxd-hero-00__title-wrap loading-wrap">
               {/* title images */}
               <div className="mxd-hero-00__images mxd-floating-img">
-                <div className="hero-00-image image-01 mxd-floating-img__item loading__fade">
-                  <Image
-                    className="mxd-pulse"
-                    alt="Hero Image"
-                    width={700}
-                    height={687}
-                    src="/01_hero-img.webp"
-                  />
-                </div>
                 <div className="hero-00-image image-02 mxd-floating-img__item loading__fade">
                   <Image
                     className="mxd-move"
@@ -73,7 +89,7 @@ export default function Hero() {
                 <span className="hero-00-title__row loading__item">
                   <em className="hero-00-title__item">Crafting,</em>
                   <em className="hero-00-title__item title-item-transparent">
-                   
+
                   </em>
                 </span>
                 <span className="hero-00-title__row loading__item">
@@ -100,7 +116,7 @@ export default function Hero() {
                 as="p"
                 className="mxd-manifest reveal-type anim-uni-in-up"
               >
-                We build stunning, user-friendly websites and applications 
+                We build stunning, user-friendly websites and applications
                 that engage your audience and elevate your brand.
               </RevealText>
             </div>

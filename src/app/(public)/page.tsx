@@ -17,6 +17,8 @@ import Blog from "@/components/home-designer/Blog";
 import FinalCta from "@/components/home-designer/FinalCta";
 import ParallaxDivider from "@/components/home-designer/ParallaxDivider";
 
+
+
 /* --------------------
    HomePage component
    -------------------- */
@@ -73,7 +75,9 @@ export default function HomePage() {
 
       {/* 2. Hero Banner */}
       <Hero />
-
+      {/* <section className="mxd-section mxd-home-about">
+        ...
+      </section> */}
       {/* Divider */}
       <ParallaxDivider />
 

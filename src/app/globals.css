@@ -11,7 +11,7 @@
 .mxd-header,
 .mxd-demo-header,
 #header {
-  position: sticky !important;
+  /* position: sticky !important; */
   top: 0 !important;
   width: 100% !important;
   display: block !important;
@@ -699,51 +699,128 @@ textarea::placeholder {
 }
 
 footer.mxd-demo-footer {
-    padding-top: 100px;
+  padding-top: 100px;
 }
 
 .mxd-demo-footer__item img {
-    max-width: 56px;
+  max-width: 56px;
 }
- 
+
 footer.mxd-demo-footer {
-    padding-top: 100px;
+  padding-top: 100px;
 }
- 
+
 /* ====== HEader CSS */
 .mxd-blockmanifest .mxd-manifestcontrols a {
   border: 1px solid var(--t-bright) !important;
 }
+
 .marquee.marquee-right--gsap {
   margin-top: 8rem;
 }
+
 .padding-blog .mxd-blog-preview__data {
   padding: 0;
 }
+
 .padding-blog .mxd-blog-preview__data p {
-    font-size: 18px;
+  font-size: 18px;
 }
+
 .mxd-preview-hover__icon {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
- 
+
 .mxd-service-card__body {
-    padding: 2rem 1rem;
+  padding: 2rem 1rem;
 }
-.swiper-arrow{
-   background-color: var(--t-bright);
+
+.swiper-arrow {
+  background-color: var(--t-bright);
 }
-.swiper .swiper-button-next:after, .swiper-button-prev:after{
+
+.swiper .swiper-button-next:after,
+.swiper-button-prev:after {
   font-size: 22px;
   color: var(--t-opp-bright);
 }
 
 @media only screen and (min-width: 768px) {
-    .mxd-header .container-custom-box{
-        width: -moz-calc(100% - 19.6rem);
-        width: calc(100% - 19.6rem);
-        padding-top: 3rem;
-        margin-left: 6rem;
+  .mxd-header .container-custom-box {
+    width: -moz-calc(100% - 19.6rem);
+    width: calc(100% - 19.6rem);
+    padding-top: 3rem;
+    margin-left: 6rem;
+  }
+ .mxd-header{
+  left: 0;
+ } 
+}
+
+/* ---------- HOUDINI RING PARTICLES (WELCOME BG) ---------- */
+@supports (background: paint(something)) {
+  .mxd-hero-section-bg {
+    --ring-radius: 100;
+    --ring-thickness: 600;
+    --particle-count: 80;
+    --particle-rows: 25;
+    --particle-size: 2;
+    --particle-color: var(--t-bright);
+
+    --particle-min-alpha: 0.1;
+    --particle-max-alpha: 1;
+
+    --seed: 200;
+
+    background-image: paint(ring-particles);
+  }
+
+  /* Animations */
+  @property --animation-tick {
+    syntax: "<number>";
+    inherits: false;
+    initial-value: 0;
+  }
+
+  @property --ring-radius {
+    syntax: "<number> | auto";
+    inherits: false;
+    initial-value: auto;
+  }
+
+  @keyframes ripple {
+    0% {
+      --animation-tick: 0;
     }
+
+    100% {
+      --animation-tick: 1;
+    }
+  }
+
+  @keyframes ring {
+    0% {
+      --ring-radius: 150;
+    }
+
+    100% {
+      --ring-radius: 250;
+    }
+  }
+
+  .mxd-hero-section-bg {
+    animation: ripple 6s linear infinite, ring 6s ease-in-out infinite alternate;
+    transition: --ring-x 3s ease, --ring-y 3s ease;
+
+    /* Fixed position (Center) and Permanent */
+    --ring-x: 50;
+    --ring-y: 50;
+    --ring-interactive: 1;
+  }
+
+  /* Just to match your JS behavior (class toggled on hover) */
+  .interactive {
+    /* Toggled by JS */
+  }
 }

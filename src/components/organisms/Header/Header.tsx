@@ -34,8 +34,8 @@ export default function Header() {
 
     return (
         <header 
-            className={`mxd-header fixed top-0 w-full z-50 transition-all duration-300 
-            ${isHidden ? 'mxd-header--scrolled py-2 shadow-lg' : 'py-4'}`}
+            className={`mxd-header top-0 w-full z-50 transition-all duration-300 
+            ${isHidden ? 'mxd-header--scrolled py-2' : 'py-4'}`}
         >
             <nav className="container-custom-box flex items-center justify-between">
                 
@@ -50,10 +50,6 @@ export default function Header() {
                             className="h-20 w-auto"
                             priority
                         />
-                        {/* Optional: Add the "rayo" text style from Header1 if desired */}
-                        <span className="hidden sm:block font-bold text-[23px] tracking-tight">
-                            AJX
-                        </span>
                     </Link>
                 </div>
 
