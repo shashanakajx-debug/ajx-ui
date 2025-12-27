@@ -156,7 +156,7 @@ export default function Services() {
                       <Image
                         className="image-2"
                         alt="Illustration"
-                        src="/img/illustrations/800x800_service-image-03.webp"
+                        src="/services/Digital-marketing-solutions.png"
                         width={800}
                         height={800}
                       />

@@ -711,7 +711,34 @@ footer.mxd-demo-footer {
 }
  
 /* ====== HEader CSS */
+.mxd-blockmanifest .mxd-manifestcontrols a {
+  border: 1px solid var(--t-bright) !important;
+}
+.marquee.marquee-right--gsap {
+  margin-top: 8rem;
+}
+.padding-blog .mxd-blog-preview__data {
+  padding: 0;
+}
+.padding-blog .mxd-blog-preview__data p {
+    font-size: 18px;
+}
+.mxd-preview-hover__icon {
+    display: flex;
+    justify-content: center;
+}
  
+.mxd-service-card__body {
+    padding: 2rem 1rem;
+}
+.swiper-arrow{
+   background-color: var(--t-bright);
+}
+.swiper .swiper-button-next:after, .swiper-button-prev:after{
+  font-size: 22px;
+  color: var(--t-opp-bright);
+}
+
 @media only screen and (min-width: 768px) {
     .mxd-header .container-custom-box{
         width: -moz-calc(100% - 19.6rem);

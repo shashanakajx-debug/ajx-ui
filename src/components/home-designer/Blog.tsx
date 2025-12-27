@@ -118,7 +118,10 @@ export default function Blog() {
                         </span>
                       </div>
                     </Link>
-
+                    <div className="flex items-center gap-2 mb-3 text-xs text-muted anim-uni-in-up">
+                        <Calendar className="w-4 h-4" />
+                        <span>{post.date}</span>
+                      </div>
                     <div className="mxd-blog-preview__data">
                       <Link className="anim-uni-in-up" href={post.slug}>
                         {post.title}
@@ -128,10 +131,7 @@ export default function Blog() {
                         {post.excerpt}
                       </p>
 
-                      <div className="flex items-center gap-2 mt-3 text-xs text-muted anim-uni-in-up">
-                        <Calendar className="w-4 h-4" />
-                        <span>{post.date}</span>
-                      </div>
+                      
                     </div>
                   </div>
                 ))}

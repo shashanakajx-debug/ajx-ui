@@ -47,17 +47,15 @@ export default function Testimonials() {
             loop
             speed={900}
             parallax
-            autoplay={{ delay: 8000, disableOnInteraction: false }}
-            pagination={{
-              el: ".swiper-pagination",
-              type: "fraction",
-            }}
+            autoplay={false}
+            
             navigation={{
               nextEl: ".swiper-button-next",
               prevEl: ".swiper-button-prev",
             }}
-            modules={[Navigation, Pagination, Parallax, Autoplay]}
+            modules={[Navigation, Parallax, Autoplay]}
             className="swiper-testimonials"
+
           >
             {testimonialsPortfolioData.map((item, idx) => (
               <SwiperSlide key={idx}>
@@ -150,7 +148,7 @@ export default function Testimonials() {
                         }}
                       >
                         <div
-                          className="swiper-button-prev"
+                          className="swiper-button-prev swiper-arrow"
                           style={{
                             width: 36,
                             height: 36,
@@ -161,10 +159,7 @@ export default function Testimonials() {
                             cursor: "pointer",
                           }}
                         >
-                          <i
-                            className="ph ph-arrow-left"
-                            style={{ fontSize: 14 }}
-                          />
+                        
                         </div>
 
                         <div
@@ -173,7 +168,7 @@ export default function Testimonials() {
                         />
 
                         <div
-                          className="swiper-button-next"
+                          className="swiper-button-next swiper-arrow"
                           style={{
                             width: 36,
                             height: 36,
@@ -184,10 +179,7 @@ export default function Testimonials() {
                             cursor: "pointer",
                           }}
                         >
-                          <i
-                            className="ph ph-arrow-right"
-                            style={{ fontSize: 14 }}
-                          />
+                          
                         </div>
                       </div>
                     </div>
