@@ -7025,7 +7025,10 @@ form textarea:required:valid {
 @media only screen and (min-width: 1200px) {
   .hero-00-title {
     gap: 1.5rem;
-    font-size: 9.5rem;
+    font-size: 5.5rem;
+    line-height: normal;
+    font-weight: 600;
+    color: var(--t-bright);
   }
 }
 @media only screen and (min-width: 1600px) {
@@ -7076,7 +7079,7 @@ form textarea:required:valid {
 }
 @media only screen and (min-width: 1200px) {
   .hero-00-title__row {
-    gap: 14.5rem;
+    gap: 2.5rem;
   }
 }
 @media only screen and (min-width: 1600px) {

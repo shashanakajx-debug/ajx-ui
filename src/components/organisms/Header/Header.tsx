@@ -1,116 +1,277 @@
-'use client';
+// src/components/Header.tsx
+"use client";
 
-import React, { useState, useEffect } from 'react';
-import Link from 'next/link';
-import Image from 'next/image';
-import { usePathname } from 'next/navigation';
-import ThemeSwitcherButton from './ColorSwitcher'; // From your new code
-import AnimatedButton from '@/components/animation/AnimatedButton'; // From your new code
+import React, { useEffect, useState } from "react";
+import Link from "next/link";
+import Image from "next/image";
+import { usePathname } from "next/navigation";
+import ThemeSwitcherButton from "./ColorSwitcher";
 
-export default function Header() {
-    const pathname = usePathname();
-    const [isHidden, setIsHidden] = useState(false);
-    const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+type SubLink = { label: string; href: string };
+type NavLink = {
+  label: string;
+  href: string;
+  submenu?: SubLink[];
+};
 
-    // Navigation Links from your original code
-    const navLinks = [
-        { label: 'About Us', href: '/about-us' },
-        { label: 'Services', href: '/our-services' },
-        { label: 'Portfolio', href: '/our-portfolio' },
-        { label: 'Blog', href: '/blog' },
-        { label: 'Contact', href: '/contact' },
-    ];
+export default function Header(): React.ReactElement {
+  const pathname = usePathname() || "/";
+  const [isHidden, setIsHidden] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [openMobileSubmenu, setOpenMobileSubmenu] = useState<string | null>(
+    null
+  );
+  const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+  const [hideTimeout, setHideTimeout] = useState<NodeJS.Timeout | null>(null);
 
-    // Scroll Logic: Hides or transforms header after 10px scroll
-    useEffect(() => {
-        const handleScroll = () => {
-            const currentScrollPos = window.scrollY; // modern way to get scroll pos
-            setIsHidden(currentScrollPos > 10);
-        };
+  const navLinks: NavLink[] = [
+    {
+      label: "AI / ML",
+      href: "/services/AI-ML",
+      submenu: [
+        { label: "LLM Training", href: "/services/AI-ML/llm-training" },
+        { label: "LLM Factuality", href: "/services/AI-ML/factuality" },
+        {
+          label: "Multimodality LLM Training",
+          href: "/services/AI-ML/multimodal",
+        },
+        { label: "LLM Alignment & Safety", href: "/services/AI-ML/safety" },
+      ],
+    },
+    {
+      label: "Digital Engg",
+      href: "/services/Digital-Engg",
+      submenu: [
+        { label: "AR/VR", href: "/services/Digital-Engg/AR-VR" },
+        { label: "IoT", href: "/services/Digital-Engg/IoT" },
+        { label: "Blockchain", href: "/services/Digital-Engg/Blockchain" },
+      ],
+    },
+    {
+      label: "DevOps",
+      href: "/services/DevOps",
+      submenu: [
+        { label: "CI/CD", href: "/services/DevOps/CI-CD" },
+        {
+          label: "Infrastructure as Code",
+          href: "/services/DevOps/Infrastructure-as-Code",
+        },
+        {
+          label: "Monitoring & Logging",
+          href: "/services/DevOps/Monitoring-Logging",
+        },
+      ],
+    },
+    {
+      label: "Web3",
+      href: "/services/Web3",
+      submenu: [
+        { label: "DApp Development", href: "/services/Web3/DApp-Development" },
+        { label: "Smart Contracts", href: "/services/Web3/Smart-Contracts" },
+        { label: "NFT Marketplaces", href: "/services/Web3/NFT-Marketplaces" },
+      ],
+    },
+    {
+      label: "Cloud",
+      href: "/services/Cloud",
+      submenu: [
+        { label: "AWS", href: "/services/Cloud/AWS" },
+        { label: "Azure", href: "/services/Cloud/Azure" },
+        { label: "Google Cloud", href: "/services/Cloud/Google-Cloud" },
+      ],
+    },
+    {
+      label: "SaaS",
+      href: "/services/SaaS",
+      submenu: [
+        { label: "SaaS Development", href: "/services/SaaS/SaaS-Development" },
+        { label: "SaaS Integration", href: "/services/SaaS/SaaS-Integration" },
+        { label: "SaaS Migration", href: "/services/SaaS/SaaS-Migration" },
+      ],
+    },
+    {
+      label: "SEO",
+      href: "/services/SEO",
+      submenu: [
+        { label: "On-Page SEO", href: "/services/SEO/On-Page-SEO" },
+        { label: "Off-Page SEO", href: "/services/SEO/Off-Page-SEO" },
+        { label: "Technical SEO", href: "/services/SEO/Technical-SEO" },
+      ],
+    },
+  ];
 
-        window.addEventListener('scroll', handleScroll);
-        return () => window.removeEventListener('scroll', handleScroll);
-    }, []);
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsHidden(window.scrollY > 10);
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      if (hideTimeout) clearTimeout(hideTimeout);
+    };
+  }, [hideTimeout]);
 
-    return (
-        <header 
-            className={`mxd-header top-0 w-full z-50 transition-all duration-300 
-            ${isHidden ? 'mxd-header--scrolled py-2' : 'py-4'}`}
-        >
-            <nav className="container-custom-box flex items-center justify-between">
-                
-                {/* Logo Section */}
-                <div className="flex items-center">
-                    <Link href="/" className="flex items-center gap-2">
-                        <Image
-                            src="/Ajx-logo.png"
-                            alt="AJX Technologies"
-                            width={150}
-                            height={50}
-                            className="h-20 w-auto"
-                            priority
-                        />
-                    </Link>
-                </div>
+  const handleMouseEnter = (label: string) => {
+    if (hideTimeout) clearTimeout(hideTimeout);
+    setActiveDropdown(label);
+  };
 
-                {/* Desktop Nav - Centered */}
-                <div className="hidden items-center gap-8">
-                    {navLinks.map((link) => (
-                        <Link
-                            key={link.href}
-                            href={link.href}
-                            className={`font-medium transition-colors hover:text-[var(--color-primary)] ${
-                                pathname === link.href ? 'text-[var(--color-primary)]' : 'text-[var(--color-text)]'
-                            }`}
-                        >
-                            {link.label}
-                        </Link>
+  const handleMouseLeave = () => {
+    const timeout = setTimeout(() => {
+      setActiveDropdown(null);
+    }, 300);
+    setHideTimeout(timeout);
+  };
+
+  return (
+    <header
+      className={`mxd-header top-0 w-full z-50 transition-all duration-300 ${
+        isHidden ? "mxd-header--scrolled py-2" : "py-4"
+      }`}
+    >
+      <nav className="container-custom-box navbar-box flex items-center justify-between">
+        {/* Logo */}
+        <div className="flex items-center">
+          <Link href="/" className="flex items-center gap-2">
+            <Image
+              src="/Ajx-logo.png"
+              alt="AJX Technologies"
+              width={150}
+              height={50}
+              className="h-20 w-auto"
+              priority
+            />
+          </Link>
+        </div>
+
+        {/* Desktop Nav (centered) */}
+        <div className="hidden lg:flex items-center gap-8">
+          {navLinks.map((link) => (
+            <div
+              key={link.href}
+              className="relatives"
+              onMouseEnter={() => link.submenu && handleMouseEnter(link.label)}
+              onMouseLeave={handleMouseLeave}
+            >
+              <Link
+                href={link.href}
+                className={`font-medium transition-colors] menu-item ${
+                  pathname === link.href
+                    ? ""
+                    : ""
+                }`}
+              >
+                {link.label}
+              </Link>
+
+              {/* Individual Dropdown for each service */}
+              {link.submenu && activeDropdown === link.label && (
+                <div
+                  className="absolute mega-menu-box top-full mt-0 rounded-2xl z-50 p-12"
+                  onMouseEnter={() => handleMouseEnter(link.label)}
+                  onMouseLeave={handleMouseLeave}
+                >
+                  <div className="grid grid-cols-2 gap-10">
+                    {link.submenu.map((sublink) => (
+                      <Link
+                        key={sublink.href}
+                        href={sublink.href}
+                        className="group flex items-start gap-6 p-7 rounded-xl transition-all"
+                      >
+                        <div className="mt-1 w-14 h-14 rounded-xl bg-black dark:bg-white flex items-center justify-center group-hover:bg-gray-800 dark:group-hover:bg-gray-200 transition-colors flex-shrink-0">
+                          <svg className="w-7 h-7 text-white dark:text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                          </svg>
+                        </div>
+                        <div className="flex-1">
+                          <h4 className="font-bold text-2xl mb-3 transition-colors">
+                            {sublink.label}
+                          </h4>
+                          <p className="text-[15px] leading-relaxed">
+                            We are a leading {sublink.label} agency specializing in crafting exceptional solutions
+                          </p>
+                        </div>
+                      </Link>
                     ))}
+                  </div>
                 </div>
+              )}
+            </div>
+          ))}
+        </div>
 
-                {/* Controls: Theme + Animated Button */}
-                <div className="flex items-center gap-4">
-                    <ThemeSwitcherButton />
-                    
-                    <div className="hidden sm:block">
-                        <AnimatedButton
-                            text={pathname === '/contact' ? 'Let\'s Talk' : 'Get Started'}
-                            className="btn-anim btn-default btn-mobile-icon btn-outline slide-right " // Use your existing CSS class
-                            href="/contact"
-                        >
-                            <i className="ph-bold ph-arrow-up-right ml-2" />
-                        </AnimatedButton>
-                    </div>
+        {/* Controls: Theme + Mobile Toggle */}
+        <div className="flex items-center gap-4">
+          <ThemeSwitcherButton />
 
-                    {/* Mobile Toggle */}
-                    <button 
-                        className="lg:hidden p-2"
-                        onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          {/* Mobile Toggle */}
+          <button
+            className="lg:hidden p-2"
+            onClick={() => setMobileMenuOpen((s) => !s)}
+            type="button"
+            aria-label="Toggle menu"
+            aria-expanded={mobileMenuOpen}
+          >
+            <span className="sr-only">Toggle Menu</span>
+            <div className="w-6 h-0.5 bg-current mb-1" />
+            <div className="w-6 h-0.5 bg-current mb-1" />
+            <div className="w-6 h-0.5 bg-current" />
+          </button>
+        </div>
+      </nav>
+
+      {/* Mobile Menu */}
+      {mobileMenuOpen && (
+        <div className="lg:hidden absolute top-full left-0 w-full bg-[var(--color-surface)] border-t p-4 flex flex-col gap-2 shadow-xl z-40">
+          {navLinks.map((link) => (
+            <div key={link.href} className="flex flex-col">
+              <div className="flex items-center justify-between">
+                <Link
+                  href={link.href}
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="text-lg font-medium py-2"
+                >
+                  {link.label}
+                </Link>
+
+                {link.submenu && (
+                  <button
+                    onClick={() =>
+                      setOpenMobileSubmenu((open) =>
+                        open === link.label ? null : link.label
+                      )
+                    }
+                    aria-expanded={openMobileSubmenu === link.label}
+                    aria-controls={`${link.label}-submenu`}
+                    className="px-2 py-1"
+                    type="button"
+                  >
+                    {openMobileSubmenu === link.label ? "−" : "+"}
+                  </button>
+                )}
+              </div>
+
+              {link.submenu && openMobileSubmenu === link.label && (
+                <div id={`${link.label}-submenu`} className="pl-4">
+                  {link.submenu.map((s) => (
+                    <Link
+                      key={s.href}
+                      href={s.href}
+                      onClick={() => {
+                        setMobileMenuOpen(false);
+                        setOpenMobileSubmenu(null);
+                      }}
+                      className="block py-1 text-sm"
                     >
-                        {/* Use your previous SVG Icon logic here */}
-                        <span className="sr-only">Toggle Menu</span>
-                        <div className="w-6 h-0.5 bg-current mb-1"></div>
-                        <div className="w-6 h-0.5 bg-current mb-1"></div>
-                        <div className="w-6 h-0.5 bg-current"></div>
-                    </button>
+                      {s.label}
+                    </Link>
+                  ))}
                 </div>
-            </nav>
-
-            {/* Mobile Menu Overlay */}
-            {mobileMenuOpen && (
-                <div className="lg:hidden absolute top-full left-0 w-full bg-[var(--color-surface)] border-t p-4 flex flex-col gap-4 shadow-xl">
-                    {navLinks.map((link) => (
-                        <Link 
-                            key={link.href} 
-                            href={link.href} 
-                            onClick={() => setMobileMenuOpen(false)}
-                            className="text-lg font-medium"
-                        >
-                            {link.label}
-                        </Link>
-                    ))}
-                </div>
-            )}
-        </header>
-    );
+              )}
+            </div>
+          ))}
+        </div>
+      )}
+    </header>
+  );
 }

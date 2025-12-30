@@ -746,6 +746,32 @@ footer.mxd-demo-footer {
   color: var(--t-opp-bright);
 }
 
+/* ======= TEch Css ========= */
+.techicon.padding-grid-pre-pinned {
+  margin-top: 5rem;
+  padding-bottom: 5rem;
+}
+.techicon .marquee-item .flex-shrink-0 {
+  min-height: fit-content;
+}
+.navbar-box{
+  position: relative;
+}
+.navbar-box .menu-item{
+  color: var(--t-bright);
+}
+.mega-menu-box{
+  left: 0;
+  right: 0;
+  background-color: var(--t-opp-bright);
+}
+.mega-menu-box h4{
+  color: var(--t-bright);
+}
+.mega-menu-box p{
+  color: var(--t-bright);
+}
+
 @media only screen and (min-width: 768px) {
   .mxd-header .container-custom-box {
     width: -moz-calc(100% - 19.6rem);
@@ -761,10 +787,10 @@ footer.mxd-demo-footer {
 /* ---------- HOUDINI RING PARTICLES (WELCOME BG) ---------- */
 @supports (background: paint(something)) {
   .mxd-hero-section-bg {
-    --ring-radius: 100;
-    --ring-thickness: 600;
-    --particle-count: 80;
-    --particle-rows: 25;
+  --ring-radius: 60;
+    --ring-thickness: 200;
+    --particle-count: 40;
+    --particle-rows: 15;
     --particle-size: 2;
     --particle-color: var(--t-bright);
 
@@ -818,6 +844,124 @@ footer.mxd-demo-footer {
     --ring-y: 50;
     --ring-interactive: 1;
   }
+  :root{
+  --trackShadow: #cfcfcf; /* bottom edge */
+  --track: #2b2b2b;       /* main track */
+  --trackActive: #7c4dff; /* progress highlight */
+  --dot: #4fb7ff;         /* blue dot */
+}
+ 
+.barOnly{
+  width: 100%;
+  overflow: hidden;
+}
+ 
+.stage{
+  position: relative;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 10px 10px;
+}
+ 
+.svg{
+  width: 100%;
+  height: auto;
+  display: block;
+  overflow: visible;
+}
+ 
+.steps{
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+ 
+/* ===== 3D STEP TILE (like your image) ===== */
+.step{
+  position: absolute;
+  transform: translate(-50%, -70%) rotate(-26deg);
+  transform-origin: center;
+  border-radius: 8px;
+  padding: 10px 22px;
+  font-weight: 700;
+  font-size: 16px;
+  letter-spacing: .2px;
+  color: #fff;
+  box-shadow:
+    0 12px 0 rgba(0,0,0,.55),
+    0 18px 26px rgba(0,0,0,.25);
+  border: 2px solid rgba(0,0,0,.65);
+  opacity: .88;
+  filter: saturate(.9);
+  transition: transform .2s ease, opacity .2s ease, filter .2s ease;
+}
+ 
+/* 3D bottom face */
+.step::after{
+  content:"";
+  position:absolute;
+  left: 6px;
+  right: -6px;
+  bottom: -10px;
+  height: 12px;
+  border-radius: 0 0 8px 8px;
+  background: rgba(0,0,0,.45);
+  transform: skewX(-35deg);
+  z-index: -1;
+}
+ 
+/* Small top highlight */
+.step::before{
+  content:"";
+  position:absolute;
+  inset: 2px;
+  border-radius: 6px;
+  background: rgba(255,255,255,.10);
+  mix-blend-mode: overlay;
+  pointer-events:none;
+}
+ 
+.step span{
+  display:block;
+  transform: translateY(-1px);
+}
+ 
+/* COLOR TONES */
+.purple{
+  background: #7c4dff;
+}
+.blue{
+  background: #4fb7ff;
+  color: #ffffff;
+}
+.dark{
+  background: #2f2f2f;
+}
+ 
+/* ACTIVE / DONE STATES */
+.active{
+  opacity: 1;
+  filter: saturate(1);
+  transform: translate(-50%, -70%) rotate(-26deg) scale(1.05);
+}
+ 
+.done{
+  opacity: .98;
+}
+ 
+/* Responsive: reduce rotation on small screens */
+@media (max-width: 720px){
+  .step{
+    font-size: 14px;
+    padding: 8px 16px;
+    transform: translate(-50%, -70%) rotate(-18deg);
+  }
+  .active{
+    transform: translate(-50%, -70%) rotate(-18deg) scale(1.05);
+  }
+}
+
 
   /* Just to match your JS behavior (class toggled on hover) */
   .interactive {

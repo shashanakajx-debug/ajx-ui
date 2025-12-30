@@ -16,6 +16,7 @@ import Testimonials from "@/components/home-designer/Testimonials";
 import Blog from "@/components/home-designer/Blog";
 import FinalCta from "@/components/home-designer/FinalCta";
 import ParallaxDivider from "@/components/home-designer/ParallaxDivider";
+import ScrollProcessPath from "@/components/home-designer/ScrollProcessPath";
 
 
 
@@ -92,6 +93,8 @@ export default function HomePage() {
 
       {/* 6. Featured Projects */}
       <Projects />
+      {/* 9.1 Our 6-Step Process */}
+      <ScrollProcessPath/>
 
       {/* 7. Industries Served */}
       <Industries />

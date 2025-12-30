@@ -36,18 +36,6 @@ export default function Hero() {
           {/* top group */}
           <div className="mxd-hero-00__top">
             <div className="mxd-hero-00__title-wrap loading-wrap">
-              {/* title images */}
-              <div className="mxd-hero-00__images mxd-floating-img">
-                <div className="hero-00-image image-02 mxd-floating-img__item loading__fade">
-                  <Image
-                    className="mxd-move"
-                    alt="Hero Image"
-                    width={700}
-                    height={798}
-                    src="/02_hero-img.webp"
-                  />
-                </div>
-              </div>
               {/* title marquee */}
               <div className="mxd-hero-00__marquee loading__item hidden">
                 <VelocityMarquee
@@ -85,10 +73,10 @@ export default function Hero() {
                 </VelocityMarquee>
               </div>
               {/* title text */}
-              <h1 className="hero-00-title">
+              <div className="hero-00-title">
                
                 <span className="hero-00-title__row loading__item">
-                  <em className="hero-00-title__item title-item-image">
+                  <div className="hero-00-title__item title-item-image">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       version="1.1"
@@ -97,11 +85,11 @@ export default function Hero() {
                       <path d="M19.6,9.6h-3.9c-.4,0-1.8-.2-1.8-.2-.6,0-1.1-.2-1.6-.6-.5-.3-.9-.8-1.2-1.2-.3-.4-.4-.9-.5-1.4,0,0,0-1.1-.2-1.5V.4c0-.2-.2-.4-.4-.4s-.4.2-.4.4v4.4c0,.4-.2,1.5-.2,1.5,0,.5-.2,1-.5,1.4-.3.5-.7.9-1.2,1.2s-1,.5-1.6.6c0,0-1.2,0-1.7.2H.4c-.2,0-.4.2-.4.4s.2.4.4.4h4.1c.4,0,1.7.2,1.7.2.6,0,1.1.2,1.6.6.4.3.8.7,1.1,1.1.3.5.5,1,.6,1.6,0,0,0,1.3.2,1.7v4.1c0,.2.2.4.4.4s.4-.2.4-.4v-4.1c0-.4.2-1.7.2-1.7,0-.6.2-1.1.6-1.6.3-.4.7-.8,1.1-1.1.5-.3,1-.5,1.6-.6,0,0,1.3,0,1.8-.2h3.9c.2,0,.4-.2.4-.4s-.2-.4-.4-.4h0Z" />
                     </svg>
                     {/* <img class="inject-me" src="/img/icons/20x20-rayo-star.svg" alt="Divider Icon"> */}
-                  </em>
-                  <em className="hero-00-title__item hero-subtitle">Crafting Ai Experiences<br></br>
-That Drive Success</em>
+                  </div>
+                  <p className="hero-00-title__item hero-subtitle hero-00-title">Crafting Ai Experiences<br></br>
+That Drive Success</p>
                 </span>
-              </h1>
+              </div>
             </div>
           </div>
           {/* bottom group */}
