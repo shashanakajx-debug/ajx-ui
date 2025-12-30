@@ -49,7 +49,7 @@ export default function Hero() {
                 </div>
               </div>
               {/* title marquee */}
-              <div className="mxd-hero-00__marquee loading__item">
+              <div className="mxd-hero-00__marquee loading__item hidden">
                 <VelocityMarquee
                   direction="left"
                   className="marquee marquee-left--gsap"
@@ -86,12 +86,7 @@ export default function Hero() {
               </div>
               {/* title text */}
               <h1 className="hero-00-title">
-                <span className="hero-00-title__row loading__item">
-                  <em className="hero-00-title__item">Crafting,</em>
-                  <em className="hero-00-title__item title-item-transparent">
-
-                  </em>
-                </span>
+               
                 <span className="hero-00-title__row loading__item">
                   <em className="hero-00-title__item title-item-image">
                     <svg
@@ -103,7 +98,8 @@ export default function Hero() {
                     </svg>
                     {/* <img class="inject-me" src="/img/icons/20x20-rayo-star.svg" alt="Divider Icon"> */}
                   </em>
-                  <em className="hero-00-title__item">AI Digital Insights</em>
+                  <em className="hero-00-title__item hero-subtitle">Crafting Ai Experiences<br></br>
+That Drive Success</em>
                 </span>
               </h1>
             </div>
