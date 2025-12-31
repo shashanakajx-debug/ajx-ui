@@ -27,19 +27,11 @@ export default function Footer1() {
     {
       groups: [
         {
-          title: "Services",
-          links: [
-            { label: "Web Development", href: "/our-services" },
-            { label: "AI & Automation", href: "/our-services" },
-            { label: "Blockchain & Web3", href: "/our-services" },
-          ],
-        },
-        {
           title: "Quick Links",
           links: [
             { label: "Privacy Policy", href: "/privacy" },
             { label: "Terms of Service", href: "/terms" },
-            { label: "FAQ", href: "/#faq" },
+            { label: "FAQ", href: "/faq" },
           ],
         },
       ],

@@ -772,6 +772,10 @@ footer.mxd-demo-footer {
   color: var(--t-bright);
 }
 
+.privacy-section ul li{
+   color: var(--t-bright);
+}
+
 @media only screen and (min-width: 768px) {
   .mxd-header .container-custom-box {
     width: -moz-calc(100% - 19.6rem);
