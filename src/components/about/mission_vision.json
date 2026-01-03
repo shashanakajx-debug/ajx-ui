@@ -1,0 +1,28 @@
+[
+    {
+        "title": "Our Mission",
+        "icon": "target",
+        "description": "To empower businesses and innovators by building secure, scalable, and intelligent digital solutions that drive real‑world impact. We aim to make cutting‑edge technologies—AI, blockchain, and modern web—accessible and practical for companies of all sizes.",
+        "image": "/about-us/800x800_card-image-01.webp",
+        "imageWidth": 800,
+        "imageHeight": 800,
+        "cardClass": "mxd-stats-cards__inner mission-card bg-base-light radius-m padding-5",
+        "counterId": "mission-card",
+        "descrClass": "mxd-counter__descr t-140 t-medium",
+        "imageClass": "mxd-stats-cards__image mxd-stats-cards-image-1",
+        "colClass": "col-12 col-xl-6 mxd-stats-cards__item mxd-grid-item anim-uni-scale-in-left"
+    },
+    {
+        "title": "Our Values",
+        "icon": "heart",
+        "description": "Reflect the way we work and grow. We believe in Innovation through creativity and forward-thinking, and in Collaboration built on trust and transparent partnerships. We pursue Excellence with quality code, secure practices, and user-first design. We uphold Integrity through honesty, ethics, and open communication. And we design for Scalability, ensuring long-term growth and adaptability in every solution we build.",
+        "image": "/about-us/800x800_card-image-02.webp",
+        "imageWidth": 800,
+        "imageHeight": 800,
+        "cardClass": "mxd-stats-cards__inner values-card bg-base-light radius-m padding-5",
+        "counterId": "values-card",
+        "descrClass": "mxd-counter__descr t-140 t-medium",
+        "imageClass": "mxd-stats-cards__image mxd-stats-cards-image-2",
+        "colClass": "col-12 col-xl-6 mxd-stats-cards__item mxd-grid-item anim-uni-scale-in-right"
+    }
+]

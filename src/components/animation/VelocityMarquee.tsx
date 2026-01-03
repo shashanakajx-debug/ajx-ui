@@ -40,7 +40,6 @@ export default function VelocityMarquee({
     const wrap = wrapRef.current;
     const track = trackRef.current;
     if (!wrap || !track) return;
-
     let master: gsap.core.Timeline | null = null;
     let kicker: gsap.core.Tween | null = null;
     let st: ScrollTrigger | null = null;

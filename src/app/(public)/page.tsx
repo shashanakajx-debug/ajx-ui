@@ -11,7 +11,6 @@ import TechStack from "@/components/home-designer/TechStack";
 import Projects from "@/components/home-designer/Projects";
 import Industries from "@/components/home-designer/Industries";
 import WhyChooseUs from "@/components/home-designer/WhyChooseUs";
-import Process from "@/components/home-designer/Process";
 import Testimonials from "@/components/home-designer/Testimonials";
 import Blog from "@/components/home-designer/Blog";
 import FinalCta from "@/components/home-designer/FinalCta";
@@ -101,9 +100,6 @@ export default function HomePage() {
 
       {/* 8. Why Choose Us */}
       <WhyChooseUs />
-
-      {/* 9. Our 6-Step Process */}
-      <Process />
 
       {/* 10. Testimonials */}
       <Testimonials />

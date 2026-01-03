@@ -1,7 +1,7 @@
-@import './css/plugins.min.css';
-@import './css/main.min.css';
-@import './css/loaders/loader.min.css';
-@import './css/styles.css';
+@import "./css/plugins.min.css";
+@import "./css/main.min.css";
+@import "./css/loaders/loader.min.css";
+@import "./css/styles.css";
 
 /* ===========================
    CRITICAL OVERRIDES - Header Visibility Fix
@@ -58,8 +58,6 @@
   visibility: visible !important;
 }
 
-
-
 /* Logo styling */
 .mxd-demo-header__logo,
 .mxd-header__logo {
@@ -108,7 +106,6 @@
   cursor: pointer !important;
   border: none !important;
 }
-
 
 .btn-accent:hover {
   background-color: var(--color-accent-hover) !important;
@@ -163,7 +160,7 @@
 
 .mxd-menu-toggle__inner::before,
 .mxd-menu-toggle__inner::after {
-  content: '';
+  content: "";
   display: block;
 }
 
@@ -267,25 +264,24 @@
   }
 }
 
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 /* Font Face Declarations */
 @font-face {
-  font-family: 'Glacial Indifference';
-  src: url('../../public/font/GlacialIndifference-Bold.woff2') format('woff2'),
-    url('../../public/font/GlacialIndifference-Bold.woff') format('woff');
+  font-family: "Glacial Indifference";
+  src: url("../../public/font/GlacialIndifference-Bold.woff2") format("woff2"),
+    url("../../public/font/GlacialIndifference-Bold.woff") format("woff");
   font-weight: 700;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'Montserrat';
-  src: url('../../public/font/Montserrat-Regular.woff2') format('woff2'),
-    url('../../public/font/Montserrat-Regular.woff') format('woff');
+  font-family: "Montserrat";
+  src: url("../../public/font/Montserrat-Regular.woff2") format("woff2"),
+    url("../../public/font/Montserrat-Regular.woff") format("woff");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -294,8 +290,6 @@
 /* ===========================
    COLOR TOKENS - LIGHT & DARK MODE
    =========================== */
-
-
 
 /* ===========================
    BASE RESET
@@ -313,7 +307,7 @@ body {
 }
 
 body {
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-size: 16px;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
@@ -331,7 +325,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: 'Glacial Indifference', sans-serif;
+  font-family: "Glacial Indifference", sans-serif;
   font-weight: 700;
   line-height: 1.2;
   transition: color 0.3s ease;
@@ -362,7 +356,7 @@ h6 {
 }
 
 p {
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-size: 16px;
   line-height: 1.6;
   transition: color 0.3s ease;
@@ -371,7 +365,7 @@ p {
 small,
 .text-small,
 label {
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-size: 14px;
   transition: color 0.3s ease;
 }
@@ -491,7 +485,7 @@ html {
 
 .btn-base {
   @apply px-6 py-3 rounded-lg font-semibold inline-flex items-center justify-center;
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   gap: 0.5rem;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -557,12 +551,10 @@ html {
   border-color: var(--color-primary);
   color: var(--color-primary);
 }
-
 .dark .btn-outline:hover {
   background-color: var(--color-primary);
   color: white;
 }
-
 /* ===========================
    CARD STYLES
    =========================== */
@@ -598,7 +590,7 @@ select {
   border: 1px solid var(--color-border);
   padding: 0.75rem 1rem;
   border-radius: 0.5rem;
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   transition: all 0.2s ease;
   width: 100%;
 }
@@ -649,7 +641,6 @@ textarea::placeholder {
 .text-secondary {
   color: var(--color-text-secondary);
 }
-
 
 /* Color Switcher Fix */
 .mxd-color-switcher {
@@ -754,26 +745,26 @@ footer.mxd-demo-footer {
 .techicon .marquee-item .flex-shrink-0 {
   min-height: fit-content;
 }
-.navbar-box{
+.navbar-box {
   position: relative;
 }
-.navbar-box .menu-item{
+.navbar-box .menu-item {
   color: var(--t-bright);
 }
-.mega-menu-box{
+.mega-menu-box {
   left: 0;
   right: 0;
   background-color: var(--t-opp-bright);
 }
-.mega-menu-box h4{
+.mega-menu-box h4 {
   color: var(--t-bright);
 }
-.mega-menu-box p{
+.mega-menu-box p {
   color: var(--t-bright);
 }
 
-.privacy-section ul li{
-   color: var(--t-bright);
+.privacy-section ul li {
+  color: var(--t-bright);
 }
 
 @media only screen and (min-width: 768px) {
@@ -783,15 +774,15 @@ footer.mxd-demo-footer {
     padding-top: 3rem;
     margin-left: 6rem;
   }
- .mxd-header{
-  left: 0;
- } 
+  .mxd-header {
+    left: 0;
+  }
 }
 
 /* ---------- HOUDINI RING PARTICLES (WELCOME BG) ---------- */
 @supports (background: paint(something)) {
   .mxd-hero-section-bg {
-  --ring-radius: 60;
+    --ring-radius: 60;
     --ring-thickness: 200;
     --particle-count: 40;
     --particle-rows: 15;
@@ -848,124 +839,184 @@ footer.mxd-demo-footer {
     --ring-y: 50;
     --ring-interactive: 1;
   }
-  :root{
-  --trackShadow: #cfcfcf; /* bottom edge */
-  --track: #2b2b2b;       /* main track */
-  --trackActive: #7c4dff; /* progress highlight */
-  --dot: #4fb7ff;         /* blue dot */
-}
- 
-.barOnly{
-  width: 100%;
-  overflow: hidden;
-}
- 
-.stage{
-  position: relative;
-  width: 100%;
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 10px 10px;
-}
- 
-.svg{
-  width: 100%;
-  height: auto;
-  display: block;
-  overflow: visible;
-}
- 
-.steps{
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-}
- 
-/* ===== 3D STEP TILE (like your image) ===== */
-.step{
-  position: absolute;
-  transform: translate(-50%, -70%) rotate(-26deg);
-  transform-origin: center;
-  border-radius: 8px;
-  padding: 10px 22px;
-  font-weight: 700;
-  font-size: 16px;
-  letter-spacing: .2px;
-  color: #fff;
-  box-shadow:
-    0 12px 0 rgba(0,0,0,.55),
-    0 18px 26px rgba(0,0,0,.25);
-  border: 2px solid rgba(0,0,0,.65);
-  opacity: .88;
-  filter: saturate(.9);
-  transition: transform .2s ease, opacity .2s ease, filter .2s ease;
-}
- 
-/* 3D bottom face */
-.step::after{
-  content:"";
-  position:absolute;
-  left: 6px;
-  right: -6px;
-  bottom: -10px;
-  height: 12px;
-  border-radius: 0 0 8px 8px;
-  background: rgba(0,0,0,.45);
-  transform: skewX(-35deg);
-  z-index: -1;
-}
- 
-/* Small top highlight */
-.step::before{
-  content:"";
-  position:absolute;
-  inset: 2px;
-  border-radius: 6px;
-  background: rgba(255,255,255,.10);
-  mix-blend-mode: overlay;
-  pointer-events:none;
-}
- 
-.step span{
-  display:block;
-  transform: translateY(-1px);
-}
- 
-/* COLOR TONES */
-.purple{
-  background: #7c4dff;
-}
-.blue{
-  background: #4fb7ff;
-  color: #ffffff;
-}
-.dark{
-  background: #2f2f2f;
-}
- 
-/* ACTIVE / DONE STATES */
-.active{
-  opacity: 1;
-  filter: saturate(1);
-  transform: translate(-50%, -70%) rotate(-26deg) scale(1.05);
-}
- 
-.done{
-  opacity: .98;
-}
- 
-/* Responsive: reduce rotation on small screens */
-@media (max-width: 720px){
-  .step{
-    font-size: 14px;
-    padding: 8px 16px;
-    transform: translate(-50%, -70%) rotate(-18deg);
+  :root {
+    --trackShadow: #cfcfcf; /* bottom edge */
+    --track: #2b2b2b; /* main track */
+    --trackActive: #7c4dff; /* progress highlight */
+    --dot: #4fb7ff; /* blue dot */
   }
-  .active{
-    transform: translate(-50%, -70%) rotate(-18deg) scale(1.05);
-  }
-}
 
+  .barOnly {
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .stage {
+    position: relative;
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 10px 10px;
+  }
+
+  .svg {
+    width: 100%;
+    height: auto;
+    display: block;
+    overflow: visible;
+  }
+
+  .steps {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+
+  /* ===== 3D STEP TILE (like your image) ===== */
+  .step {
+    position: absolute;
+    transform: translate(-50%, -70%) rotate(-26deg);
+    transform-origin: center;
+    border-radius: 8px;
+    padding: 10px 22px;
+    font-weight: 700;
+    font-size: 16px;
+    letter-spacing: 0.2px;
+    color: #fff;
+    box-shadow: 0 12px 0 rgba(0, 0, 0, 0.55), 0 18px 26px rgba(0, 0, 0, 0.25);
+    border: 2px solid rgba(0, 0, 0, 0.65);
+    opacity: 0.88;
+    filter: saturate(0.9);
+    transition: transform 0.2s ease, opacity 0.2s ease, filter 0.2s ease;
+  }
+
+  /* 3D bottom face */
+  .step::after {
+    content: "";
+    position: absolute;
+    left: 6px;
+    right: -6px;
+    bottom: -10px;
+    height: 12px;
+    border-radius: 0 0 8px 8px;
+    background: rgba(0, 0, 0, 0.45);
+    transform: skewX(-35deg);
+    z-index: -1;
+  }
+
+  /* Small top highlight */
+  .step::before {
+    content: "";
+    position: absolute;
+    inset: 2px;
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.1);
+    mix-blend-mode: overlay;
+    pointer-events: none;
+  }
+
+  .step span {
+    display: block;
+    transform: translateY(-1px);
+  }
+
+  /* COLOR TONES */
+  .purple {
+    background: #7c4dff;
+  }
+  .blue {
+    background: #4fb7ff;
+    color: #ffffff;
+  }
+  .dark {
+    background: #2f2f2f;
+  }
+
+  /* ACTIVE / DONE STATES */
+  .active {
+    opacity: 1;
+    filter: saturate(1);
+    transform: translate(-50%, -70%) rotate(-26deg) scale(1.05);
+  }
+
+  /* ============ Road MAp CSS ======== */
+  .step:nth-child(1) {
+    left: 15.2376%;
+    top: 48.6511%;
+    opacity: 0.4;
+  }
+  .done:nth-child(1) {
+    box-shadow: 0 12px 0 #f3722e, 0 18px 26px #f3722e;
+    border: 2px solid #339f9d;
+    opacity: 1;
+  }
+  .done:nth-child(2) {
+    box-shadow: 0 12px 0 #f3722e, 0 18px 26px #f3722e;
+    border: 2px solid #339f9d;
+    opacity: 1;
+  }
+  .done:nth-child(3) {
+    box-shadow: 0 12px 0 #f3722e, 0 18px 26px #f3722e;
+    border: 2px solid #339f9d;
+    opacity: 1;
+  }
+  .done:nth-child(4) {
+    box-shadow: 0 12px 0 #f3722e, 0 18px 26px #f3722e;
+    border: 2px solid #339f9d;
+    opacity: 1;
+  }
+  .done:nth-child(5) {
+    box-shadow: 0 12px 0 #f3722e, 0 18px 26px #f3722e;
+    border: 2px solid #339f9d;
+    opacity: 1;
+  }
+  .done:nth-child(6) {
+    box-shadow: 0 12px 0 #f3722e, 0 18px 26px #f3722e;
+    border: 2px solid #339f9d;
+    opacity: 1;
+  }
+  /* STEP 2 */
+  .step:nth-child(2) {
+    left: 36.147%;
+    top: 78.0156%;
+    opacity: 0.4;
+  }
+  /* STEP 3 */
+  .step:nth-child(3) {
+    left: 42.6161%;
+    top: 38.9403%;
+    opacity: 0.4;
+  }
+  /* STEP 4 */
+  .step:nth-child(4) {
+    left: 58.7136%;
+    top: 84.4439%;
+    opacity: 0.4;
+  }
+  /* STEP 5 */
+  .step:nth-child(5) {
+    left: 73.6171%;
+    top: 62.2694%;
+    opacity: 0.472;
+  }
+  /* STEP 6 */
+  .step:nth-child(6) {
+    left: 91.4403%;
+    top: 79.5311%;
+    opacity: 0.808;
+  }
+
+  /* Responsive: reduce rotation on small screens */
+  @media (max-width: 720px) {
+    .step {
+      font-size: 14px;
+      padding: 8px 16px;
+      transform: translate(-50%, -70%) rotate(-18deg);
+    }
+    .active {
+      transform: translate(-50%, -70%) rotate(-18deg) scale(1.05);
+    }
+  }
 
   /* Just to match your JS behavior (class toggled on hover) */
   .interactive {

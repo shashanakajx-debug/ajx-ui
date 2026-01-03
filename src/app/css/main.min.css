@@ -364,7 +364,7 @@
   background-image: url(/img/illustrations/1920x1080_divider-02.webp);
 }
 .divider-image-3 {
-  background-image: url(/img/illustrations/1920x1080_divider-03.webp);
+  background-image: url(/contect/1920x1080_divider-03.webp);
 }
 .divider-image-4 {
   background-image: url(/img/illustrations/1920x1080_divider-04.webp);
@@ -379,10 +379,10 @@
   background-image: url(/img/illustrations/2400x1600_divider-07.webp);
 }
 .divider-image-8 {
-  background-image: url(/img/illustrations/2400x1600_divider-08.webp);
+  background-image: url(/about-us/about-us4.webp);
 }
 .divider-image-9 {
-  background-image: url(/img/illustrations/2400x1600_divider-09.webp);
+  background-image: url(/about-us/about-us9.webp);
 }
 .divider-image-10 {
   background-image: url(/img/illustrations/2400x1600_divider-10.webp);
@@ -428,16 +428,16 @@
   background-image: url(/img/illustrations/400x200_hdl-05.webp);
 }
 .headline-img-06::before {
-  background-image: url(/img/illustrations/400x200_hdl-06.webp);
+  background-image: url(/about-us/about-us1.webp);
 }
 .headline-img-07::before {
   background-image: url(/img/illustrations/400x200_hdl-07.webp);
 }
 .image-values-1 {
-  background-image: url(/img/team/1200x1600_team-01.webp);
+  background-image: url(/about-us/about-us2.webp);
 }
 .image-values-2 {
-  background-image: url(/img/team/1600x1200_team-01.webp);
+  background-image: url(/about-us/about-us3.webp);
 }
 .prj-details-img-01 {
   background-image: url(/img/works/2200x1650_prj-details-01.webp);
@@ -6242,7 +6242,7 @@ form textarea:required:valid {
 }
 @media only screen and (min-width: 768px) {
   .mxd-promo__caption {
-    font-size: 8rem;
+    font-size: 7rem;
   }
 }
 @media only screen and (min-width: 1400px) {
@@ -6285,7 +6285,7 @@ form textarea:required:valid {
     order: -1;
   }
   .mxd-promo__images .promo-image-1 {
-    width: 330px;
+    width: 200px;
     height: auto;
     right: 6rem;
     bottom: 6rem;
@@ -6293,8 +6293,8 @@ form textarea:required:valid {
   .mxd-promo__images .promo-image-2 {
     width: 120px;
     height: auto;
-    left: 0;
-    bottom: 12rem;
+    left: 110px;
+    bottom: 8rem;
   }
 }
 @media only screen and (min-width: 1400px) {

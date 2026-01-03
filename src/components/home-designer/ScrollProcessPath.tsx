@@ -11,12 +11,12 @@ export default function ScrollProcessPath() {
   const sectionRef = useRef<HTMLElement | null>(null);
 
   const stepsData = [
-    { label: "Set up", at: 0.1 },
-    { label: "Build", at: 0.28 },
-    { label: "Ship", at: 0.46 },
-    { label: "Create", at: 0.62 },
-    { label: "Publish", at: 0.78 },
-    { label: "Automate", at: 0.92 },
+    { label: "Research", at: 0.1 },
+    { label: "Planning", at: 0.28 },
+    { label: "Design", at: 0.46 },
+    { label: "Development", at: 0.62 },
+    { label: "Testing", at: 0.78 },
+    { label: "Launch", at: 0.92 },
   ];
 
   useLayoutEffect(() => {
@@ -42,8 +42,8 @@ export default function ScrollProcessPath() {
           const at = parseFloat(el.dataset.at || "0");
           const pt = track.getPointAtLength(len * at);
 
-          el.style.left = `${((pt.x - vb.x) / vb.width) * 100}%`;
-          el.style.top = `${((pt.y - vb.y) / vb.height) * 100}%`;
+          // el.style.left = `${((pt.x - vb.x) / vb.width) * 100}%`;
+          // el.style.top = `${((pt.y - vb.y) / vb.height) * 100}%`;
         });
       };
 
@@ -95,6 +95,7 @@ export default function ScrollProcessPath() {
           motionPath: {
             path: track,
             align: track,
+            alignOrigin: [0.5, 0.5],
             autoRotate: false,
           },
           ease: "none",
@@ -127,35 +128,62 @@ export default function ScrollProcessPath() {
 
       <section ref={sectionRef} className="process">
         <div className="wrap">
-          <div className="titles">
+          <div className="titles text-center mb-40">
             <div className="left">
-              <h2><span className="dev">Developers:</span> Create a custom page builder</h2>
-              <p>Build pre-approved components and a workflow your team can ship safely.</p>
-            </div>
-
-            <div className="right">
-              <h2><span className="mkt">Marketers:</span> Publish pages quick as a flash</h2>
-              <p>Reduce time to launch new pages or update existing ones with confidence.</p>
+              <h2 className="mb-2"><span className="dev text-[#00c6ff]">Our Proven</span> Create a custom page builder</h2>
+              <p>6-Step Development Process</p>
             </div>
           </div>
 
           <div className="pathStage">
-            <svg viewBox="0 0 1200 260" className="svg">
-              <path id="track" d="M80,90 C190,170 300,170 410,110 C520,50 610,50 720,120 C830,190 920,190 1030,110 C1100,60 1140,70 1160,90" />
-              <path id="trackActive" d="M80,90 C190,170 300,170 410,110 C520,50 610,50 720,120 C830,190 920,190 1030,110 C1100,60 1140,70 1160,90" />
-              <circle id="dot" r="14" cx="80" cy="90" />
-            </svg>
-
+            
+<svg viewBox="0 0 1200 260" className="svg" xmlns="http://www.w3.org/2000/svg">
+  <path id="track"
+    d="M80,90 C190,170 300,170 410,110 C520,50 610,50 720,120 C830,190 920,190 1030,110 C1100,60 1140,70 1160,90"
+    fill="none"
+    stroke="#2c2c2c"
+    stroke-width="28"
+    stroke-linecap="round"
+  />
+  <path id="trackActive"
+    d="M80,90 C190,170 300,170 410,110 C520,50 610,50 720,120 C830,190 920,190 1030,110 C1100,60 1140,70 1160,90"
+    fill="none"
+    stroke="#ffffff"
+    stroke-width="4"
+    stroke-dasharray="10 14"
+    stroke-linecap="round"
+  />
+  <defs>
+    <linearGradient id="roadGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00c6ff"/>
+      <stop offset="100%" stop-color="#F3722E"/>
+    </linearGradient>
+  </defs>
+  <path
+    d="M80,90 C190,170 300,170 410,110 C520,50 610,50 720,120"
+    fill="none"
+    stroke="url(#roadGradient)"
+    stroke-width="28"
+    stroke-linecap="round"
+  />
+  <circle cx="140" cy="125" r="12" fill="#ccc"/>
+  <circle cx="400" cy="115" r="12" fill="#ccc"/>
+  <circle cx="520" cy="69" r="12" fill="#ccc"/>
+  <circle cx="720" cy="120" r="12" fill="#ccc"/>
+  <circle cx="920" cy="165" r="12" fill="#ccc"/>
+  <circle cx="1160" cy="90" r="12" fill="#ccc"/>
+  <circle id="dot" r="14" cx="80" cy="68" fill="#DA353D" />
+</svg>
             <div className="steps">
               {stepsData.map((s) => (
                 <div key={s.label} data-step data-at={s.at} className="step">
-                  {s.label}
+                  <h5>{s.label}</h5>
                 </div>
               ))}
             </div>
           </div>
 
-          <div className="bottom">
+          <div className="bottom hidden">
             <p>Scroll to move the dot across the workflow.</p>
             <p>Pinned section + scrubbed timeline like Prismic.</p>
           </div>
