@@ -2,7 +2,7 @@
     {
         "title": "Our Mission",
         "description": "",
-        "image": "/about-us/800x800_card-image-01.webp",
+        "image": "/about-us/800x800_card-image-03.webp",
         "imageWidth": 800,
         "imageHeight": 800,
         "button": null,
@@ -10,12 +10,12 @@
         "counterId": "mission-title-card",
         "numberClass": "d-none",
         "descrClass": "d-none",
-        "imageClass": "mxd-stats-cards__image mxd-stats-cards-image-1 opacity-20",
+        "imageClass": "mxd-stats-cards__image mxd-stats-cards-image-1 opacity-100",
         "colClass": "col-12 col-xl-5 mxd-stats-cards__item mxd-grid-item anim-uni-scale-in-right",
         "isTitleCard": true
     },
     {
-        "title": "",
+        "title": "Our Mission",
         "description": "To empower businesses and innovators by building secure, scalable, and intelligent digital solutions that drive real‑world impact. We aim to make cutting‑edge technologies—AI, blockchain, and modern web—accessible and practical for companies of all sizes.",
         "image": null,
         "imageWidth": 0,
@@ -30,7 +30,7 @@
         "isTextCard": true
     },
     {
-        "title": "",
+        "title": "Our Vision",
         "description": "Reflect the way we work and grow. We believe in innovation through creativity and forward-thinking, collaboration built on trust, and integrity in every action. We design for scalability, ensuring long-term growth and adaptability in every solution we build.",
         "image": null,
         "imageWidth": 0,
@@ -47,7 +47,7 @@
     {
         "title": "Our Vision",
         "description": "",
-        "image": "/about-us/800x800_card-image-02.webp",
+        "image": "/about-us/800x800_card-image-04.webp",
         "imageWidth": 800,
         "imageHeight": 800,
         "button": null,
@@ -55,7 +55,7 @@
         "counterId": "vision-title-card",
         "numberClass": "d-none",
         "descrClass": "d-none",
-        "imageClass": "mxd-stats-cards__image mxd-stats-cards-image-2 opacity-20",
+        "imageClass": "mxd-stats-cards__image mxd-stats-cards-image-2 opacity-100",
         "colClass": "col-12 col-xl-5 mxd-stats-cards__item mxd-grid-item anim-uni-scale-in-left",
         "isTitleCard": true
     }

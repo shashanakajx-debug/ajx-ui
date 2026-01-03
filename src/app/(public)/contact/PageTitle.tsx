@@ -49,7 +49,7 @@ export default function PageTitle() {
                       className="btn btn-line-headline slide-right-up anim-no-delay"
                       href="mailto:shashanakajx@gmail.com"
                     >
-                      <span className="btn-caption">shashanakajx@gmail.com</span>
+                      <span className="btn-caption">ajx@gmail.com</span>
                       <i className="ph-bold ph-arrow-up-right" />
                     </a>
                     <p className="inner-headline__text t-large t-bright loading__item">

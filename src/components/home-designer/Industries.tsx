@@ -77,7 +77,7 @@ const INDUSTRIES: Industry[] = [
 
 export default function Industries() {
   return (
-    <div className="mxd-section overflow-hidden padding-grid-pre-mtext">
+    <div className="mxd-section overflow-hidden padding-grid-pre-mtext mt-40">
       <div className="mxd-container grid-container">
         {/* Block - Section Title Start */}
         <div className="mxd-block">

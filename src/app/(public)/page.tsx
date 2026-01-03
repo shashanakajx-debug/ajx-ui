@@ -75,9 +75,7 @@ export default function HomePage() {
 
       {/* 2. Hero Banner */}
       <Hero />
-      {/* <section className="mxd-section mxd-home-about">
-        ...
-      </section> */}
+
       {/* Divider */}
       <ParallaxDivider />
 
@@ -93,7 +91,7 @@ export default function HomePage() {
       {/* 6. Featured Projects */}
       <Projects />
       {/* 9.1 Our 6-Step Process */}
-      <ScrollProcessPath/>
+      <ScrollProcessPath />
 
       {/* 7. Industries Served */}
       <Industries />

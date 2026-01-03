@@ -98,7 +98,7 @@ export default function Techstack() {
       {items.map((t) => (
         <div
           key={t.id}
-          className="marquee-item flex items-center gap-2 px-2 py-1"
+          className="marquee-item marquee_bg flex items-center gap-2 px-2 py-1"
           style={{ minWidth: ITEM_MIN_WIDTH }}
         >
           <div style={{ width: ICON_WIDTH, height: ICON_HEIGHT }} className="flex-shrink-0">
@@ -113,7 +113,7 @@ export default function Techstack() {
   );
 
   return (
-    <div className="mxd-container">
+    <div>
     <div className="mxd-section techicon padding-grid-pre-pinned">
       <div className="mxd-container fullwidth-container">
         <div className="mxd-block" style={{ rowGap: ROW_GAP }}>

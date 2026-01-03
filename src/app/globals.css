@@ -551,10 +551,14 @@ html {
   border-color: var(--color-primary);
   color: var(--color-primary);
 }
+
 .dark .btn-outline:hover {
   background-color: var(--color-primary);
   color: white;
 }
+
+
+
 /* ===========================
    CARD STYLES
    =========================== */
@@ -742,23 +746,29 @@ footer.mxd-demo-footer {
   margin-top: 5rem;
   padding-bottom: 5rem;
 }
+
 .techicon .marquee-item .flex-shrink-0 {
   min-height: fit-content;
 }
+
 .navbar-box {
   position: relative;
 }
+
 .navbar-box .menu-item {
   color: var(--t-bright);
 }
+
 .mega-menu-box {
   left: 0;
   right: 0;
   background-color: var(--t-opp-bright);
 }
+
 .mega-menu-box h4 {
   color: var(--t-bright);
 }
+
 .mega-menu-box p {
   color: var(--t-bright);
 }
@@ -774,6 +784,7 @@ footer.mxd-demo-footer {
     padding-top: 3rem;
     margin-left: 6rem;
   }
+
   .mxd-header {
     left: 0;
   }
@@ -839,11 +850,16 @@ footer.mxd-demo-footer {
     --ring-y: 50;
     --ring-interactive: 1;
   }
+
   :root {
-    --trackShadow: #cfcfcf; /* bottom edge */
-    --track: #2b2b2b; /* main track */
-    --trackActive: #7c4dff; /* progress highlight */
-    --dot: #4fb7ff; /* blue dot */
+    --trackShadow: #cfcfcf;
+    /* bottom edge */
+    --track: #2b2b2b;
+    /* main track */
+    --trackActive: #7c4dff;
+    /* progress highlight */
+    --dot: #4fb7ff;
+    /* blue dot */
   }
 
   .barOnly {
@@ -924,10 +940,12 @@ footer.mxd-demo-footer {
   .purple {
     background: #7c4dff;
   }
+
   .blue {
     background: #4fb7ff;
     color: #ffffff;
   }
+
   .dark {
     background: #2f2f2f;
   }
@@ -940,70 +958,93 @@ footer.mxd-demo-footer {
   }
 
   /* ============ Road MAp CSS ======== */
-  .step:nth-child(1) {
-    left: 15.2376%;
-    top: 48.6511%;
-    opacity: 0.4;
-  }
   .done:nth-child(1) {
     box-shadow: 0 12px 0 #f3722e, 0 18px 26px #f3722e;
     border: 2px solid #339f9d;
     opacity: 1;
   }
+
   .done:nth-child(2) {
     box-shadow: 0 12px 0 #f3722e, 0 18px 26px #f3722e;
     border: 2px solid #339f9d;
     opacity: 1;
   }
+
   .done:nth-child(3) {
     box-shadow: 0 12px 0 #f3722e, 0 18px 26px #f3722e;
     border: 2px solid #339f9d;
     opacity: 1;
   }
+
   .done:nth-child(4) {
     box-shadow: 0 12px 0 #f3722e, 0 18px 26px #f3722e;
     border: 2px solid #339f9d;
     opacity: 1;
   }
+
   .done:nth-child(5) {
     box-shadow: 0 12px 0 #f3722e, 0 18px 26px #f3722e;
     border: 2px solid #339f9d;
     opacity: 1;
   }
+
   .done:nth-child(6) {
     box-shadow: 0 12px 0 #f3722e, 0 18px 26px #f3722e;
     border: 2px solid #339f9d;
     opacity: 1;
   }
-  /* STEP 2 */
-  .step:nth-child(2) {
-    left: 36.147%;
-    top: 78.0156%;
-    opacity: 0.4;
-  }
-  /* STEP 3 */
-  .step:nth-child(3) {
-    left: 42.6161%;
-    top: 38.9403%;
-    opacity: 0.4;
-  }
-  /* STEP 4 */
-  .step:nth-child(4) {
-    left: 58.7136%;
-    top: 84.4439%;
-    opacity: 0.4;
-  }
-  /* STEP 5 */
-  .step:nth-child(5) {
-    left: 73.6171%;
-    top: 62.2694%;
-    opacity: 0.472;
-  }
-  /* STEP 6 */
-  .step:nth-child(6) {
-    left: 91.4403%;
-    top: 79.5311%;
-    opacity: 0.808;
+
+  .step:nth-child(1) {
+  left: 15.2376%;
+  top: 56.6511%;
+  opacity: 0.4;
+}
+/* STEP 2 */
+.step:nth-child(2) {
+  left: 36.147%;
+  top: 82.0156%;
+  opacity: 0.4;
+}
+/* STEP 3 */
+.step:nth-child(3) {
+  left: 42.6161%;
+  top: 44.9403%;
+  opacity: 0.4;
+}
+/* STEP 4 */
+.step:nth-child(4) {
+  left: 58.7136%;
+  top: 96.4439%;
+  opacity: 0.4;
+}
+/* STEP 5 */
+.step:nth-child(5) {
+  left: 73.6171%;
+  top: 64.2694%;
+  opacity: 0.472;
+}
+/* STEP 6 */
+.step:nth-child(6) {
+  left: 91.4403%;
+  top: 80.5311%;
+  opacity: 0.808;
+}
+#dots.done {
+  fill: #22c55e;
+  filter: drop-shadow(0 0 6px #22c55e);
+}
+section.process .pathStage {
+    margin-top: 18rem;
+}
+  .marquee_bg {
+    background-color: #e9e8e8;
+    padding: 20px !important;
+    border-radius: 100px;
+    justify-content: center;
+    margin: 0px 20px;
+    width: 200px;
+    min-height: 100px;
+    align-items: center;
   }
 
   /* Responsive: reduce rotation on small screens */
@@ -1013,6 +1054,7 @@ footer.mxd-demo-footer {
       padding: 8px 16px;
       transform: translate(-50%, -70%) rotate(-18deg);
     }
+
     .active {
       transform: translate(-50%, -70%) rotate(-18deg) scale(1.05);
     }

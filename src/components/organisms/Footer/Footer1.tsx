@@ -73,7 +73,7 @@ export default function Footer1() {
                     className="mxd-logo flex items-center gap-3"
                   >
                     <Image
-                      src="/logo.png"
+                      src="/Ajx-logo.png"
                       alt="AJX Technologies Logo"
                       width={56}
                       height={56}

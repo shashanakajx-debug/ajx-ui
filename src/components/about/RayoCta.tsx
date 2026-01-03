@@ -16,14 +16,14 @@ export default function RayoCta() {
                             {/* caption */}
                             <div className="mxd-promo__content">
                                 <p className="mxd-promo__title anim-uni-in-up">
-                                    <span className="mxd-promo__icon">
-                                        <Image
-                                            alt="Icon"
-                                            src="/about-us/300x300_obj-cta-01.webp"
-                                            width={300}
-                                            height={300}
-                                        />
-                                    </span>
+                                  <span className="mxd-promo__icon align-text-bottom">
+                                                                        <Image
+                                                                            alt="Icon"
+                                                                            src="/about-us/300x300_obj-cta-01.webp"
+                                                                            width={300}
+                                                                            height={300}
+                                                                        />
+                                                                    </span>
                                     <RevealText
                                         as="span"
                                         className="mxd-promo__caption reveal-type"

@@ -1,123 +1,40 @@
-import Link from "next/link";
-import Image from "next/image";
-
-import RevealText from "@/components/animation/RevealText";
 import AnimatedButton from "@/components/animation/AnimatedButton";
+import RevealText from "@/components/animation/RevealText";
+import Link from "next/link";
 
 export default function About() {
   return (
-    <div className="mxd-section padding-pre-grid">
-      <div className="mxd-container grid-l-container">
+    <div className="mxd-section padding-pre-pinned-img">
+      <div className="mxd-container grid-container">
         {/* Block - About Description with Manifest Start */}
         <div className="mxd-block">
           <div className="container-fluid px-0">
-            <div className="row gx-0">
-              <div className="col-12 col-xl-6 mxd-grid-item-l no-margin anim-uni-in-up">
-                <div className="mxd-block__image">
-                  <Image
-                    alt="Photo"
-                    src="/team-collab.png"
-                    width={1400}
-                    height={1400}
-                  />
-                </div>
-              </div>
-              <div className="col-12 col-xl-6 mxd-grid-item-l no-margin">
-                <div className="mxd-block__content content-flex">
+            <div className="row gx-0 d-xl-flex justify-content-xl-center">
+              <div className="col-12 col-xl-8 mxd-grid-item no-margin">
+                <div className="mxd-block__content text-center">
                   <div className="mxd-block__manifest">
                     <RevealText
                       as="p"
                       className="mxd-manifest mxd-manifest-l reveal-type"
                     >
-                      As a digital illustrator, I&apos;ve always been fascinated
-                      by the intersection of art and technology.
+                      We are a creative web agency specializing in innovative
+                      design and cutting-edge development. We help businesses
+                      stand out and every aspect of our projects is crafted with
+                      the highest standards of quality.
                     </RevealText>
                     <div className="mxd-manifest__controls">
                       <AnimatedButton
-                        text="About Me"
+                        text="About Us"
                         className="btn btn-anim btn-default btn-outline slide-right-up anim-uni-in-up"
-                        href={`/about-me`}
+                        href={`/about-us`}
+                        style={{
+                          border: '2px solid white',
+                          borderRadius: '50px',
+                          padding: '12px 32px'
+                        }}
                       >
                         <i className="ph-bold ph-arrow-up-right" />
                       </AnimatedButton>
-                    </div>
-                  </div>
-                  <div className="mxd-block__decoration anim-uni-in-up">
-                    <Image
-                      alt="Decoration"
-                      src="/article-ai.png"
-                      width={96}
-                      height={96}
-                    />
-                  </div>
-                  <div className="mxd-links-lines">
-                    {/* item */}
-                    <div className="mxd-links-lines__item">
-                      <div className="mxd-links-lines__divider anim-uni-in-up" />
-                      <a
-                        className="mxd-links-lines__link anim-uni-in-up"
-                        href="https://medium.com/"
-                        target="_blank"
-                      >
-                        <h6 className="mxd-links-lines__title">
-                          Some article on Medium
-                        </h6>
-                        <div className="mxd-links-lines__icon">
-                          <i className="ph ph-arrow-up-right" />
-                        </div>
-                      </a>
-                      <div className="mxd-links-lines__divider anim-uni-in-up" />
-                    </div>
-                    {/* item */}
-                    <div className="mxd-links-lines__item">
-                      <div className="mxd-links-lines__divider anim-uni-in-up" />
-                      <a
-                        className="mxd-links-lines__link anim-uni-in-up"
-                        href="https://www.awwwards.com/"
-                        target="_blank"
-                      >
-                        <h6 className="mxd-links-lines__title">
-                          Awwwards nomination
-                        </h6>
-                        <div className="mxd-links-lines__icon">
-                          <i className="ph ph-arrow-up-right" />
-                        </div>
-                      </a>
-                      <div className="mxd-links-lines__divider anim-uni-in-up" />
-                    </div>
-                    {/* item */}
-                    <div className="mxd-links-lines__item">
-                      <div className="mxd-links-lines__divider anim-uni-in-up" />
-                      <a
-                        className="mxd-links-lines__link anim-uni-in-up"
-                        href="https://www.behance.net/"
-                        target="_blank"
-                      >
-                        <h6 className="mxd-links-lines__title">
-                          Behance curated work
-                        </h6>
-                        <div className="mxd-links-lines__icon">
-                          <i className="ph ph-arrow-up-right" />
-                        </div>
-                      </a>
-                      <div className="mxd-links-lines__divider anim-uni-in-up" />
-                    </div>
-                    {/* item */}
-                    <div className="mxd-links-lines__item">
-                      <div className="mxd-links-lines__divider anim-uni-in-up" />
-                      <a
-                        className="mxd-links-lines__link anim-uni-in-up"
-                        href="https://medium.com/"
-                        target="_blank"
-                      >
-                        <h6 className="mxd-links-lines__title">
-                          Article on Medium
-                        </h6>
-                        <div className="mxd-links-lines__icon">
-                          <i className="ph ph-arrow-up-right" />
-                        </div>
-                      </a>
-                      <div className="mxd-links-lines__divider anim-uni-in-up" />
                     </div>
                   </div>
                 </div>

@@ -20,27 +20,32 @@ export default function RayoFacts() {
                                     <div className={item.colClass} key={idx}>
                                         <div className={item.cardClass}>
 
-                                            {/* Scenario 1: Title Card (Small Box) */}
-                                            {(item as any).isTitleCard && item.title && (
+                                            {/* Scenario 1: Title Card (Small Box) - Image Only now */}
+                                            {(item as any).isTitleCard && (
                                                 <div className="text-center w-100 position-relative z-2">
-                                                    <h2 className="headline-1 t-uppercase t-bright m-0">{item.title}</h2>
+                                                    {/* Title removed as requested, image provided via background/image prop */}
                                                 </div>
                                             )}
 
                                             {/* Scenario 2: Text Card (Large Box) - Uses RevealText */}
-                                            {(item as any).isTextCard && item.description && (
-                                                <div className="w-100 h-100 d-flex align-items-center position-relative z-2">
-                                                    <RevealText
-                                                        as="p"
-                                                        className="t-bright t-large reveal-type"
-                                                        style={{
-                                                            fontSize: '1.5rem',
-                                                            lineHeight: '1.4',
-                                                            fontWeight: '400'
-                                                        }}
-                                                    >
-                                                        {item.description}
-                                                    </RevealText>
+                                            {(item as any).isTextCard && (
+                                                <div className="w-100 h-100 d-flex flex-column justify-content-center px-4 position-relative z-2">
+                                                    {item.title && (
+                                                        <h3 className="headline-2 t-bright mb-3">{item.title}</h3>
+                                                    )}
+                                                    {item.description && (
+                                                        <RevealText
+                                                            as="p"
+                                                            className="t-bright t-large reveal-type"
+                                                            style={{
+                                                                fontSize: '1.6rem',
+                                                                lineHeight: '1.6',
+                                                                fontWeight: '400'
+                                                            }}
+                                                        >
+                                                            {item.description}
+                                                        </RevealText>
+                                                    )}
                                                 </div>
                                             )}
 
@@ -55,7 +60,6 @@ export default function RayoFacts() {
                                                     />
                                                 </div>
                                             )}
-
                                         </div>
                                     </div>
                                 ))}

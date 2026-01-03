@@ -28,6 +28,7 @@ export default function ScrollProcessPath() {
       const active = section.querySelector("#trackActive") as SVGPathElement;
       const dot = section.querySelector("#dot") as SVGCircleElement;
       const steps = Array.from(section.querySelectorAll("[data-step]")) as HTMLElement[];
+      const box = Array.from(section.querySelectorAll("#dots")) as SVGCircleElement[];
 
       if (!track || !active || !dot) return;
 
@@ -63,7 +64,17 @@ export default function ScrollProcessPath() {
             Math.abs(progress - at) < 0.06
           );
 
-          el.style.opacity = `${0.4 + (1 - Math.min(1, Math.abs(progress - at) / 0.25)) * 0.6}`;
+          const done = el.classList.toggle("done", progress > at + 0.03);
+          if (done) {
+            el.style.opacity = "1";
+          }
+          else {
+            el.style.opacity = "0.4";
+          }
+        });
+        box.forEach((dot, index) => {
+          const stepAt = Number(steps[index]?.dataset.at || 0);
+          dot.classList.toggle("done", progress > stepAt);
         });
       };
 
@@ -130,50 +141,38 @@ export default function ScrollProcessPath() {
         <div className="wrap">
           <div className="titles text-center mb-40">
             <div className="left">
-              <h2 className="mb-2"><span className="dev text-[#00c6ff]">Our Proven</span> Create a custom page builder</h2>
-              <p>6-Step Development Process</p>
+              <h2 className="mb-2">Our Proven 6-Step Development Process</h2>
+
             </div>
           </div>
 
           <div className="pathStage">
-            
-<svg viewBox="0 0 1200 260" className="svg" xmlns="http://www.w3.org/2000/svg">
-  <path id="track"
-    d="M80,90 C190,170 300,170 410,110 C520,50 610,50 720,120 C830,190 920,190 1030,110 C1100,60 1140,70 1160,90"
-    fill="none"
-    stroke="#2c2c2c"
-    stroke-width="28"
-    stroke-linecap="round"
-  />
-  <path id="trackActive"
-    d="M80,90 C190,170 300,170 410,110 C520,50 610,50 720,120 C830,190 920,190 1030,110 C1100,60 1140,70 1160,90"
-    fill="none"
-    stroke="#ffffff"
-    stroke-width="4"
-    stroke-dasharray="10 14"
-    stroke-linecap="round"
-  />
-  <defs>
-    <linearGradient id="roadGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#00c6ff"/>
-      <stop offset="100%" stop-color="#F3722E"/>
-    </linearGradient>
-  </defs>
-  <path
-    d="M80,90 C190,170 300,170 410,110 C520,50 610,50 720,120"
-    fill="none"
-    stroke="url(#roadGradient)"
-    stroke-width="28"
-    stroke-linecap="round"
-  />
-  <circle cx="140" cy="125" r="12" fill="#ccc"/>
-  <circle cx="400" cy="115" r="12" fill="#ccc"/>
-  <circle cx="520" cy="69" r="12" fill="#ccc"/>
-  <circle cx="720" cy="120" r="12" fill="#ccc"/>
-  <circle cx="920" cy="165" r="12" fill="#ccc"/>
-  <circle cx="1160" cy="90" r="12" fill="#ccc"/>
-  <circle id="dot" r="14" cx="80" cy="68" fill="#DA353D" />
-</svg>
+
+            <svg viewBox="0 0 1200 260" className="svg" xmlns="http://www.w3.org/2000/svg">
+              <path id="track"
+                d="M80,90 C190,170 300,170 410,110 C520,50 610,50 720,120 C830,190 920,190 1030,110 C1100,60 1140,70 1160,90"
+                fill="none"
+                stroke="#2c2c2c"
+                stroke-width="28"
+                stroke-linecap="round"
+              />
+              <path id="trackActive"
+                d="M80,90 C190,170 300,170 410,110 C520,50 610,50 720,120 C830,190 920,190 1030,110 C1100,60 1140,70 1160,90"
+                fill="none"
+                stroke="#ffffff"
+                stroke-width="4"
+                stroke-dasharray="10 14"
+                stroke-linecap="round"
+              />
+
+              <circle id="dots" cx="140" cy="125" r="12" fill="#ccc" />
+              <circle id="dots" cx="400" cy="115" r="12" fill="#ccc" />
+              <circle id="dots" cx="520" cy="69" r="12" fill="#ccc" />
+              <circle id="dots" cx="720" cy="120" r="12" fill="#ccc" />
+              <circle id="dots" cx="920" cy="165" r="12" fill="#ccc" />
+              <circle id="dots" cx="1160" cy="90" r="12" fill="#ccc" />
+              <circle id="dot" r="14" cx="80" cy="68" fill="#DA353D" />
+            </svg>
             <div className="steps">
               {stepsData.map((s) => (
                 <div key={s.label} data-step data-at={s.at} className="step">
@@ -190,7 +189,7 @@ export default function ScrollProcessPath() {
         </div>
       </section>
 
-      <div className="spacer" />
+      <div/>
     </>
   );
 }

@@ -18,9 +18,11 @@ export default function Hero() {
 
     if (!cssAny.paintWorklet) return;
 
-    cssAny.paintWorklet.addModule(
-      "https://unpkg.com/css-houdini-ringparticles/dist/ringparticles.js"
-    ).catch(() => { });
+    cssAny.paintWorklet
+      .addModule(
+        "https://unpkg.com/css-houdini-ringparticles/dist/ringparticles.js"
+      )
+      .catch(() => {});
 
     // Set permanent values for the animation
     el.style.setProperty("--ring-x", "50");
@@ -30,7 +32,10 @@ export default function Hero() {
   }, []);
 
   return (
-    <div ref={heroRef} className="mxd-section mxd-hero-section mxd-hero-section-bg">
+    <div
+      ref={heroRef}
+      className="mxd-section mxd-hero-section mxd-hero-section-bg"
+    >
       <div className="mxd-hero-00">
         <div className="mxd-hero-00__wrap">
           {/* top group */}
@@ -74,7 +79,6 @@ export default function Hero() {
               </div>
               {/* title text */}
               <div className="hero-00-title">
-               
                 <span className="hero-00-title__row loading__item">
                   <div className="hero-00-title__item title-item-image">
                     <svg
@@ -86,8 +90,10 @@ export default function Hero() {
                     </svg>
                     {/* <img class="inject-me" src="/img/icons/20x20-rayo-star.svg" alt="Divider Icon"> */}
                   </div>
-                  <p className="hero-00-title__item hero-subtitle hero-00-title">Crafting Ai Experiences<br></br>
-That Drive Success</p>
+                  <p className="hero-00-title__item hero-subtitle hero-00-title">
+                    Crafting AI Experiences<br></br>
+                    Automating the Future
+                  </p>
                 </span>
               </div>
             </div>
@@ -100,8 +106,8 @@ That Drive Success</p>
                 as="p"
                 className="mxd-manifest reveal-type anim-uni-in-up"
               >
-                We build stunning, user-friendly websites and applications
-                that engage your audience and elevate your brand.
+                AI-driven development and automation built to scale products,
+                optimize workflows, and accelerate digital growth.
               </RevealText>
             </div>
           </div>

@@ -6247,7 +6247,7 @@ form textarea:required:valid {
 }
 @media only screen and (min-width: 1400px) {
   .mxd-promo__caption {
-    font-size: 10rem;
+    font-size: 8rem;
   }
 }
 .mxd-promo__images {
