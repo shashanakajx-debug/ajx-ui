@@ -23,6 +23,7 @@ const BackgroundParallax = <T extends HtmlTag = "div">({
   willChange = true,
   wrapperClass,
   children,
+  ...rest
 }: UkiyoBgProps<T>) => {
   const elRef = useRef<HTMLElement | null>(null);
   const Tag = (as ?? "div") as ElementType;
@@ -48,7 +49,7 @@ const BackgroundParallax = <T extends HtmlTag = "div">({
   }, [scale, speed, willChange, wrapperClass]);
 
   return (
-    <Tag ref={elRef} className={className}>
+    <Tag ref={elRef} className={className} {...rest}>
       {children}
     </Tag>
   );

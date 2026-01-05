@@ -1,270 +1,121 @@
-// import Link from "next/link";
-// import Image from "next/image";
+"use client";
+import Image from "next/image";
+import { useState } from "react";
 
-// export default function Services() {
-//   return (
-//     <div className="mxd-section overflow-hidden">
-//       <div className="mxd-container grid-container">
-//         {/* Block - Services Cards #01 Start */}
-//         <div className="mxd-block">
-//           <div className="mxd-services-cards">
-//             <div className="container-fluid px-0">
-//               <div className="row gx-0">
-//                 {/* item */}
-//                 <div className="col-12 col-xl-7 mxd-services-cards__item mxd-grid-item anim-uni-scale-in-right">
-//                   <div className="mxd-services-cards__inner align-end bg-base-opp radius-l padding-5x4">
-//                     <div className="mxd-services-cards__controls">
-//                       <Link
-//                         className="btn btn-round btn-round-large btn-additional slide-right-up anim-no-delay"
-//                         href={`/services`}
-//                       >
-//                         <i className="ph-bold ph-arrow-up-right" />
-//                       </Link>
-//                     </div>
-//                     <div className="mxd-services-cards__title">
-//                       <p className="opposite anim-uni-in-up">Graphic design</p>
-//                     </div>
-//                     <div className="mxd-services-cards__info">
-//                       <div className="mxd-services-cards__tags">
-//                         <span className="tag tag-default tag-outline-opposite anim-uni-in-up">
-//                           UI/UX
-//                         </span>
-//                         <span className="tag tag-default tag-outline-opposite anim-uni-in-up">
-//                           Web design
-//                         </span>
-//                         <span className="tag tag-default tag-outline-opposite anim-uni-in-up">
-//                           Packaging
-//                         </span>
-//                         <span className="tag tag-default tag-outline-opposite anim-uni-in-up">
-//                           Motion
-//                         </span>
-//                         <span className="tag tag-default tag-outline-opposite anim-uni-in-up">
-//                           3D models
-//                         </span>
-//                       </div>
-//                       <p className="t-opposite anim-uni-in-up">
-//                         We create visually compelling designs that enhance user
-//                         experience. We make sure your brand’s visuals resonate
-//                         with your audience.
-//                       </p>
-//                     </div>
-//                     <div className="mxd-services-cards__image mxd-services-cards-image-1">
-//                       <Image
-//                         alt="Illustration"
-//                         src="/img/illustrations/800x800_service-image-01.webp"
-//                         width={800}
-//                         height={800}
-//                       />
-//                     </div>
-//                   </div>
-//                 </div>
-//                 {/* item */}
-//                 <div className="col-12 col-xl-5 mxd-services-cards__item mxd-grid-item anim-uni-scale-in-left">
-//                   <div className="mxd-services-cards__inner align-end bg-accent radius-l padding-5x4">
-//                     <div className="mxd-services-cards__controls">
-//                       <Link
-//                         className="btn btn-round btn-round-large btn-base slide-right-up anim-no-delay"
-//                         href={`/services`}
-//                       >
-//                         <i className="ph-bold ph-arrow-up-right" />
-//                       </Link>
-//                     </div>
-//                     <div className="mxd-services-cards__title">
-//                       <p className="opposite anim-uni-in-up">
-//                         Creative development
-//                       </p>
-//                     </div>
-//                     <div className="mxd-services-cards__info">
-//                       <div className="mxd-services-cards__tags">
-//                         <span className="tag tag-default tag-outline-opposite anim-uni-in-up">
-//                           Frontend
-//                         </span>
-//                         <span className="tag tag-default tag-outline-opposite anim-uni-in-up">
-//                           Interactions
-//                         </span>
-//                         <span className="tag tag-default tag-outline-opposite anim-uni-in-up">
-//                           Backend
-//                         </span>
-//                         <span className="tag tag-default tag-outline-opposite anim-uni-in-up">
-//                           Mobile Apps
-//                         </span>
-//                       </div>
-//                       <p className="t-opposite anim-uni-in-up">
-//                         We build high-performance websites and applications
-//                         using modern technologies. Our solutions are designed to
-//                         be scalable and functional for optimal performance.
-//                       </p>
-//                     </div>
-//                     <div className="mxd-services-cards__image mxd-services-cards-image-2">
-//                       <Image
-//                         alt="Illustration"
-//                         src="/img/illustrations/800x800_service-image-02.webp"
-//                         width={800}
-//                         height={800}
-//                       />
-//                     </div>
-//                   </div>
-//                 </div>
-//                 {/* item */}
-//                 <div className="col-12 mxd-services-cards__item mxd-grid-item anim-uni-scale-in">
-//                   <div className="mxd-services-cards__inner justify-between bg-base-tint radius-l padding-5x4">
-//                     <div className="mxd-services-cards__controls">
-//                       <Link
-//                         className="btn btn-round btn-round-large btn-opposite slide-right-up anim-no-delay"
-//                         href={`/services`}
-//                       >
-//                         <i className="ph-bold ph-arrow-up-right" />
-//                       </Link>
-//                     </div>
-//                     <div className="mxd-services-cards__title width-60">
-//                       <p className="anim-uni-in-up">
-//                         Digital marketing solutions
-//                       </p>
-//                     </div>
-//                     <div className="mxd-services-cards__info width-60">
-//                       <div className="mxd-services-cards__tags">
-//                         <span className="tag tag-default tag-outline anim-uni-in-up">
-//                           Strategy
-//                         </span>
-//                         <span className="tag tag-default tag-outline anim-uni-in-up">
-//                           Social media
-//                         </span>
-//                         <span className="tag tag-default tag-outline anim-uni-in-up">
-//                           SEO
-//                         </span>
-//                         <span className="tag tag-default tag-outline anim-uni-in-up">
-//                           Optimization
-//                         </span>
-//                         <span className="tag tag-default tag-outline anim-uni-in-up">
-//                           Campaigns
-//                         </span>
-//                       </div>
-//                       <p className="anim-uni-in-up">
-//                         SEO and content marketing, social media management and
-//                         paid campaigns - we help you reach and engage your
-//                         target audience effectively.
-//                       </p>
-//                     </div>
-//                     <div className="mxd-services-cards__image mxd-services-cards-image-3">
-//                       <Image
-//                         className="image-1"
-//                         alt="Illustration"
-//                         src="/img/illustrations/800x800_service-image-03.webp"
-//                         width={800}
-//                         height={800}
-//                       />
-//                       <Image
-//                         className="image-2"
-//                         alt="Illustration"
-//                         src="/img/illustrations/800x800_service-image-03.webp"
-//                         width={800}
-//                         height={800}
-//                       />
-//                     </div>
-//                   </div>
-//                 </div>
-//                 {/* item */}
-//                 <div className="col-12 col-xl-5 mxd-services-cards__item mxd-grid-item anim-uni-scale-in-right">
-//                   <div className="mxd-services-cards__inner justify-end bg-base-opp radius-l padding-5x4">
-//                     <div className="mxd-services-cards__controls">
-//                       <Link
-//                         className="btn btn-round btn-round-large btn-additional slide-right-up anim-no-delay"
-//                         href={`/services`}
-//                       >
-//                         <i className="ph-bold ph-arrow-up-right" />
-//                       </Link>
-//                     </div>
-//                     <div className="mxd-services-cards__title">
-//                       <p className="opposite anim-uni-in-up">
-//                         Brand
-//                         <br />
-//                         identity
-//                       </p>
-//                     </div>
-//                     <div className="mxd-services-cards__info">
-//                       <div className="mxd-services-cards__tags">
-//                         <span className="tag tag-default tag-outline-opposite anim-uni-in-up">
-//                           Brand strategy
-//                         </span>
-//                         <span className="tag tag-default tag-outline-opposite anim-uni-in-up">
-//                           Logo design
-//                         </span>
-//                         <span className="tag tag-default tag-outline-opposite anim-uni-in-up">
-//                           Guidelines
-//                         </span>
-//                         <span className="tag tag-default tag-outline-opposite anim-uni-in-up">
-//                           Rebranding
-//                         </span>
-//                       </div>
-//                       <p className="t-opposite anim-uni-in-up">
-//                         From logo design to comprehensive brand strategies, we
-//                         ensure your business stands out with a unique visual
-//                         identity and consistent messaging across all
-//                         touchpoints.
-//                       </p>
-//                     </div>
-//                     <div className="mxd-services-cards__image mxd-services-cards-image-4">
-//                       <Image
-//                         alt="Illustration"
-//                         src="/img/illustrations/800x800_service-image-04.webp"
-//                         width={800}
-//                         height={800}
-//                       />
-//                     </div>
-//                   </div>
-//                 </div>
-//                 {/* item */}
-//                 <div className="col-12 col-xl-7 mxd-services-cards__item mxd-grid-item anim-uni-scale-in-left">
-//                   <div className="mxd-services-cards__inner justify-between bg-accent radius-l padding-5x4">
-//                     <div className="mxd-services-cards__controls">
-//                       <Link
-//                         className="btn btn-round btn-round-large btn-base slide-right-up anim-no-delay"
-//                         href={`/services`}
-//                       >
-//                         <i className="ph-bold ph-arrow-up-right" />
-//                       </Link>
-//                     </div>
-//                     <div className="mxd-services-cards__title width-70">
-//                       <p className="opposite anim-uni-in-up">
-//                         Long-lasting
-//                         <br />
-//                         support
-//                       </p>
-//                     </div>
-//                     <div className="mxd-services-cards__info width-70">
-//                       <div className="mxd-services-cards__tags">
-//                         <span className="tag tag-default tag-outline-opposite anim-uni-in-up">
-//                           E-Commerce
-//                         </span>
-//                         <span className="tag tag-default tag-outline-opposite anim-uni-in-up">
-//                           Maintenance
-//                         </span>
-//                         <span className="tag tag-default tag-outline-opposite anim-uni-in-up">
-//                           Support
-//                         </span>
-//                       </div>
-//                       <p className="t-opposite anim-uni-in-up">
-//                         We take the time to understand your unique needs and
-//                         create tailored design solutions to help you make an
-//                         impact.
-//                       </p>
-//                     </div>
-//                     <div className="mxd-services-cards__image mxd-services-cards-image-5">
-//                       <Image
-//                         alt="Illustration"
-//                         src="/img/illustrations/800x800_service-image-05.webp"
-//                         width={800}
-//                         height={800}
-//                       />
-//                     </div>
-//                   </div>
-//                 </div>
-//               </div>
-//             </div>
-//           </div>
-//         </div>
-//         {/* Block - Services Cards #01 End */}
-//       </div>
-//     </div>
-//   );
-// }
+// Define local type based on usage and user requirement
+export interface ServiceItem {
+  image: string;
+  title: string;
+  desc: string;
+  tags: string[];
+  id: string;
+}
+
+type HoverState = {
+  activeIndex: number | null;
+  x: number;
+};
+
+interface ServicesProps {
+  items: ServiceItem[];
+}
+
+export default function Services({ items }: ServicesProps) {
+  const [hoverState, setHoverState] = useState<HoverState>({
+    activeIndex: null,
+    x: 0,
+  });
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLElement>, index: number) => {
+    setHoverState({
+      activeIndex: index,
+      x: e.clientX,
+    });
+  };
+
+  const handleMouseLeave = () => {
+    setHoverState((pre) => {
+      return {
+        activeIndex: null,
+        x: pre.x,
+      };
+    });
+  };
+  return (
+    <div className="mxd-section overflow-hidden padding-default">
+      <div className="mxd-container grid-container">
+        {/* Block - Services List Start */}
+        <div className="mxd-block">
+          <div className="mxd-services-list grid-top hover-reveal">
+            {items.map((s, idx) => (
+              <div
+                key={idx}
+                id={s.id}
+                onMouseMove={(e) => handleMouseMove(e, idx)}
+                onMouseLeave={handleMouseLeave}
+                className="mxd-services-list__item hover-reveal__item"
+              >
+                <div className="mxd-services-list__border anim-uni-in-up" />
+                <div
+                  style={{
+                    opacity: hoverState.activeIndex === idx ? 1 : 0,
+                    transform: "translate(-80%, -50%)",
+                    left: hoverState.x,
+
+                    pointerEvents: "none",
+                    transition: "opacity 0.3s ease",
+                  }}
+                  className="hover-reveal__content hover-reveal-360x440"
+                >
+                  <Image
+                    style={{
+                      transform:
+                        hoverState.activeIndex === idx
+                          ? "scale(1,1)"
+                          : "scale(1,1.4)",
+                      transition: "transform 0.3s ease",
+                    }}
+                    className="hover-reveal__image"
+                    alt=""
+                    src={s.image}
+                    width={360}
+                    height={440}
+                  />
+                </div>
+                <div className="mxd-services-list__inner">
+                  <div className="container-fluid px-0">
+                    <div className="row gx-0">
+                      <div className="col-12 col-xl-7 mxd-grid-item no-margin">
+                        <div className="mxd-services-list__title anim-uni-in-up">
+                          <p>{s.title}</p>
+                        </div>
+                      </div>
+                      <div className="col-12 col-xl-3 mxd-grid-item no-margin">
+                        <div className="mxd-services-list__descr anim-uni-in-up">
+                          <p>{s.desc}</p>
+                        </div>
+                      </div>
+                      <div className="col-12 col-xl-2 mxd-grid-item no-margin">
+                        <div className="mxd-services-list__tagslist">
+                          <ul>
+                            {s.tags.map((tag, tIdx) => (
+                              <li key={tIdx} className="anim-uni-in-up">
+                                <p>{tag}</p>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="mxd-services-list__border anim-uni-in-up" />
+              </div>
+            ))}
+          </div>
+        </div>
+        {/* Block - Services List End */}
+      </div>
+    </div>
+  );
+}

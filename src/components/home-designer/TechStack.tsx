@@ -40,6 +40,7 @@ const techstack: TechstackItem[] = [
   { id: "git", name: "Git", icon: "/tech/git.svg" },
   { id: "github", name: "GitHub", icon: "/tech/github.svg" },
   { id: "figma", name: "Figma", icon: "/tech/figma.svg" },
+
 ];
 
 // Controlled Marquee (reliable direction control)
@@ -65,6 +66,8 @@ function Marquee({
           animationDirection: dir as any,
         }}
       >
+        <div className="marquee-group flex items-center">{children}</div>
+        <div className="marquee-group flex items-center">{children}</div>
         <div className="marquee-group flex items-center">{children}</div>
         <div className="marquee-group flex items-center">{children}</div>
       </div>
@@ -114,30 +117,30 @@ export default function Techstack() {
 
   return (
     <div>
-    <div className="mxd-section techicon padding-grid-pre-pinned">
-      <div className="mxd-container fullwidth-container">
-        <div className="mxd-block" style={{ rowGap: ROW_GAP }}>
-          {/* Row 1: Right → Left (normal animation moves leftwards) */}
-          <Marquee duration={MARQUEE_DURATION} reverse={false} className="mb-2">
-            {renderItems(row1)}
-          </Marquee>
+      <div className="mxd-section techicon padding-grid-pre-pinned">
+        <div className="mxd-container fullwidth-container">
+          <div className="mxd-block" style={{ rowGap: ROW_GAP }}>
+            {/* Row 1: Right → Left (normal animation moves leftwards) */}
+            <Marquee duration={MARQUEE_DURATION} reverse={false} className="mb-2">
+              {renderItems(row1)}
+            </Marquee>
 
-          {/* Row 2: Left → Right (reverse animation direction) */}
-          <Marquee duration={MARQUEE_DURATION * 1.02} reverse={true} className="mb-2">
-            {renderItems(row2)}
-          </Marquee>
+            {/* Row 2: Left → Right (reverse animation direction) */}
+            <Marquee duration={MARQUEE_DURATION * 1.02} reverse={true} className="mb-2">
+              {renderItems(row2)}
+            </Marquee>
 
-          {/* Row 3: Right → Left */}
-          <Marquee duration={MARQUEE_DURATION * 1.05} reverse={false}>
-            {renderItems(row3)}
-          </Marquee>
+            {/* Row 3: Right → Left */}
+            <Marquee duration={MARQUEE_DURATION * 1.05} reverse={false}>
+              {renderItems(row3)}
+            </Marquee>
+          </div>
         </div>
-      </div>
-      <style jsx>{`
+        <style jsx>{`
         /* tighten vertical spacing for the block on small screens */
         .mxd-block { display: flex; flex-direction: column; }
       `}</style>
-    </div>
+      </div>
     </div>
   );
 }

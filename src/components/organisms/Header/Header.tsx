@@ -27,75 +27,75 @@ export default function Header(): React.ReactElement {
   const navLinks: NavLink[] = [
     {
       label: "AI / ML",
-      href: "/services/AI-ML",
+      href: "/our-services#AI-ML",
       submenu: [
-        { label: "LLM Training", href: "/services/AI-ML/llm-training" },
-        { label: "LLM Factuality", href: "/services/AI-ML/factuality" },
+        { label: "LLM Training", href: "/our-services#AI-ML" },
+        { label: "LLM Factuality", href: "/our-services#AI-ML" },
         {
           label: "Multimodality LLM Training",
-          href: "/services/AI-ML/multimodal",
+          href: "/our-services#AI-ML",
         },
-        { label: "LLM Alignment & Safety", href: "/services/AI-ML/safety" },
+        { label: "LLM Alignment & Safety", href: "/our-services#AI-ML" },
       ],
     },
     {
       label: "Digital Engg",
-      href: "/services/Digital-Engg",
+      href: "/our-services#Digital-Engg",
       submenu: [
-        { label: "AR/VR", href: "/services/Digital-Engg/AR-VR" },
-        { label: "IoT", href: "/services/Digital-Engg/IoT" },
-        { label: "Blockchain", href: "/services/Digital-Engg/Blockchain" },
+        { label: "AR/VR", href: "/our-services#Digital-Engg" },
+        { label: "IoT", href: "/our-services#Digital-Engg" },
+        { label: "Blockchain", href: "/our-services#Digital-Engg" },
       ],
     },
     {
       label: "DevOps",
-      href: "/services/DevOps",
+      href: "/our-services#DevOps",
       submenu: [
-        { label: "CI/CD", href: "/services/DevOps/CI-CD" },
+        { label: "CI/CD", href: "/our-services#DevOps" },
         {
           label: "Infrastructure as Code",
-          href: "/services/DevOps/Infrastructure-as-Code",
+          href: "/our-services#DevOps",
         },
         {
           label: "Monitoring & Logging",
-          href: "/services/DevOps/Monitoring-Logging",
+          href: "/our-services#DevOps",
         },
       ],
     },
     {
       label: "Web3",
-      href: "/services/Web3",
+      href: "/our-services#Web3",
       submenu: [
-        { label: "DApp Development", href: "/services/Web3/DApp-Development" },
-        { label: "Smart Contracts", href: "/services/Web3/Smart-Contracts" },
-        { label: "NFT Marketplaces", href: "/services/Web3/NFT-Marketplaces" },
+        { label: "DApp Development", href: "/our-services#Web3" },
+        { label: "Smart Contracts", href: "/our-services#Web3" },
+        { label: "NFT Marketplaces", href: "/our-services#Web3" },
       ],
     },
     {
       label: "Cloud",
-      href: "/services/Cloud",
+      href: "/our-services#Cloud",
       submenu: [
-        { label: "AWS", href: "/services/Cloud/AWS" },
-        { label: "Azure", href: "/services/Cloud/Azure" },
-        { label: "Google Cloud", href: "/services/Cloud/Google-Cloud" },
+        { label: "AWS", href: "/our-services#Cloud" },
+        { label: "Azure", href: "/our-services#Cloud" },
+        { label: "Google Cloud", href: "/our-services#Cloud" },
       ],
     },
     {
       label: "SaaS",
-      href: "/services/SaaS",
+      href: "/our-services#SaaS",
       submenu: [
-        { label: "SaaS Development", href: "/services/SaaS/SaaS-Development" },
-        { label: "SaaS Integration", href: "/services/SaaS/SaaS-Integration" },
-        { label: "SaaS Migration", href: "/services/SaaS/SaaS-Migration" },
+        { label: "SaaS Development", href: "/our-services#SaaS" },
+        { label: "SaaS Integration", href: "/our-services#SaaS" },
+        { label: "SaaS Migration", href: "/our-services#SaaS" },
       ],
     },
     {
       label: "SEO",
-      href: "/services/SEO",
+      href: "/our-services#SEO",
       submenu: [
-        { label: "On-Page SEO", href: "/services/SEO/On-Page-SEO" },
-        { label: "Off-Page SEO", href: "/services/SEO/Off-Page-SEO" },
-        { label: "Technical SEO", href: "/services/SEO/Technical-SEO" },
+        { label: "On-Page SEO", href: "/our-services#SEO" },
+        { label: "Off-Page SEO", href: "/our-services#SEO" },
+        { label: "Technical SEO", href: "/our-services#SEO" },
       ],
     },
   ];
@@ -125,9 +125,8 @@ export default function Header(): React.ReactElement {
 
   return (
     <header
-      className={`mxd-header top-0 w-full z-50 transition-all duration-300 ${
-        isHidden ? "mxd-header--scrolled py-2" : "py-4"
-      }`}
+      className={`mxd-header top-0 w-full z-50 transition-all duration-300 ${isHidden ? "mxd-header--scrolled py-2" : "py-4"
+        }`}
     >
       <nav className="container-custom-box navbar-box flex items-center justify-between">
         {/* Logo */}
@@ -155,11 +154,10 @@ export default function Header(): React.ReactElement {
             >
               <Link
                 href={link.href}
-                className={`font-medium transition-colors] menu-item ${
-                  pathname === link.href
-                    ? ""
-                    : ""
-                }`}
+                className={`font-medium transition-colors] menu-item ${pathname === link.href
+                  ? ""
+                  : ""
+                  }`}
               >
                 {link.label}
               </Link>

@@ -807,261 +807,269 @@ footer.mxd-demo-footer {
 
     background-image: paint(ring-particles);
   }
+}
 
-  /* Animations */
-  @property --animation-tick {
-    syntax: "<number>";
-    inherits: false;
-    initial-value: 0;
+/* Animations */
+@property --animation-tick {
+  syntax: "<number>";
+  inherits: false;
+  initial-value: 0;
+}
+
+@property --ring-radius {
+  syntax: "<number> | auto";
+  inherits: false;
+  initial-value: auto;
+}
+
+@keyframes ripple {
+  0% {
+    --animation-tick: 0;
   }
 
-  @property --ring-radius {
-    syntax: "<number> | auto";
-    inherits: false;
-    initial-value: auto;
+  100% {
+    --animation-tick: 1;
+  }
+}
+
+@keyframes ring {
+  0% {
+    --ring-radius: 150;
   }
 
-  @keyframes ripple {
-    0% {
-      --animation-tick: 0;
-    }
-
-    100% {
-      --animation-tick: 1;
-    }
+  100% {
+    --ring-radius: 250;
   }
+}
 
-  @keyframes ring {
-    0% {
-      --ring-radius: 150;
-    }
+.mxd-hero-section-bg {
+  animation: ripple 6s linear infinite, ring 6s ease-in-out infinite alternate;
+  transition: --ring-x 3s ease, --ring-y 3s ease;
 
-    100% {
-      --ring-radius: 250;
-    }
-  }
+  /* Fixed position (Center) and Permanent */
+  --ring-x: 50;
+  --ring-y: 50;
+  --ring-interactive: 1;
+}
 
-  .mxd-hero-section-bg {
-    animation: ripple 6s linear infinite, ring 6s ease-in-out infinite alternate;
-    transition: --ring-x 3s ease, --ring-y 3s ease;
+:root {
+  --trackShadow: #cfcfcf;
+  /* bottom edge */
+  --track: #2b2b2b;
+  /* main track */
+  --trackActive: #7c4dff;
+  /* progress highlight */
+  --dot: #4fb7ff;
+  /* blue dot */
+}
 
-    /* Fixed position (Center) and Permanent */
-    --ring-x: 50;
-    --ring-y: 50;
-    --ring-interactive: 1;
-  }
+.barOnly {
+  width: 100%;
+  overflow: hidden;
+}
 
-  :root {
-    --trackShadow: #cfcfcf;
-    /* bottom edge */
-    --track: #2b2b2b;
-    /* main track */
-    --trackActive: #7c4dff;
-    /* progress highlight */
-    --dot: #4fb7ff;
-    /* blue dot */
-  }
+.stage {
+  position: relative;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 10px 10px;
+}
 
-  .barOnly {
-    width: 100%;
-    overflow: hidden;
-  }
+.svg {
+  width: 100%;
+  height: auto;
+  display: block;
+  overflow: visible;
+}
 
-  .stage {
-    position: relative;
-    width: 100%;
-    max-width: 1400px;
-    margin: 0 auto;
-    padding: 10px 10px;
-  }
+.steps {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
 
-  .svg {
-    width: 100%;
-    height: auto;
-    display: block;
-    overflow: visible;
-  }
+/* ===== 3D STEP TILE (like your image) ===== */
+.step {
+  position: absolute;
+  transform: translate(-50%, -70%) rotate(-26deg);
+  transform-origin: center;
+  border-radius: 8px;
+  padding: 10px 22px;
+  font-weight: 700;
+  font-size: 16px;
+  letter-spacing: 0.2px;
+  color: #fff;
+  box-shadow: 0 12px 0 rgba(0, 0, 0, 0.55), 0 18px 26px rgba(0, 0, 0, 0.25);
+  border: 2px solid rgba(0, 0, 0, 0.65);
+  opacity: 0.88;
+  filter: saturate(0.9);
+  transition: transform 0.2s ease, opacity 0.2s ease, filter 0.2s ease;
+}
 
-  .steps {
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-  }
+/* 3D bottom face */
+.step::after {
+  content: "";
+  position: absolute;
+  left: 6px;
+  right: -6px;
+  bottom: -10px;
+  height: 12px;
+  border-radius: 0 0 8px 8px;
+  background: rgba(0, 0, 0, 0.45);
+  transform: skewX(-35deg);
+  z-index: -1;
+}
 
-  /* ===== 3D STEP TILE (like your image) ===== */
-  .step {
-    position: absolute;
-    transform: translate(-50%, -70%) rotate(-26deg);
-    transform-origin: center;
-    border-radius: 8px;
-    padding: 10px 22px;
-    font-weight: 700;
-    font-size: 16px;
-    letter-spacing: 0.2px;
-    color: #fff;
-    box-shadow: 0 12px 0 rgba(0, 0, 0, 0.55), 0 18px 26px rgba(0, 0, 0, 0.25);
-    border: 2px solid rgba(0, 0, 0, 0.65);
-    opacity: 0.88;
-    filter: saturate(0.9);
-    transition: transform 0.2s ease, opacity 0.2s ease, filter 0.2s ease;
-  }
+/* Small top highlight */
+.step::before {
+  content: "";
+  position: absolute;
+  inset: 2px;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.1);
+  mix-blend-mode: overlay;
+  pointer-events: none;
+}
 
-  /* 3D bottom face */
-  .step::after {
-    content: "";
-    position: absolute;
-    left: 6px;
-    right: -6px;
-    bottom: -10px;
-    height: 12px;
-    border-radius: 0 0 8px 8px;
-    background: rgba(0, 0, 0, 0.45);
-    transform: skewX(-35deg);
-    z-index: -1;
-  }
+.step span {
+  display: block;
+  transform: translateY(-1px);
+}
 
-  /* Small top highlight */
-  .step::before {
-    content: "";
-    position: absolute;
-    inset: 2px;
-    border-radius: 6px;
-    background: rgba(255, 255, 255, 0.1);
-    mix-blend-mode: overlay;
-    pointer-events: none;
-  }
+/* COLOR TONES */
+.purple {
+  background: #7c4dff;
+}
 
-  .step span {
-    display: block;
-    transform: translateY(-1px);
-  }
+.blue {
+  background: #4fb7ff;
+  color: #ffffff;
+}
 
-  /* COLOR TONES */
-  .purple {
-    background: #7c4dff;
-  }
+.dark {
+  background: #2f2f2f;
+}
 
-  .blue {
-    background: #4fb7ff;
-    color: #ffffff;
-  }
+/* ACTIVE / DONE STATES */
+.active {
+  opacity: 1;
+  filter: saturate(1);
+  transform: translate(-50%, -70%) rotate(-26deg) scale(1.05);
+}
 
-  .dark {
-    background: #2f2f2f;
-  }
+/* ============ Road MAp CSS ======== */
+.done:nth-child(1) {
+  box-shadow: 0 12px 0 #f3722e, 0 18px 26px #f3722e;
+  border: 2px solid #339f9d;
+  opacity: 1;
+}
 
-  /* ACTIVE / DONE STATES */
-  .active {
-    opacity: 1;
-    filter: saturate(1);
-    transform: translate(-50%, -70%) rotate(-26deg) scale(1.05);
-  }
+.done:nth-child(2) {
+  box-shadow: 0 12px 0 #f3722e, 0 18px 26px #f3722e;
+  border: 2px solid #339f9d;
+  opacity: 1;
+}
 
-  /* ============ Road MAp CSS ======== */
-  .done:nth-child(1) {
-    box-shadow: 0 12px 0 #f3722e, 0 18px 26px #f3722e;
-    border: 2px solid #339f9d;
-    opacity: 1;
-  }
+.done:nth-child(3) {
+  box-shadow: 0 12px 0 #f3722e, 0 18px 26px #f3722e;
+  border: 2px solid #339f9d;
+  opacity: 1;
+}
 
-  .done:nth-child(2) {
-    box-shadow: 0 12px 0 #f3722e, 0 18px 26px #f3722e;
-    border: 2px solid #339f9d;
-    opacity: 1;
-  }
+.done:nth-child(4) {
+  box-shadow: 0 12px 0 #f3722e, 0 18px 26px #f3722e;
+  border: 2px solid #339f9d;
+  opacity: 1;
+}
 
-  .done:nth-child(3) {
-    box-shadow: 0 12px 0 #f3722e, 0 18px 26px #f3722e;
-    border: 2px solid #339f9d;
-    opacity: 1;
-  }
+.done:nth-child(5) {
+  box-shadow: 0 12px 0 #f3722e, 0 18px 26px #f3722e;
+  border: 2px solid #339f9d;
+  opacity: 1;
+}
 
-  .done:nth-child(4) {
-    box-shadow: 0 12px 0 #f3722e, 0 18px 26px #f3722e;
-    border: 2px solid #339f9d;
-    opacity: 1;
-  }
+.done:nth-child(6) {
+  box-shadow: 0 12px 0 #f3722e, 0 18px 26px #f3722e;
+  border: 2px solid #339f9d;
+  opacity: 1;
+}
 
-  .done:nth-child(5) {
-    box-shadow: 0 12px 0 #f3722e, 0 18px 26px #f3722e;
-    border: 2px solid #339f9d;
-    opacity: 1;
-  }
-
-  .done:nth-child(6) {
-    box-shadow: 0 12px 0 #f3722e, 0 18px 26px #f3722e;
-    border: 2px solid #339f9d;
-    opacity: 1;
-  }
-
-  .step:nth-child(1) {
+.step:nth-child(1) {
   left: 15.2376%;
   top: 56.6511%;
   opacity: 0.4;
 }
+
 /* STEP 2 */
 .step:nth-child(2) {
   left: 36.147%;
   top: 82.0156%;
   opacity: 0.4;
 }
+
 /* STEP 3 */
 .step:nth-child(3) {
   left: 42.6161%;
   top: 44.9403%;
   opacity: 0.4;
 }
+
 /* STEP 4 */
 .step:nth-child(4) {
   left: 58.7136%;
   top: 96.4439%;
   opacity: 0.4;
 }
+
 /* STEP 5 */
 .step:nth-child(5) {
   left: 73.6171%;
   top: 64.2694%;
   opacity: 0.472;
 }
+
 /* STEP 6 */
 .step:nth-child(6) {
   left: 91.4403%;
   top: 80.5311%;
   opacity: 0.808;
 }
+
 #dots.done {
   fill: #22c55e;
   filter: drop-shadow(0 0 6px #22c55e);
 }
+
 section.process .pathStage {
-    margin-top: 18rem;
+  margin-top: 18rem;
 }
-  .marquee_bg {
-    background-color: #e9e8e8;
-    padding: 20px !important;
-    border-radius: 100px;
-    justify-content: center;
-    margin: 0px 20px;
-    width: 200px;
-    min-height: 100px;
-    align-items: center;
+
+.marquee_bg {
+  background-color: #e9e8e8;
+  padding: 20px !important;
+  border-radius: 100px;
+  justify-content: center;
+  margin: 0px 20px;
+  width: 200px;
+  min-height: 100px;
+  align-items: center;
+}
+
+/* Responsive: reduce rotation on small screens */
+@media (max-width: 720px) {
+  .step {
+    font-size: 14px;
+    padding: 8px 16px;
+    transform: translate(-50%, -70%) rotate(-18deg);
   }
 
-  /* Responsive: reduce rotation on small screens */
-  @media (max-width: 720px) {
-    .step {
-      font-size: 14px;
-      padding: 8px 16px;
-      transform: translate(-50%, -70%) rotate(-18deg);
-    }
-
-    .active {
-      transform: translate(-50%, -70%) rotate(-18deg) scale(1.05);
-    }
+  .active {
+    transform: translate(-50%, -70%) rotate(-18deg) scale(1.05);
   }
+}
 
-  /* Just to match your JS behavior (class toggled on hover) */
-  .interactive {
-    /* Toggled by JS */
-  }
+/* Just to match your JS behavior (class toggled on hover) */
+.interactive {
+  /* Toggled by JS */
 }

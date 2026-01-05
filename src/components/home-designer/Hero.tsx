@@ -22,7 +22,7 @@ export default function Hero() {
       .addModule(
         "https://unpkg.com/css-houdini-ringparticles/dist/ringparticles.js"
       )
-      .catch(() => {});
+      .catch(() => { });
 
     // Set permanent values for the animation
     el.style.setProperty("--ring-x", "50");
