@@ -60,9 +60,48 @@ export default function LenisSmoothScroll() {
         ScrollTrigger.addEventListener("refresh", handleRefresh);
         window.addEventListener("resize", handleResize);
 
+        // --- Anchor Link Handling ---
+        const handleAnchorClick = (e: MouseEvent) => {
+            const target = e.target as HTMLElement;
+            const link = target.closest("a");
+
+            if (!link) return;
+
+            const href = link.getAttribute("href");
+            if (!href) return;
+
+            // Check if it's an anchor link
+            const isAnchor = href.startsWith("#");
+            const isSamePageAnchor =
+                href.includes("#") &&
+                href.replace(/#.*$/, "") === window.location.pathname;
+
+            if (isAnchor || isSamePageAnchor) {
+                const hash = href.includes("#") ? "#" + href.split("#")[1] : href;
+                const targetElement = document.querySelector(hash);
+
+                if (targetElement) {
+                    e.preventDefault();
+                    lenis.scrollTo(hash, { offset: -100 });
+                }
+            }
+        };
+
+        document.addEventListener("click", handleAnchorClick);
+
+        // --- Initial Hash Scroll (Cross-page) ---
+        if (window.location.hash) {
+            const hash = window.location.hash;
+            // Delay to ensure elements are rendered (esp. if data fetching involved)
+            setTimeout(() => {
+                lenis.scrollTo(hash, { offset: -100, immediate: false });
+            }, 500);
+        }
+
         return () => {
             window.removeEventListener("resize", handleResize);
             ScrollTrigger.removeEventListener("refresh", handleRefresh);
+            document.removeEventListener("click", handleAnchorClick);
             // Revert scrollerProxy
             ScrollTrigger.scrollerProxy(document.body, {});
             // Reset body overflow
@@ -74,5 +113,18 @@ export default function LenisSmoothScroll() {
     if (isIOS) {
         return null;
     }
-    return <ReactLenis root />;
+    return (
+        <ReactLenis
+            root
+            options={{
+                lerp: 0.07,
+                duration: 1.5,
+                smoothWheel: true,
+                wheelMultiplier: 1,
+                touchMultiplier: 2,
+                orientation: "vertical",
+                gestureOrientation: "vertical",
+            }}
+        />
+    );
 }
