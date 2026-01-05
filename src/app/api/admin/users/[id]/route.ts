@@ -92,6 +92,7 @@ export async function PATCH(
         const db = await getDatabase();
 
         // Prepare update data
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         const updateData: any = {
             name,
             email,

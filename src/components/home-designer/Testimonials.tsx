@@ -2,7 +2,7 @@
 import Image from "next/image";
 
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination, Parallax, Autoplay } from "swiper/modules";
+import { Navigation, Parallax, Autoplay } from "swiper/modules";
 import AnimatedButton from "../animation/AnimatedButton";
 
 import "swiper/css";
@@ -48,7 +48,7 @@ export default function Testimonials() {
             speed={900}
             parallax
             autoplay={false}
-            
+
             navigation={{
               nextEl: ".swiper-button-next",
               prevEl: ".swiper-button-prev",
@@ -159,7 +159,7 @@ export default function Testimonials() {
                             cursor: "pointer",
                           }}
                         >
-                        
+
                         </div>
 
                         <div
@@ -179,7 +179,7 @@ export default function Testimonials() {
                             cursor: "pointer",
                           }}
                         >
-                          
+
                         </div>
                       </div>
                     </div>

@@ -3,6 +3,7 @@
 import { signIn } from 'next-auth/react';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 import Input from '@/components/atoms/Input/Input';
 import Button from '@/components/atoms/Button/Button';
 import Image from 'next/image';
@@ -31,7 +32,7 @@ export default function AdminLoginPage() {
             } else {
                 router.push('/admin/dashboard');
             }
-        } catch (error) {
+        } catch {
             setError('An error occurred. Please try again.');
         } finally {
             setIsLoading(false);
@@ -102,12 +103,12 @@ export default function AdminLoginPage() {
 
                 {/* Back to Website */}
                 <div className="text-center mt-6">
-                    <a
+                    <Link
                         href="/"
                         className="text-white hover:text-primary-orange transition-colors text-sm"
                     >
                         ← Back to Website
-                    </a>
+                    </Link>
                 </div>
             </div>
         </div>

@@ -6,7 +6,7 @@ import { getAllBlogs } from '@/models/Blog';
 import { getAllCareers } from '@/models/Career';
 import { getAllContacts } from '@/models/Contact';
 import Link from 'next/link';
-import { Wrench, Briefcase, FileText, Users, Package, TrendingUp, Mail, Eye } from 'lucide-react';
+import { Wrench, Briefcase, FileText, Users, Mail } from 'lucide-react';
 
 export default async function AdminDashboard() {
     const session = await auth();
@@ -43,7 +43,7 @@ export default async function AdminDashboard() {
                     Welcome back, {session.user?.name}!
                 </h1>
                 <p className="text-gray-text">
-                    Here's what's happening with your website today.
+                    Here&apos;s what&apos;s happening with your website today.
                 </p>
             </div>
 

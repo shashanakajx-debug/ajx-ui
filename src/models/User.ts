@@ -1,6 +1,5 @@
 import { getDatabase } from '@/lib/mongodb';
 import { User } from '@/types';
-import { ObjectId } from 'mongodb';
 import bcrypt from 'bcryptjs';
 
 const COLLECTION = 'users';

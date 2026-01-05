@@ -1,4 +1,3 @@
-import Link from "next/link";
 import RevealText from "@/components/animation/RevealText";
 import Image from "next/image";
 import teamData from "./rayo_team.json";
@@ -77,7 +76,7 @@ export default function RayoTeam() {
                                                     <div className="col-12">
                                                         <div className="mxd-section-title__descr">
                                                             <p className="anim-uni-in-up">
-                                                          is a Building Smarter Scalable, and Future-Ready Experiences
+                                                                is a Building Smarter Scalable, and Future-Ready Experiences
                                                             </p>
                                                         </div>
                                                     </div>

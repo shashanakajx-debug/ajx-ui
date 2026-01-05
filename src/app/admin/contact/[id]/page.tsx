@@ -13,7 +13,7 @@ async function getContact(id: string): Promise<Contact | null> {
         }
 
         const db = await getDatabase();
-        const contact = await db.collection('contacts').findOne({ _id: new ObjectId(id) }) as any;
+        const contact = await db.collection('contacts').findOne({ _id: new ObjectId(id) });
 
         if (!contact) return null;
 

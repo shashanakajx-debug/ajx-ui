@@ -28,7 +28,7 @@ export default function ScrollProcessPath() {
       const active = section.querySelector("#trackActive") as SVGPathElement;
       const dot = section.querySelector("#dot") as SVGCircleElement;
       const steps = Array.from(section.querySelectorAll("[data-step]")) as HTMLElement[];
-      const box = Array.from(section.querySelectorAll("#dots")) as SVGCircleElement[];
+      const box = Array.from(section.querySelectorAll(".dots")) as SVGCircleElement[];
 
       if (!track || !active || !dot) return;
 
@@ -165,12 +165,12 @@ export default function ScrollProcessPath() {
                 stroke-linecap="round"
               />
 
-              <circle id="dots" cx="140" cy="125" r="12" fill="#ccc" />
-              <circle id="dots" cx="400" cy="115" r="12" fill="#ccc" />
-              <circle id="dots" cx="520" cy="69" r="12" fill="#ccc" />
-              <circle id="dots" cx="720" cy="120" r="12" fill="#ccc" />
-              <circle id="dots" cx="920" cy="165" r="12" fill="#ccc" />
-              <circle id="dots" cx="1160" cy="90" r="12" fill="#ccc" />
+              <circle className="dots" cx="140" cy="125" r="12" fill="#ccc" />
+              <circle className="dots" cx="400" cy="115" r="12" fill="#ccc" />
+              <circle className="dots" cx="520" cy="69" r="12" fill="#ccc" />
+              <circle className="dots" cx="720" cy="120" r="12" fill="#ccc" />
+              <circle className="dots" cx="920" cy="165" r="12" fill="#ccc" />
+              <circle className="dots" cx="1160" cy="90" r="12" fill="#ccc" />
               <circle id="dot" r="14" cx="80" cy="68" fill="#DA353D" />
             </svg>
             <div className="steps">
@@ -189,7 +189,7 @@ export default function ScrollProcessPath() {
         </div>
       </section>
 
-      <div/>
+      <div />
     </>
   );
 }

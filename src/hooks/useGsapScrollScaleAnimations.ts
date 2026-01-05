@@ -258,6 +258,7 @@ export default function useGsapScrollScaleAnimations() {
         return () => {
             // Only kill our specific ScrollTriggers
             ScrollTrigger.getAll()
+                // eslint-disable-next-line @typescript-eslint/no-explicit-any
                 .filter((st: any) => {
                     const trigger = st.vars.trigger;
                     if (!trigger || typeof trigger === "string" || Array.isArray(trigger))

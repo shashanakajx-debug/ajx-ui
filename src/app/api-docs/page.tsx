@@ -5,6 +5,7 @@ import swaggerDefinition from '@/lib/swagger';
 import Head from 'next/head';
 
 export default function ApiDocsPage() {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const [SwaggerUI, setSwaggerUI] = useState<any>(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);

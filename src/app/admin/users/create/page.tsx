@@ -48,7 +48,7 @@ export default function CreateUserPage() {
                 const data = await res.json();
                 toast.error(data.error || 'Failed to create user');
             }
-        } catch (error) {
+        } catch {
             toast.error('An error occurred');
         } finally {
             setIsLoading(false);

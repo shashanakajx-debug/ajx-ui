@@ -8,6 +8,12 @@ import { toast } from 'sonner';
 import Input from '@/components/atoms/Input/Input';
 import Button from '@/components/atoms/Button/Button';
 
+interface User {
+    _id: string;
+    name: string;
+    email: string;
+}
+
 export default function EditUserPage(props: { params: Promise<{ id: string }> }) {
     const params = use(props.params);
     const router = useRouter();
@@ -32,8 +38,8 @@ export default function EditUserPage(props: { params: Promise<{ id: string }> })
                 // But for now we'll fetch all and filter client side as we didn't add GET [id]
                 const res = await fetch('/api/admin/users');
                 if (res.ok) {
-                    const users: any[] = await res.json();
-                    const user = users.find((u: any) => u._id === params.id);
+                    const users: User[] = await res.json();
+                    const user = users.find((u) => u._id === params.id);
                     if (user) {
                         setFormData(prev => ({
                             ...prev,
@@ -45,7 +51,7 @@ export default function EditUserPage(props: { params: Promise<{ id: string }> })
                         router.push('/admin/users');
                     }
                 }
-            } catch (error) {
+            } catch {
                 toast.error('Failed to fetch user details');
             } finally {
                 setIsFetching(false);
@@ -66,7 +72,7 @@ export default function EditUserPage(props: { params: Promise<{ id: string }> })
         setIsLoading(true);
 
         try {
-            const body: any = {
+            const body: { name: string; email: string; password?: string } = {
                 name: formData.name,
                 email: formData.email,
             };
@@ -90,7 +96,7 @@ export default function EditUserPage(props: { params: Promise<{ id: string }> })
                 const data = await res.json();
                 toast.error(data.error || 'Failed to update user');
             }
-        } catch (error) {
+        } catch {
             toast.error('An error occurred');
         } finally {
             setIsLoading(false);

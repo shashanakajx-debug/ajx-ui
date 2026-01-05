@@ -22,6 +22,7 @@ export default function ServiceForm({ initialData, isEditing = false }: ServiceF
     const updateMutation = useUpdateService();
 
     const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm<ServiceFormData>({
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         resolver: zodResolver(serviceSchema) as any,
         defaultValues: {
             title: initialData?.title || '',

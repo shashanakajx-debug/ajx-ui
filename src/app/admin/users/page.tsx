@@ -29,7 +29,7 @@ export default function AdminUsersPage() {
             } else {
                 toast.error('Failed to fetch users');
             }
-        } catch (error) {
+        } catch {
             toast.error('An error occurred');
         } finally {
             setIsLoading(false);
@@ -51,7 +51,7 @@ export default function AdminUsersPage() {
                 const data = await res.json();
                 toast.error(data.error || 'Failed to delete user');
             }
-        } catch (error) {
+        } catch {
             toast.error('An error occurred');
         }
     };
@@ -141,7 +141,7 @@ export default function AdminUsersPage() {
             </div>
 
             <div className="p-4 bg-blue-50 text-blue-800 rounded-lg border border-blue-100 text-sm">
-                <strong>Note:</strong> You can also login with the "Super Admin" credentials configured in your environment variables.
+                <strong>Note:</strong> You can also login with the &quot;Super Admin&quot; credentials configured in your environment variables.
                 Those credentials override any database user settings and cannot be deleted here.
             </div>
         </div>

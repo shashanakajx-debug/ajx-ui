@@ -7,7 +7,6 @@ import {
   Phone,
   MapPin,
   ArrowRight,
-  ArrowUpRight,
 } from "lucide-react";
 
 export default function Footer1() {
