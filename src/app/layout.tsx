@@ -1,4 +1,5 @@
 import { Unbounded, Poppins } from 'next/font/google';
+import Script from 'next/script';
 import './globals.css';
 import { SessionProvider } from 'next-auth/react';
 import { QueryProvider } from '@/providers/QueryProvider';
@@ -31,7 +32,7 @@ export default function RootLayout({
     return (
         <html lang="en" suppressHydrationWarning>
             <head>
-                <script src="https://unpkg.com/@phosphor-icons/web"></script>
+                <Script src="https://unpkg.com/@phosphor-icons/web" strategy="lazyOnload" />
             </head>
             <body
                 className={`${unbounded.variable} ${poppins.variable} font-poppins antialiased no-touch`}

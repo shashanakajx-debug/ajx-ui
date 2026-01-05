@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState, useCallback } from "react";
 import gsap from "gsap";
 import Flip from "gsap/dist/Flip"; // Direct path often fixes the red underline
 import { usePathname } from "next/navigation";
@@ -10,23 +10,23 @@ gsap.registerPlugin(Flip);
 
 export default function MobileMenu() {
   const pathname = usePathname();
-  
+
   // --- HARDCODED MENU DATA (Removed JSON) ---
   const menuItems = [
     { title: "Home", href: "/" },
     { title: "About Us", href: "/about-us" },
-    { 
-      title: "Services", 
+    {
+      title: "Services",
       submenu: [
         { label: "Web Development", href: "/services/web-development" },
         { label: "UI/UX Design", href: "/services/design" },
         { label: "Digital Marketing", href: "/services/marketing" },
-      ] 
+      ]
     },
     { title: "Portfolio", href: "/portfolio" },
     { title: "Contact", href: "/contact" },
   ];
-  
+
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isActive, setIsActive] = useState(false);
@@ -38,7 +38,7 @@ export default function MobileMenu() {
 
   const [submenuHeights, setSubmenuHeights] = useState<number[]>([]);
 
-  const handleToggle = () => {
+  const handleToggle = useCallback(() => {
     if (isActive) {
       setIsActive(false);
       setTimeout(() => setIsMenuOpen(false), 800);
@@ -46,7 +46,7 @@ export default function MobileMenu() {
       setIsMenuOpen(true);
       setTimeout(() => setIsActive(true), 600);
     }
-  };
+  }, [isActive]);
 
   const isMenuActive = (link?: string) =>
     link?.split("/")[1] === pathname.split("/")[1];
@@ -61,7 +61,9 @@ export default function MobileMenu() {
   useEffect(() => {
     setActiveSubmenu(-1);
     if (isActive) handleToggle();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pathname]);
+  // Actually, if we just want to close menu on path change:
 
   useLayoutEffect(() => {
     const flipEl = flipBaseRef.current;
@@ -109,7 +111,7 @@ export default function MobileMenu() {
               <p className="mxd-menu__caption fade-in-elm" style={{ transitionDelay: "0.4s" }}>
                 🦄 Innovative design<br />and cutting-edge development
               </p>
-              
+
               <div className="main-menu">
                 <nav className="main-menu__content">
                   <ul id="main-menu" className="main-menu__accordion">
@@ -156,7 +158,7 @@ export default function MobileMenu() {
               <div className="menu-promo">
                 <div className="menu-promo__content">
                   <p className="menu-promo__caption fade-in-elm" style={{ transitionDelay: "0.4s" }}>
-                    👋 AJX Technologies is here!<br />Let's build something amazing together.
+                    👋 AJX Technologies is here!<br />Let&apos;s build something amazing together.
                   </p>
                   <div className="menu-promo__video fade-in-up-elm" style={{ transitionDelay: "0.3s" }}>
                     <video className="menu-video" autoPlay loop muted playsInline>

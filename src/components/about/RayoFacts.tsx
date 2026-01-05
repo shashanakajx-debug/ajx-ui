@@ -21,14 +21,14 @@ export default function RayoFacts() {
                                         <div className={item.cardClass}>
 
                                             {/* Scenario 1: Title Card (Small Box) - Image Only now */}
-                                            {(item as any).isTitleCard && (
+                                            {(item as { isTitleCard?: boolean }).isTitleCard && (
                                                 <div className="text-center w-100 position-relative z-2">
                                                     {/* Title removed as requested, image provided via background/image prop */}
                                                 </div>
                                             )}
 
                                             {/* Scenario 2: Text Card (Large Box) - Uses RevealText */}
-                                            {(item as any).isTextCard && (
+                                            {(item as { isTextCard?: boolean }).isTextCard && (
                                                 <div className="w-100 h-100 d-flex flex-column justify-content-center px-4 position-relative z-2">
                                                     {item.title && (
                                                         <h3 className="headline-2 t-bright mb-3">{item.title}</h3>

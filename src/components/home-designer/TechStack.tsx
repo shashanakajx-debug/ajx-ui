@@ -63,7 +63,7 @@ function Marquee({
         className="flex whitespace-nowrap items-center marquee-track"
         style={{
           animation: `marquee ${duration}s linear infinite`,
-          animationDirection: dir as any,
+          animationDirection: dir as React.CSSProperties["animationDirection"],
         }}
       >
         <div className="marquee-group flex items-center">{children}</div>

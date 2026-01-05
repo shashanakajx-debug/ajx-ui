@@ -20,7 +20,7 @@ type Industry = {
   id: string;
   title: string;
   description: string;
-  icon: React.ComponentType<any>;
+  icon: React.ComponentType<{ className?: string; strokeWidth?: number }>;
   image: string;
 };
 
@@ -131,7 +131,10 @@ export default function Industries() {
             modules={[Navigation, Parallax, Autoplay]}
           >
             {INDUSTRIES.map((industry) => {
-              const IconComponent: React.ComponentType<any> = industry.icon;
+              const IconComponent: React.ComponentType<{
+                className?: string;
+                strokeWidth?: number;
+              }> = industry.icon;
               return (
                 <SwiperSlide
                   className="swiper-slide mxd-demo-swiper__slide"
