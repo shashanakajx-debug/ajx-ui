@@ -57,7 +57,6 @@ export default function LenisSmoothScroll() {
         };
 
         // Listen for ScrollTrigger refresh events
-        ScrollTrigger.addEventListener("refresh", handleRefresh);
         window.addEventListener("resize", handleResize);
 
         // --- Anchor Link Handling ---

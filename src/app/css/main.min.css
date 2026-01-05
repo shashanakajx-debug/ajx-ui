@@ -419,7 +419,7 @@
   background-image: url(/img/illustrations/400x200_hdl-02.webp);
 }
 .headline-img-03::after {
-  background-image: url(/img/illustrations/400x200_hdl-03.webp);
+  background-image: url(/our-portfolio/400x200_hdl-03.webp);
 }
 .headline-img-04::before {
   background-image: url(/our-services/400x200_hdl-04.webp);
@@ -6165,7 +6165,7 @@ form textarea:required:valid {
   background-position: left center;
   -moz-background-size: cover;
   background-size: cover;
-  background-image: url(/img/backgrounds/1440x900_cta-01.webp);
+  background-image: url(/our-portfolio/1440x900_cta-01.webp);
 }
 @media only screen and (min-width: 1200px) {
   .mxd-promo__bg {

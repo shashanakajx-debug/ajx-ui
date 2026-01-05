@@ -5,6 +5,7 @@ import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import MotionPathPlugin from "gsap/MotionPathPlugin";
 
+
 gsap.registerPlugin(ScrollTrigger, MotionPathPlugin);
 
 export default function ScrollProcessPath() {
@@ -24,36 +25,17 @@ export default function ScrollProcessPath() {
       const section = sectionRef.current;
       if (!section) return;
 
-      const track = section.querySelector("#track") as SVGPathElement;
-      const active = section.querySelector("#trackActive") as SVGPathElement;
-      const dot = section.querySelector("#dot") as SVGCircleElement;
       const steps = Array.from(section.querySelectorAll("[data-step]")) as HTMLElement[];
-      const box = Array.from(section.querySelectorAll(".dots")) as SVGCircleElement[];
+      const box = Array.from(section.querySelectorAll("#dots")) as SVGCircleElement[];
 
-      if (!track || !active || !dot) return;
-
-      const positionSteps = () => {
-        const svg = track.ownerSVGElement;
-        if (!svg) return;
-
-        const vb = svg.viewBox.baseVal;
-        const len = track.getTotalLength();
-
-        steps.forEach((el) => {
-          const at = parseFloat(el.dataset.at || "0");
-          const pt = track.getPointAtLength(len * at);
-
-          // el.style.left = `${((pt.x - vb.x) / vb.width) * 100}%`;
-          // el.style.top = `${((pt.y - vb.y) / vb.height) * 100}%`;
-        });
+      // Helper to setup strokeDash
+      const setupStroke = (activePath: SVGPathElement) => {
+        const len = activePath.getTotalLength();
+        activePath.style.strokeDasharray = `${len}`;
+        activePath.style.strokeDashoffset = `${len}`;
       };
 
-      const setupStroke = () => {
-        const len = active.getTotalLength();
-        active.style.strokeDasharray = `${len}`;
-        active.style.strokeDashoffset = `${len}`;
-      };
-
+      // Helper to update step classes
       const updateSteps = (progress: number) => {
         steps.forEach((el) => {
           const at = parseFloat(el.dataset.at || "0");
@@ -78,31 +60,32 @@ export default function ScrollProcessPath() {
         });
       };
 
-      positionSteps();
-      setupStroke();
+      const mm = gsap.matchMedia();
 
-      const onResize = () => {
-        positionSteps();
-        ScrollTrigger.refresh();
-      };
+      // --- DESKTOP ANIMATION ---
+      mm.add("(min-width: 992px)", () => {
+        const track = section.querySelector("#track") as SVGPathElement;
+        const active = section.querySelector("#trackActive") as SVGPathElement;
+        const dot = section.querySelector("#dot") as SVGCircleElement;
 
-      window.addEventListener("resize", onResize);
+        if (!track || !active || !dot) return;
 
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: section,
-          start: "top top",
-          end: "+=2200",
-          scrub: 1,
-          pin: true,
-          anticipatePin: 1,
-          onUpdate: (self) => updateSteps(self.progress),
-        },
-      });
+        setupStroke(active);
+        updateSteps(0);
 
-      tl.to(
-        dot,
-        {
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: section,
+            start: "top top",
+            end: "+=2200",
+            scrub: 1,
+            pin: true,
+            anticipatePin: 1,
+            onUpdate: (self) => updateSteps(self.progress),
+          },
+        });
+
+        tl.to(dot, {
           motionPath: {
             path: track,
             align: track,
@@ -110,24 +93,51 @@ export default function ScrollProcessPath() {
             autoRotate: false,
           },
           ease: "none",
-        },
-        0
-      ).to(
-        active,
-        {
-          strokeDashoffset: 0,
+        }, 0)
+          .to(active, {
+            strokeDashoffset: 0,
+            ease: "none",
+          }, 0);
+      });
+
+      // --- MOBILE ANIMATION ---
+      mm.add("(max-width: 991px)", () => {
+        const track = section.querySelector("#track-mobile") as SVGPathElement;
+        const active = section.querySelector("#trackActive-mobile") as SVGPathElement;
+        const dot = section.querySelector("#dot-mobile") as SVGCircleElement;
+
+        if (!track || !active || !dot) return;
+
+        setupStroke(active);
+        updateSteps(0);
+
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: section,
+            start: "top top",
+            end: "+=2200",
+            scrub: 1,
+            pin: true,
+            anticipatePin: 1,
+            onUpdate: (self) => updateSteps(self.progress),
+          },
+        });
+
+        tl.to(dot, {
+          motionPath: {
+            path: track,
+            align: track,
+            alignOrigin: [0.5, 0.5],
+            autoRotate: false,
+          },
           ease: "none",
-        },
-        0
-      );
+        }, 0)
+          .to(active, {
+            strokeDashoffset: 0,
+            ease: "none",
+          }, 0);
+      });
 
-      updateSteps(0);
-
-      return () => {
-        window.removeEventListener("resize", onResize);
-        tl.scrollTrigger?.kill();
-        tl.kill();
-      };
     }, sectionRef);
 
     return () => ctx.revert();
@@ -139,7 +149,7 @@ export default function ScrollProcessPath() {
 
       <section ref={sectionRef} className="process">
         <div className="wrap">
-          <div className="titles text-center mb-40">
+          <div className="titles text-center lg:mb-40">
             <div className="left">
               <h2 className="mb-2">Our Proven 6-Step Development Process</h2>
 
@@ -148,6 +158,7 @@ export default function ScrollProcessPath() {
 
           <div className="pathStage">
 
+            {/* Desktop SVG - Original IDs */}
             <svg viewBox="0 0 1200 260" className="svg" xmlns="http://www.w3.org/2000/svg">
               <path id="track"
                 d="M80,90 C190,170 300,170 410,110 C520,50 610,50 720,120 C830,190 920,190 1030,110 C1100,60 1140,70 1160,90"
@@ -165,14 +176,61 @@ export default function ScrollProcessPath() {
                 stroke-linecap="round"
               />
 
-              <circle className="dots" cx="140" cy="125" r="12" fill="#ccc" />
-              <circle className="dots" cx="400" cy="115" r="12" fill="#ccc" />
-              <circle className="dots" cx="520" cy="69" r="12" fill="#ccc" />
-              <circle className="dots" cx="720" cy="120" r="12" fill="#ccc" />
-              <circle className="dots" cx="920" cy="165" r="12" fill="#ccc" />
-              <circle className="dots" cx="1160" cy="90" r="12" fill="#ccc" />
+              <circle id="dots" cx="140" cy="125" r="12" fill="#ccc" />
+              <circle id="dots" cx="400" cy="115" r="12" fill="#ccc" />
+              <circle id="dots" cx="520" cy="69" r="12" fill="#ccc" />
+              <circle id="dots" cx="720" cy="120" r="12" fill="#ccc" />
+              <circle id="dots" cx="920" cy="165" r="12" fill="#ccc" />
+              <circle id="dots" cx="1160" cy="90" r="12" fill="#ccc" />
               <circle id="dot" r="14" cx="80" cy="68" fill="#DA353D" />
             </svg>
+
+            {/* Mobile SVG - New IDs */}
+            <svg
+              viewBox="0 0 260 720"
+              className="svg svg-mobile"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+
+              <path
+                id="track-mobile"
+                d="
+                  M130 20
+                  C130 110 80 190 130 270
+                  C180 350 130 430 130 510
+                  C130 590 100 650 130 700
+                "
+                fill="none"
+                stroke="#2c2c2c"
+                stroke-width="28"
+                stroke-linecap="round"
+              />
+
+
+              <path
+                id="trackActive-mobile"
+                d="
+                  M130 20
+                  C130 110 80 190 130 270
+                  C180 350 130 430 130 510
+                  C130 590 100 650 130 700
+                "
+                fill="none"
+                stroke="#ffffff"
+                stroke-width="4"
+                stroke-dasharray="10 14"
+                stroke-linecap="round"
+              />
+              <circle id="dots" cx="130" cy="120" r="12" fill="#ccc" />
+              <circle id="dots" cx="90" cy="240" r="12" fill="#ccc" />
+              <circle id="dots" cx="170" cy="360" r="12" fill="#ccc" />
+              <circle id="dots" cx="130" cy="480" r="12" fill="#ccc" />
+              <circle id="dots" cx="90" cy="600" r="12" fill="#ccc" />
+              <circle id="dots" cx="130" cy="680" r="12" fill="#ccc" />
+              <circle id="dot-mobile" r="14" cx="130" cy="20" fill="#DA353D" />
+            </svg>
+
+
             <div className="steps">
               {stepsData.map((s) => (
                 <div key={s.label} data-step data-at={s.at} className="step">
