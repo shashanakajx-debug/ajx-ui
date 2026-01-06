@@ -54,7 +54,7 @@ export default function ServiceCard({
                   viewBox="0 0 24 24"
                 >
                   <path
-                    strokeLinecap="round"
+                    stroke-linecap="round"
                     strokeLinejoin="round"
                     strokeWidth={2}
                     d="M9 5l7 7-7 7"

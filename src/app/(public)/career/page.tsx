@@ -146,7 +146,7 @@ export default async function CareerPage() {
                                                                 viewBox="0 0 24 24"
                                                             >
                                                                 <path
-                                                                    strokeLinecap="round"
+                                                                    stroke-linecap="round"
                                                                     strokeLinejoin="round"
                                                                     strokeWidth={2}
                                                                     d="M5 13l4 4L19 7"
@@ -172,7 +172,7 @@ export default async function CareerPage() {
                                                                 viewBox="0 0 24 24"
                                                             >
                                                                 <path
-                                                                    strokeLinecap="round"
+                                                                    stroke-linecap="round"
                                                                     strokeLinejoin="round"
                                                                     strokeWidth={2}
                                                                     d="M9 5l7 7-7 7"

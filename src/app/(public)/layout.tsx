@@ -5,6 +5,7 @@ import MobileMenu from '@/components/organisms/Header/MobileMenu';
 import InitScroll from '@/components/scroll/InitScroll';
 import LenisSmoothScroll from '@/components/scroll/LenisSmoothScroll';
 import ScrollTop from '@/components/scroll/ScrollTop';
+import Loader from '@/components/common/Loader';
 
 export default function PublicLayout({
     children,
@@ -13,6 +14,7 @@ export default function PublicLayout({
 }) {
     return (
         <div className="loading-wrap">
+            <Loader />
             <InitScroll />
             <LenisSmoothScroll />
             <MobileMenu />

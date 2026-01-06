@@ -268,24 +268,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Font Face Declarations */
-@font-face {
-  font-family: "Glacial Indifference";
-  src: url("../../public/font/GlacialIndifference-Bold.woff2") format("woff2"),
-    url("../../public/font/GlacialIndifference-Bold.woff") format("woff");
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Montserrat";
-  src: url("../../public/font/Montserrat-Regular.woff2") format("woff2"),
-    url("../../public/font/Montserrat-Regular.woff") format("woff");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
 
 /* ===========================
    COLOR TOKENS - LIGHT & DARK MODE
