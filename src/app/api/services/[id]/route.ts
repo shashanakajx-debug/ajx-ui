@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { updateService, deleteService, getServiceBySlug } from '@/models/Service';
+import { updateService, deleteService } from '@/models/Service';
 
 export async function PUT(
     request: Request,

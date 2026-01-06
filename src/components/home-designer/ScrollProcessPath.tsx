@@ -164,16 +164,16 @@ export default function ScrollProcessPath() {
                 d="M80,90 C190,170 300,170 410,110 C520,50 610,50 720,120 C830,190 920,190 1030,110 C1100,60 1140,70 1160,90"
                 fill="none"
                 stroke="#2c2c2c"
-                stroke-width="28"
-                stroke-linecap="round"
+                strokeWidth="28"
+                strokeLinecap="round"
               />
               <path id="trackActive"
                 d="M80,90 C190,170 300,170 410,110 C520,50 610,50 720,120 C830,190 920,190 1030,110 C1100,60 1140,70 1160,90"
                 fill="none"
                 stroke="#ffffff"
-                stroke-width="4"
-                stroke-dasharray="10 14"
-                stroke-linecap="round"
+                strokeWidth="4"
+                strokeDasharray="10 14"
+                strokeLinecap="round"
               />
 
               <circle id="dots" cx="140" cy="125" r="12" fill="#ccc" />
@@ -202,8 +202,8 @@ export default function ScrollProcessPath() {
                 "
                 fill="none"
                 stroke="#2c2c2c"
-                stroke-width="28"
-                stroke-linecap="round"
+                strokeWidth="28"
+                strokeLinecap="round"
               />
 
 
@@ -217,9 +217,9 @@ export default function ScrollProcessPath() {
                 "
                 fill="none"
                 stroke="#ffffff"
-                stroke-width="4"
-                stroke-dasharray="10 14"
-                stroke-linecap="round"
+                strokeWidth="4"
+                strokeDasharray="10 14"
+                strokeLinecap="round"
               />
               <circle id="dots" cx="130" cy="120" r="12" fill="#ccc" />
               <circle id="dots" cx="90" cy="240" r="12" fill="#ccc" />

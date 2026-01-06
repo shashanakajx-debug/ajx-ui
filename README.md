@@ -157,9 +157,6 @@ Ajx-Tecnologies-Website/
 │   │   │
 │   │   ├───services
 │   │   │       route.ts
-│   │   │
-│   │   └───swagger
-│   │           route.ts
 │   │
 │   └───api-docs
 │           page.tsx

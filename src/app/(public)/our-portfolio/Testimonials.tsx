@@ -5,7 +5,7 @@ import testimonialsPortfolioData from "./testimonials-portfolio.json";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Parallax } from "swiper/modules";
 import AnimatedButton from "@/components/animation/AnimatedButton";
-import Link from "next/link";
+
 
 export default function Testimonials() {
   return (

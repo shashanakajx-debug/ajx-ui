@@ -37,18 +37,20 @@ export default function RevealText<T extends HtmlTag = "span">({
   const splitRef = useRef<SplitType | null>(null);
 
   useEffect(() => {
+    const triggerElement = elRef.current;
+
     const createAnimation = () => {
-      if (!elRef.current) return;
+      if (!triggerElement) return;
 
       // Revert previous split if exists
       splitRef.current?.revert();
 
-      const split = new SplitType(elRef.current, { types: "words,chars" });
+      const split = new SplitType(triggerElement, { types: "words,chars" });
       splitRef.current = split;
 
       const anim = gsap.from(split.chars, {
         scrollTrigger: {
-          trigger: elRef.current,
+          trigger: triggerElement,
           start,
           end,
           scrub,
@@ -82,7 +84,7 @@ export default function RevealText<T extends HtmlTag = "span">({
 
       // Clean up ScrollTrigger instances for this element
       ScrollTrigger.getAll()
-        .filter((t) => t.vars.trigger === elRef.current)
+        .filter((t) => t.vars.trigger === triggerElement)
         .forEach((t) => t.kill());
 
       // No global refresh listener to remove

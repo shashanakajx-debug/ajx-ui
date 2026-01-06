@@ -172,7 +172,7 @@ export default function Header(): React.ReactElement {
                   <div className="grid grid-cols-2 gap-10">
                     {link.submenu.map((sublink) => (
                       <Link
-                        key={sublink.href}
+                        key={sublink.label}
                         href={sublink.href}
                         className="group flex items-start gap-6 p-7 rounded-xl transition-all"
                       >
@@ -253,7 +253,7 @@ export default function Header(): React.ReactElement {
                 <div id={`${link.label}-submenu`} className="pl-4">
                   {link.submenu.map((s) => (
                     <Link
-                      key={s.href}
+                      key={s.label}
                       href={s.href}
                       onClick={() => {
                         setMobileMenuOpen(false);
