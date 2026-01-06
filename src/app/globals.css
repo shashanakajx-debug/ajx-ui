@@ -1060,7 +1060,13 @@ section.process .pathStage {
 .svg-mobile {
   display: none;
 }
- 
+.mega-menu-img{
+ padding-left: 2rem;
+}
+.right-border{
+  border-right: 1px solid var(--t-bright);
+}
+
 /* Mobile */
 @media (max-width: 768px) {
 .step:nth-child(1) {
@@ -1113,9 +1119,22 @@ section.process .pathStage {
   fill: #22c55e;
   filter: drop-shadow(0 0 6px #22c55e);
 }
-
+.mxd-project-item__media > div {
+    border-radius: 0 !important;
+}
+.btn-anim{
+  border: 1px solid var(--t-bright) !important;
+}
 
 @media (max-width: 590px) {
+.hero-00-title {
+    font-size: 24px;
+    line-height: normal;
+}  
+.mxd-manifest {
+    font: normal var(--fw-regular) 2rem / 1.6 var(--_font-accent);
+    margin-bottom: 1rem;
+}  
 .mxd-section.padding-pre-manifest.mobile-point-subtitle {
     padding-bottom: 4.7rem;
 }  

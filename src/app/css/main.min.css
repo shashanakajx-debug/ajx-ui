@@ -388,19 +388,19 @@
   background-image: url(/img/illustrations/2400x1600_divider-10.webp);
 }
 .preview-image-1 {
-  background-image: url(/1400x1400_prv-01.webp);
+  background-image: url(/Projects/1.png);
 }
 .preview-image-2 {
-  background-image: url(/1400x1400_prv-02.webp);
+  background-image: url(/Projects/2.png);
 }
 .preview-image-3 {
-  background-image: url(/1400x1400_prv-03.webp);
+  background-image: url(/Projects/3.png);
 }
 .preview-image-4 {
-  background-image: url(/1400x1400_prv-04.webp);
+  background-image: url(/Projects/4.png);
 }
 .preview-image-5 {
-  background-image: url(/1400x1400_prv-05.webp);
+  background-image: url(/Projects/4.png);
 }
 
 .blog-preview-image-1 {
@@ -4977,7 +4977,7 @@ form textarea:required:valid {
   background-repeat: no-repeat;
   background-position: center;
   -moz-background-size: cover;
-  background-size: cover;
+  background-size: contain;
 }
 @media only screen and (min-width: 768px) {
   .mxd-project-item__preview {
@@ -5492,7 +5492,7 @@ form textarea:required:valid {
 }
 @media only screen and (min-width: 1600px) {
   .mxd-nav__contain {
-    padding: 0 9rem;
+    padding: 0 7rem;
   }
 }
 .nav_link_wrap {
@@ -16886,19 +16886,19 @@ form textarea:required:valid {
     z-index: 0;
   }
   .mxd-services-cards__image.mxd-services-cards-image-1 {
-    width: 480px;
+    width: 590px;
     right: 0;
-    bottom: -240px;
+    bottom: -2px;
   }
   .mxd-services-cards__image.mxd-services-cards-image-2 {
     width: 380px;
-    left: 50%;
+    left: 40%;
     right: auto;
     -webkit-transform: translateX(-50%);
     -moz-transform: translateX(-50%);
     -ms-transform: translateX(-50%);
     transform: translateX(-50%);
-    bottom: -220px;
+    bottom: -18px;
   }
   .mxd-services-cards__image.mxd-services-cards-image-3 {
     width: 50%;
@@ -16913,13 +16913,13 @@ form textarea:required:valid {
   .mxd-services-cards__image.mxd-services-cards-image-3 .image-1 {
     width: 300px;
     left: 0;
-    top: -100px;
+    top: -20px;
   }
   .mxd-services-cards__image.mxd-services-cards-image-3 .image-2 {
     display: block;
     width: 480px;
-    bottom: -180px;
-    right: -40px;
+    bottom: 0px;
+    right: 0px;
   }
   .mxd-services-cards__image.mxd-services-cards-image-4 {
     width: 280px;
@@ -16934,29 +16934,29 @@ form textarea:required:valid {
 }
 @media only screen and (min-width: 1600px) {
   .mxd-services-cards__image.mxd-services-cards-image-1 {
-    width: 710px;
+    width: 790px;
     right: 0;
-    bottom: -320px;
+    bottom: 0px;
   }
   .mxd-services-cards__image.mxd-services-cards-image-2 {
     width: 580px;
-    left: 50%;
+    left: 47%;
     right: auto;
     -webkit-transform: translateX(-50%);
     -moz-transform: translateX(-50%);
     -ms-transform: translateX(-50%);
     transform: translateX(-50%);
-    bottom: -300px;
+    bottom: 0px;
   }
   .mxd-services-cards__image.mxd-services-cards-image-3 .image-1 {
     width: 400px;
     left: -3rem;
-    top: -180px;
+    top: 0px;
   }
   .mxd-services-cards__image.mxd-services-cards-image-3 .image-2 {
     display: block;
     width: 610px;
-    bottom: -130px;
+    bottom: 0px;
     right: 20px;
   }
   .mxd-services-cards__image.mxd-services-cards-image-4 {

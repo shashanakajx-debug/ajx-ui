@@ -12,6 +12,7 @@ type NavLink = {
   label: string;
   href: string;
   submenu?: SubLink[];
+  img: string;
 };
 
 export default function Header(): React.ReactElement {
@@ -28,6 +29,7 @@ export default function Header(): React.ReactElement {
     {
       label: "AI / ML",
       href: "/our-services#AI-ML",
+      img: "/1400x1400_prv-01.webp",
       submenu: [
         { label: "LLM Training", href: "/our-services#AI-ML" },
         { label: "LLM Factuality", href: "/our-services#AI-ML" },
@@ -41,6 +43,7 @@ export default function Header(): React.ReactElement {
     {
       label: "Digital Engg",
       href: "/our-services#Digital-Engg",
+      img: "/1400x1400_prv-02.webp",
       submenu: [
         { label: "AR/VR", href: "/our-services#Digital-Engg" },
         { label: "IoT", href: "/our-services#Digital-Engg" },
@@ -50,6 +53,7 @@ export default function Header(): React.ReactElement {
     {
       label: "DevOps",
       href: "/our-services#DevOps",
+      img: "/1400x1400_prv-03.webp",
       submenu: [
         { label: "CI/CD", href: "/our-services#DevOps" },
         {
@@ -65,6 +69,7 @@ export default function Header(): React.ReactElement {
     {
       label: "Web3",
       href: "/our-services#Web3",
+      img: "/1400x1400_prv-04.webp",
       submenu: [
         { label: "DApp Development", href: "/our-services#Web3" },
         { label: "Smart Contracts", href: "/our-services#Web3" },
@@ -74,6 +79,7 @@ export default function Header(): React.ReactElement {
     {
       label: "Cloud",
       href: "/our-services#Cloud",
+      img: "/1400x1400_prv-05.webp",
       submenu: [
         { label: "AWS", href: "/our-services#Cloud" },
         { label: "Azure", href: "/our-services#Cloud" },
@@ -83,6 +89,7 @@ export default function Header(): React.ReactElement {
     {
       label: "SaaS",
       href: "/our-services#SaaS",
+      img: "/1400x1400_prv-01.webp",
       submenu: [
         { label: "SaaS Development", href: "/our-services#SaaS" },
         { label: "SaaS Integration", href: "/our-services#SaaS" },
@@ -92,6 +99,7 @@ export default function Header(): React.ReactElement {
     {
       label: "SEO",
       href: "/our-services#SEO",
+      img: "/1400x1400_prv-01.webp",
       submenu: [
         { label: "On-Page SEO", href: "/our-services#SEO" },
         { label: "Off-Page SEO", href: "/our-services#SEO" },
@@ -169,28 +177,36 @@ export default function Header(): React.ReactElement {
                   onMouseEnter={() => handleMouseEnter(link.label)}
                   onMouseLeave={handleMouseLeave}
                 >
-                  <div className="grid grid-cols-2 gap-10">
-                    {link.submenu.map((sublink) => (
-                      <Link
-                        key={sublink.label}
-                        href={sublink.href}
-                        className="group flex items-start gap-6 p-7 rounded-xl transition-all"
-                      >
-                        <div className="mt-1 w-14 h-14 rounded-xl bg-black dark:bg-white flex items-center justify-center group-hover:bg-gray-800 dark:group-hover:bg-gray-200 transition-colors flex-shrink-0">
-                          <svg className="w-7 h-7 text-white dark:text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                          </svg>
-                        </div>
-                        <div className="flex-1">
-                          <h4 className="font-bold text-2xl mb-3 transition-colors">
-                            {sublink.label}
-                          </h4>
-                          <p className="text-[15px] leading-relaxed">
-                            We are a leading {sublink.label} agency specializing in crafting exceptional solutions
-                          </p>
-                        </div>
-                      </Link>
-                    ))}
+                  <div className="row">
+                    <div className="col-12 col-xl-8 right-border">
+                      <div className="grid grid-cols-2 gap-10">
+                        {link.submenu.map((sublink) => (
+                          <Link
+                            key={sublink.href}
+                            href={sublink.href}
+                            className="group flex items-start gap-6 p-7 rounded-xl transition-all"
+                          >
+                            <div className="mt-1 w-14 h-14 rounded-xl bg-black dark:bg-white flex items-center justify-center group-hover:bg-gray-800 dark:group-hover:bg-gray-200 transition-colors flex-shrink-0">
+                              <svg className="w-7 h-7 text-white dark:text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                              </svg>
+                            </div>
+                            <div className="flex-1">
+                              <h4 className="font-bold text-2xl mb-3 transition-colors">
+                                {sublink.label}
+                              </h4>
+                              <p className="text-[15px] leading-relaxed">
+                                We are a leading {sublink.label} agency specializing in crafting exceptional solutions
+                              </p>
+                            </div>
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
+                    <div className="col-12 col-xl-4 mega-menu-img">
+                      <Image src={link.img} alt="mega-menu" width={500}
+                        height={500} className="w-auto h-auto" priority />
+                    </div>
                   </div>
                 </div>
               )}
@@ -204,7 +220,7 @@ export default function Header(): React.ReactElement {
 
           {/* Mobile Toggle */}
           <button
-            className="lg:hidden p-2"
+            className="lg:hidden hidden p-2"
             onClick={() => setMobileMenuOpen((s) => !s)}
             type="button"
             aria-label="Toggle menu"
@@ -253,7 +269,7 @@ export default function Header(): React.ReactElement {
                 <div id={`${link.label}-submenu`} className="pl-4">
                   {link.submenu.map((s) => (
                     <Link
-                      key={s.label}
+                      key={s.href}
                       href={s.href}
                       onClick={() => {
                         setMobileMenuOpen(false);
