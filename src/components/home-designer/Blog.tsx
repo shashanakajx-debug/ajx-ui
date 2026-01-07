@@ -118,7 +118,7 @@ export default function Blog() {
                         </span>
                       </div>
                     </Link>
-                    <div className="flex items-center gap-2 mb-3 text-xs text-muted anim-uni-in-up">
+                    <div className="flex items-center gap-2 mb-3 text-xs anim-uni-in-up">
                         <Calendar className="w-4 h-4" />
                         <span>{post.date}</span>
                       </div>
@@ -127,11 +127,10 @@ export default function Blog() {
                         {post.title}
                       </Link>
 
-                      <p className="anim-uni-in-up mt-2 text-sm text-muted">
+                      <p className="anim-uni-in-up mt-2 text-sm">
                         {post.excerpt}
                       </p>
 
-                      
                     </div>
                   </div>
                 ))}

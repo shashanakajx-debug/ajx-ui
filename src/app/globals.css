@@ -776,6 +776,7 @@ footer.mxd-demo-footer {
   color: var(--t-bright);
 }
 
+
 @media only screen and (min-width: 768px) {
   .mxd-header .container-custom-box {
     width: -moz-calc(100% - 19.6rem);
@@ -1154,6 +1155,32 @@ section.process .pathStage {
 }
 
 @media (max-width: 590px) {
+.container-custom-box img{
+    max-width: 86px;
+    height: auto;
+    margin-left: 30px;
+}  
+.mxd-header {
+  left: 0px;
+} 
+.mxd-section-title__hrcontrols{
+  margin-bottom: 3rem; 
+}  
+.mxd-section.padding-default {
+    padding-bottom: 5rem;
+}  
+ .mxd-section.padding-pre-stack {
+    padding-bottom: 4rem;
+}
+.mxd-demo-footer__mixdesign .anim-uni-in-up{
+  font-size:42px !important;
+}
+.mxd-demo-footer__mixdesign{
+  padding-top: 2rem; 
+}
+  .mxd-pinned-projects__scroll-inner{
+    gap: 1rem;
+  }
   .hero-00-title {
     font-size: 24px;
     line-height: normal;
@@ -1173,11 +1200,11 @@ section.process .pathStage {
   }
 
   .container-custom-box {
-    margin-right: 10rem;
+    margin-right: 8rem;
   }
 
   .mxd-nav__contain {
-    margin-right: 14px;
+    margin-right: 4px;
     margin-top: 1.6rem;
   }
 
