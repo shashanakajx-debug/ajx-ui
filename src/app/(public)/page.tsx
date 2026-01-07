@@ -9,7 +9,7 @@ import About from "@/components/home-designer/About";
 import Services from "@/components/home-designer/Services";
 import TechStack from "@/components/home-designer/TechStack";
 import Projects from "@/components/home-designer/Projects";
-import Industries from "@/components/home-designer/Industries";
+// import Industries from "@/components/home-designer/Industries";
 import WhyChooseUs from "@/components/home-designer/WhyChooseUs";
 import Testimonials from "@/components/home-designer/Testimonials";
 import Blog from "@/components/home-designer/Blog";
