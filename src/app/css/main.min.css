@@ -17038,7 +17038,7 @@ form textarea:required:valid {
     z-index: 1;
   }
   .mxd-services-cards-s__title h3 {
-    font-size: 4rem;
+    font-size: 2.5rem;
   }
 }
 @media only screen and (min-width: 1600px) {
