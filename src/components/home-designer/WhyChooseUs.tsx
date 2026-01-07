@@ -4,35 +4,40 @@ import AnimatedButton from "../animation/AnimatedButton";
 
 const approach1 = [
   {
-    title: "Perfection",
-    description: "From pixel-perfect designs to flawless code, every aspect of our projects is crafted with care to ensure the highest standards of quality.",
-    icon: "/icons/h70_appr-01.webp"
+    title: "End-to-End Services",
+    description:
+      "We don’t believe in one-size-fits-all. Every website we create is designed specifically for your business needs and goals.",
+    icon: "/icons/h70_appr-01.webp",
   },
   {
     title: "Innovative",
-    description: "We stay ahead of design trends, offering modern and visually impactful solutions that set your brand apart.",
-    icon: "/icons/h70_appr-02.webp"
+    description:
+      "From concept to launch, we handle every aspect of your web development journey.",
+    icon: "/icons/h70_appr-02.webp",
   },
   {
-    title: "Expertise",
-    description: "We are passionate about integrating the latest technologies and trends, including interactive animations and mobile-first strategies.",
-    icon: "/icons/h70_appr-03.webp"
+    title: "Proven Results",
+    description:
+      "Our work speaks for itself. We have a track record of delivering websites that improve performance and ROI.",
+    icon: "/icons/h70_appr-03.webp",
   },
   {
-    title: "Full-Cycle services",
-    description: "From web design to development, branding, SEO, and UX/UI, we provide a full range of services that cover all your digital needs.",
-    icon: "/icons/h70_appr-04.webp"
+    title: "Ongoing Support",
+    description:
+      "After your website goes live, we don’t disappear. We provide ongoing support and maintenance to keep your site performing at its best.",
+    icon: "/icons/h70_appr-04.webp",
   },
   {
     title: "Client Success",
-    description: "Our clients consistently see improved engagement, conversion rates, and business growth.",
-    icon: "/icons/h70_appr-05.webp"
-  }
+    description:
+      "Our clients consistently see improved engagement, conversion rates, and business growth.",
+    icon: "/icons/h70_appr-05.webp",
+  },
 ];
 
 export default function WhyChooseUs() {
   return (
-    <div className="mxd-section padding-pre-grid mobile-grid-s">
+    <div className="mxd-section padding-pre-grid mobile-grid-s mt-40">
       <div className="mxd-container grid-container">
         {/* Block - Section Title Start */}
         <div className="mxd-block">
@@ -42,7 +47,7 @@ export default function WhyChooseUs() {
                 <div className="col-12 col-xl-6 mxd-grid-item no-margin">
                   <div className="mxd-section-title__hrtitle anim-uni-in-up">
                     <RevealText as="h2" className="reveal-type">
-                      Approach and philosophy
+                      Why Choose AJX
                     </RevealText>
                   </div>
                 </div>

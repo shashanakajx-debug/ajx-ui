@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 export default function FuturisticTechnology() {
   return (
@@ -12,11 +13,17 @@ export default function FuturisticTechnology() {
                 {/* item */}
                 <div className="col-12 col-xl-8 mxd-services-cards-s__item mxd-grid-item anim-uni-scale-in-right">
                   <div className="mxd-services-cards-s__inner justify-between bg-base-tint radius-l padding-4">
+                    <div className="mxd-services-cards__controls">
+                      <Link
+                        className="btn btn-round btn-round-large btn-additional slide-right-up anim-no-delay"
+                        href="/services"
+                      >
+                        <i className="ph-bold ph-arrow-up-right" />
+                      </Link>
+                    </div>
                     <div className="mxd-services-cards-s__title">
                       <h3 className="anim-uni-in-up">
-                        AI-powered
-                        <br />
-                        solutions
+                        AI & Automation<br></br> Solutions
                       </h3>
                     </div>
                     <div className="mxd-services-cards-s__info width-50">
@@ -38,8 +45,7 @@ export default function FuturisticTechnology() {
                         </span>
                       </div>
                       <p className="anim-uni-in-up">
-                        Intelligent automation, predictive analytics, and
-                        machine learning-driven applications.
+                        With cutting-edge AI and automation frameworks, we design intelligent systems that streamline workflows and drive efficiency.
                       </p>
                     </div>
                     <div className="mxd-services-cards-s__image image-right">
@@ -55,8 +61,16 @@ export default function FuturisticTechnology() {
                 {/* item */}
                 <div className="col-12 col-xl-4 mxd-services-cards-s__item mxd-grid-item anim-uni-scale-in-left">
                   <div className="mxd-services-cards-s__inner justify-end bg-accent radius-l padding-4">
+                                        <div className="mxd-services-cards__controls">
+                      <Link
+                        className="btn btn-round btn-round-large btn-additional slide-right-up anim-no-delay"
+                        href="/services"
+                      >
+                        <i className="ph-bold ph-arrow-up-right" />
+                      </Link>
+                    </div>
                     <div className="mxd-services-cards-s__title">
-                      <h3 className="opposite anim-uni-in-up">Fintech</h3>
+                      <h3 className="opposite anim-uni-in-up">SaaS Product Development</h3>
                     </div>
                     <div className="mxd-services-cards-s__info">
                       <div className="mxd-services-cards-s__tags">
@@ -71,8 +85,7 @@ export default function FuturisticTechnology() {
                         </span>
                       </div>
                       <p className="t-opposite anim-uni-in-up">
-                        Innovative financial solutions, from digital banking to
-                        payment processing and investment platforms.
+                        We build robust, cloud-ready SaaS applications with scalable architecture and enterprise-grade security.
                       </p>
                     </div>
                     <div className="mxd-services-cards-s__image image-top-right">
@@ -89,8 +102,16 @@ export default function FuturisticTechnology() {
                 {/* item */}
                 <div className="col-12 col-xl-4 mxd-services-cards-s__item mxd-grid-item anim-uni-scale-in-right">
                   <div className="mxd-services-cards-s__inner bg-additional radius-l padding-4">
+                                        <div className="mxd-services-cards__controls">
+                      <Link
+                        className="btn btn-round btn-round-large btn-additional slide-right-up anim-no-delay"
+                        href="/services"
+                      >
+                        <i className="ph-bold ph-arrow-up-right" />
+                      </Link>
+                    </div>
                     <div className="mxd-services-cards-s__title">
-                      <h3 className="anim-uni-in-up">Blockchain</h3>
+                      <h3 className="anim-uni-in-up">Blockchain & Web3 Solutions</h3>
                     </div>
                     <div className="mxd-services-cards-s__info">
                       <div className="mxd-services-cards-s__tags">
@@ -105,8 +126,7 @@ export default function FuturisticTechnology() {
                         </span>
                       </div>
                       <p className="t-bright anim-uni-in-up">
-                        Secure and transparent decentralized applications,
-                        including smart contracts and cryptocurrencies.
+                        We craft decentralized applications with a focus on security, scalability, and innovation to empower businesses in the digital economy.
                       </p>
                     </div>
                     <div className="mxd-services-cards-s__image image-bottom">
@@ -123,8 +143,16 @@ export default function FuturisticTechnology() {
                 {/* item */}
                 <div className="col-12 col-xl-4 mxd-services-cards-s__item mxd-grid-item anim-uni-scale-in">
                   <div className="mxd-services-cards-s__inner bg-base-opp radius-l padding-4">
+                    <div className="mxd-services-cards__controls">
+                      <Link
+                        className="btn btn-round btn-round-large btn-additional slide-right-up anim-no-delay"
+                        href="/services"
+                      >
+                        <i className="ph-bold ph-arrow-up-right" />
+                      </Link>
+                    </div>
                     <div className="mxd-services-cards-s__title">
-                      <h3 className="opposite anim-uni-in-up">Cybersecurity</h3>
+                      <h3 className="opposite anim-uni-in-up">Web Design, Development & Applications</h3>
                     </div>
                     <div className="mxd-services-cards-s__info">
                       <div className="mxd-services-cards-s__tags">
@@ -139,8 +167,7 @@ export default function FuturisticTechnology() {
                         </span>
                       </div>
                       <p className="t-opposite anim-uni-in-up">
-                        Advanced threat detection, encryption solutions, and
-                        secure data protection.
+                        Our web solutions combine stunning design with powerful development to create fast, responsive.
                       </p>
                     </div>
                     <div className="mxd-services-cards-s__image image-bottom image-bottom-2">
@@ -156,8 +183,16 @@ export default function FuturisticTechnology() {
                 {/* item */}
                 <div className="col-12 col-xl-4 mxd-services-cards-s__item mxd-grid-item anim-uni-scale-in-left">
                   <div className="mxd-services-cards-s__inner justify-end bg-base-tint radius-l padding-4">
+                                        <div className="mxd-services-cards__controls">
+                      <Link
+                        className="btn btn-round btn-round-large btn-additional slide-right-up anim-no-delay"
+                        href="/services"
+                      >
+                        <i className="ph-bold ph-arrow-up-right" />
+                      </Link>
+                    </div>
                     <div className="mxd-services-cards-s__title">
-                      <h3 className="anim-uni-in-up">Gaming</h3>
+                      <h3 className="anim-uni-in-up">E-Commerce Development:</h3>
                     </div>
                     <div className="mxd-services-cards-s__info">
                       <div className="mxd-services-cards-s__tags">
@@ -172,8 +207,7 @@ export default function FuturisticTechnology() {
                         </span>
                       </div>
                       <p className="anim-uni-in-up">
-                        Immersive experiences, multiplayer platforms, and game
-                        engine development.
+                        Our e-commerce solutions deliver seamless shopping experiences with secure transactions and conversion-focused design.
                       </p>
                     </div>
                     <div className="mxd-services-cards-s__image image-top">

@@ -3,7 +3,9 @@
 import Link from "next/link";
 import socials from "../contact/socials.json";
 import Image from "next/image";
-import { blogs2, blogs3, blogs4 } from "./blogs.json";
+import blogData from "./blogs.json";
+
+const { blogs2, blogs3, blogs4 } = blogData;
 import SearchForm from "./SearchForm";
 import AnimatedButton from "@/components/animation/AnimatedButton";
 

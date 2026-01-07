@@ -117,7 +117,7 @@ export default function Techstack() {
 
   return (
     <div>
-      <div className="mxd-section techicon padding-grid-pre-pinned">
+      <div className="mxd-section techicon padding-grid-pre-pinned lg:mt-[80px]">
         <div className="mxd-container fullwidth-container">
           <div className="mxd-block" style={{ rowGap: ROW_GAP }}>
             {/* Row 1: Right → Left (normal animation moves leftwards) */}

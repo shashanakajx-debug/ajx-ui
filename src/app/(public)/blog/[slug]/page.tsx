@@ -1,11 +1,14 @@
 "use client";
 
+import { use } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import Comments from "../Comments";
 import AnimatedButton from "@/components/animation/AnimatedButton";
 
-export default function BlogDetails({ params }: { params: { slug: string } }) {
+export default function BlogDetails({ params }: { params: Promise<{ slug: string }> }) {
+    const { slug } = use(params);
+    console.log("Viewing blog post:", slug);
     // Ideally use params.slug to fetch data
     return (
         <div className="mxd-section padding-pre-title">

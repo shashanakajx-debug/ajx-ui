@@ -17,9 +17,7 @@ import FinalCta from "@/components/home-designer/FinalCta";
 import ParallaxDivider from "@/components/home-designer/ParallaxDivider";
 import ScrollProcessPath from "@/components/home-designer/ScrollProcessPath";
 import FuturisticTechnology from "@/components/home-designer/FuturisticTechnology";
-import Creatives from "@/components/home-designer/Creatives"
-
-
+import Creatives from "@/components/home-designer/Creatives";
 
 /* --------------------
    HomePage component
@@ -84,6 +82,9 @@ export default function HomePage() {
       {/* 3. About Us */}
       <About />
 
+      {/* 5. Futuristic Technology */}
+      <FuturisticTechnology />
+
       {/* 4. Our Services */}
       <Services />
 
@@ -93,16 +94,13 @@ export default function HomePage() {
       {/* 6. Featured Projects */}
       <Projects />
 
-      {/* 5. Futuristic Technology */}
-      <FuturisticTechnology />
-
       <Creatives />
 
       {/* 9.1 Our 6-Step Process */}
       <ScrollProcessPath />
 
       {/* 7. Industries Served */}
-      <Industries />
+      {/* <Industries /> */}
 
       {/* 8. Why Choose Us */}
       <WhyChooseUs />
