@@ -283,6 +283,23 @@
   box-sizing: border-box;
 }
 
+/* Logo Switching Logic */
+.logo-light {
+  display: block;
+}
+
+.logo-dark {
+  display: none;
+}
+
+[color-scheme="dark"] .logo-light {
+  display: none;
+}
+
+[color-scheme="dark"] .logo-dark {
+  display: block;
+}
+
 html,
 body {
   height: 100%;
@@ -1055,106 +1072,124 @@ section.process .pathStage {
 .interactive {
   /* Toggled by JS */
 }
+
 /* ===== MOBILE VERTICAL ROADMAP ===== */
 /* Desktop */
 .svg-mobile {
   display: none;
 }
-.mega-menu-img{
- padding-left: 2rem;
+
+.mega-menu-img {
+  padding-left: 2rem;
 }
-.right-border{
+
+.right-border {
   border-right: 1px solid var(--t-bright);
 }
 
 /* Mobile */
 @media (max-width: 768px) {
-.step:nth-child(1) {
+  .step:nth-child(1) {
     left: 24.2376%;
     top: 25.6511%;
     opacity: 0.4;
-}
-.step:nth-child(2) {
-  left: 67.147%;
-  top: 33.0156%;
-  opacity: 0.4;
-}
-  .step:nth-child(3) {
-  left: 36.6161%;
-  top: 57.9403%;
-  opacity: 0.4;
   }
-.step:nth-child(5) {
+
+  .step:nth-child(2) {
+    left: 67.147%;
+    top: 33.0156%;
+    opacity: 0.4;
+  }
+
+  .step:nth-child(3) {
+    left: 36.6161%;
+    top: 57.9403%;
+    opacity: 0.4;
+  }
+
+  .step:nth-child(5) {
     left: 29.6171%;
     top: 85.2694%;
     opacity: 0.472;
-}
-.step:nth-child(6) {
-  left: 67.4403%;
-  top: 92.5311%;
-  opacity: 0.808;
-}
-.step:nth-child(4) {
-  left: 71.7136%;
-  top: 69.4439%;
-  opacity: 0.4;
-}
+  }
+
+  .step:nth-child(6) {
+    left: 67.4403%;
+    top: 92.5311%;
+    opacity: 0.808;
+  }
+
+  .step:nth-child(4) {
+    left: 71.7136%;
+    top: 69.4439%;
+    opacity: 0.4;
+  }
+
   .svg {
     display: none;
   }
+
   .svg-mobile {
-  width: 100%;
-  max-width: 320px;
-  height: 720px;        /* 👈 EXACT HEIGHT */
-  display: block;
-  margin: 0 auto;
+    width: 100%;
+    max-width: 320px;
+    height: 720px;
+    /* 👈 EXACT HEIGHT */
+    display: block;
+    margin: 0 auto;
   }
-section.process .pathStage {
+
+  section.process .pathStage {
     margin-top: 2rem;
+  }
 }
-}
- 
+
 /* DOT STATES */
 .road-dot.done {
   fill: #22c55e;
   filter: drop-shadow(0 0 6px #22c55e);
 }
-.mxd-project-item__media > div {
-    border-radius: 0 !important;
-}
-.btn-anim{
+
+.btn-anim {
   border: 1px solid var(--t-bright) !important;
 }
 
 @media (max-width: 590px) {
-.hero-00-title {
+  .hero-00-title {
     font-size: 24px;
     line-height: normal;
-}  
-.mxd-manifest {
+  }
+
+  .mxd-manifest {
     font: normal var(--fw-regular) 2rem / 1.6 var(--_font-accent);
     margin-bottom: 1rem;
-}  
-.mxd-section.padding-pre-manifest.mobile-point-subtitle {
+  }
+
+  .mxd-section.padding-pre-manifest.mobile-point-subtitle {
     padding-bottom: 4.7rem;
-}  
-.mxd-section-title{
-  margin-bottom: 0;
-}  
-.container-custom-box {
-  margin-right: 10rem;
- }
-.mxd-nav__contain {
- margin-right: 14px;
- margin-top: 1.6rem;
-}
-.mxd-hero-00__top{
-  padding: 2rem 0 2rem 0;
-}
-.mxd-hero-00wrap .mxd-hero-00bottom {
-  margin-bottom: 3rem;
-}
-.mxd-section.padding-pre-pinned-img {
+  }
+
+  .mxd-section-title {
+    margin-bottom: 0;
+  }
+
+  .container-custom-box {
+    margin-right: 10rem;
+  }
+
+  .mxd-nav__contain {
+    margin-right: 14px;
+    margin-top: 1.6rem;
+  }
+
+  .mxd-hero-00__top {
+    padding: 2rem 0 2rem 0;
+  }
+
+  .mxd-hero-00wrap .mxd-hero-00bottom {
+    margin-bottom: 3rem;
+  }
+
+  .mxd-section.padding-pre-pinned-img {
     padding-bottom: 2rem;
-}
+  }
 }

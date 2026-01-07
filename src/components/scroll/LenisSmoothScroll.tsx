@@ -76,12 +76,25 @@ export default function LenisSmoothScroll() {
                 href.replace(/#.*$/, "") === window.location.pathname;
 
             if (isAnchor || isSamePageAnchor) {
-                const hash = href.includes("#") ? "#" + href.split("#")[1] : href;
-                const targetElement = document.querySelector(hash);
-
-                if (targetElement) {
-                    e.preventDefault();
-                    lenis.scrollTo(hash, { offset: -100 });
+                // Extract hash and validate it
+                const hashPart = href.includes("#") ? href.split("#")[1] : "";
+                
+                // Skip if hash is empty or undefined
+                if (!hashPart || hashPart.trim() === "") {
+                    return;
+                }
+                
+                const hash = "#" + hashPart;
+                
+                try {
+                    const targetElement = document.querySelector(hash);
+                    
+                    if (targetElement) {
+                        e.preventDefault();
+                        lenis.scrollTo(hash, { offset: -100 });
+                    }
+                } catch (error) {
+                    console.warn(`Invalid selector: ${hash}`, error);
                 }
             }
         };
@@ -91,10 +104,19 @@ export default function LenisSmoothScroll() {
         // --- Initial Hash Scroll (Cross-page) ---
         if (window.location.hash) {
             const hash = window.location.hash;
-            // Delay to ensure elements are rendered (esp. if data fetching involved)
-            setTimeout(() => {
-                lenis.scrollTo(hash, { offset: -100, immediate: false });
-            }, 500);
+            const hashPart = hash.substring(1); // Remove leading #
+            
+            // Only scroll if hash has valid content
+            if (hashPart && hashPart.trim() !== "") {
+                // Delay to ensure elements are rendered (esp. if data fetching involved)
+                setTimeout(() => {
+                    try {
+                        lenis.scrollTo(hash, { offset: -100, immediate: false });
+                    } catch (error) {
+                        console.warn(`Failed to scroll to ${hash}`, error);
+                    }
+                }, 500);
+            }
         }
 
         return () => {
@@ -107,11 +129,13 @@ export default function LenisSmoothScroll() {
             document.body.style.overflow = "";
         };
     }, [lenis]);
+    
     // return null for ios
     const isIOS = typeof window !== "undefined" && /iPad|iPhone|iPod/.test(navigator.userAgent);
     if (isIOS) {
         return null;
     }
+    
     return (
         <ReactLenis
             root

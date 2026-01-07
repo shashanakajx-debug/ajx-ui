@@ -141,11 +141,19 @@ export default function Header(): React.ReactElement {
         <div className="flex items-center">
           <Link href="/" className="flex items-center gap-2">
             <Image
-              src="/Ajx-logo.png"
+              src="/AJX-black-logo.png"
               alt="AJX Technologies"
               width={150}
               height={50}
-              className="h-20 w-auto"
+              className="h-20 w-auto logo-light"
+              priority
+            />
+            <Image
+              src="/AJX-white-logo.png"
+              alt="AJX Technologies"
+              width={150}
+              height={50}
+              className="h-20 w-auto logo-dark"
               priority
             />
           </Link>
@@ -180,9 +188,9 @@ export default function Header(): React.ReactElement {
                   <div className="row">
                     <div className="col-12 col-xl-8 right-border">
                       <div className="grid grid-cols-2 gap-10">
-                        {link.submenu.map((sublink) => (
+                        {link.submenu.map((sublink, index) => (
                           <Link
-                            key={sublink.href}
+                            key={`${link.label}-${index}`}
                             href={sublink.href}
                             className="group flex items-start gap-6 p-7 rounded-xl transition-all"
                           >
@@ -267,9 +275,9 @@ export default function Header(): React.ReactElement {
 
               {link.submenu && openMobileSubmenu === link.label && (
                 <div id={`${link.label}-submenu`} className="pl-4">
-                  {link.submenu.map((s) => (
+                  {link.submenu.map((s, index) => (
                     <Link
-                      key={s.href}
+                      key={`${link.label}-mobile-${index}`}
                       href={s.href}
                       onClick={() => {
                         setMobileMenuOpen(false);

@@ -72,10 +72,18 @@ export default function Footer1() {
                     className="mxd-logo flex items-center gap-3"
                   >
                     <Image
-                      src="/Ajx-logo.png"
+                      src="/AJX-black-logo.png"
                       alt="AJX Technologies Logo"
                       width={56}
                       height={56}
+                      className="w-auto h-14 logo-light"
+                    />
+                    <Image
+                      src="/AJX-white-logo.png"
+                      alt="AJX Technologies Logo"
+                      width={56}
+                      height={56}
+                      className="w-auto h-14 logo-dark"
                     />
                     <span className="mxd-logo__text">
                       AJX
@@ -100,13 +108,6 @@ export default function Footer1() {
                       Get Started
                       <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
                     </span>
-                  </AnimatedButton>
-
-                  <AnimatedButton
-                    as="a"
-                    href="/our-portfolio"
-                    className="btn btn-anim btn-default btn-small btn-outline slide-right-up group"
-                  >
                   </AnimatedButton>
                 </div>
               </div>
