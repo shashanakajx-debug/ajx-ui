@@ -729,19 +729,19 @@ textarea::placeholder {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
+  width: 55px;
+  height: 50px;
+  border-radius: 30px 0px 0px 30px !important;
   background-color: var(--color-surface);
   color: var(--color-text);
-  border: 1px solid var(--color-border);
+  border: 1px solid var(--t-bright);
   cursor: pointer;
   transition: all 0.3s ease;
   font-size: 1.25rem;
 
   /* Fixed Position */
   position: fixed;
-  right: 20px;
+  right: -5px;
   top: 50%;
   transform: translateY(-50%);
   z-index: 9999;
@@ -749,10 +749,9 @@ textarea::placeholder {
 }
 
 .mxd-color-switcher:hover {
-  background-color: var(--color-soft-gray);
-  transform: translateY(-50%) rotate(15deg);
-  border-color: var(--color-text);
+  border-color: var(--accent);
 }
+
 
 /* [Removed Duplicate CSS Blocks for Hamburger to avoid conflicts] */
 /* The styles have been merged into the main block above */
@@ -839,7 +838,11 @@ footer.mxd-demo-footer {
 }
 
 .navbar-box .menu-item {
-  color: var(--t-bright);
+    color: var(--t-bright);
+    font-size: larger;
+    font-family: Gilroy;
+    letter-spacing: 1px;
+    font-weight: 400;
 }
 
 .mega-menu-box {
@@ -929,6 +932,11 @@ footer.mxd-demo-footer {
 .hero-00-title__item.title-item-image svg {
   color: #4baa0f;
 }
+    .hero-00-title {
+        font-size: 11rem;
+        letter-spacing: 1px;
+        line-height: 15rem;
+    }
 
 .mxd-hero-section-bg {
   animation: ripple 6s linear infinite, ring 6s ease-in-out infinite alternate;
@@ -1239,10 +1247,15 @@ section.process .pathStage {
 }
 
 .btn-anim {
-  border: 1px solid var(--accent) !important;
   background-color: var(--accent);
+  border: 5px solid rgba(20, 168, 0, 0.2) !important;
 }
-
+span.ai_tesxt{
+  background-color: var(--base-opp);
+  color: var(--t-opp-bright);
+  border-radius: 150px;
+  padding: 4px 40px;
+}
 @media (max-width: 590px) {
   .container-custom-box img {
     max-width: 86px;
@@ -1282,7 +1295,6 @@ section.process .pathStage {
     font-size: 24px;
     line-height: normal;
   }
-
   .mxd-manifest {
     font: normal var(--fw-regular) 2rem / 1.6 var(--_font-accent);
     margin-bottom: 1rem;

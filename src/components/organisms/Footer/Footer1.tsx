@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import AnimatedButton from "../../animation/AnimatedButton";
+import ScrollNextSection from "@/components/ScrollNextSection";
 
 import {
   Mail,
@@ -85,7 +86,7 @@ export default function Footer1() {
                       height={130}
                       className="w-auto logo-dark"
                     />
-                    
+
                   </Link>
                 </div>
 
@@ -193,31 +194,36 @@ export default function Footer1() {
         {/* BIG TEXT */}
         <div className="mxd-block">
           <div className="mxd-demo-footer__mixdesign mxd-grid-item no-margin">
-            <div
-              className="anim-uni-in-up"
-              style={{
-                fontSize: "110px",
-                fontWeight: 400,
-                textAlign: "center",
-                // opacity: 0.1,
-              }}
-            >
-              AJX-TECHNOLOGIES
-            </div>
-         
           </div>
-             <div className="copyright-section"
-              style={{
-                fontSize: "16px",
-                fontWeight: 300,
-                textAlign: "center",
-                // opacity: 0.1,
-              }} 
-              >
-              Copyright © 2025 AjxTechnologies.com
+          <div className="copyright-section"
+            style={{
+              fontSize: "16px",
+              fontWeight: 300,
+              textAlign: "center",
+              // opacity: 0.1,
+            }}
+          >
+            Copyright © 2025 AjxTechnologies.com
 
-</div>
+          </div>
         </div>
+        <div className="next_page mxd-block ">
+          <div className="mxd-demo-footer__mixdesign mxd-grid-item no-margin">
+          </div>
+          <div className="copyright-section"
+            style={{
+              fontSize: "16px",
+              fontWeight: 300,
+              textAlign: "center",
+              // opacity: 0.1,
+            }}
+          >
+            Copyright © 2025 AjxTechnologies.com
+
+          </div>
+
+        </div>
+        <ScrollNextSection nextHref="/about-us" />
       </div>
     </footer>
   );
