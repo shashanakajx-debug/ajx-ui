@@ -1,17 +1,9 @@
-import { Poppins } from 'next/font/google';
 import Script from 'next/script';
 import './globals.css';
 import { SessionProvider } from 'next-auth/react';
 import { QueryProvider } from '@/providers/QueryProvider';
 import { ThemeProvider } from '@/components/theme-provider';
 import { Toaster } from 'sonner';
-
-const poppins = Poppins({
-  weight: ['400', '600', '700'],
-  subsets: ['latin'],
-  variable: '--font-poppins',
-  display: 'swap',
-});
 
 export const metadata = {
   title: 'AJX Technologies | Crafting Digital Experiences That Drive Success',
@@ -38,7 +30,7 @@ export default function RootLayout({
           strategy="lazyOnload"
         />
       </head>
-      <body className={`${poppins.variable} font-poppins antialiased no-touch`}>
+      <body className="font-gilroy antialiased no-touch">
         <QueryProvider>
           <SessionProvider>
             <ThemeProvider

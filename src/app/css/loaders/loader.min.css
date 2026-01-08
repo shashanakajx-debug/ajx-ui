@@ -36,9 +36,9 @@
   --base-shade--light: #e0dddb;
   --base-opp--light: #161616;
   --base-opp-tint--light: #1c1c1c;
-  --accent--light: #9f8be7;
+  --accent--light: #108a00;
   --accent-rgb--light: 159, 139, 231;
-  --additional--light: #ddf160;
+  --additional--light: #108a00;
   --additional-rgb--light: 221, 241, 96;
   --neutral-transparent--light: rgba(255, 255, 255, 0.3);
   --st-bright--light: #161616;
@@ -73,9 +73,9 @@
   --base-shade--dark: #0a0a0a;
   --base-opp--dark: #faf7f6;
   --base-opp-tint--dark: #ffffff;
-  --accent--dark: #ddf160;
+  --accent--dark: #108a00;
   --accent-rgb--dark: 221, 241, 96;
-  --additional--dark: #9f8be7;
+  --additional--dark: #108a00;
   --additional-rgb--dark: 159, 139, 231;
   --neutral-transparent--dark: rgba(0, 0, 0, 0.3);
   --st-bright--dark: #ffffff;

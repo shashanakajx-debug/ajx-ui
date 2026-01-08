@@ -152,7 +152,7 @@ export default function FuturisticTechnology() {
                       </Link>
                     </div>
                     <div className="mxd-services-cards-s__title">
-                      <h3 className="opposite anim-uni-in-up">Web Design, Development & Applications</h3>
+                      <h3 className="opposite anim-uni-in-up">Web Application Development</h3>
                     </div>
                     <div className="mxd-services-cards-s__info">
                       <div className="mxd-services-cards-s__tags">
@@ -192,7 +192,7 @@ export default function FuturisticTechnology() {
                       </Link>
                     </div>
                     <div className="mxd-services-cards-s__title">
-                      <h3 className="anim-uni-in-up">E-Commerce Development:</h3>
+                      <h3 className="anim-uni-in-up">E-Commerce Development</h3>
                     </div>
                     <div className="mxd-services-cards-s__info">
                       <div className="mxd-services-cards-s__tags">

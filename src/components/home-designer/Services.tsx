@@ -116,7 +116,7 @@ export default function Services() {
                     </div>
                     <div className="mxd-services-cards__title mxd-services-cards-s__title">
                       <h3 className="opposite anim-uni-in-up">
-                        Website Maintenance & Support:
+                        Website Maintenance & Support
                       </h3>
                     </div>
                     <div className="mxd-services-cards__info">

@@ -103,13 +103,13 @@
   --base-shade--light: #e0dddb;
   --base-opp--light: #161616;
   --base-opp-tint--light: #1c1c1c;
-  --accent--light: #9f8be7;
+  --accent--light: #108a00;
   --accent-rgb--light: 159, 139, 231;
-  --additional--light: #ddf160;
+  --additional--light: #108a00;
   --additional-rgb--light: 221, 241, 96;
   --neutral-transparent--light: rgba(255, 255, 255, 0.3);
   --st-bright--light: #161616;
-  --st-medium--light: #7c7c7c;
+  --st-medium--light: #108a00;
   --st-muted--light: #e0dddb;
   --st-opp-bright--light: #ffffff;
   --fw-regular--light: 400;
@@ -142,11 +142,11 @@
   --base-opp-tint--dark: #ffffff;
   --accent--dark: #ddf160;
   --accent-rgb--dark: 221, 241, 96;
-  --additional--dark: #9f8be7;
+  --additional--dark: #108a00;
   --additional-rgb--dark: 159, 139, 231;
   --neutral-transparent--dark: rgba(0, 0, 0, 0.3);
   --st-bright--dark: #ffffff;
-  --st-medium--dark: #646464;
+  --st-medium--dark: #108a00;
   --st-muted--dark: #252525;
   --st-opp-bright--dark: #0f0f0f;
   --fw-regular--dark: 300;
@@ -495,6 +495,7 @@ textarea {
   width: 6px;
   background: var(--base-shade);
 }
+
 @media only screen and (min-width: 768px) {
   ::-webkit-scrollbar {
     display: block;
@@ -946,12 +947,17 @@ html.lenis body {
 .mxd-section.padding-hero-07 {
   padding-top: 14rem;
 }
+
 .mxd-section.padding-hero-06,
 .mxd-section.padding-hero-09 {
   padding-top: 13rem;
 }
 .mxd-section.padding-hero-08 {
   padding-top: 3.4rem;
+}
+.ai_tech{
+  color: var( --additional--light);
+  display: contents;
 }
 @media only screen and (min-width: 768px) {
   .mxd-section.padding-hero-07 {
@@ -2941,7 +2947,7 @@ p.t-semibold {
   background-color: transparent;
   border-style: solid;
   border-color: var(--st-bright);
-  color: var(--t-bright);
+  color: var(--t-bright--dark);
 }
 .btn-outline.opposite {
   border-color: var(--st-opp-bright);
@@ -2961,7 +2967,7 @@ p.t-semibold {
   background-color: var(--additional);
   border-style: solid;
   border-color: var(--additional);
-  color: var(--t-bright);
+  color: var(--t-opp-bright);
 }
 .btn-opposite {
   background-color: var(--base-opp);
@@ -5277,6 +5283,7 @@ form textarea:required:valid {
 }
 .bg-additional {
   background-color: var(--additional);
+  background-color: #FFEB3B;
 }
 .bg-base {
   background-color: var(--base);
@@ -6860,7 +6867,7 @@ form textarea:required:valid {
 }
 @media only screen and (min-width: 768px) {
   .mxd-hero-00__top {
-    padding: 7rem 0 7rem 0;
+    padding: 14rem 0 7rem 0;
   }
 }
 @media only screen and (min-width: 1200px) {
@@ -6876,12 +6883,12 @@ form textarea:required:valid {
 }
 @media only screen and (min-width: 1400px) {
   .mxd-hero-00__top {
-    padding-top: 8rem;
+    padding-top: 14rem;
   }
 }
 @media only screen and (min-width: 1600px) {
   .mxd-hero-00__top {
-    padding-top: 10rem;
+    padding-top: 17rem;
     padding-bottom: 9rem;
   }
 }
@@ -6903,7 +6910,7 @@ form textarea:required:valid {
   top: 5rem;
   right: 0;
   width: 100%;
-  background-color: var(--accent);
+  background-color: var(--base-opp--light);
   border: 1px solid var(--base);
   -moz-border-radius: 3.3rem;
   border-radius: 3.3rem;
@@ -6999,6 +7006,7 @@ form textarea:required:valid {
   }
 }
 .hero-00-title {
+  font-family: "Gilroy", sans-serif;
   position: relative;
   display: -webkit-box;
   display: -moz-box;
@@ -7079,12 +7087,12 @@ form textarea:required:valid {
 }
 @media only screen and (min-width: 1200px) {
   .hero-00-title__row {
-    gap: 2.5rem;
+    gap: 0;
   }
 }
 @media only screen and (min-width: 1600px) {
   .hero-00-title__row {
-    gap: 2.8rem;
+    gap: 0;
   }
 }
 .hero-00-title__item {
@@ -7126,7 +7134,7 @@ form textarea:required:valid {
 }
 @media only screen and (min-width: 1200px) {
   .hero-00-title__item.title-item-transparent {
-    padding: 0 5.5rem;
+    padding: 0 0rem;
     -moz-border-radius: 6.6rem;
     border-radius: 6.6rem;
   }

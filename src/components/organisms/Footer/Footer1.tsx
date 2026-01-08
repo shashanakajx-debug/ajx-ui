@@ -74,28 +74,25 @@ export default function Footer1() {
                     <Image
                       src="/AJX-black-logo.png"
                       alt="AJX Technologies Logo"
-                      width={56}
-                      height={56}
-                      className="w-auto h-14 logo-light"
+                      width={130}
+                      height={130}
+                      className="w-auto logo-light"
                     />
                     <Image
                       src="/AJX-white-logo.png"
                       alt="AJX Technologies Logo"
-                      width={56}
-                      height={56}
-                      className="w-auto h-14 logo-dark"
+                      width={130}
+                      height={130}
+                      className="w-auto logo-dark"
                     />
-                    <span className="mxd-logo__text">
-                      AJX
-                      <br />
-                      Technologies
-                    </span>
+                    
                   </Link>
                 </div>
 
                 <p className="t-small t-bright anim-uni-in-up">
-                  Building smarter, scalable and future-ready digital experiences
-                  that drive business growth.
+                  We build stunning, user-friendly websites and applications that engage your audience and elevate your brand.
+
+
                 </p>
 
                 <div className="mxd-demo-footer__btn anim-uni-in-up mt-[10px]">
@@ -178,21 +175,14 @@ export default function Footer1() {
                 <div className="mxd-footer-promo__list">
                   <p className="t-small t-bright anim-uni-in-up flex items-center gap-2">
                     <Mail className="icon-shine w-5 h-5" />
-                    <a href="mailto:shashanakajx@gmail.com">
-                      shashanakajx@gmail.com
+                    <a href="mailto:connect@ajxtechnologies.com">
+                      connect@ajxtechnologies.com
                     </a>
                   </p>
 
                   <p className="t-small t-bright anim-uni-in-up flex items-center gap-2">
-                    <Phone className="icon-shine w-5 h-5" />
-                    <a href="tel:+918269669862">
-                      +91 8269669862
-                    </a>
-                  </p>
-
-                  <p className="t-small t-bright anim-uni-in-up flex items-center gap-2">
-                    <MapPin className="icon-shine w-5 h-5" />
-                    117, Skye Privilon, Tulsi Nagar, Nipania, Indore, MP (452010)
+                    <MapPin className="icon-shine w-7 h-7" />
+                    Address - 117, Skye Privilon Tulsi Nagar, Nipania, Indore, MP (452010) INDIA
                   </p>
                 </div>
               </div>
@@ -207,14 +197,26 @@ export default function Footer1() {
               className="anim-uni-in-up"
               style={{
                 fontSize: "110px",
-                fontWeight: 700,
+                fontWeight: 400,
                 textAlign: "center",
                 // opacity: 0.1,
               }}
             >
               AJX-TECHNOLOGIES
             </div>
+         
           </div>
+             <div className="copyright-section"
+              style={{
+                fontSize: "16px",
+                fontWeight: 300,
+                textAlign: "center",
+                // opacity: 0.1,
+              }} 
+              >
+              Copyright © 2025 AjxTechnologies.com
+
+</div>
         </div>
       </div>
     </footer>

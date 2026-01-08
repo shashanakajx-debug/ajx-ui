@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-
+import AnimatedButton from "@/components/animation/AnimatedButton";
 import VelocityMarquee from "../animation/VelocityMarquee";
 import RevealText from "../animation/RevealText";
 
@@ -18,31 +18,27 @@ export default function Hero() {
 
     if (!cssAny.paintWorklet) return;
 
+    // Try to load the ringparticles paint worklet (fail silently)
     cssAny.paintWorklet
-      .addModule(
-        "https://unpkg.com/css-houdini-ringparticles/dist/ringparticles.js"
-      )
-      .catch(() => { });
+      .addModule("https://unpkg.com/css-houdini-ringparticles/dist/ringparticles.js")
+      .catch(() => {});
 
-    // Set permanent values for the animation
+    // Set permanent values for the animation (same as first file)
     el.style.setProperty("--ring-x", "50");
-    el.style.setProperty("--ring-y", "50");
+    el.style.setProperty("--ring-y", "80");
     el.style.setProperty("--ring-interactive", "1");
     el.classList.add("interactive");
   }, []);
 
   return (
-    <div
-      ref={heroRef}
-      className="mxd-section mxd-hero-section mxd-hero-section-bg"
-    >
+    <div ref={heroRef} className="mxd-section mxd-hero-section mxd-hero-section-bg">
       <div className="mxd-hero-00">
         <div className="mxd-hero-00__wrap">
           {/* top group */}
           <div className="mxd-hero-00__top">
             <div className="mxd-hero-00__title-wrap loading-wrap">
               {/* title marquee */}
-              <div className="mxd-hero-00__marquee loading__item hidden">
+              <div className="mxd-hero-00__marquee loading__item">
                 <VelocityMarquee
                   direction="left"
                   className="marquee marquee-left--gsap"
@@ -53,7 +49,7 @@ export default function Hero() {
                       key={index}
                       className="marquee__item item-regular text"
                     >
-                      <p> Success through</p>
+                      <p>Ai Experiences</p>
                       <svg
                         version="1.1"
                         xmlns="http://www.w3.org/2000/svg"
@@ -68,8 +64,7 @@ export default function Hero() {
                       C0.8,38.4,0,39.2,0,40c0,0.8,0.8,1.6,1.6,1.6c0,0,12.2,0,16.6,0c1.6,0,4.8,0.3,6.7,0.8c2.3,0.6,4.3,0.8,6.3,2.4
                       c1.6,1.2,3.2,2.8,4.3,4.4c1.2,2,2.1,3.9,2.4,6.3c0.2,1.7,0.7,4.7,0.8,6.7c0.2,4,0,16.2,0,16.2c0,0.8,0.8,1.6,1.6,1.6
                       s1.6-0.8,1.6-1.6c0,0,0-12.3,0-16.2c0-1.6,0.5-5.1,0.8-6.7c0.5-2.3,0.8-4.4,2.4-6.3c1.2-1.6,2.8-3.2,4.3-4.4c2-1.2,3.9-2,6.3-2.4
-                      c1.8-0.3,5.1-0.7,7.1-0.8c3.5-0.2,15.8,0,15.8,0c0.8,0,1.6-0.8,1.6-1.6C80,39.2,79.2,38.4,78.4,38.4C78.4,38.4,78.4,38.4,78.4,38.4z
-                      "
+                      c1.8-0.3,5.1-0.7,7.1-0.8c3.5-0.2,15.8,0,15.8,0c0.8,0,1.6-0.8,1.6-1.6C80,39.2,79.2,38.4,78.4,38.4C78.4,38.4,78.4,38.4,78.4,38.4z"
                         />
                       </svg>
                       {/* <Image class="inject-me" src="/img/icons/20x20-rayo-star.svg" alt="Divider Icon"> */}
@@ -78,24 +73,17 @@ export default function Hero() {
                 </VelocityMarquee>
               </div>
               {/* title text */}
-              <div className="hero-00-title">
+              <h1 className="hero-00-title">
                 <span className="hero-00-title__row loading__item">
-                  <div className="hero-00-title__item title-item-image">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      version="1.1"
-                      viewBox="0 0 20 20"
-                    >
-                      <path d="M19.6,9.6h-3.9c-.4,0-1.8-.2-1.8-.2-.6,0-1.1-.2-1.6-.6-.5-.3-.9-.8-1.2-1.2-.3-.4-.4-.9-.5-1.4,0,0,0-1.1-.2-1.5V.4c0-.2-.2-.4-.4-.4s-.4.2-.4.4v4.4c0,.4-.2,1.5-.2,1.5,0,.5-.2,1-.5,1.4-.3.5-.7.9-1.2,1.2s-1,.5-1.6.6c0,0-1.2,0-1.7.2H.4c-.2,0-.4.2-.4.4s.2.4.4.4h4.1c.4,0,1.7.2,1.7.2.6,0,1.1.2,1.6.6.4.3.8.7,1.1,1.1.3.5.5,1,.6,1.6,0,0,0,1.3.2,1.7v4.1c0,.2.2.4.4.4s.4-.2.4-.4v-4.1c0-.4.2-1.7.2-1.7,0-.6.2-1.1.6-1.6.3-.4.7-.8,1.1-1.1.5-.3,1-.5,1.6-.6,0,0,1.3,0,1.8-.2h3.9c.2,0,.4-.2.4-.4s-.2-.4-.4-.4h0Z" />
-                    </svg>
-                    {/* <img class="inject-me" src="/img/icons/20x20-rayo-star.svg" alt="Divider Icon"> */}
-                  </div>
-                  <p className="hero-00-title__item hero-subtitle hero-00-title">
-                    Crafting AI Experiences<br></br>
-                    Automating the Future
-                  </p>
+                  <em className="hero-00-title__item">Crafting</em>
+                  <em className="hero-00-title__item title-item-transparent">
+                     Ai Experiences
+                  </em>
                 </span>
-              </div>
+                <span className="hero-00-title__row loading__item">
+                  <em className="hero-00-title__item">Automating the Future</em>
+                </span>
+              </h1>
             </div>
           </div>
           {/* bottom group */}
@@ -106,10 +94,24 @@ export default function Hero() {
                 as="p"
                 className="mxd-manifest reveal-type anim-uni-in-up"
               >
-                AI-driven development and automation built to scale products,
-                optimize workflows, and accelerate digital growth.
+                AI-driven development and automation built to scale products, optimize workflows, and accelerate digital growth.
               </RevealText>
             </div>
+            <div className="mxd-manifest__controls d-xl-flex justify-content-xl-center ">
+                                  <AnimatedButton
+                                    text="About Us"
+                                    className="btn btn-anim btn-default btn-outline slide-right-up anim-uni-in-up"
+                                    href={`/about-us`}
+                                    style={{
+                                      border: '2px solid white',
+                                      borderRadius: '50px',
+                                      padding: '12px 32px',
+                                      marginTop: '50px',
+                                    }}
+                                  >
+                                    <i className="ph-bold ph-arrow-up-right" />
+                                  </AnimatedButton>
+                                </div>
           </div>
         </div>
       </div>
