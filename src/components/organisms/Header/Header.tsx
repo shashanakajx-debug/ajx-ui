@@ -5,7 +5,7 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import ThemeSwitcherButton from "./ColorSwitcher";
+
 
 type SubLink = { label: string; href: string };
 type NavLink = {
@@ -224,7 +224,7 @@ export default function Header(): React.ReactElement {
 
         {/* Controls: Theme + Mobile Toggle */}
         <div className="flex items-center gap-4">
-          <ThemeSwitcherButton />
+
 
           {/* Mobile Toggle */}
           <button

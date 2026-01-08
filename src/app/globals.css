@@ -724,6 +724,7 @@ textarea::placeholder {
 }
 
 /* Color Switcher Fix */
+/* Color Switcher Fix */
 .mxd-color-switcher {
   display: inline-flex;
   align-items: center;
@@ -731,17 +732,25 @@ textarea::placeholder {
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background-color: transparent;
+  background-color: var(--color-surface);
   color: var(--color-text);
   border: 1px solid var(--color-border);
   cursor: pointer;
   transition: all 0.3s ease;
   font-size: 1.25rem;
+
+  /* Fixed Position */
+  position: fixed;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 9999;
+  box-shadow: var(--shadow-md);
 }
 
 .mxd-color-switcher:hover {
   background-color: var(--color-soft-gray);
-  transform: rotate(15deg);
+  transform: translateY(-50%) rotate(15deg);
   border-color: var(--color-text);
 }
 
@@ -916,9 +925,11 @@ footer.mxd-demo-footer {
     --ring-radius: 250;
   }
 }
+
 .hero-00-title__item.title-item-image svg {
-    color: #4baa0f;
+  color: #4baa0f;
 }
+
 .mxd-hero-section-bg {
   animation: ripple 6s linear infinite, ring 6s ease-in-out infinite alternate;
   transition: --ring-x 3s ease, --ring-y 3s ease;
@@ -1233,32 +1244,40 @@ section.process .pathStage {
 }
 
 @media (max-width: 590px) {
-.container-custom-box img{
+  .container-custom-box img {
     max-width: 86px;
     height: auto;
     margin-left: 30px;
-}  
-.mxd-header {
-  left: 0px;
-} 
-.mxd-section-title__hrcontrols{
-  margin-bottom: 3rem; 
-}  
-.mxd-section.padding-default {
+  }
+
+  .mxd-header {
+    left: 0px;
+  }
+
+  .mxd-section-title__hrcontrols {
+    margin-bottom: 3rem;
+  }
+
+  .mxd-section.padding-default {
     padding-bottom: 5rem;
-}  
- .mxd-section.padding-pre-stack {
+  }
+
+  .mxd-section.padding-pre-stack {
     padding-bottom: 4rem;
-}
-.mxd-demo-footer__mixdesign .anim-uni-in-up{
-  font-size:42px !important;
-}
-.mxd-demo-footer__mixdesign{
-  padding-top: 2rem; 
-}
-  .mxd-pinned-projects__scroll-inner{
+  }
+
+  .mxd-demo-footer__mixdesign .anim-uni-in-up {
+    font-size: 42px !important;
+  }
+
+  .mxd-demo-footer__mixdesign {
+    padding-top: 2rem;
+  }
+
+  .mxd-pinned-projects__scroll-inner {
     gap: 1rem;
   }
+
   .hero-00-title {
     font-size: 24px;
     line-height: normal;

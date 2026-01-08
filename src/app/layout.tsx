@@ -5,6 +5,8 @@ import { QueryProvider } from '@/providers/QueryProvider';
 import { ThemeProvider } from '@/components/theme-provider';
 import { Toaster } from 'sonner';
 
+import ThemeSwitcherButton from '@/components/organisms/Header/ColorSwitcher';
+
 export const metadata = {
   title: 'AJX Technologies | Crafting Digital Experiences That Drive Success',
   description:
@@ -39,6 +41,7 @@ export default function RootLayout({
               enableSystem
               disableTransitionOnChange
             >
+              <ThemeSwitcherButton />
               {children}
             </ThemeProvider>
           </SessionProvider>
