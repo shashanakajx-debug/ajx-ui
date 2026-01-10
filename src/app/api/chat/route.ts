@@ -1,12 +1,9 @@
-
 import { NextResponse } from 'next/server';
 import { GoogleGenerativeAI } from '@google/generative-ai';
 import { findSimilarChunks } from '@/lib/chatbot-db';
 
 export const dynamic = 'force-dynamic';
 
-// Initialize Gemini
-// Try GEMINI_API_KEY first, fallback to OPENAI_API_KEY if user pasted it there
 const apiKey = process.env.GEMINI_API_KEY || process.env.OPENAI_API_KEY;
 
 let genAI: GoogleGenerativeAI | null = null;
