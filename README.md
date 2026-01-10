@@ -40,6 +40,27 @@ ADMIN_EMAIL=admin@ajx.com
 ADMIN_PASSWORD=A@dmin36
 ```
 
+## Chatbot Setup
+
+1.  **Environment Variables**:
+    Ensure you have `OPENAI_API_KEY` and `MONGODB_URI` in your `.env.local`.
+
+2.  **Ingestion**:
+    Run `npm run reindex` to ingest site content into the vector database.
+
+3.  **Indexes**:
+    Run `npm run create-indexes` to set up MongoDB indexes.
+
+4.  **Usage**:
+    The chatbot will appear on all public pages. It uses the content ingested in step 2 to answer user queries with citations.
+
+## Scripts
+
+-   `npm run reindex`: Crawl and ingest content.
+-   `npm run create-indexes`: Create MongoDB indexes.
+-   `npm run dev`: Start development server.
+-   `npm run build`: Build for production.
+
 4. **Run the development server**
 ```bash
 npm run dev

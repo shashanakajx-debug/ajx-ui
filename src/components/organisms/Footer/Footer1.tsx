@@ -5,7 +5,6 @@ import ScrollNextSection from "@/components/ScrollNextSection";
 
 import {
   Mail,
-  Phone,
   MapPin,
   ArrowRight,
 } from "lucide-react";
@@ -43,7 +42,6 @@ export default function Footer1() {
         { label: "Twitter", href: "https://x.com/ajxtechnologies" },
         { label: "Instagram", href: "https://www.instagram.com/ajxtechnologies/" },
         { label: "LinkedIn", href: "https://www.linkedin.com/company/ajxtechnologies" },
-        { label: "GitHub", href: "https://github.com/ajxtechnologies" },
         { label: "YouTube", href: "https://www.youtube.com/@ajxtechnologies" },
       ],
     },
@@ -210,20 +208,8 @@ export default function Footer1() {
         <div className="next_page mxd-block ">
           <div className="mxd-demo-footer__mixdesign mxd-grid-item no-margin">
           </div>
-          <div className="copyright-section"
-            style={{
-              fontSize: "16px",
-              fontWeight: 300,
-              textAlign: "center",
-              // opacity: 0.1,
-            }}
-          >
-            Copyright © 2025 AjxTechnologies.com
-
-          </div>
-
         </div>
-        <ScrollNextSection nextHref="/about-us" />
+        <ScrollNextSection />
       </div>
     </footer>
   );

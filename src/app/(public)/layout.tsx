@@ -4,8 +4,9 @@ import Footer from '@/components/organisms/Footer/Footer1';
 import MobileMenu from '@/components/organisms/Header/MobileMenu';
 import InitScroll from '@/components/scroll/InitScroll';
 import LenisSmoothScroll from '@/components/scroll/LenisSmoothScroll';
-import ScrollTop from '@/components/scroll/ScrollTop';
 import Loader from '@/components/common/Loader';
+
+import ChatWidget from '@/components/ai-chatbot/ChatWidget';
 
 export default function PublicLayout({
     children,
@@ -20,8 +21,8 @@ export default function PublicLayout({
             <MobileMenu />
             <Header />
             <main className="min-h-screen">{children}</main>
+            <ChatWidget />
             <Footer />
-            <ScrollTop />
         </div>
     );
 }

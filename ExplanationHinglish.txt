@@ -1,0 +1,135 @@
+# AJX Chatbot: Complete Architecture & Internal Working (Deep Dive)
+
+Ye document AJX Chatbot ke pure internal system, code structure, data flow, aur technical decisions ko detail mein explain karta hai. Humne **RAG (Retrieval-Augmented Generation)** architecture use kiya hai.
+
+---
+
+## 1. Project Folder Structure (Code Kahan Hai?)
+
+Chatbot ka code pure project mein faila hua nahi hai, balki well-organized modules mein divide kiya gaya hai. Yahan har file ka location aur uska role hai:
+
+### A. Frontend (User Interface)
+**File Location**: `src/components/ai-chatbot/ChatWidget.tsx`
+- **Kya hai**: Ye wahi component hai jo screen ke bottom-right mein round icon aur chat window dikhata hai.
+- **Import/Export**: Isko `src/app/(public)/layout.tsx` mein import kiya gaya hai taaki ye har public page par dikhe.
+- **Technologies**: React Hooks (`useState`, `useEffect`, `useRef`), TailwindCSS (styling), Heroicons (icons), Framer Motion (animations).
+
+### B. Backend API (The Brain)
+**File Location**: `src/app/api/chat/route.ts`
+- **Kya hai**: Ye Next.js ka API Route hai. Jab user enter dabata hai, frontend yahan request bhejta hai.
+- **Kaam**: User ka message lena -> OpenAI se uska "Embedding" (vector) banana -> MongoDB se matching data dhundna -> OpenAI GPT ko data + question bhejna -> Answer return karna.
+
+### C. Database Layer (The Memory)
+**File Location**: `src/lib/chatbot-db.ts`
+- **Kya hai**: Database se baat karne wale helper functions.
+- **Functions**:
+  - `upsertChunk()`: Data save karne ke liye.
+  - `findSimilarChunks()`: Vector search karne ke liye.
+- **Schema**: Data `chatbot_chunks` naam ki collection mein save hota hai.
+
+### D. Ingestion Scripts (The Learner)
+**File Location**: `scripts/reindex.ts` aur `scripts/create-indexes.ts`
+- **Kya hai**: Ye website ko automatic scan karke database mein bharta hai.
+- **Process**: Code files padhta hai -> Text nikalta hai -> Tukde (Chunks) karta hai -> Vector banata hai -> DB mein dalta hai.
+
+### E. Type Definitions
+**File Location**: `src/types/chatbot.ts`
+- **Kya hai**: TypeScript interfaces to ensure ki data ka structure pure app mein same rahe (e.g., `ChatBotChunk`, `ChatMessage`).
+
+---
+
+## 2. Under The Hood: Process Flow (Ye Kaam Kaise Karta Hai?)
+
+Jab user puchta hai "What are your services?", toh parde ke peeche ye 5 steps hote hain:
+
+### Step 1: User Input (Frontend)
+- User ne type kiya. `ChatWidget.tsx` ne state update ki aur ek loading spinner dikhaya.
+- Ek HTTP POST request bheji gayi `/api/chat` par. Body: `{ message: "What are your services?", sessionId: "xyz" }`.
+
+### Step 2: Vector Embedding (Backend - API Layer)
+- API route (`route.ts`) ne pehle check kiya ki message valid hai ya nahi.
+- Phir wo **OpenAI Embedding API** (`text-embedding-3-small`) ko call karta hai.
+- **Magic**: OpenAI text ko 1536 numbers ki ek list (vector) mein convert karta hai.
+  - Example: "Services" -> `[0.012, -0.231, 0.888, ...]`
+  - Ye numbers text ke "meaning" ko represent karte hain.
+
+### Step 3: Vector Search (MongoDB)
+- Ab humare paas question ka vector hai. Hum MongoDB ko bolte hain: *"Apne `chatbot_chunks` collection mein dekho ki kaunsa content is vector ke sabse paas (similar) hai."*
+- `chatbot-db.ts` ka `findSimilarChunks` function chalta hai.
+- MongoDB Atlas ka **Vector Search Algorithm** (KNN/ANN) millisecond mein pure database se Top 5 match nikalta hai (e.g., "Web Development", "App Design" wale paragraphs).
+
+### Step 4: Context Construction (The RAG Part)
+- Ab humare paas 2 cheezein hain:
+  1. User ka question ("What are your services?")
+  2. Database se nikala hua gyaan (Services page ka text).
+- API ek special "System Prompt" banata hai internally:
+  ```text
+  You are AJX Assistant. Use ONLY the context below to answer.
+  Context:
+  - Source: /services (Web Dev...)
+  - Source: /portfolio (App Design...)
+  
+  User Question: What are your services?
+  ```
+
+### Step 5: LLM Generation (OpenAI GPT)
+- Ye prompt **OpenAI Chat Completion API** (`gpt-3.5-turbo`) ko bheja jata hai.
+- GPT samajh jata hai ki usse apni marzi se kuch nahi bolna, bas context padh kar jawaab dena hai.
+- GPT answer generate karta hai: "We offer Web Development and App Design services."
+- API ye answer frontend ko bhejta hai, saath mein "Sources" bhi bhejta hai taaki user verify kar sake.
+
+---
+
+## 3. Data Ingestion Deep Dive (Data Database Mein Kaise Aata Hai?)
+
+Sabse bada challenge hota hai chatbot ko apna data sikhana. Humne `scripts/reindex.ts` mein ek smart system banaya hai:
+
+1.  **Crawling**: Script `src/app` folder ko scan karti hai. Ye `.tsx`, `.ts`, aur `.md` files dhundti hai.
+2.  **Cleaning**: Code files mein se `<div>`, `className`, `import` jaisi cheezein hata kar sirf readable text extract karti hai.
+3.  **Chunking**: Pure page ko ek saath DB mein nahi daal sakte (embedding limit hoti hai). Hum text ko 1000 characters ke chote tukdo (chunks) mein todte hain.
+4.  **Hashing (Idempotency)**:
+    - Hum har chunk ka ek MD5 Hash (unique fingerprint) banate hain.
+    - Database mein save karne se pehle check karte hain: *"Kya ye hash pehle se hai?"*
+    - Agar Haan -> Skip (Time aur Paisa bachta hai).
+    - Agar Nahi -> New vector generate karo aur save karo.
+    - Iska matlab aap `npm run reindex` 100 baar bhi chalao, duplicate data nahi banega.
+
+---
+
+## 4. Why This Architecture? (Decisions Explain)
+
+### Kyun banaya aisa? (Rationale)
+1.  **Next.js API Routes**: Alag se Node.js server banane ki zarurat nahi padi. Next.js ke serverless functions hi backend ban gaye.
+2.  **MongoDB Vector Search**: Alag se Pinecone ya Weaviate database lene ki zarurat nahi padi. Aapka existing MongoDB hi data aur vectors dono rakhta hai. Cost-effective aur Simple.
+3.  **Client-Side Rendering (CSR)**: ChatWidget ek client component hai (`use client`). Ye page load ko slow nahi karta kyunki ye baad mein load hota hai aur initally hidden rehta hai.
+
+### Kya Use Nahi Hua (Unused/Cleaned Code)
+Pehle project mein kuch files thi jo humne delete kar di:
+- `AISession.ts`: Pehle session manage karne ka logic complex tha, ab hum simple `localStorage` + Server-side stateless logic use kar rahe hain.
+- `LoadingSpinner.tsx`: Iske bajaye humne pure CSS/SVG spinner use kiya `ChatWidget.tsx` ke andar taaki extra file load na wo.
+- Legacy `route.ts`: Purana logic simple chat tha (bina RAG ke), wo inaccurate tha isliye hata diya.
+
+---
+
+## 5. CSS & Styling Details
+
+Button aur Chat Window ki styling **Tailwind CSS** se ki gayi hai.
+- **Glassmorphism**: `backup-blur-md` use nahi kiya taaki performance fast rahe, par `shadow-2xl` aur `border` se premium look diya hai.
+- **Responsive**: `md:bottom-24` aur `bottom-24` classes use karke humne ensure kiya ki mobile aur desktop dono pe sahi jagah dikhe.
+- **Animations**: `transition-all`, `duration-300`, `hover:scale-105` use kiya hai taaki jab user click kare to smooth feel ho.
+- **Z-Index**: `z-50` diya hai taaki ye `ScrollToTop` button (z-40) aur baaki content ke upar rahe.
+
+---
+
+## 6. Current Issue & Solution (OpenAI Limit)
+
+Abhi jo error aa raha hai (`Review your OpenAI usage limit`), wo code ka bug **nahi** hai. Code ek dam perfect chal raha hai (humne logs mein dekha).
+
+**Problem**: OpenAI ki API paid hoti hai.
+**Process**: Code -> OpenAI Request -> OpenAI Check karta hai "Is account mein balance hai?" -> Balance 0 hai -> Error 429 wapas bhejta hai -> Frontend "Error" dikhata hai.
+
+**Solution Options**:
+1.  **Add Credits**: OpenAI mein $5 daalo.
+2.  **Switch to Gemini**: Main backend code (`src/app/api/chat/route.ts`) mein change karke Google Gemini laga sakta hoon. Gemini ka free tier available hai.
+
+Agar aap Gemini use karna chahte hain, to main `scripts/reindex.ts` aur `route.ts` update kar dunga. Logic same rahega (RAG), bas "Engine" badal jayega (GPT -> Gemini).

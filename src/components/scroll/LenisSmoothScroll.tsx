@@ -1,6 +1,7 @@
 "use client";
 import ReactLenis, { useLenis } from "lenis/react";
 import { useEffect } from "react";
+import { usePathname } from "next/navigation";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import gsap from "gsap";
 
@@ -8,6 +9,13 @@ gsap.registerPlugin(ScrollTrigger);
 
 export default function LenisSmoothScroll() {
     const lenis = useLenis();
+    const pathname = usePathname();
+
+    useEffect(() => {
+        if (lenis) {
+            lenis.scrollTo(0, { immediate: true });
+        }
+    }, [pathname, lenis]);
 
     useEffect(() => {
         if (!lenis) return;
@@ -78,17 +86,17 @@ export default function LenisSmoothScroll() {
             if (isAnchor || isSamePageAnchor) {
                 // Extract hash and validate it
                 const hashPart = href.includes("#") ? href.split("#")[1] : "";
-                
+
                 // Skip if hash is empty or undefined
                 if (!hashPart || hashPart.trim() === "") {
                     return;
                 }
-                
+
                 const hash = "#" + hashPart;
-                
+
                 try {
                     const targetElement = document.querySelector(hash);
-                    
+
                     if (targetElement) {
                         e.preventDefault();
                         lenis.scrollTo(hash, { offset: -100 });
@@ -105,7 +113,7 @@ export default function LenisSmoothScroll() {
         if (window.location.hash) {
             const hash = window.location.hash;
             const hashPart = hash.substring(1); // Remove leading #
-            
+
             // Only scroll if hash has valid content
             if (hashPart && hashPart.trim() !== "") {
                 // Delay to ensure elements are rendered (esp. if data fetching involved)
@@ -129,13 +137,13 @@ export default function LenisSmoothScroll() {
             document.body.style.overflow = "";
         };
     }, [lenis]);
-    
+
     // return null for ios
     const isIOS = typeof window !== "undefined" && /iPad|iPhone|iPod/.test(navigator.userAgent);
     if (isIOS) {
         return null;
     }
-    
+
     return (
         <ReactLenis
             root
