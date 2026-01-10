@@ -1,6 +1,6 @@
 import RevealText from "../animation/RevealText";
 import AnimatedButton from "../animation/AnimatedButton";
-
+ 
 export default function FinalCta() {
   return (
     <div className="mxd-section padding-default">
@@ -13,12 +13,12 @@ export default function FinalCta() {
                 Show your creativity and get noticed today!
               </RevealText>
             </div>
-
+ 
             <div className="mxd-demo-cta__btn anim-uni-in-up">
               <AnimatedButton
                 text="LET'S GET STARTED"
                 as="a"
-                className="btn btn-anim btn-default btn-large btn-additional slide-right"
+                className="btn btn-anim btn-outline btn-default btn-large btn-additional slide-right"
                 href="/contact"
                 target="_blank"
               />

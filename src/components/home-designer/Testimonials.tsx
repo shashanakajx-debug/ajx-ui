@@ -129,7 +129,7 @@ export default function Testimonials() {
                         <div style={{ marginTop: 18 }}>
                           <AnimatedButton
                             text="Project Page"
-                            className="btn btn-small"
+                            className="btn btn-small btn-outline"
                             href={item.projectPage}
                           >
                             <i className="ph ph-arrow-up-right" />

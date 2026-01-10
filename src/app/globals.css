@@ -631,7 +631,6 @@ html {
 
 .dark .btn-outline:hover {
   background-color: var(--color-primary);
-  color: white;
 }
 
 
@@ -840,7 +839,7 @@ footer.mxd-demo-footer {
 .navbar-box .menu-item {
     color: var(--t-bright);
     font-size: larger;
-    font-family: Gilroy;
+    /* font-family: Gilroy; */
     letter-spacing: 1px;
     font-weight: 400;
 }
