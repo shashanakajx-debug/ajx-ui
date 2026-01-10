@@ -125,11 +125,12 @@ export default function Header(): React.ReactElement {
   };
 
   const handleMouseLeave = () => {
-    const timeout = setTimeout(() => {
-      setActiveDropdown(null);
-    }, 300);
-    setHideTimeout(timeout);
-  };
+  const timeout = setTimeout(() => {
+    setActiveDropdown(null);
+  }, 120); // better UX
+  setHideTimeout(timeout);
+};
+
 
   return (
     <header
@@ -179,45 +180,58 @@ export default function Header(): React.ReactElement {
               </Link>
 
               {/* Individual Dropdown for each service */}
-              {link.submenu && activeDropdown === link.label && (
-                <div
-                  className="absolute mega-menu-box top-full mt-0 rounded-2xl z-50 p-12"
-                  onMouseEnter={() => handleMouseEnter(link.label)}
-                  onMouseLeave={handleMouseLeave}
-                >
-                  <div className="row">
-                    <div className="col-12 col-xl-8 right-border">
-                      <div className="grid grid-cols-2 gap-10">
-                        {link.submenu.map((sublink, index) => (
-                          <Link
-                            key={`${link.label}-${index}`}
-                            href={sublink.href}
-                            className="group flex items-start gap-6 p-7 rounded-xl transition-all"
-                          >
-                            <div className="mt-1 w-14 h-14 rounded-xl bg-black dark:bg-white flex items-center justify-center group-hover:bg-gray-800 dark:group-hover:bg-gray-200 transition-colors flex-shrink-0">
-                              <svg className="w-7 h-7 text-white dark:text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                              </svg>
-                            </div>
-                            <div className="flex-1">
-                              <h4 className="font-bold text-2xl mb-3 transition-colors">
-                                {sublink.label}
-                              </h4>
-                              <p className="text-[15px] leading-relaxed">
-                                We are a leading {sublink.label} agency specializing in crafting exceptional solutions
-                              </p>
-                            </div>
-                          </Link>
-                        ))}
-                      </div>
-                    </div>
-                    <div className="col-12 col-xl-4 mega-menu-img">
-                      <Image src={link.img} alt="mega-menu" width={500}
-                        height={500} className="w-auto h-auto" priority />
-                    </div>
-                  </div>
-                </div>
-              )}
+              {link.submenu && (
+  <div
+    className={`absolute top-full mt-0 rounded-2xl z-50 p-12 mega-menu-box
+      transition-all duration-200 ease-out
+      ${activeDropdown === link.label
+        ? "opacity-100 scale-100 translate-y-2 visible"
+        : "opacity-0 scale-95 translate-y-2 invisible"
+      }`}
+    onMouseEnter={() => handleMouseEnter(link.label)}
+    onMouseLeave={handleMouseLeave}
+  >
+    <div className="row">
+      <div className="col-12 col-xl-8 right-border">
+        <div className="grid grid-cols-2 gap-10">
+          {link.submenu.map((sublink, index) => (
+            <Link
+              key={`${link.label}-${index}`}
+              href={sublink.href}
+              className="group flex items-start gap-6 p-7 rounded-xl hover:pl-4 transition-all duration-200 ease-out menu-item"
+            >
+              <div className="btn-anim mt-1 w-14 h-14 rounded-xl flex items-center justify-center group-hover:bg-gray-800 dark:group-hover:bg-gray-200 transition-colors flex-shrink-0">
+                <svg className="w-7 h-7 text-white dark:text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                </svg>
+              </div>
+              <div className="flex-1">
+                <h4 className="font-bold text-2xl mb-3 transition-colors">
+                  {sublink.label}
+                </h4>
+                <p className=" leading-relaxed">
+                  We are a leading {sublink.label} agency specializing in crafting exceptional solutions
+                </p>
+              </div>
+            </Link>
+          ))}
+        </div>
+      </div>
+
+      <div className="col-12 col-xl-4 mega-menu-img">
+        <Image
+          src={link.img}
+          alt="mega-menu"
+          width={500}
+          height={500}
+          className="w-auto h-auto rounded-[15px]"
+          priority
+        />
+      </div>
+    </div>
+  </div>
+)}
+
             </div>
           ))}
         </div>
