@@ -239,7 +239,7 @@ export default function ChatWidget() {
                         : 'bg-gradient-to-br from-blue-600 to-violet-600 text-white'
                         }`}>
                         {m.role === 'user' ? (
-                          <span className="text-[10px] font-bold">ME</span>
+                          <span className="text-[10px] font-bold">You</span>
                         ) : (
                           <SparklesIcon className="w-4 h-4" />
                         )}
@@ -253,7 +253,17 @@ export default function ChatWidget() {
                             : 'bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-gray-900 dark:text-gray-100 rounded-bl-none'
                             }`}
                         >
-                          <div className="markdown-body" dangerouslySetInnerHTML={{ __html: m.content.replace(/\n/g, '<br/>') }} />
+                          <div className="prose prose-sm dark:prose-invert max-w-none">
+                            {/* Simple Markdown Parser */}
+                            {m.content.split('\n').map((line, i) => (
+                              <p key={i} className="mb-1 last:mb-0" dangerouslySetInnerHTML={{
+                                __html: line
+                                  .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>') // Bold **text**
+                                  .replace(/\*(.*?)\*/g, '<em>$1</em>') // Italic *text*
+                                  .replace(/^- (.*)/, '• $1') // List items "- item" to "• item"
+                              }} />
+                            ))}
+                          </div>
                         </div>
                         {m.timestamp && (
                           <span className="text-[10px] text-gray-500 dark:text-gray-400 mt-1.5 px-1 font-medium">
@@ -263,29 +273,6 @@ export default function ChatWidget() {
                       </div>
                     </div>
                   ))}
-
-                  {/* Citations / Sources */}
-                  {!loading && sources.length > 0 && messages[messages.length - 1]?.role === 'assistant' && (
-                    <div className="ml-12 mt-2 mb-4 animate-in fade-in slide-in-from-bottom-2 duration-300">
-                      <p className="text-[10px] uppercase tracking-wider text-gray-500 font-bold mb-2 pl-1 flex items-center gap-1">
-                        <ArrowTopRightOnSquareIcon className="w-3 h-3" />
-                        References
-                      </p>
-                      <div className="flex flex-wrap gap-2">
-                        {sources.map((s, i) => (
-                          s.url && (
-                            <Link
-                              key={i}
-                              href={s.url}
-                              className="group flex items-center gap-1.5 text-[11px] bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 px-3 py-1.5 rounded-full text-gray-700 dark:text-gray-200 hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-all duration-200 font-medium"
-                            >
-                              <span className="max-w-[120px] truncate">{s.title || 'Page'}</span>
-                            </Link>
-                          )
-                        ))}
-                      </div>
-                    </div>
-                  )}
                 </>
               )}
 
