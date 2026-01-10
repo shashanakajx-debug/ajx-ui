@@ -10,7 +10,6 @@ gsap.registerPlugin(ScrollTrigger);
 export default function LenisSmoothScroll() {
     const lenis = useLenis();
     const pathname = usePathname();
-
     useEffect(() => {
         if (lenis) {
             lenis.scrollTo(0, { immediate: true });
