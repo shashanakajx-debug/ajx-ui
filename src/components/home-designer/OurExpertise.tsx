@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import AnimatedButton from "@/components/animation/AnimatedButton";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -122,10 +123,9 @@ export default function OurExpertise() {
       <div className="mx-auto row gx-0">
         {/* Top label */}
         <div className="mb-10 flex items-center gap-3">
-          <span className="h-[2px] w-10 bg-black/80" />
-          <p className="text-xs font-semibold tracking-[0.18em] text-black/80">
-            OUR EXPERTISE
-          </p>
+          <h2 className="font-semibold ">
+            Our Expertise
+          </h2>
         </div>
 
         <div className="grid grid-cols-1 gap-10 lg:grid-cols-2 lg:items-start">
@@ -137,8 +137,8 @@ export default function OurExpertise() {
               return (
                 <div key={item.id} className="border-b border-black/10 py-6">
                   <div className="flex items-start gap-6">
-                    <div className="min-w-[54px] text-right text-sm font-semibold text-black/40">
-                      {item.number}
+                    <div className="min-w-[54px] text-right">
+                      <span className="number-aor-exprties">{item.number}</span>
                     </div>
 
                     <div className="flex-1">
@@ -190,20 +190,17 @@ export default function OurExpertise() {
                             ))}
                           </div>
 
-                          <p className="mt-4 max-w-xl text-base leading-7 text-black/60">
+                          <p className="mt-4 leading-7 ">
                             {item.description}
                           </p>
 
                           <div className="mt-5">
-                            <Link
-                              href={item.href}
-                              className="inline-flex items-center gap-3 text-sm font-semibold tracking-wide text-black"
-                            >
-                              <span className="uppercase">Learn more</span>
-                              <span className="grid h-9 w-9 place-items-center rounded-full border border-[#119000]/40 bg-white text-black transition hover:bg-[#119000]/10">
-                                ↗
-                              </span>
-                            </Link>
+                            <AnimatedButton
+                            text="Learn more"
+                            className="btn btn-anim btn-default btn-outline slide-right-up anim-uni-in-up"
+                            href={`#`}>
+                            <i className="ph-bold ph-arrow-up-right" />
+                            </AnimatedButton>
                           </div>
                         </div>
                       </div>

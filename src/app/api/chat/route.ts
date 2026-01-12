@@ -160,6 +160,8 @@ Reference: https://ajxtechnologies.com/our-portfolio/
 Reference: https://ajxtechnologies.com/career/
 Reference: https://ajxtechnologies.com/blog/
 Reference: https://ajxtechnologies.com/contact/
+Reference: https://ajxtechnologies.com/privacy-policy/
+Reference: https://ajxtechnologies.com/terms-of-service/
 `;
 
         const promptWithUser = `${systemPrompt}\n\nUser Question: ${message}`;
