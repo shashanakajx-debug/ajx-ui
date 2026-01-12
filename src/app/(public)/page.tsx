@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 // Import all section components
 import Hero from "@/components/home-designer/Hero";
 import About from "@/components/home-designer/About";
-import Services from "@/components/home-designer/Services";
+// import Services from "@/components/home-designer/Services";
 import TechStack from "@/components/home-designer/TechStack";
 import Projects from "@/components/home-designer/Projects";
 // import Industries from "@/components/home-designer/Industries";
@@ -16,8 +16,9 @@ import Blog from "@/components/home-designer/Blog";
 import FinalCta from "@/components/home-designer/FinalCta";
 import ParallaxDivider from "@/components/home-designer/ParallaxDivider";
 import ScrollProcessPath from "@/components/home-designer/ScrollProcessPath";
-import FuturisticTechnology from "@/components/home-designer/FuturisticTechnology";
+// import FuturisticTechnology from "@/components/home-designer/FuturisticTechnology";
 import Creatives from "@/components/home-designer/Creatives";
+import OurExpertise from "@/components/home-designer/OurExpertise";
 
 /* --------------------
    HomePage component
@@ -83,10 +84,12 @@ export default function HomePage() {
       <About />
 
       {/* 5. Futuristic Technology */}
-      <FuturisticTechnology />
+      {/* <FuturisticTechnology /> */}
 
       {/* 4. Our Services */}
-      <Services />
+      {/* <Services /> */}
+
+      <OurExpertise />
 
       {/* 5. Tech Stack (Logo Marquee) */}
       <TechStack />
