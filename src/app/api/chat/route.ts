@@ -101,7 +101,7 @@ PHP (Laravel, CodeIgniter, WordPress), JavaScript (Node.js, React, Vue, Next.js)
 **Website**: https://ajxtechnologies.com/contact/
 
 ## PORTFOLIO
-Shopify stores, WordPress sites, Squarespace projects, E-commerce platforms, Custom web designs
+Next.js, TypeScript, React, Java, Python, C#, Shopify stores, WordPress sites, Squarespace projects, E-commerce platforms, Custom web designs
 View all: https://ajxtechnologies.com/our-portfolio/
 
 === RESPONSE RULES (CRITICAL) ===
@@ -131,6 +131,7 @@ GOOD (Concise):
 6. **MVP Development** - Rapid prototyping and validation
 7. **SEO & Digital Marketing** - Drive organic traffic
 8. **Website Maintenance** - 24/7 support and updates
+9. **Website Maintenance & Support** - Security updates, performance optimization, 24/7 monitoring
 
 Which service interests you?"
 
@@ -165,6 +166,7 @@ Reference: https://ajxtechnologies.com/contact/
 
         const result = await model.generateContent(promptWithUser);
         const response = await result.response;
+        // maybe await in not correct necause response is a string
         const reply = response.text();
 
         return NextResponse.json({

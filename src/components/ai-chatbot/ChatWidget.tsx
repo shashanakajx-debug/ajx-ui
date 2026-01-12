@@ -8,7 +8,6 @@ import {
   TrashIcon,
   ArrowTopRightOnSquareIcon
 } from '@heroicons/react/24/outline'
-import Link from 'next/link'
 
 type Message = {
   role: 'user' | 'assistant';
@@ -163,7 +162,7 @@ export default function ChatWidget() {
         `}
       >
         {open && (
-          <div className="flex flex-col bg-white/95 dark:bg-black/95 backdrop-blur-2xl border border-gray-200 dark:border-gray-800 rounded-3xl shadow-2xl w-[90vw] md:w-[400px] h-[600px] max-h-[80vh] overflow-hidden isolate">
+          <div className="flex flex-col bg-white dark:bg-gray-950 backdrop-blur-2xl border border-gray-200 dark:border-gray-800 rounded-3xl shadow-2xl w-[90vw] md:w-[400px] h-[600px] max-h-[80vh] overflow-hidden isolate">
             {/* Header */}
             <div className="bg-gradient-to-r from-gray-900 to-black text-white px-6 py-4 flex items-center justify-between shadow-lg">
               <div className="flex items-center gap-4">
@@ -174,7 +173,7 @@ export default function ChatWidget() {
                   <div className="absolute top-0 right-0 w-3 h-3 bg-green-500 border-2 border-black rounded-full shadow-[0_0_8px_rgba(34,197,94,0.6)]"></div>
                 </div>
                 <div>
-                  <h3 className="font-bold text-base tracking-wide">AJX AI</h3>
+                  <h2 className="font-bold text-base tracking-wide">AJX AI</h2>
                   <p className="text-[11px] text-white/50 font-medium tracking-wider uppercase">Online Assistant</p>
                 </div>
               </div>
@@ -235,7 +234,7 @@ export default function ChatWidget() {
                     <div key={idx} className={`flex gap-4 ${m.role === 'user' ? 'flex-row-reverse' : 'flex-row'}`}>
                       {/* Avatar */}
                       <div className={`flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center shadow-sm ${m.role === 'user'
-                        ? 'bg-gray-900 text-white'
+                        ? 'bg-black dark:bg-white text-white dark:text-black'
                         : 'bg-gradient-to-br from-blue-600 to-violet-600 text-white'
                         }`}>
                         {m.role === 'user' ? (
@@ -249,11 +248,11 @@ export default function ChatWidget() {
                       <div className={`max-w-[85%] flex flex-col ${m.role === 'user' ? 'items-end' : 'items-start'}`}>
                         <div
                           className={`rounded-2xl px-5 py-3.5 text-sm leading-relaxed shadow-sm font-medium ${m.role === 'user'
-                            ? 'bg-black text-white rounded-br-none'
-                            : 'bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-gray-900 dark:text-gray-100 rounded-bl-none'
+                            ? 'bg-black dark:bg-white text-white dark:text-black rounded-br-none border-2 border-black dark:border-white'
+                            : 'bg-white dark:bg-gray-800 text-black dark:text-white rounded-bl-none border border-gray-200 dark:border-gray-600'
                             }`}
                         >
-                          <div className="prose prose-sm dark:prose-invert max-w-none">
+                          <div className="prose prose-sm dark:prose-invert max-w-none [&>p]:text-current">
                             {/* Simple Markdown Parser */}
                             {m.content.split('\n').map((line, i) => (
                               <p key={i} className="mb-1 last:mb-0" dangerouslySetInnerHTML={{
@@ -296,8 +295,8 @@ export default function ChatWidget() {
             </div>
 
             {/* Input Area */}
-            <div className="border-t border-gray-100 dark:border-gray-800 p-4 bg-white dark:bg-black">
-              <div className="bg-gray-100 dark:bg-gray-900 rounded-full flex items-center p-1.5 border border-transparent focus-within:border-gray-300 dark:focus-within:border-gray-700 transition-colors">
+            <div className="border-t border-gray-200 dark:border-gray-800 p-4 bg-white dark:bg-gray-950">
+              <div className="bg-gray-50 dark:bg-gray-900 rounded-full flex items-center p-1.5 border-2 border-gray-200 dark:border-gray-800 focus-within:border-black dark:focus-within:border-white transition-colors">
                 <input
                   ref={inputRef}
                   className="flex-1 h-10 bg-transparent border-0 focus:ring-0 px-4 text-sm text-gray-900 dark:text-white placeholder:text-gray-500 font-medium"

@@ -1275,6 +1275,11 @@ span.ai_tesxt{
   border-radius: 150px;
   padding: 4px 40px;
 }
+.mxd-header--scrolled{
+  position: fixed;
+  z-index: 12;
+  transition: all 0.3s ease;
+}
 @media (max-width: 590px) {
   .container-custom-box img {
     max-width: 86px;
@@ -1284,6 +1289,8 @@ span.ai_tesxt{
 
   .mxd-header {
     left: 0px;
+    padding-top: 14px !important;
+    padding-bottom: 15px !important;
   }
 
   .mxd-section-title__hrcontrols {
@@ -1311,33 +1318,50 @@ span.ai_tesxt{
   }
 
   .hero-00-title {
-    font-size: 24px;
+    font-size: 50px;
     line-height: normal;
+    margin-bottom: 1rem;
   }
+  .hero-00-title span.ai_tesxt {
+    max-width: 100%;
+    display: block;
+    font-size: 40px;
+    margin-top: 8px;
+    padding: 3px 0px;
+}
+.mxd-hero-00bottom .mxd-manifestcontrols {
+    margin-top: 0rem;
+    text-align: center;
+}
+.mxd-manifest__controls{
+  margin: 0;
+  text-align: center;
+}
+.hero-00-title br {
+    display: contents;
+}
+.mxd-hero-00__bottom{
+  margin-bottom: 5rem;
+}
   .mxd-manifest {
     font: normal var(--fw-regular) 2rem / 1.6 var(--_font-accent);
     margin-bottom: 1rem;
   }
-
   .mxd-section.padding-pre-manifest.mobile-point-subtitle {
     padding-bottom: 4.7rem;
   }
-
   .mxd-section-title {
     margin-bottom: 0;
   }
-
   .container-custom-box {
     margin-right: 8rem;
   }
-
   .mxd-nav__contain {
     margin-right: 4px;
-    margin-top: 1.6rem;
+    margin-top: 0.8rem;
   }
-
   .mxd-hero-00__top {
-    padding: 2rem 0 2rem 0;
+    padding: 2rem 0 0rem 0;
   }
 
   .mxd-hero-00wrap .mxd-hero-00bottom {
