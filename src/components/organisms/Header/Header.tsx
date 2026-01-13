@@ -134,7 +134,7 @@ export default function Header(): React.ReactElement {
 
   return (
     <header
-      className={`mxd-header top-0 w-full z-50 transition-all duration-300 ${isHidden ? "mxd-header--scrolled backdrop-blur-lg shadow-sm py-2" : "py-4"
+      className={`mxd-header top-0 w-full z-50 transition-all duration-300 ${isHidden ? "mxd-header--scrolled backdrop-blur-lg py-2" : "py-4"
         }`}
     >
       <nav className="container-custom-box navbar-box flex items-center justify-between">

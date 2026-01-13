@@ -12,9 +12,11 @@ type ExpertiseItem = {
   tags: string[];
   description: string;
   href: string;
+  class: string;
   image: {
     src: string;
     alt: string;
+    
   };
 };
 
@@ -22,13 +24,14 @@ const EXPERTISE: ExpertiseItem[] = [
   {
     id: "data-ai",
     number: "01/",
+    class: "circle-animation",
     title: "AI & Automation Solution",
     tags: ["ML", "LLMs", "Analytics", "Automation", "Dashboards", "MLOps"],
     description:
       "Turn raw data into decisions using analytics, automation, and AI systems built for real business impact.",
     href: "/expertise/data-science-ai",
     image: {
-      src: "/FuturisticTechnology/image.webp",
+      src: "/FuturisticTechnology/ArtificialIntelligenceCircle.png",
       alt: "Data science & AI preview",
     },
   },
@@ -36,6 +39,7 @@ const EXPERTISE: ExpertiseItem[] = [
   {
     id: "web-dev",
     number: "02/",
+    class: "",
     title: "Web Development",
     tags: ["Next.js", "React", "Node.js", "CMS", "Headless", "Ecommerce"],
     description:
@@ -44,11 +48,13 @@ const EXPERTISE: ExpertiseItem[] = [
     image: {
       src: "/FuturisticTechnology/image (2).webp",
       alt: "Web development preview",
+      
     },
   },
   {
     id: "mobile-app",
     number: "03/",
+    class: "",
     title: "Mobile App Development",
     tags: ["iOS", "Android", "React Native", "Flutter", "APIs", "UI/UX"],
     description:
@@ -57,6 +63,7 @@ const EXPERTISE: ExpertiseItem[] = [
     image: {
       src: "/FuturisticTechnology/image (2).webp",
       alt: "Mobile app development preview",
+      
     },
   },
   {
@@ -78,14 +85,17 @@ const EXPERTISE: ExpertiseItem[] = [
     description:
       "Streamline all your interactions with customers through the launch of an individual CRM system made by your team.",
     href: "/expertise/software",
+    class: "",
     image: {
       src: "/FuturisticTechnology/image (2).webp",
       alt: "Software expertise preview",
+     
     },
   },
   {
     id: "qa",
     number: "05/",
+    class: "",
     title: "QA & Software Testing",
     tags: ["Manual", "Automation", "Cypress", "Playwright", "API Testing"],
     description:
@@ -94,12 +104,14 @@ const EXPERTISE: ExpertiseItem[] = [
     image: {
       src: "/FuturisticTechnology/image (2).webp",
       alt: "QA & testing preview",
+      
     },
   },
   {
     id: "ux-ui",
     number: "06/",
     title: "UX/UI Design",
+    class: "",
     tags: ["Wireframes", "Design Systems", "Figma", "Prototyping", "UX Audit"],
     description:
       "Human-first interfaces with strong visual hierarchy, clean layouts, and conversion-focused UX.",
@@ -107,6 +119,7 @@ const EXPERTISE: ExpertiseItem[] = [
     image: {
       src: "/FuturisticTechnology/image (2).webp",
       alt: "UX/UI design preview",
+     
     },
   },
 ];
@@ -119,13 +132,27 @@ export default function OurExpertise() {
   );
 
   return (
-    <section className="mxd-container container_ser mxd-section padding-hero-01 padding-pre-manifest">
+    <section className="mxd-container our-experties container_ser mxd-section padding-hero-01 padding-pre-manifest">
       <div className="mx-auto row gx-0">
         {/* Top label */}
-        <div className="mb-10 flex items-center gap-3">
-          <h2 className="font-semibold ">
-            Our Expertise
-          </h2>
+        <div className="mb-40 flex items-center gap-3 justify-between">
+          <div className="left-content">
+          <p className="font-semibold ">
+            + Our Expertise
+          </p>
+          </div>
+          <div className="heading">
+           <h2 className="text-right">Advanced AI Services</h2>
+            <h4 className="text-right">for Digital-First Companies</h4>
+          </div>
+          <div className="">
+            <AnimatedButton
+            text="View More"
+            className="btn experties-button slide-right-up anim-uni-in-up"
+            href={`#`}>
+            <i className="ph-bold ph-arrow-up-right" />
+            </AnimatedButton>
+          </div>
         </div>
 
         <div className="grid grid-cols-1 gap-10 lg:grid-cols-2 lg:items-start">
@@ -156,7 +183,7 @@ export default function OurExpertise() {
                           className={[
                             "oe-title-underline", // added class only
                             "text-4xl font-extrabold leading-[1.05] tracking-tight sm:text-5xl",
-                            isActive ? "text-[#119000]" : "text-black group-hover:text-black/80",
+                            isActive ? "" : "",
                           ].join(" ")}
                           data-active={isActive ? "true" : "false"}
                         >
@@ -181,8 +208,8 @@ export default function OurExpertise() {
                                 className={[
                                   "rounded-full border px-3 py-1 text-xs font-semibold uppercase tracking-wide",
                                   isActive
-                                    ? "border-[#119000]/40 bg-[#119000]/10 text-black"
-                                    : "border-black/15 text-black/60",
+                                    ? ""
+                                    : "",
                                 ].join(" ")}
                               >
                                 {tag}
@@ -197,7 +224,7 @@ export default function OurExpertise() {
                           <div className="mt-5">
                             <AnimatedButton
                             text="Learn more"
-                            className="btn btn-anim btn-default btn-outline slide-right-up anim-uni-in-up"
+                            className="btn experties-button slide-right-up anim-uni-in-up"
                             href={`#`}>
                             <i className="ph-bold ph-arrow-up-right" />
                             </AnimatedButton>
@@ -213,19 +240,21 @@ export default function OurExpertise() {
 
           {/* Right: Image */}
           <div className="relative">
-            <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl bg-neutral-50 shadow-sm">
+            <div className="relative aspect-[4/3] w-full overflow-hidden shadow-sm">
               {/* Fade swap */}
               <div
                 key={active.image.src}
-                className="absolute inset-0 animate-[fadeIn_220ms_ease-out]"
+                className="absolute  inset-0 animate-[fadeIn_220ms_ease-out]"
               >
+                <div className={`relative w-full h-full ${active.class}`}>
                 <Image
                   src={active.image.src}
                   alt={active.image.alt}
                   fill
-                  className="object-contain p-3 sm:p-6"
+                  className="object-contain p-3 sm:p-6 border-icon"
                   priority
                 />
+                  </div>
               </div>
             </div>
           </div>

@@ -162,32 +162,32 @@ export default function ChatWidget() {
         `}
       >
         {open && (
-          <div className="flex flex-col bg-white dark:bg-gray-950 backdrop-blur-2xl border border-gray-200 dark:border-gray-800 rounded-3xl shadow-2xl w-[90vw] md:w-[400px] h-[600px] max-h-[80vh] overflow-hidden isolate">
+          <div className="flex flex-col ai-heading-box border border-gray-200 dark:border-gray-800 rounded-3xl shadow-2xl w-[90vw] md:w-[400px] h-[600px] max-h-[80vh] overflow-hidden isolate">
             {/* Header */}
-            <div className="bg-gradient-to-r from-gray-900 to-black text-white px-6 py-4 flex items-center justify-between shadow-lg">
+            <div className="px-6 py-4 flex items-center justify-between shadow-lg">
               <div className="flex items-center gap-4">
                 <div className="relative">
-                  <div className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center border border-white/20 shadow-inner">
+                  <div className="w-10 h-10 rounded-full flex items-center justify-center border border-white/20 shadow-inner">
                     <SparklesIcon className="w-5 h-5 text-yellow-300" />
                   </div>
                   <div className="absolute top-0 right-0 w-3 h-3 bg-green-500 border-2 border-black rounded-full shadow-[0_0_8px_rgba(34,197,94,0.6)]"></div>
                 </div>
                 <div>
-                  <h2 className="font-bold text-base tracking-wide">AJX AI</h2>
-                  <p className="text-[11px] text-white/50 font-medium tracking-wider uppercase">Online Assistant</p>
+                  <h2 className="text-[24px] uppercase">AJX AI</h2>
+                  <p className="text-[12px] font-medium tracking-wider uppercase">Online Assistant</p>
                 </div>
               </div>
               <div className="flex items-center gap-2">
                 <button
                   onClick={clearChat}
-                  className="p-2 text-white/60 hover:text-white hover:bg-white/10 rounded-full transition-all duration-200"
+                  className="p-2 bg-[#108a00] rounded-full transition-all duration-200"
                   title="Clear conversation"
                 >
                   <TrashIcon className="w-4 h-4" />
                 </button>
                 <button
                   onClick={() => setOpen(false)}
-                  className="p-2 text-white/60 hover:text-white hover:bg-white/10 rounded-full transition-all duration-200"
+                  className="p-2 bg-[#108a00] rounded-full transition-all duration-200"
                 >
                   <XMarkIcon className="w-5 h-5" />
                 </button>
@@ -265,7 +265,7 @@ export default function ChatWidget() {
                           </div>
                         </div>
                         {m.timestamp && (
-                          <span className="text-[10px] text-gray-500 dark:text-gray-400 mt-1.5 px-1 font-medium">
+                          <span className="text-[10px] mt-1.5 px-1 font-medium chat-clr">
                             {new Date(m.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
                           </span>
                         )}
@@ -299,7 +299,7 @@ export default function ChatWidget() {
               <div className="bg-gray-50 dark:bg-gray-900 rounded-full flex items-center p-1.5 border-2 border-gray-200 dark:border-gray-800 focus-within:border-black dark:focus-within:border-white transition-colors">
                 <input
                   ref={inputRef}
-                  className="flex-1 h-10 bg-transparent border-0 focus:ring-0 px-4 text-sm text-gray-900 dark:text-white placeholder:text-gray-500 font-medium"
+                  className="flex-1 h-15 bg-transparent border-0 focus:ring-0 px-2 text-[16px] text-gray-900 dark:text-white placeholder:text-gray-500 font-medium"
                   placeholder="Ask a question..."
                   value={input}
                   onChange={e => setInput(e.target.value)}

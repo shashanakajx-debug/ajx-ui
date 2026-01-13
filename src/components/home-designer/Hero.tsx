@@ -69,10 +69,8 @@ export default function Hero() {
                 className="btn btn-anim btn-default btn-outline slide-right-up anim-uni-in-up"
                 href={`/contact`}
                 style={{
-                  border: "2px solid white",
                   borderRadius: "50px",
                   padding: "12px 32px",
-                  marginTop: "50px",
                 }}
               >
                 <i className="ph-bold ph-arrow-up-right" />

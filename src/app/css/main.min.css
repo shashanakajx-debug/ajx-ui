@@ -1570,11 +1570,11 @@ html.lenis body {
   text-align: center;
 }
 .mxd-manifest__controls {
-  margin-top: 4.4rem;
+  margin-top: 0rem;
 }
 @media only screen and (min-width: 768px) {
   .mxd-manifest__controls {
-    margin-top: 2rem;
+    margin-top: 0rem;
   }
 }
 .mxd-block__paragraph {
@@ -5493,7 +5493,7 @@ form textarea:required:valid {
 @media only screen and (min-width: 768px) {
   .mxd-nav__contain {
     min-height: 5.6rem;
-    margin-top: 3rem;
+    margin-top: 1rem;
     padding: 0 6rem;
   }
 }
@@ -6867,7 +6867,7 @@ form textarea:required:valid {
 }
 @media only screen and (min-width: 768px) {
   .mxd-hero-00__top {
-    padding: 14rem 0 5rem 0;
+    padding: 14rem 0 3rem 0;
   }
 }
 @media only screen and (min-width: 1200px) {
@@ -6878,7 +6878,7 @@ form textarea:required:valid {
     align-items: center;
     padding: 0;
     padding-top: 8rem;
-    padding-bottom: 5rem;
+    padding-bottom: 3rem;
   }
 }
 @media only screen and (min-width: 1400px) {
