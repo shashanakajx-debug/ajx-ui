@@ -1,24 +1,23 @@
-"use client"
-import { useEffect, useRef, useState } from 'react'
+"use client";
+import { useEffect, useRef, useState } from "react";
 import {
-  ChatBubbleLeftRightIcon,
   PaperAirplaneIcon,
   XMarkIcon,
   SparklesIcon,
   TrashIcon,
-  ArrowTopRightOnSquareIcon
-} from '@heroicons/react/24/outline'
+  ArrowTopRightOnSquareIcon,
+} from "@heroicons/react/24/outline";
 
 type Message = {
-  role: 'user' | 'assistant';
+  role: "user" | "assistant";
   content: string;
   timestamp?: string;
-}
+};
 
 type Source = {
   title?: string;
   url?: string;
-}
+};
 
 type ApiResponse = {
   message?: string;
@@ -31,150 +30,160 @@ const QUICK_PROMPTS = [
   "What services do you offer?",
   "Show me your portfolio",
   "How can I contact support?",
-  "Do you do mobile app development?"
+  "Do you do mobile app development?",
 ];
 
 export default function ChatWidget() {
-  const [open, setOpen] = useState(false)
-  const [input, setInput] = useState('')
-  const [loading, setLoading] = useState(false)
-  const [sessionId, setSessionId] = useState<string | undefined>(undefined)
-  const [messages, setMessages] = useState<Message[]>([])
-  const [sources, setSources] = useState<Source[]>([])
+  const [open, setOpen] = useState(false);
+  const [input, setInput] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [sessionId, setSessionId] = useState<string | undefined>(undefined);
+  const [messages, setMessages] = useState<Message[]>([]);
+  const [sources, setSources] = useState<Source[]>([]);
 
-  const scrollRef = useRef<HTMLDivElement>(null)
-  const inputRef = useRef<HTMLInputElement>(null)
-  const messagesEndRef = useRef<HTMLDivElement>(null)
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
+  const messagesEndRef = useRef<HTMLDivElement>(null);
 
-  // Load session and messages
   useEffect(() => {
-    const id = window.localStorage.getItem('ajx_ai_session_id') || undefined
-    setSessionId(id || undefined)
+    const id = window.localStorage.getItem("ajx_ai_session_id") || undefined;
+    setSessionId(id || undefined);
 
-    const savedMessages = window.localStorage.getItem('ajx_ai_chat_messages')
+    const savedMessages = window.localStorage.getItem("ajx_ai_chat_messages");
     if (savedMessages) {
       try {
-        const parsedMessages = JSON.parse(savedMessages)
+        const parsedMessages = JSON.parse(savedMessages);
         if (Array.isArray(parsedMessages) && parsedMessages.length > 0) {
-          setMessages(parsedMessages)
+          setMessages(parsedMessages);
         }
       } catch (e) {
-        console.error('Failed to parse saved messages', e)
+        console.error("Failed to parse saved messages", e);
       }
     }
-  }, [])
+  }, []);
 
-  // Auto-scroll to bottom
   useEffect(() => {
-    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' })
-  }, [messages, loading, sources])
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [messages, loading, sources]);
 
-  // Focus input when chat opens
   useEffect(() => {
     if (open) {
-      setTimeout(() => {
-        inputRef.current?.focus()
-      }, 300)
+      setTimeout(() => inputRef.current?.focus(), 300);
     }
-  }, [open])
+  }, [open]);
 
-  // Save messages to localStorage
   useEffect(() => {
     if (messages.length > 0) {
-      window.localStorage.setItem('ajx_ai_chat_messages', JSON.stringify(messages.slice(-50)))
+      window.localStorage.setItem(
+        "ajx_ai_chat_messages",
+        JSON.stringify(messages.slice(-50))
+      );
     }
-  }, [messages])
+  }, [messages]);
 
   async function send(message?: string) {
-    const messageToSend = message || input.trim()
-    if (!messageToSend) return
+    const messageToSend = message || input.trim();
+    if (!messageToSend) return;
 
     const userMsg: Message = {
-      role: 'user',
+      role: "user",
       content: messageToSend,
-      timestamp: new Date().toISOString()
-    }
-    setMessages(prev => [...prev, userMsg])
-    setInput('')
-    setLoading(true)
-    setSources([]) // Clear previous sources for new turn
+      timestamp: new Date().toISOString(),
+    };
+    setMessages((prev) => [...prev, userMsg]);
+    setInput("");
+    setLoading(true);
+    setSources([]);
 
     try {
-      const res = await fetch('/api/chat', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+      const res = await fetch("/api/chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           message: messageToSend,
           sessionId,
-        })
-      })
+        }),
+      });
 
-      const data = await res.json() as ApiResponse;
+      const data = (await res.json()) as ApiResponse;
 
       if (data.sessionId && data.sessionId !== sessionId) {
-        setSessionId(data.sessionId)
-        window.localStorage.setItem('ajx_ai_session_id', data.sessionId)
+        setSessionId(data.sessionId);
+        window.localStorage.setItem("ajx_ai_session_id", data.sessionId);
       }
 
-      // Check for API errors
       if (data.error) {
         throw new Error(data.error);
       }
 
-      const reply = data.message || 'Sorry, I am currently unavailable. Please try again later.';
+      const reply =
+        data.message ||
+        "Sorry, I am currently unavailable. Please try again later.";
 
-      // Update sources if provided
       if (data.sources && data.sources.length > 0) {
         setSources(data.sources);
       }
 
-      setMessages(prev => [...prev, {
-        role: 'assistant',
-        content: reply,
-        timestamp: new Date().toISOString()
-      }])
+      setMessages((prev) => [
+        ...prev,
+        {
+          role: "assistant",
+          content: reply,
+          timestamp: new Date().toISOString(),
+        },
+      ]);
     } catch (e: unknown) {
-      console.error('Chat API error:', e)
-      const errorMessage = e instanceof Error ? e.message : 'Connection failed. Please check your internet connection.';
+      console.error("Chat API error:", e);
+      const errorMessage =
+        e instanceof Error
+          ? e.message
+          : "Connection failed. Please check your internet connection.";
 
-      setMessages(prev => [...prev, {
-        role: 'assistant',
-        content: `⚠️ **Error**: ${errorMessage}\n\nPlease check your configuration or try again later.`,
-        timestamp: new Date().toISOString()
-      }])
+      setMessages((prev) => [
+        ...prev,
+        {
+          role: "assistant",
+          content: `⚠️ **Error**: ${errorMessage}\n\nPlease check your configuration or try again later.`,
+          timestamp: new Date().toISOString(),
+        },
+      ]);
     } finally {
-      setLoading(false)
+      setLoading(false);
     }
   }
 
   function clearChat() {
-    setMessages([])
-    setSources([])
-    window.localStorage.removeItem('ajx_ai_chat_messages')
+    setMessages([]);
+    setSources([]);
+    window.localStorage.removeItem("ajx_ai_chat_messages");
   }
 
   return (
     <div className="fixed right-6 bottom-6 z-[9999] print:hidden flex flex-col items-end gap-4 pointer-events-none">
       {/* Chat Window */}
       <div
-        className={`pointer-events-auto transition-all duration-300 ease-out origin-bottom-right transform 
-          ${open ? 'scale-100 opacity-100 translate-y-0' : 'scale-95 opacity-0 translate-y-10 pointer-events-none'}
-        `}
+        className={`pointer-events-auto transition-all duration-300 ease-out origin-bottom-right ${
+          open
+            ? "scale-100 opacity-100"
+            : "scale-95 opacity-0 pointer-events-none"
+        }`}
       >
         {open && (
-          <div className="flex flex-col ai-heading-box border border-gray-200 dark:border-gray-800 rounded-3xl shadow-2xl w-[90vw] md:w-[400px] h-[600px] max-h-[80vh] overflow-hidden isolate">
+          <div className="flex flex-col ai-heading-box border border-gray-200 dark:border-gray-800 rounded-3xl shadow-2xl w-[90vw] md:w-[400px] h-[600px] max-h-[80vh] overflow-hidden">
             {/* Header */}
-            <div className="px-6 py-4 flex items-center justify-between shadow-lg">
+            <div className="px-6 py-4 flex bg-white items-center justify-between shadow-lg">
               <div className="flex items-center gap-4">
                 <div className="relative">
                   <div className="w-10 h-10 rounded-full flex items-center justify-center border border-white/20 shadow-inner">
-                    <SparklesIcon className="w-5 h-5 text-yellow-300" />
+                    <SparklesIcon className="w-5 h-5 text-green-300" />
                   </div>
                   <div className="absolute top-0 right-0 w-3 h-3 bg-green-500 border-2 border-black rounded-full shadow-[0_0_8px_rgba(34,197,94,0.6)]"></div>
                 </div>
                 <div>
-                  <h2 className="text-[24px] uppercase">AJX AI</h2>
-                  <p className="text-[12px] font-medium tracking-wider uppercase">Online Assistant</p>
+                  <h2 className="text-[24px] uppercase text-black">AJX AI</h2>
+                  <p className="text-[12px] font-medium text-black tracking-wider uppercase">
+                    Online Assistant
+                  </p>
                 </div>
               </div>
               <div className="flex items-center gap-2">
@@ -205,11 +214,12 @@ export default function ChatWidget() {
                   <div className="w-16 h-16 bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-900 rounded-full flex items-center justify-center mb-6 shadow-md">
                     <SparklesIcon className="w-8 h-8 text-black dark:text-white opacity-80" />
                   </div>
-                  <h4 className="font-bold text-xl text-gray-900 dark:text-white mb-3">
+                  <h4 className="font-bold text-xl mb-3">
                     Welcome to AJX
                   </h4>
-                  <p className="text-sm text-gray-600 dark:text-gray-300 mb-8 max-w-[240px] leading-relaxed font-medium">
-                    I can help you explore our services, portfolio, or answer any questions you have.
+                  <p className="text-sm mb-8 max-w-[240px] leading-relaxed font-medium">
+                    I can help you explore our services, portfolio, or answer
+                    any questions you have.
                   </p>
 
                   {/* Quick Prompts */}
@@ -231,42 +241,62 @@ export default function ChatWidget() {
               ) : (
                 <>
                   {messages.map((m, idx) => (
-                    <div key={idx} className={`flex gap-4 ${m.role === 'user' ? 'flex-row-reverse' : 'flex-row'}`}>
-                      {/* Avatar */}
-                      <div className={`flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center shadow-sm ${m.role === 'user'
-                        ? 'bg-black dark:bg-white text-white dark:text-black'
-                        : 'bg-gradient-to-br from-blue-600 to-violet-600 text-white'
-                        }`}>
-                        {m.role === 'user' ? (
+                    <div
+                      key={idx}
+                      className={`flex gap-4 ${
+                        m.role === "user" ? "flex-row-reverse" : "flex-row"
+                      }`}
+                    >
+                      <div
+                        className={`flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center shadow-sm ${
+                          m.role === "user"
+                            ? "bg-black dark:bg-white text-white dark:text-black"
+                            : "bg-gradient-to-br from-blue-600 to-violet-600 text-white"
+                        }`}
+                      >
+                        {m.role === "user" ? (
                           <span className="text-[10px] font-bold">You</span>
                         ) : (
                           <SparklesIcon className="w-4 h-4" />
                         )}
                       </div>
 
-                      {/* Message Bubble */}
-                      <div className={`max-w-[85%] flex flex-col ${m.role === 'user' ? 'items-end' : 'items-start'}`}>
+                      <div
+                        className={`max-w-[85%] flex flex-col ${
+                          m.role === "user" ? "items-end" : "items-start"
+                        }`}
+                      >
                         <div
-                          className={`rounded-2xl px-5 py-3.5 text-sm leading-relaxed shadow-sm font-medium ${m.role === 'user'
-                            ? 'bg-black dark:bg-white text-white dark:text-black rounded-br-none border-2 border-black dark:border-white'
-                            : 'bg-white dark:bg-gray-800 text-black dark:text-white rounded-bl-none border border-gray-200 dark:border-gray-600'
-                            }`}
+                          className={`rounded-2xl px-5 py-3.5 text-sm leading-relaxed shadow-sm font-medium ${
+                            m.role === "user"
+                              ? "bg-black dark:bg-white text-white dark:text-black rounded-br-none border-2 border-black dark:border-white"
+                              : "bg-white dark:bg-gray-800 text-black dark:text-white rounded-bl-none border border-gray-200 dark:border-gray-600"
+                          }`}
                         >
                           <div className="prose prose-sm dark:prose-invert max-w-none [&>p]:text-current">
-                            {/* Simple Markdown Parser */}
-                            {m.content.split('\n').map((line, i) => (
-                              <p key={i} className="mb-1 last:mb-0" dangerouslySetInnerHTML={{
-                                __html: line
-                                  .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>') // Bold **text**
-                                  .replace(/\*(.*?)\*/g, '<em>$1</em>') // Italic *text*
-                                  .replace(/^- (.*)/, '• $1') // List items "- item" to "• item"
-                              }} />
+                            {m.content.split("\n").map((line, i) => (
+                              <p
+                                key={i}
+                                className="mb-1 last:mb-0"
+                                dangerouslySetInnerHTML={{
+                                  __html: line
+                                    .replace(
+                                      /\*\*(.*?)\*\*/g,
+                                      "<strong>$1</strong>"
+                                    )
+                                    .replace(/\*(.*?)\*/g, "<em>$1</em>")
+                                    .replace(/^- (.*)/, "• $1"),
+                                }}
+                              />
                             ))}
                           </div>
                         </div>
                         {m.timestamp && (
                           <span className="text-[10px] mt-1.5 px-1 font-medium chat-clr">
-                            {new Date(m.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+                            {new Date(m.timestamp).toLocaleTimeString([], {
+                              hour: "2-digit",
+                              minute: "2-digit",
+                            })}
                           </span>
                         )}
                       </div>
@@ -275,17 +305,22 @@ export default function ChatWidget() {
                 </>
               )}
 
-              {/* Loading Indicator */}
               {loading && (
                 <div className="flex gap-4">
                   <div className="flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center bg-gradient-to-br from-blue-600 to-violet-600 text-white">
                     <SparklesIcon className="w-4 h-4 animate-pulse" />
                   </div>
-                  <div className="bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl rounded-bl-none px-5 py-4 shadow-sm inline-block">
+                  <div className="bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl rounded-bl-none px-5 py-4 shadow-sm">
                     <div className="flex space-x-1.5 items-center h-4">
                       <div className="w-1.5 h-1.5 bg-gray-600 dark:bg-gray-400 rounded-full animate-bounce"></div>
-                      <div className="w-1.5 h-1.5 bg-gray-600 dark:bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
-                      <div className="w-1.5 h-1.5 bg-gray-600 dark:bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
+                      <div
+                        className="w-1.5 h-1.5 bg-gray-600 dark:bg-gray-400 rounded-full animate-bounce"
+                        style={{ animationDelay: "0.1s" }}
+                      ></div>
+                      <div
+                        className="w-1.5 h-1.5 bg-gray-600 dark:bg-gray-400 rounded-full animate-bounce"
+                        style={{ animationDelay: "0.2s" }}
+                      ></div>
                     </div>
                   </div>
                 </div>
@@ -299,19 +334,22 @@ export default function ChatWidget() {
               <div className="bg-gray-50 dark:bg-gray-900 rounded-full flex items-center p-1.5 border-2 border-gray-200 dark:border-gray-800 focus-within:border-black dark:focus-within:border-white transition-colors">
                 <input
                   ref={inputRef}
-                  className="flex-1 h-15 bg-transparent border-0 focus:ring-0 px-2 text-[16px] text-gray-900 dark:text-white placeholder:text-gray-500 font-medium"
+                  className="flex-1 h-15 bg-transparent border-0 focus:ring-0 px-2 pl-10 text-[16px] text-gray-900 dark:text-white placeholder:text-gray-500 font-medium"
                   placeholder="Ask a question..."
                   value={input}
-                  onChange={e => setInput(e.target.value)}
-                  onKeyDown={e => { if (e.key === 'Enter' && !e.shiftKey) send() }}
+                  onChange={(e) => setInput(e.target.value)}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter" && !e.shiftKey) send();
+                  }}
                   disabled={loading}
                 />
                 <button
                   disabled={loading || !input.trim()}
-                  className={`h-9 w-9 rounded-full flex items-center justify-center transition-all duration-300 transform ${input.trim() && !loading
-                    ? 'bg-black text-white hover:scale-110 shadow-md'
-                    : 'bg-gray-200 dark:bg-gray-800 text-gray-400 cursor-not-allowed'
-                    }`}
+                  className={`h-9 w-9 rounded-full flex items-center justify-center transition-all duration-300 ${
+                    input.trim() && !loading
+                      ? "bg-black text-white hover:scale-110 shadow-md"
+                      : "bg-gray-200 dark:bg-gray-800 text-gray-400 cursor-not-allowed"
+                  }`}
                   onClick={() => send()}
                 >
                   <PaperAirplaneIcon className="w-4 h-4 -ml-0.5 mt-0.5 -rotate-45" />
@@ -324,24 +362,23 @@ export default function ChatWidget() {
 
       {/* Toggle Button */}
       <button
-        className={`pointer-events-auto h-16 w-16 md:h-20 md:w-20 rounded-full shadow-[0_8px_30px_rgb(0,0,0,0.12)] flex items-center justify-center transition-all duration-500 hover:scale-105 hover:shadow-[0_8px_30px_rgb(0,0,0,0.2)] active:scale-95 ${open
-          ? 'bg-white text-black rotate-90 '
-          : 'bg-black text-white hover:bg-gray-900'
-          }`}
+        className="pointer-events-auto h-20 w-20 md:h-24 md:w-24 rounded-full shadow-2xl flex items-center justify-center transition-all duration-300 hover:scale-105 active:scale-95 overflow-hidden bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500 p-1"
         onClick={() => setOpen(!open)}
       >
         {open ? (
-          <XMarkIcon className="w-8 h-8 md:w-10 md:h-10" />
+          <div className="w-full h-full rounded-full bg-white dark:bg-gray-900 flex items-center justify-center">
+            <XMarkIcon className="w-14 h-14 md:w-16 md:h-16 text-black dark:text-white" />
+          </div>
         ) : (
-          <div className="relative">
-            <ChatBubbleLeftRightIcon className="w-9 h-9 md:w-11 md:h-11" />
-            <span className="absolute top-0 right-0 -mt-1 -mr-1 flex h-4 w-4">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-4 w-4 bg-green-500 border-2 border-black"></span>
-            </span>
+          <div className="w-full h-full rounded-full overflow-hidden bg-white dark:bg-gray-900 p-0.5">
+            <img
+              src="/chat-bot/chat-bot2.gif"
+              alt="Chat bot"
+              className="w-full h-full rounded-full object-cover"
+            />
           </div>
         )}
       </button>
     </div>
-  )
+  );
 }

@@ -27,7 +27,6 @@ export default function About() {
                         className="btn btn-anim btn-default btn-outline slide-right-up anim-uni-in-up"
                         href={`/about-us`}
                         style={{
-                          border: '2px solid white',
                           borderRadius: '50px',
                           padding: '12px 32px'
                         }}

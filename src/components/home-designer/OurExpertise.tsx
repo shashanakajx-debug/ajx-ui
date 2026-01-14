@@ -240,7 +240,7 @@ export default function OurExpertise() {
 
           {/* Right: Image */}
           <div className="relative">
-            <div className="relative aspect-[4/3] w-full overflow-hidden shadow-sm">
+            <div className="relative aspect-[4/3] w-full overflow-hidden">
               {/* Fade swap */}
               <div
                 key={active.image.src}

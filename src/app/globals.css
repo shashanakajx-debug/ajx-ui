@@ -617,7 +617,7 @@ html {
 
 /* Outline Button */
 .btn-outline {
-  @apply btn-base;
+  /* @apply btn-base; */ 
   border: 2px solid var(--color-primary);
   color: var(--t-bright--dark);
 }
@@ -1191,6 +1191,15 @@ section.process .pathStage {
   background-color: var(--t-bright);
   color: var(--t-bright);
 }
+.ai-heading-box h2{
+  color: var(--t-opp-bright);
+}
+.ai-heading-box h4{
+  color: var(--t-opp-bright);
+}
+.ai-heading-box p{
+  color: var(--t-opp-bright);
+}
 .chat-clr{
   color: var(--t-opp-bright)
 }
@@ -1231,7 +1240,6 @@ section.process .pathStage {
     animation: spinClockwise 10s linear infinite;
     top: 10%;
     z-index: 1;
-   
 }
  
 /* ======== End ======== */
