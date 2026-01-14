@@ -1236,9 +1236,7 @@ section.process .pathStage {
     background-size: contain;
     background-repeat: no-repeat;
     opacity: 1;
-    left: 20%;
     animation: spinClockwise 10s linear infinite;
-    top: 10%;
     z-index: 1;
 }
  

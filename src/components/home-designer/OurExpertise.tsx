@@ -246,7 +246,7 @@ export default function OurExpertise() {
                 key={active.image.src}
                 className="absolute  inset-0 animate-[fadeIn_220ms_ease-out]"
               >
-                <div className={`relative w-full h-full ${active.class}`}>
+                <div className={`relative w-full h-full flex justify-center items-center ${active.class}`}>
                 <Image
                   src={active.image.src}
                   alt={active.image.alt}
