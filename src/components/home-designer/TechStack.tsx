@@ -1,5 +1,6 @@
 import Image from "next/image";
 import React from "react";
+import SectionHeader from "./SectionHeader";
 
 type TechstackItem = {
   id: string;
@@ -7,7 +8,7 @@ type TechstackItem = {
   icon: string;
 };
 
-// 🔹 Local data (no JSON, no imports, no build errors)
+// Local data definition
 const techstack: TechstackItem[] = [
   // Frontend
   { id: "react", name: "React", icon: "/tech/react.svg" },
@@ -43,7 +44,7 @@ const techstack: TechstackItem[] = [
 
 ];
 
-// Controlled Marquee (reliable direction control)
+// Marquee component with direction control
 function Marquee({
   children,
   duration = 40,
@@ -89,7 +90,7 @@ const row2 = techstack.slice(itemsPerRow, itemsPerRow * 2);
 const row3 = techstack.slice(itemsPerRow * 2);
 
 export default function Techstack() {
-  // sizes & spacing (tweak here)
+  // Configuration for sizes and spacing
   const ICON_WIDTH = 60;
   const ICON_HEIGHT = 36;
   const ITEM_MIN_WIDTH = 120; // reduce spacing between items
@@ -117,8 +118,18 @@ export default function Techstack() {
 
   return (
     <div>
-      <div className="mxd-section techicon padding-grid-pre-pinned lg:mt-[80px]">
+      <div className="mxd-section techicon padding-grid-pre-pinned lg:mt-12">
         <div className="mxd-container fullwidth-container">
+          <div className="mx-auto row gx-0">
+            <SectionHeader
+              subtitle="TECH STACK"
+              title="Cutting-Edge"
+              description="Technologies"
+              buttonText="View All Tech"
+              buttonLink="/tech-stack"
+              className="col-12"
+            />
+          </div>
           <div className="mxd-block" style={{ rowGap: ROW_GAP }}>
             {/* Row 1: Right → Left (normal animation moves leftwards) */}
             <Marquee duration={MARQUEE_DURATION} reverse={false} className="mb-2">

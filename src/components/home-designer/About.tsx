@@ -1,9 +1,9 @@
 "use client";
 import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
-import AnimatedButton from "@/components/animation/AnimatedButton";
 import RevealText from "@/components/animation/RevealText";
 import { Eye, SquareUser, ChartColumn } from "lucide-react";
+import SectionHeader from "./SectionHeader";
 
 interface AnimatedCounterProps {
   target: number;
@@ -60,24 +60,16 @@ const AnimatedCounter: React.FC<AnimatedCounterProps> = ({
 };
 export default function About() {
   return (
-    <section className="mxd-section relative">
-      <div className="mxd-container grid-container">
-        <div className="row gx-0 mb-10 lg:mb-24">
-          <div className="col-12">
-            <div className="flex flex-col items-center justify-center relative text-center">
-              <span className="text-xs font-bold tracking-[0.25em] uppercase text-gray-500 mb-6 block fade-in-up-elm">
-                + ABOUT US
-              </span>
-
-              <RevealText className="text-4xl md:text-5xl lg:text-7xl font-bold leading-tight text-current mb-0 fade-in-up-elm">
-                Software Company
-              </RevealText>
-              <RevealText className="text-4xl md:text-5xl lg:text-7xl font-bold text-current fade-in-up-elm">
-                AJX Technologies
-              </RevealText>
-            </div>
-          </div>
-        </div>
+    <section className="mxd-container our-experties container_ser mxd-section padding-hero-01 padding-pre-manifest bg-grey-300">
+      <div className="mx-auto row gx-0">
+        <SectionHeader
+          subtitle="ABOUT US"
+          title="Advanced AI Services"
+          description="for Digital-First Companies"
+          buttonText="View More"
+          buttonLink="/services"
+          className=""
+        />
 
         <div className="container-fluid px-0">
           <div className="row gx-0 items-start">
@@ -144,19 +136,8 @@ export default function About() {
                   every aspect of our projects is crafted with the highest
                   standards of quality.
                 </RevealText>
-
-                <div className="mb-14 w-full flex justify-center xl:justify-start">
-                  <AnimatedButton
-                    text="Learn More"
-                    className="inline-flex items-center gap-3 rounded-full bg-[#1dbf00] px-10 py-4 text-base font-bold text-white hover:bg-green-700 transition-all duration-300 shadow-md transform hover:scale-105"
-                    href="/about-us"
-                  >
-                    <i className="ph-bold ph-arrow-up-right" />
-                  </AnimatedButton>
-                </div>
-
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-6 w-full">
-                  <div className="rounded-3xl p-8 bg-white border border-gray-100 shadow-lg flex flex-col items-center text-center justify-between hover:shadow-xl transition-all duration-300 min-h-[220px] group">
+                  <div className="rounded-3xl p-8 bg-gray-200 border border-gray-100 shadow-lg flex flex-col items-center text-center justify-between hover:shadow-xl transition-all duration-300 min-h-[220px] group">
                     <Eye className="w-6 h-6 stroke-[1.5px] text-gray-900 mb-6 group-hover:scale-110 transition-transform" />
                     <div className="text-xs font-bold leading-snug text-gray-900 uppercase tracking-widest">
                       Great coverage
@@ -165,7 +146,7 @@ export default function About() {
                     </div>
                   </div>
 
-                  <div className="rounded-3xl p-8 bg-white border border-gray-100 shadow-lg flex flex-col items-center text-center justify-between hover:shadow-xl transition-all duration-300 min-h-[220px] group">
+                  <div className="rounded-3xl p-8 bg-gray-200 border border-gray-100 shadow-lg flex flex-col items-center text-center justify-between hover:shadow-xl transition-all duration-300 min-h-[220px] group">
                     <SquareUser className="w-6 h-6 stroke-[1.5px] text-gray-900 mb-6 group-hover:scale-110 transition-transform" />
                     <div className="text-xs font-bold leading-snug text-gray-900 uppercase tracking-widest">
                       Sold exclusively
@@ -174,7 +155,7 @@ export default function About() {
                     </div>
                   </div>
 
-                  <div className="rounded-3xl p-8 bg-white border border-gray-100 shadow-lg flex flex-col items-center text-center justify-between hover:shadow-xl transition-all duration-300 min-h-[220px] group">
+                  <div className="rounded-3xl p-8 bg-gray-200 border border-gray-100 shadow-lg flex flex-col items-center text-center justify-between hover:shadow-xl transition-all duration-300 min-h-[220px] group">
                     <ChartColumn className="w-6 h-6 stroke-[1.5px] text-gray-900 mb-6 group-hover:scale-110 transition-transform" />
                     <div className="text-xs font-bold leading-snug text-gray-900 uppercase tracking-widest">
                       Trusted financial

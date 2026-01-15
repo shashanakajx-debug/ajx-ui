@@ -7,17 +7,16 @@ import Comments from "../Comments";
 import AnimatedButton from "@/components/animation/AnimatedButton";
 
 export default function BlogDetails({ params }: { params: Promise<{ slug: string }> }) {
-    const { slug } = use(params);
+    use(params);
     // Ideally use params.slug to fetch data
     return (
         <div className="mxd-section padding-pre-title">
             <div className="mxd-container grid-container">
                 <div className="mxd-article-area loading-wrap">
-                    {/* Article Container Start */}
                     <div className="mxd-article-container mxd-grid-item no-margin">
-                        {/* Article Start */}
+
                         <article className="mxd-article">
-                            {/* Article Headline Start */}
+
                             <div className="mxd-article__headline">
                                 <div className="mxd-article__title loading__item">
                                     <h1 className="h1-small">
@@ -36,8 +35,8 @@ export default function BlogDetails({ params }: { params: Promise<{ slug: string
                                     </span>
                                 </div>
                             </div>
-                            {/* Article Headline End */}
-                            {/* Article Thumb Start */}
+
+
                             <div className="mxd-article__thumb loading__fade">
                                 <Image
                                     alt="Article Thumbnail"
@@ -46,8 +45,8 @@ export default function BlogDetails({ params }: { params: Promise<{ slug: string
                                     height={1280}
                                 />
                             </div>
-                            {/* Article Thumb End */}
-                            {/* Article Content Start */}
+
+
                             <div className="mxd-article__content">
                                 <div className="mxd-article__block">
                                     <p className="t-large mxd-article__excerpt">
@@ -289,10 +288,10 @@ export default function BlogDetails({ params }: { params: Promise<{ slug: string
                                     </ul>
                                 </div>
                             </div>
-                            {/* Article Content End */}
+
                         </article>
-                        {/* Article End */}
-                        {/* Article Author Start */}
+
+
                         <div className="mxd-article-author">
                             <div className="mxd-article-author__data">
                                 <a className="mxd-article-author__avatar" href="#">
@@ -334,8 +333,8 @@ export default function BlogDetails({ params }: { params: Promise<{ slug: string
                                 </p>
                             </div>
                         </div>
-                        {/* Article Author End */}
-                        {/* Article Navigation Start */}
+
+
                         <div className="mxd-article-navigation">
                             <div className="container-fluid p-0">
                                 <div className="row g-0">
@@ -372,12 +371,12 @@ export default function BlogDetails({ params }: { params: Promise<{ slug: string
                                 </div>
                             </div>
                         </div>
-                        {/* Article Navigation End */}
-                        {/* Article Comments Start */}
+
+
                         <Comments />
-                        {/* Article Comments End */}
+
                     </div>
-                    {/* Article Container End */}
+
                 </div>
             </div>
         </div>

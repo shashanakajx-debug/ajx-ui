@@ -1,8 +1,7 @@
-// src/components/home-designer/Industries.tsx
+
 "use client";
 
 import React from "react";
-import RevealText from "@/components/animation/RevealText";
 import {
   Briefcase,
   Heart,
@@ -13,6 +12,7 @@ import {
 } from "lucide-react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Parallax, Autoplay } from "swiper/modules";
+import SectionHeader from "./SectionHeader";
 
 import Image from "next/image";
 
@@ -77,34 +77,17 @@ const INDUSTRIES: Industry[] = [
 
 export default function Industries() {
   return (
-    <div className="mxd-section overflow-hidden padding-grid-pre-mtext mt-40">
-      <div className="mxd-container grid-container">
-        {/* Block - Section Title Start */}
-        <div className="mxd-block">
-          <div className="mxd-section-title">
-            <div className="container-fluid p-0">
-              <div className="row g-0">
-                <div className="col-12 col-xl-6 mxd-grid-item no-margin">
-                  <div className="mxd-section-title__hrtitle">
-                    <RevealText as="h2" className="reveal-type">
-                      Industries we serve
-                    </RevealText>
-                  </div>
-                </div>
-                <div className="col-12 col-xl-6 mxd-grid-item no-margin">
-                  <div className="mxd-section-title__hrdescr">
-                    <p className="anim-uni-in-up">
-                      From startups to enterprises, we bring technical
-                      excellence and domain expertise across diverse sectors.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        {/* Block - Section Title End */}
-        {/* Industries Slider */}
+    <div className="mxd-section overflow-hidden padding-grid-pre-mtext mt-12 md:mt-20">
+      <div className="mx-auto row gx-0">
+        <SectionHeader
+          subtitle="INDUSTRIES"
+          title="Industries We Serve"
+          description="Diverse Sectors"
+          buttonText="All Industries"
+          buttonLink="/industries"
+          className="col-12"
+        />
+
         <div className="mxd-block">
           <Swiper
             className="mxd-demo-swiper mxd-grid-item anim-uni-in-up"
@@ -142,7 +125,6 @@ export default function Industries() {
                 >
                   <div className="demo-swiper-slide__image">
                     <div className="mxd-service-card">
-                      {/* Image Section */}
                       <div
                         className="mxd-service-card__image-wrapper"
                         style={{
@@ -169,7 +151,7 @@ export default function Industries() {
                         </div>
                       </div>
 
-                      {/* Content Section */}
+
                       <div className="mxd-service-card__body">
                         <div className="mxd-service-card__icon anim-uni-in-up">
                           <IconComponent
@@ -196,7 +178,7 @@ export default function Industries() {
               );
             })}
 
-            {/* navigation buttons */}
+
             <div className="swiper-button-prev mxd-slider-btn mxd-slider-btn-round-prev v2">
               <a
                 className="btn btn-round btn-round-small btn-outline slide-left anim-no-delay"
@@ -215,7 +197,7 @@ export default function Industries() {
             </div>
           </Swiper>
         </div>
-        {/* Block - Industries Slider End */}
+
       </div>
     </div>
   );

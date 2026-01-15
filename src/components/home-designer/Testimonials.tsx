@@ -4,6 +4,7 @@ import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Parallax, Autoplay } from "swiper/modules";
 import AnimatedButton from "../animation/AnimatedButton";
+import SectionHeader from "./SectionHeader";
 
 import "swiper/css";
 import "swiper/css/navigation";
@@ -39,7 +40,15 @@ const testimonialsPortfolioData = [
 export default function Testimonials() {
   return (
     <div id="testimonials" className="mxd-section overflow-hidden padding-default">
-      <div className="mxd-container grid-container">
+      <div className="mx-auto row gx-0">
+        <SectionHeader
+          subtitle="TESTIMONIALS"
+          title="Client Stories"
+          description="& Feedback"
+          buttonText="Read Reviews"
+          buttonLink="/testimonials"
+          className="col-12"
+        />
         <div className="mxd-block">
           <Swiper
             slidesPerView={1}
@@ -62,7 +71,7 @@ export default function Testimonials() {
                 <div className="container-fluid p-0">
                   <div className="row g-0 align-items-stretch">
 
-                    {/* LEFT */}
+
                     <div
                       className="col-12 col-lg-6"
                       style={{
@@ -72,7 +81,7 @@ export default function Testimonials() {
                         padding: "32px 40px",
                       }}
                     >
-                      {/* Avatar + Info */}
+
                       <div
                         className="d-flex"
                         style={{ gap: 18 }}
@@ -120,7 +129,7 @@ export default function Testimonials() {
                         </div>
                       </div>
 
-                      {/* Text */}
+
                       <div
                         style={{ marginTop: 24, maxWidth: 620 }}
                         data-swiper-parallax-x={-300}
@@ -137,7 +146,7 @@ export default function Testimonials() {
                         </div>
                       </div>
 
-                      {/* CONTROLS */}
+
                       <div
                         style={{
                           display: "flex",
@@ -184,7 +193,7 @@ export default function Testimonials() {
                       </div>
                     </div>
 
-                    {/* RIGHT IMAGE */}
+
                     <div
                       className="col-12 col-lg-6 d-flex align-items-center justify-content-center"
                       style={{ padding: "32px 40px" }}

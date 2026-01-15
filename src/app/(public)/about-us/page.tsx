@@ -10,7 +10,6 @@ import RayoCtaDuplicate from "@/components/about/RayoCtaDuplicate";
 export default function AboutPage() {
   return (
     <div>
-      {/* Rayo content wrappers */}
       <main
         id="mxd-page-content"
         className="mxd-page-content inner-page-content"

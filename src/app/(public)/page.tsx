@@ -3,26 +3,18 @@
 import { useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
 
-// Import all section components
 import Hero from "@/components/home-designer/Hero";
-import About from "@/components/home-designer/About";
-// import Services from "@/components/home-designer/Services";
-import TechStack from "@/components/home-designer/TechStack";
-import Projects from "@/components/home-designer/Projects";
-// import Industries from "@/components/home-designer/Industries";
-import WhyChooseUs from "@/components/home-designer/WhyChooseUs";
-import Testimonials from "@/components/home-designer/Testimonials";
-import Blog from "@/components/home-designer/Blog";
-import FinalCta from "@/components/home-designer/FinalCta";
 import ParallaxDivider from "@/components/home-designer/ParallaxDivider";
-import ScrollProcessPath from "@/components/home-designer/ScrollProcessPath";
-// import FuturisticTechnology from "@/components/home-designer/FuturisticTechnology";
-import Creatives from "@/components/home-designer/Creatives";
 import OurExpertise from "@/components/home-designer/OurExpertise";
+import About from "@/components/home-designer/About";
+import CaseStudies from "@/components/home-designer/CaseStudies";
+import Testimonials from "@/components/home-designer/Testimonials";
+import Industries from "@/components/home-designer/Industries";
+import TechStack from "@/components/home-designer/TechStack";
+import FinalCta from "@/components/home-designer/FinalCta";
 
-/* --------------------
-   HomePage component
-   -------------------- */
+
+
 export default function HomePage() {
   const router = useRouter();
   const secretRef = useRef<string>("");
@@ -72,52 +64,17 @@ export default function HomePage() {
 
   return (
     <div className="min-h-screen">
-      {/* 1. Header - Already in layout */}
-
-      {/* 2. Hero Banner */}
       <Hero />
-
-      {/* Divider */}
       <ParallaxDivider />
-
-      {/* 3. About Us */}
-      <About />
-
-      {/* 5. Futuristic Technology */}
-      {/* <FuturisticTechnology /> */}
-
-      {/* 4. Our Services */}
-      {/* <Services /> */}
-
       <OurExpertise />
-
-      {/* 5. Tech Stack (Logo Marquee) */}
-      <TechStack />
-
-      {/* 6. Featured Projects */}
-      <Projects />
-
-      <Creatives />
-
-      {/* 9.1 Our 6-Step Process */}
-      <ScrollProcessPath />
-
-      {/* 7. Industries Served */}
-      {/* <Industries /> */}
-
-      {/* 8. Why Choose Us */}
-      <WhyChooseUs />
-
-      {/* 10. Testimonials */}
+      <About />
+      <CaseStudies />
       <Testimonials />
-
-      {/* 11. Blog / Insights */}
-      <Blog />
-
-      {/* 12. Final Call to Action */}
+      <Industries />
+      <TechStack />
       <FinalCta />
 
-      {/* 13. Footer - Already in layout */}
+
     </div>
   );
 }

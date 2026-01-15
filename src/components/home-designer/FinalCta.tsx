@@ -1,11 +1,10 @@
 import RevealText from "../animation/RevealText";
 import AnimatedButton from "../animation/AnimatedButton";
- 
+
 export default function FinalCta() {
   return (
     <div className="mxd-section padding-default">
       <div className="mxd-container">
-        {/* Block - Demo CTA Start */}
         <div className="mxd-block">
           <div className="mxd-demo-cta">
             <div className="mxd-demo-cta__caption anim-uni-in-up">
@@ -13,7 +12,7 @@ export default function FinalCta() {
                 Show your creativity and get noticed today!
               </RevealText>
             </div>
- 
+
             <div className="mxd-demo-cta__btn anim-uni-in-up">
               <AnimatedButton
                 text="LET'S GET STARTED"
@@ -25,7 +24,7 @@ export default function FinalCta() {
             </div>
           </div>
         </div>
-        {/* Block - Demo CTA End */}
+
       </div>
     </div>
   );

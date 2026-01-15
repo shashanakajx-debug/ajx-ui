@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 import {
   PaperAirplaneIcon,
   XMarkIcon,
@@ -160,17 +161,16 @@ export default function ChatWidget() {
 
   return (
     <div className="fixed right-6 bottom-6 z-[9999] print:hidden flex flex-col items-end gap-4 pointer-events-none">
-      {/* Chat Window */}
+
       <div
-        className={`pointer-events-auto transition-all duration-300 ease-out origin-bottom-right ${
-          open
-            ? "scale-100 opacity-100"
-            : "scale-95 opacity-0 pointer-events-none"
-        }`}
+        className={`pointer-events-auto transition-all duration-300 ease-out origin-bottom-right ${open
+          ? "scale-100 opacity-100"
+          : "scale-95 opacity-0 pointer-events-none"
+          }`}
       >
         {open && (
           <div className="flex flex-col ai-heading-box border border-gray-200 dark:border-gray-800 rounded-3xl shadow-2xl w-[90vw] md:w-[400px] h-[600px] max-h-[80vh] overflow-hidden">
-            {/* Header */}
+
             <div className="px-6 py-4 flex bg-white items-center justify-between shadow-lg">
               <div className="flex items-center gap-4">
                 <div className="relative">
@@ -203,7 +203,7 @@ export default function ChatWidget() {
               </div>
             </div>
 
-            {/* Messages Area */}
+
             <div
               ref={scrollRef}
               data-lenis-prevent
@@ -222,7 +222,7 @@ export default function ChatWidget() {
                     any questions you have.
                   </p>
 
-                  {/* Quick Prompts */}
+
                   <div className="grid gap-2.5 w-full max-w-xs">
                     {QUICK_PROMPTS.map((prompt, index) => (
                       <button
@@ -243,16 +243,14 @@ export default function ChatWidget() {
                   {messages.map((m, idx) => (
                     <div
                       key={idx}
-                      className={`flex gap-4 ${
-                        m.role === "user" ? "flex-row-reverse" : "flex-row"
-                      }`}
+                      className={`flex gap-4 ${m.role === "user" ? "flex-row-reverse" : "flex-row"
+                        }`}
                     >
                       <div
-                        className={`flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center shadow-sm ${
-                          m.role === "user"
-                            ? "bg-black dark:bg-white text-white dark:text-black"
-                            : "bg-gradient-to-br from-blue-600 to-violet-600 text-white"
-                        }`}
+                        className={`flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center shadow-sm ${m.role === "user"
+                          ? "bg-black dark:bg-white text-white dark:text-black"
+                          : "bg-gradient-to-br from-blue-600 to-violet-600 text-white"
+                          }`}
                       >
                         {m.role === "user" ? (
                           <span className="text-[10px] font-bold">You</span>
@@ -262,16 +260,14 @@ export default function ChatWidget() {
                       </div>
 
                       <div
-                        className={`max-w-[85%] flex flex-col ${
-                          m.role === "user" ? "items-end" : "items-start"
-                        }`}
+                        className={`max-w-[85%] flex flex-col ${m.role === "user" ? "items-end" : "items-start"
+                          }`}
                       >
                         <div
-                          className={`rounded-2xl px-5 py-3.5 text-sm leading-relaxed shadow-sm font-medium ${
-                            m.role === "user"
-                              ? "bg-black dark:bg-white text-white dark:text-black rounded-br-none border-2 border-black dark:border-white"
-                              : "bg-white dark:bg-gray-800 text-black dark:text-white rounded-bl-none border border-gray-200 dark:border-gray-600"
-                          }`}
+                          className={`rounded-2xl px-5 py-3.5 text-sm leading-relaxed shadow-sm font-medium ${m.role === "user"
+                            ? "bg-black dark:bg-white text-white dark:text-black rounded-br-none border-2 border-black dark:border-white"
+                            : "bg-white dark:bg-gray-800 text-black dark:text-white rounded-bl-none border border-gray-200 dark:border-gray-600"
+                            }`}
                         >
                           <div className="prose prose-sm dark:prose-invert max-w-none [&>p]:text-current">
                             {m.content.split("\n").map((line, i) => (
@@ -329,7 +325,7 @@ export default function ChatWidget() {
               <div ref={messagesEndRef} />
             </div>
 
-            {/* Input Area */}
+
             <div className="border-t border-gray-200 dark:border-gray-800 p-4 bg-white dark:bg-gray-950">
               <div className="bg-gray-50 dark:bg-gray-900 rounded-full flex items-center p-1.5 border-2 border-gray-200 dark:border-gray-800 focus-within:border-black dark:focus-within:border-white transition-colors">
                 <input
@@ -345,11 +341,10 @@ export default function ChatWidget() {
                 />
                 <button
                   disabled={loading || !input.trim()}
-                  className={`h-9 w-9 rounded-full flex items-center justify-center transition-all duration-300 ${
-                    input.trim() && !loading
-                      ? "bg-black text-white hover:scale-110 shadow-md"
-                      : "bg-gray-200 dark:bg-gray-800 text-gray-400 cursor-not-allowed"
-                  }`}
+                  className={`h-9 w-9 rounded-full flex items-center justify-center transition-all duration-300 ${input.trim() && !loading
+                    ? "bg-black text-white hover:scale-110 shadow-md"
+                    : "bg-gray-200 dark:bg-gray-800 text-gray-400 cursor-not-allowed"
+                    }`}
                   onClick={() => send()}
                 >
                   <PaperAirplaneIcon className="w-4 h-4 -ml-0.5 mt-0.5 -rotate-45" />
@@ -360,7 +355,7 @@ export default function ChatWidget() {
         )}
       </div>
 
-      {/* Toggle Button */}
+
       <button
         className="pointer-events-auto h-20 w-20 md:h-24 md:w-24 rounded-full shadow-2xl flex items-center justify-center transition-all duration-300 hover:scale-105 active:scale-95 overflow-hidden bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500 p-1"
         onClick={() => setOpen(!open)}
@@ -370,11 +365,13 @@ export default function ChatWidget() {
             <XMarkIcon className="w-14 h-14 md:w-16 md:h-16 text-black dark:text-white" />
           </div>
         ) : (
-          <div className="w-full h-full rounded-full overflow-hidden bg-white dark:bg-gray-900 p-0.5">
-            <img
+          <div className="w-full h-full rounded-full overflow-hidden bg-white dark:bg-gray-900 p-0.5 relative">
+            <Image
               src="/chat-bot/chat-bot2.gif"
               alt="Chat bot"
-              className="w-full h-full rounded-full object-cover"
+              fill
+              className="rounded-full object-cover"
+              unoptimized
             />
           </div>
         )}
