@@ -1,232 +1,207 @@
 "use client";
 import Image from "next/image";
-
+import { useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Parallax, Autoplay } from "swiper/modules";
-import AnimatedButton from "../animation/AnimatedButton";
+import { Autoplay } from "swiper/modules";
 import SectionHeader from "./SectionHeader";
+import type { Swiper as SwiperType } from "swiper";
+import { Star, ArrowRight, ArrowLeft, ArrowUpRight } from "lucide-react";
 
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 
-const testimonialsPortfolioData = [
+const testimonialsData = [
   {
+    id: 1,
+    authorName: "Daniyel Karlos",
+    authorPosition: "Senior Director",
+    authorCompany: "TechVision Inc.",
+    authorPhoto: "/testimonials/dainial.jpg",
+    rating: 5,
+    tags: ["PACKAGING", "BRANDING"],
+    text: "The new website not only looks premium but has significantly increased our traffic and conversions. The team matched our rigorous standards and delivered on time.",
+    link: "#"
+  },
+    {
+    id: 2,
     authorName: "Alex Tomato",
     authorPosition: "Brand Manager",
     authorCompany: "Instant Design",
-    authorCompanyUrl: "#",
-    rating: 5,
-    text:
-      "Working with the Rayo team was an absolute pleasure! They took the time to understand our business needs and translated them into a beautifully designed, user-friendly website.",
     authorPhoto: "/testimonials/samual.jpg",
-    testimonialImage: "/testimonials/project1.webp",
-    projectPage: "#",
-  },
-  {
-    authorName: "Daniyel Karlos",
-    authorPosition: "Senior Director of Marketing",
-    authorCompany: "TechVision Inc.",
-    authorCompanyUrl: "#",
     rating: 5,
-    text:
-      "The team at AJX Technologies completely transformed our online presence. The new website not only looks premium but has significantly increased our traffic and conversions.",
-    authorPhoto: "/testimonials/dainial.jpg",
-    testimonialImage: "/testimonials/project2.webp",
-    projectPage: "#",
+    tags: ["WEB DESIGN", "DEVELOPMENT"],
+    text: "Working with the Rayo team was an absolute pleasure! They took the time to understand our business needs and translated them into a beautifully designed, user-friendly website.",
+    link: "#"
   },
 ];
 
+
 export default function Testimonials() {
+  const [swiperInstance, setSwiperInstance] = useState<SwiperType | null>(null);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const totalSlides = testimonialsData.length;
+
   return (
     <div id="testimonials" className="mxd-section overflow-hidden padding-default">
       <div className="mx-auto row gx-0">
         <SectionHeader
           subtitle="TESTIMONIALS"
-          title="Client Stories"
-          description="& Feedback"
-          buttonText="Read Reviews"
+          title="Ajx Technologies"
+          description="Trusted by clients"
+          buttonText="View More"
           buttonLink="/testimonials"
           className="col-12"
         />
-        <div className="mxd-block">
-          <Swiper
-            slidesPerView={1}
-            spaceBetween={30}
-            loop
-            speed={900}
-            parallax
-            autoplay={false}
 
-            navigation={{
-              nextEl: ".swiper-button-next",
-              prevEl: ".swiper-button-prev",
-            }}
-            modules={[Navigation, Parallax, Autoplay]}
-            className="swiper-testimonials"
+        <div className="container-fluid mt-8 md:mt-12 px-4 md:px-8">
+          <div className="flex flex-col lg:flex-row gap-8 items-stretch">
+            
+            <div className="w-full lg:w-[34%] flex-shrink-0">
+              <div className="h-full min-h-[400px] bg-gray-100 rounded-[28px] p-8 md:p-12 flex flex-col justify-center items-center text-center text-black">
+                <div className="mb-4">
+                  <span className="text-[64px] md:text-[80px] font-medium leading-none tracking-tight">
+                    5.0
+                  </span>
+                </div>
 
-          >
-            {testimonialsPortfolioData.map((item, idx) => (
-              <SwiperSlide key={idx}>
-                <div className="container-fluid p-0">
-                  <div className="row g-0 align-items-stretch">
+                <div className="flex gap-1 mb-6 text-[#FFB400]">
+                  {[1, 2, 3, 4, 5].map((star) => (
+                    <Star key={star} className="w-6 h-6 fill-current" strokeWidth={0} />
+                  ))}
+                </div>
 
+                <p className="text-base md:text-lg text-black/70 mb-8 max-w-[360px]">
+                  5 of 5 based on 64 Upwork reviews
+                </p>
 
-                    <div
-                      className="col-12 col-lg-6"
-                      style={{
-                        display: "flex",
-                        flexDirection: "column",
-                        justifyContent: "center",
-                        padding: "32px 40px",
-                      }}
-                    >
+                <div className="mb-8">
+                  <Image
+                    src="/testimonials/upworklogo-black.png"
+                    alt="Upwork"
+                    width={140}
+                    height={40}
+                    className="h-10 w-auto object-contain"
+                  />
+                </div>
 
-                      <div
-                        className="d-flex"
-                        style={{ gap: 18 }}
-                        data-swiper-parallax-x={-200}
-                      >
-                        <div
-                          style={{
-                            width: 140,
-                            height: 140,
-                            borderRadius: "50%",
-                            overflow: "hidden",
-                            flexShrink: 0,
-                          }}
-                        >
+                <div className="flex items-center gap-6 mt-auto">
+                  <button
+                    onClick={() => {
+                      if (swiperInstance) swiperInstance.slidePrev();
+                    }}
+                    className="w-14 h-14 rounded-full border border-gray-300 flex items-center justify-center transition-all hover:bg-black hover:text-white group"
+                    aria-label="Previous Slide"
+                  >
+                    <ArrowLeft className="w-6 h-6 group-hover:stroke-current" />
+                  </button>
+
+                  <div className="text-lg font-medium">
+                    <span className="text-black">{activeIndex + 1}</span>
+                    <span className="text-black/40">/{totalSlides}</span>
+                  </div>
+
+                  <button
+                    onClick={() => {
+                      if (swiperInstance) swiperInstance.slideNext();
+                    }}
+                    className="w-14 h-14 rounded-full border border-gray-300 flex items-center justify-center transition-all hover:bg-black hover:text-white group"
+                    aria-label="Next Slide"
+                  >
+                    <ArrowRight className="w-6 h-6 group-hover:stroke-current" />
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div className="w-full lg:w-[66%] min-w-0 relative">
+              <Swiper
+                onSwiper={setSwiperInstance}
+                onSlideChange={(swiper) => setActiveIndex(swiper.activeIndex)}
+                spaceBetween={0}
+                slidesPerView={1}
+                modules={[Autoplay]}
+                autoplay={{ delay: 6000, disableOnInteraction: true }}
+                loop={true}
+                allowTouchMove={true}
+                breakpoints={{
+                  640: { slidesPerView: 1.1 },
+                  900: { slidesPerView: 1.5 },
+                  1200: { slidesPerView: 1.8 }, 
+                }}
+                className="h-full !pb-10 !pr-4"
+              >
+                {testimonialsData.map((item, idx) => (
+                  <SwiperSlide key={item.id} className="h-full !filter-none !opacity-100 relative">
+
+                    {idx !== testimonialsData.length - 1 && (
+                      <div className="absolute right-0 top-8 bottom-8 w-[2px] bg-gray-200"></div>
+                    )}
+
+                    <div className="h-full flex items-stretch px-8 md:px-12">
+                      <div className="w-full h-full flex flex-col bg-transparent justify-between min-h-[400px]"> {/* Maintained 400px height per user request */}
+
+                        <div className="flex flex-col items-start gap-4 mb-8">
                           <Image
-                            src={item.authorPhoto}
-                            alt={item.authorName}
-                            width={140}
-                            height={140}
-                            style={{
-                              width: "100%",
-                              height: "100%",
-                              objectFit: "cover",
-                            }}
+                            src="/clutch.png"
+                            alt="Clutch"
+                            width={100}
+                            height={32}
+                            className="h-7 w-auto object-contain"
                           />
-                        </div>
-
-                        <div>
-                          <h3 style={{ margin: 0 }}>{item.authorName}</h3>
-                          <p style={{ margin: "6px 0", opacity: 0.8 }}>
-                            {item.authorPosition}{" "}
-                            <a href={item.authorCompanyUrl}>
-                              {item.authorCompany}
-                            </a>
-                          </p>
-                          <div>
-                            {Array.from({ length: item.rating }).map((_, i) => (
-                              <i
-                                key={i}
-                                className="ph-fill ph-star"
-                                style={{ fontSize: 13, marginRight: 4 }}
-                              />
+                          <div className="flex gap-2 flex-wrap mt-2">
+                            {item.tags.map((tag) => (
+                              <span key={tag} className="px-3 py-1 rounded-full border border-gray-200 text-xs font-semibold tracking-wide text-gray-600">
+                                {tag}
+                              </span>
                             ))}
                           </div>
                         </div>
-                      </div>
 
-
-                      <div
-                        style={{ marginTop: 24, maxWidth: 620 }}
-                        data-swiper-parallax-x={-300}
-                      >
-                        <p style={{ lineHeight: 1.55 }}>{item.text}</p>
-                        <div style={{ marginTop: 18 }}>
-                          <AnimatedButton
-                            text="Project Page"
-                            className="btn btn-small btn-outline"
-                            href={item.projectPage}
-                          >
-                            <i className="ph ph-arrow-up-right" />
-                          </AnimatedButton>
-                        </div>
-                      </div>
-
-
-                      <div
-                        style={{
-                          display: "flex",
-                          alignItems: "center",
-                          gap: 16,
-                          marginTop: "auto",
-                          paddingTop: 24,
-                        }}
-                      >
-                        <div
-                          className="swiper-button-prev swiper-arrow"
-                          style={{
-                            width: 36,
-                            height: 36,
-                            borderRadius: 999,
-                            display: "flex",
-                            alignItems: "center",
-                            justifyContent: "center",
-                            cursor: "pointer",
-                          }}
-                        >
-
+                        <div className="flex items-center gap-2 mb-6">
+                          <span className="text-2xl font-bold text-black">{item.rating.toFixed(1)}</span>
+                          <div className="flex gap-1 text-[#FFB400]">
+                            {Array.from({ length: item.rating }).map((_, i) => (
+                              <Star key={i} className="w-5 h-5 fill-current" strokeWidth={0} />
+                            ))}
+                          </div>
                         </div>
 
-                        <div
-                          className="swiper-pagination"
-                          style={{ fontSize: 13 }}
-                        />
+                        <p className="text-lg md:text-xl text-gray-800 leading-relaxed mb-8">
+                          "{item.text}"
+                        </p>
 
-                        <div
-                          className="swiper-button-next swiper-arrow"
-                          style={{
-                            width: 36,
-                            height: 36,
-                            borderRadius: 999,
-                            display: "flex",
-                            alignItems: "center",
-                            justifyContent: "center",
-                            cursor: "pointer",
-                          }}
-                        >
+                        <div className="mt-auto">
+                          {/* Case Study */}
+                          <a href={item.link} className="inline-flex items-center text-[#14A800] font-semibold hover:underline mb-8 text-lg">
+                            Case studies <ArrowUpRight className="ml-1 w-5 h-5" />
+                          </a>
 
+                          <div className="flex items-center gap-4">
+                            <div className="w-14 h-14 rounded-full overflow-hidden flex-shrink-0 bg-gray-200">
+                              <Image
+                                src={item.authorPhoto}
+                                alt={item.authorName}
+                                width={56}
+                                height={56}
+                                className="w-full h-full object-cover"
+                              />
+                            </div>
+                            <div>
+                              <h4 className="font-bold text-black text-lg m-0">{item.authorName}</h4>
+                              <p className="text-base text-gray-500 m-0">
+                                {item.authorPosition}, {item.authorCompany}
+                              </p>
+                            </div>
+                          </div>
                         </div>
                       </div>
                     </div>
-
-
-                    <div
-                      className="col-12 col-lg-6 d-flex align-items-center justify-content-center"
-                      style={{ padding: "32px 40px" }}
-                      data-swiper-parallax-x={-400}
-                    >
-                      <div
-                        style={{
-                          width: "88%",
-                          height: "55vh",
-                          maxHeight: 560,
-                          borderRadius: 24,
-                          overflow: "hidden",
-                        }}
-                      >
-                        <Image
-                          src={item.testimonialImage}
-                          alt={`${item.authorName} testimonial image`}
-                          width={1400}
-                          height={1000}
-                          style={{
-                            width: "100%",
-                            height: "100%",
-                            objectFit: "cover",
-                          }}
-                        />
-                      </div>
-                    </div>
-
-                  </div>
-                </div>
-              </SwiperSlide>
-            ))}
-          </Swiper>
+                  </SwiperSlide>
+                ))}
+              </Swiper>
+            </div>
+          </div>
         </div>
       </div>
     </div>

@@ -9,7 +9,6 @@ export default function Devider() {
             scale={1.5}
             className="mxd-divider__image divider-image-1 parallax-img sedasdsd"
           >
-            {/* <Image class="parallax-img"  alt=""    src="/img/illustrations/1920x1080_divider-01.webp" width="1920" height="1080" /> */}
           </BackgroundParallax>
         </div>
       </div>

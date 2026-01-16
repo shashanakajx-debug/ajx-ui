@@ -1379,7 +1379,7 @@ section.process .pathStage {
 }
 
 span.ai_tesxt {
-  background-color: var(--base-opp);
+  background-color: var(--accent);
   color: var(--t-opp-bright);
   border-radius: 150px;
   padding: 4px 40px;

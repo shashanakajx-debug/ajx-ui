@@ -80,10 +80,10 @@ export default function Industries() {
     <div className="mxd-section overflow-hidden padding-grid-pre-mtext mt-12 md:mt-20">
       <div className="mx-auto row gx-0">
         <SectionHeader
-          subtitle="INDUSTRIES"
-          title="Industries We Serve"
-          description="Diverse Sectors"
-          buttonText="All Industries"
+          subtitle="INDUSTRIES SOLUTIONS"
+          title="AI Solutions"
+          description="to Your Industry"
+          buttonText="View More"
           buttonLink="/industries"
           className="col-12"
         />

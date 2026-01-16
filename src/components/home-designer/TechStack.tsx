@@ -123,9 +123,9 @@ export default function Techstack() {
           <div className="mx-auto row gx-0">
             <SectionHeader
               subtitle="TECH STACK"
-              title="Cutting-Edge"
-              description="Technologies"
-              buttonText="View All Tech"
+              title="The Technologies Stack"
+              description="That Drives Results"
+              buttonText="View More"
               buttonLink="/tech-stack"
               className="col-12"
             />
