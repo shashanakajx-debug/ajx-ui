@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import AnimatedButton from "@/components/animation/AnimatedButton";
-
+ 
 type SectionHeaderProps = {
     subtitle: string;
     title: string;
@@ -11,7 +11,7 @@ type SectionHeaderProps = {
     className?: string;
     showButton?: boolean;
 };
-
+ 
 export default function SectionHeader({
     subtitle,
     title,
@@ -52,8 +52,8 @@ export default function SectionHeader({
                 </p>
             </div>
             <div className="heading">
-                <h2 className="text-right">{title}</h2>
-                <h4 className="text-right">{description}</h4>
+                <h2 className="text-left">{title}</h2>
+                <h2 className="text-right ml-[100px]">{description}</h2>
             </div>
             {showButton && (
                 <div className="">

@@ -13,7 +13,7 @@ export const metadata = {
     'We craft stunning, user-friendly websites and apps that engage your audience, boost brand visibility, and drive business growth.',
   icons: {
     icon: [
-      { url: '/AJX-Technologies-10.png', media: '(prefers-color-scheme: light)' },
+      { url: '/AJX-Fevicon.png', media: '(prefers-color-scheme: light)' },
       { url: '/AJX-Technologies-11.png', media: '(prefers-color-scheme: dark)' },
     ],
   },

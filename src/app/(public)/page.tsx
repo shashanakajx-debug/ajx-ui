@@ -11,7 +11,7 @@ import CaseStudies from "@/components/home-designer/CaseStudies";
 import Testimonials from "@/components/home-designer/Testimonials";
 import Industries from "@/components/home-designer/Industries";
 import TechStack from "@/components/home-designer/TechStack";
-import FinalCta from "@/components/home-designer/FinalCta";
+// import FinalCta from "@/components/home-designer/FinalCta";
 
 
 
@@ -72,9 +72,7 @@ export default function HomePage() {
       <Testimonials />
       <Industries />
       <TechStack />
-      <FinalCta />
-
-
+      {/* <FinalCta /> */}
     </div>
   );
 }

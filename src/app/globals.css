@@ -751,7 +751,12 @@ textarea::placeholder {
   color: var(--color-text-secondary);
 }
 
-/* Color Switcher Fix */
+
+/* Section Background Theming */
+.light[color-scheme="dark"] .home-aboutus {
+  background-color: var(--base--dark);
+}
+
 /* Color Switcher Fix */
 .mxd-color-switcher {
   display: inline-flex;

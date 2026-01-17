@@ -1,203 +1,243 @@
-
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import {
-  Briefcase,
   Heart,
-  ShoppingBag,
-  GraduationCap,
-  Landmark,
-  Building2,
+  Wallet,
+  ShoppingCart,
+  Settings,
+  Cloud,
+  ChevronRight,
+  ChevronDown,
+  CheckCircle2,
+  TrendingUp,
+  ArrowRight,
 } from "lucide-react";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Parallax, Autoplay } from "swiper/modules";
 import SectionHeader from "./SectionHeader";
-
-import Image from "next/image";
 
 type Industry = {
   id: string;
   title: string;
   description: string;
   icon: React.ComponentType<{ className?: string; strokeWidth?: number }>;
-  image: string;
+  useCases: string[];
+  metric: {
+    label: string;
+    value: string;
+  };
 };
 
 const INDUSTRIES: Industry[] = [
   {
-    id: "fintech",
-    title: "FinTech",
+    id: "healthcare",
+    title: "Healthcare",
     description:
-      "Secure payment solutions, digital banking, and financial platforms built with compliance in mind.",
-    icon: Landmark,
-    image: "/industries/fintech.png",
-  },
-  {
-    id: "healthtech",
-    title: "HealthTech",
-    description:
-      "HIPAA-compliant healthcare applications, telemedicine platforms, and patient management systems.",
+      "Intelligent features, user behavior analysis, and automated customer support",
     icon: Heart,
-    image: "/industries/healthtech.png",
+    useCases: ["Feature Intelligence", "User Analytics", "Chatbot Support"],
+    metric: {
+      label: "Average ROI",
+      value: "45% reduction in diagnostic time",
+    },
   },
   {
-    id: "ecommerce",
-    title: "E-Commerce",
+    id: "finance",
+    title: "Finance",
     description:
-      "Scalable online stores, marketplace platforms, and inventory management solutions.",
-    icon: ShoppingBag,
-    image: "/industries/ecommerce.png",
+      "Intelligent features, user behavior analysis, and automated customer support",
+    icon: Wallet,
+    useCases: ["Fraud Detection", "Risk Assessment", "Automated Trading"],
+    metric: {
+      label: "Average ROI",
+      value: "60% faster transaction processing",
+    },
   },
   {
-    id: "edtech",
-    title: "EdTech",
+    id: "retail",
+    title: "Retail",
     description:
-      "Learning management systems, virtual classrooms, and educational content platforms.",
-    icon: GraduationCap,
-    image: "/industries/edtech.png",
+      "Intelligent features, user behavior analysis, and automated customer support",
+    icon: ShoppingCart,
+    useCases: [
+      "Personalized Recommendations",
+      "Inventory Optimization",
+      "Customer Insights",
+    ],
+    metric: {
+      label: "Average ROI",
+      value: "35% increase in conversion rate",
+    },
   },
   {
-    id: "enterprise",
-    title: "Enterprise",
+    id: "manufacturing",
+    title: "Manufacturing",
     description:
-      "Business intelligence, workflow automation, and enterprise resource planning solutions.",
-    icon: Building2,
-    image: "/industries/enterprise.png",
+      "Intelligent features, user behavior analysis, and automated customer support",
+    icon: Settings,
+    useCases: [
+      "Predictive Maintenance",
+      "Quality Control",
+      "Supply Chain Optimization",
+    ],
+    metric: {
+      label: "Average ROI",
+      value: "50% reduction in downtime",
+    },
   },
   {
-    id: "startups",
-    title: "Startups",
+    id: "saas",
+    title: "SaaS",
     description:
-      "MVP development, rapid prototyping, and scalable solutions for fast-growing companies.",
-    icon: Briefcase,
-    image: "/industries/startups.png",
+      "Intelligent features, user behavior analysis, and automated customer support",
+    icon: Cloud,
+    useCases: [
+      "User Behavior Analytics",
+      "Churn Prediction",
+      "Feature Adoption",
+    ],
+    metric: {
+      label: "Average ROI",
+      value: "40% improvement in retention",
+    },
   },
 ];
 
 export default function Industries() {
+  const [selectedIndustry, setSelectedIndustry] = useState<string>(
+    INDUSTRIES[0].id,
+  );
+
+  const currentIndustry = INDUSTRIES.find((ind) => ind.id === selectedIndustry);
+
   return (
     <div className="mxd-section overflow-hidden padding-grid-pre-mtext mt-12 md:mt-20">
-      <div className="mx-auto row gx-0">
-        <SectionHeader
-          subtitle="INDUSTRIES SOLUTIONS"
-          title="AI Solutions"
-          description="to Your Industry"
-          buttonText="View More"
-          buttonLink="/industries"
-          className="col-12"
-        />
+      <div className="mxd-container">
+        <div className="mx-auto row gx-0">
+          <SectionHeader
+            subtitle="INDUSTRY SOLUTIONS"
+            title="AI Solutions"
+            description="to Your Industry"
+            buttonText="View More"
+            buttonLink="/industries"
+            className="col-12"
+          />
 
-        <div className="mxd-block">
-          <Swiper
-            className="mxd-demo-swiper mxd-grid-item anim-uni-in-up"
-            breakpoints={{
-              640: { slidesPerView: 1, spaceBetween: 20 },
-              768: { slidesPerView: 2, spaceBetween: 24 },
-              1600: { slidesPerView: 3, spaceBetween: 28 },
-            }}
-            loop={true}
-            parallax={true}
-            autoplay={{
-              delay: 2000,
-              disableOnInteraction: false,
-              pauseOnMouseEnter: true,
-            }}
-            grabCursor={true}
-            speed={700}
-            centeredSlides={true}
-            keyboard={{ enabled: true }}
-            navigation={{
-              nextEl: ".swiper-button-next",
-              prevEl: ".swiper-button-prev",
-            }}
-            modules={[Navigation, Parallax, Autoplay]}
-          >
-            {INDUSTRIES.map((industry) => {
-              const IconComponent: React.ComponentType<{
-                className?: string;
-                strokeWidth?: number;
-              }> = industry.icon;
-              return (
-                <SwiperSlide
-                  className="swiper-slide mxd-demo-swiper__slide"
-                  key={industry.id}
-                >
-                  <div className="demo-swiper-slide__image">
-                    <div className="mxd-service-card">
-                      <div
-                        className="mxd-service-card__image-wrapper"
-                        style={{
-                          position: "relative",
-                          width: "100%",
-                          aspectRatio: "3 / 2",
-                          overflow: "hidden",
-                        }}
-                      >
-                        <Image
-                          src={industry.image}
-                          alt={industry.title}
-                          fill
-                          sizes="(max-width: 640px) 90vw, (max-width: 1600px) 45vw, 33vw"
-                          quality={65} // smaller file size; tweak 50-80 as needed
-                          loading="lazy" // default for offscreen images, explicit is fine
-                          style={{ objectFit: "cover" }}
-                          className="mxd-service-card__image"
-                        />
-                        <div className="mxd-service-card__overlay">
-                          <h3 className="mxd-service-card__overlay-title">
-                            {industry.title}
-                          </h3>
+          <div className="w-full mt-12">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
+              <div className="space-y-3">
+                {INDUSTRIES.map((industry) => {
+                  const IconComponent = industry.icon;
+                  const isSelected = selectedIndustry === industry.id;
+
+                  return (
+                    <button
+                      key={industry.id}
+                      onClick={() => setSelectedIndustry(industry.id)}
+                      className={`w-full text-left p-4 rounded-xl border-2 transition-all duration-300 group hover:border-green-500 ${
+                        isSelected
+                          ? "bg-green-50 border-green-500"
+                          : "bg-white border-gray-200 hover:bg-gray-50"
+                      }`}
+                    >
+                      <div className="flex items-center justify-between gap-4">
+                        <div className="flex items-center gap-4 flex-1">
+                          <div
+                            className={`flex-shrink-0 w-12 h-12 rounded-lg flex items-center justify-center transition-colors ${
+                              isSelected
+                                ? "bg-green-500 text-white"
+                                : "bg-gray-100 text-gray-700 group-hover:bg-green-100 group-hover:text-green-600"
+                            }`}
+                          >
+                            <IconComponent
+                              className="w-6 h-6"
+                              strokeWidth={2}
+                            />
+                          </div>
+                          <div className="flex-1">
+                            <h3
+                              className={`font-semibold text-base mb-1 ${
+                                isSelected ? "text-gray-900" : "text-gray-800"
+                              }`}
+                            >
+                              {industry.title}
+                            </h3>
+                            <p className="text-sm text-gray-600 line-clamp-1">
+                              {industry.description}
+                            </p>
+                          </div>
+                        </div>
+                        <div className="flex-shrink-0">
+                          {isSelected ? (
+                            <ChevronDown
+                              className="w-5 h-5 text-green-600"
+                              strokeWidth={2}
+                            />
+                          ) : (
+                            <ChevronRight
+                              className="w-5 h-5 text-gray-400 group-hover:text-green-600"
+                              strokeWidth={2}
+                            />
+                          )}
                         </div>
                       </div>
+                    </button>
+                  );
+                })}
+              </div>
 
+              {currentIndustry && (
+                <div className="bg-white rounded-2xl border-2 border-gray-100 p-8 shadow-sm">
+                  <h2 className="text-3xl font-bold text-gray-900 mb-6">
+                    {currentIndustry.title}
+                  </h2>
+                  <p className="text-gray-600 mb-8">
+                    {currentIndustry.description}
+                  </p>
 
-                      <div className="mxd-service-card__body">
-                        <div className="mxd-service-card__icon anim-uni-in-up">
-                          <IconComponent
-                            className="w-10 h-10"
-                            strokeWidth={1.5}
+                  {/* Key Use Cases */}
+                  <div className="mb-8">
+                    <h3 className="text-lg font-semibold text-gray-900 mb-4">
+                      Key Use Cases
+                    </h3>
+                    <div className="space-y-3">
+                      {currentIndustry.useCases.map((useCase, index) => (
+                        <div key={index} className="flex items-center gap-3">
+                          <CheckCircle2
+                            className="w-5 h-5 text-green-600 flex-shrink-0"
+                            strokeWidth={2}
                           />
+                          <span className="text-gray-700">{useCase}</span>
                         </div>
-                        <div className="mxd-service-card__content">
-                          <h6 className="mxd-service-card__title anim-uni-in-up">
-                            {industry.title}
-                          </h6>
-                          <p className="mxd-service-card__text anim-uni-in-up">
-                            {industry.description}
-                          </p>
-                        </div>
-                      </div>
+                      ))}
                     </div>
                   </div>
 
-                  <div className="demo-swiper-slide__descr">
-                    <span>{industry.title}</span>
+                  <div className="mb-8">
+                    <div className="flex items-center gap-2 mb-2">
+                      <TrendingUp
+                        className="w-4 h-4 text-green-600"
+                        strokeWidth={2}
+                      />
+                      <span className="text-sm text-green-600 font-medium">
+                        {currentIndustry.metric.label}
+                      </span>
+                    </div>
+                    <p className="text-2xl font-bold text-gray-900">
+                      {currentIndustry.metric.value}
+                    </p>
                   </div>
-                </SwiperSlide>
-              );
-            })}
-
-
-            <div className="swiper-button-prev mxd-slider-btn mxd-slider-btn-round-prev v2">
-              <a
-                className="btn btn-round btn-round-small btn-outline slide-left anim-no-delay"
-                href="#"
-              >
-                <i className="ph ph-arrow-left" />
-              </a>
+                  <button className="w-full bg-green-600 hover:bg-green-700 text-white font-semibold py-4 px-6 rounded-lg transition-colors duration-300 flex items-center justify-center gap-2 group">
+                    <span>Explore {currentIndustry.title} Solutions</span>
+                    <ArrowRight
+                      className="w-5 h-5 group-hover:translate-x-1 transition-transform"
+                      strokeWidth={2}
+                    />
+                  </button>
+                </div>
+              )}
             </div>
-            <div className="swiper-button-next mxd-slider-btn mxd-slider-btn-round-next v2">
-              <a
-                className="btn btn-round btn-round-small btn-outline slide-right anim-no-delay"
-                href="#"
-              >
-                <i className="ph ph-arrow-right" />
-              </a>
-            </div>
-          </Swiper>
+          </div>
         </div>
-
       </div>
     </div>
   );
