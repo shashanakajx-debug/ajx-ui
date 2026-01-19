@@ -23,7 +23,7 @@ export default function SectionHeader({
 }: SectionHeaderProps) {
     return (
         <div
-            className={`mb-12 md:mb-16 pb-6 flex items-center gap-3 justify-between relative ${className}`}
+            className={`mb-12 md:mb-16 pb-6 lg:flex md:flex items-center gap-3 text-center justify-between relative ${className}`}
         >
             <div className="left-content">
                 <p className="mxd-point-subtitle">

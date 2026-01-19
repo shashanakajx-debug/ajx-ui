@@ -1,4 +1,3 @@
-
 "use client";
 import { useState } from "react";
 import Link from "next/link";
@@ -96,6 +95,9 @@ export default function CaseStudies() {
   const [activeCategory, setActiveCategory] = useState("UI/UX");
   const [currentSlide, setCurrentSlide] = useState(0);
 
+  // NEW: track which card is hovered (by id)
+  const [hoveredId, setHoveredId] = useState<number | null>(null);
+
   const categories = ["UI/UX", "WEB DESIGN", "PACKAGING", "3D MODELS"];
 
   const totalSlides = caseStudies.length;
@@ -190,7 +192,11 @@ export default function CaseStudies() {
         <div className="relative">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {getVisibleSlides().map((study, index) => {
-              const isActive = index === 0;
+              // index is local: 0 => primary visible card
+              const isPrimary = index === 0;
+
+              // NEW: expanded either when primary OR when hovered
+              const isExpanded = isPrimary || hoveredId === study.id;
 
               let visibilityClass = "block";
               if (index === 1) visibilityClass = "hidden md:block";
@@ -199,9 +205,12 @@ export default function CaseStudies() {
               return (
                 <div
                   key={`${study.id}-${index}`}
+                  // NEW: set hovered id on enter/leave
+                  onMouseEnter={() => setHoveredId(study.id)}
+                  onMouseLeave={() => setHoveredId(null)}
                   className={`rounded-[2rem] overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-[var(--color-border)] flex flex-col h-full bg-[var(--color-surface)] ${visibilityClass}`}
                 >
-                  <div className={`relative group overflow-hidden ${isActive ? "h-64" : "flex-1 min-h-[300px]"}`}>
+                  <div className={`relative group overflow-hidden ${isExpanded ? "h-64" : "flex-1 min-h-[300px]"}`}>
                     <Link
                       href={`/case-studies/${study.id}`}
                       className={`absolute inset-0 w-full h-full ${study.previewClass} bg-center bg-cover transition-transform duration-500 group-hover:scale-110`}
@@ -221,19 +230,33 @@ export default function CaseStudies() {
                         </p>
                       </div>
 
-                      {!isActive && (
+                      {/* SHOW small floating icon only when NOT expanded.
+                          When expanded, we show the full CTA below (same as selected card). */}
+                      {!isExpanded && (
                         <Link
                           href={`/case-studies/${study.id}`}
                           className="flex-shrink-0 w-12 h-12 rounded-full bg-[#119000] text-white flex items-center justify-center hover:bg-[#0e7500] hover:scale-110 transition-all"
                         >
-                          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                            <path d="M7 17L17 7M17 7H7M17 7V17" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                          <svg
+                            width="20"
+                            height="20"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            strokeWidth="2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            aria-hidden="true"
+                            className="w-5 h-5"
+                          >
+                            <path d="M7 17L17 7M17 7H7M17 7V17" />
                           </svg>
                         </Link>
                       )}
                     </div>
 
-                    {isActive && (
+                    {/* Show tags, metrics and full CTA when expanded (either selected or hovered) */}
+                    {isExpanded && (
                       <div className="mt-6 animation-fade-in">
                         <div className="flex flex-wrap gap-2 mb-8">
                           {study.tags.map((tag, i) => (

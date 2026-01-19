@@ -71,13 +71,13 @@ export default function Testimonials() {
                     {[1, 2, 3, 4, 5].map((star) => (
                       <Star
                         key={star}
-                        className="w-6 h-6 fill-current"
+                        className="w-8 h-8 fill-current"
                         strokeWidth={0}
                       />
                     ))}
                   </div>
 
-                  <p className="text-base md:text-lg text-black/70 mb-8 max-w-[360px]">
+                  <p className="text-[16px] text-black mb-8 max-w-[360px]">
                     5 of 5 based on 64 Upwork reviews
                   </p>
 
@@ -160,7 +160,7 @@ export default function Testimonials() {
                               {item.tags.map((tag) => (
                                 <span
                                   key={tag}
-                                  className="px-3 py-1 rounded-full border border-gray-200 text-xs font-semibold tracking-wide text-gray-600"
+                                  className="px-3 py-1 rounded-full border border-gray-200 font-semibold tracking-wide"
                                 >
                                   {tag}
                                 </span>
@@ -169,7 +169,7 @@ export default function Testimonials() {
                           </div>
 
                           <div className="flex items-center gap-2 mb-6">
-                            <span className="text-2xl font-bold text-black">
+                            <span className="text-2xl font-bold ">
                               {item.rating.toFixed(1)}
                             </span>
                             <div className="flex gap-1 text-[#FFB400]">
@@ -177,7 +177,7 @@ export default function Testimonials() {
                                 (_, i) => (
                                   <Star
                                     key={i}
-                                    className="w-5 h-5 fill-current"
+                                    className="w-6 h-6 fill-current"
                                     strokeWidth={0}
                                   />
                                 ),
@@ -185,14 +185,14 @@ export default function Testimonials() {
                             </div>
                           </div>
 
-                          <p className="text-lg md:text-xl text-gray-800 leading-relaxed mb-8">
+                          <p className=" leading-relaxed mb-8">
                             "{item.text}"
                           </p>
 
                           <div className="mt-auto">
                             <a
                               href={item.link}
-                              className="inline-flex items-center text-[#14A800] font-semibold hover:underline mb-8 text-lg"
+                              className="inline-flex items-center font-semibold hover:underline mb-8 text-lg"
                             >
                               Case studies{" "}
                               <ArrowUpRight className="ml-1 w-5 h-5" />
@@ -209,10 +209,10 @@ export default function Testimonials() {
                                 />
                               </div>
                               <div>
-                                <h4 className="font-bold text-black text-lg m-0">
+                                <h4 className="font-bold m-0">
                                   {item.authorName}
                                 </h4>
-                                <p className="text-base text-gray-500 m-0">
+                                <p className="text-base m-0">
                                   {item.authorPosition}, {item.authorCompany}
                                 </p>
                               </div>

@@ -60,7 +60,7 @@ const AnimatedCounter: React.FC<AnimatedCounterProps> = ({
 };
 export default function About() {
   return (
-    <section className="mxd-container our-experties home-aboutus container_ser lg:pt-[100px] lg:pb-[100px] pt-[50px] pb-[50px]">
+    <section className="mxd-container our-experties home-aboutus container_ser lg:pt-[100px] lg:pb-[100px] pt-[50px] pb-[50px] bg-[#f5f8fb]">
       <div className="mx-auto row gx-0">
         <SectionHeader
           subtitle="ABOUT US"
@@ -129,12 +129,12 @@ export default function About() {
             </div>
 
             <div className="col-12 col-xl-6 mxd-grid-item">
-              <div className="flex flex-col items-center justify-between xl:items-start text-center xl:text-left pl-0 xl:pl-16 pt-12 xl:pt-0 anim-uni-scale-in-right min-h-full">
+              <div className="flex flex-col items-center justify-between xl:items-start text-center xl:text-left pl-0 xl:pl-16 md:pt-12 pt-4 xl:pt-0 anim-uni-scale-in-right min-h-full">
                 <div className="">
                   <RevealText className="font-normal leading-relaxed mb-10 w-full max-w-lg xl:max-w-none text-left xl:text-left">
                     <p className="mb-[20px] lg:text[28px] text-[20px]">We are a creative web agency specializing in innovative design
                       and cutting-edge development.</p>
-                    <p className="lg:text[28px] text-[20px]">We help businesses stand out and
+                    <p className="lg:text[28px] text-[20px] mb-8">We help businesses stand out and
                       every aspect of our projects is crafted with the highest
                       standards of quality.</p>
                   </RevealText>

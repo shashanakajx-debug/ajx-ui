@@ -630,6 +630,7 @@ html {
 
 
 
+
 /* ===========================
    CARD STYLES
    =========================== */
@@ -894,6 +895,11 @@ footer.mxd-demo-footer {
   color: var(--t-bright);
 }
 
+footer a.btn-anim.btn {
+    background: transparent;
+    border: 1px solid #fff;
+}
+
 
 @media only screen and (min-width: 768px) {
   .mxd-header .container-custom-box {
@@ -966,9 +972,9 @@ footer.mxd-demo-footer {
 }
 
 .hero-00-title {
-  font-size: 11rem;
+  font-size: 8rem;
   letter-spacing: 1px;
-  line-height: 15rem;
+  line-height: 11rem;
 }
 
 .mxd-hero-section-bg {

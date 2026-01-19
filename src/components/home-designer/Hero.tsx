@@ -63,7 +63,7 @@ export default function Hero() {
           </div>
 
           <div className="mxd-hero-00__bottom">
-            <div className="mxd-manifest__controls d-xl-flex justify-content-xl-center ">
+            <div className="mxd-manifest__controls d-xl-flex justify-content-xl-center justify-center flex ">
               <AnimatedButton
                 text="Get a Quote"
                 className="btn btn-anim btn-default btn-outline slide-right-up anim-uni-in-up"

@@ -1,215 +1,191 @@
+import React from "react";
 import Link from "next/link";
-import Image from "next/image";
-import AnimatedButton from "../../animation/AnimatedButton";
-import ScrollNextSection from "@/components/ScrollNextSection";
-
+import AnimatedButton from "@/components/animation/AnimatedButton";
 import {
-  Mail,
-  MapPin,
-  ArrowRight,
+  Facebook,
+  Instagram,
+  Youtube,
+  Linkedin,
+  ArrowUpRight,
 } from "lucide-react";
 
-export default function Footer1() {
-  const footerNavData = [
+export default function Footer() {
+  const services = [
+    { label: "AI / ML", href: "#ai-ml" },
+    { label: "Digital Engg", href: "#digital-engg" },
+    { label: "DevOps", href: "#devops" },
+    { label: "Web3", href: "#web3" },
+    { label: "Cloud", href: "#cloud" },
+    { label: "SaaS", href: "#saas" },
+  ];
+
+  const navLinks = [
+    { name: "Home", href: "/", active: true },
+    { name: "About", href: "/about-us" },
+    { name: "Portfolios", href: "/our-portfolio" },
+    { name: "Services", href: "/our-services" },
+    { name: "Blog", href: "/blog" },
+    { name: "Contact Us", href: "/contact" },
+  ];
+
+  const socialLinks = [
     {
-      title: "Company",
-      links: [
-        { label: "Home", href: "/" },
-        { label: "About Us", href: "/about-us" },
-        { label: "Our Services", href: "/our-services" },
-        { label: "Our Portfolio", href: "/our-portfolio" },
-        { label: "Career", href: "/career" },
-        { label: "Blog", href: "/blog" },
-        { label: "Contact", href: "/contact" },
-      ],
+      icon: Facebook,
+      href: "https://www.facebook.com/ajxtechnologies",
+      label: "Facebook",
     },
     {
-      groups: [
-        {
-          title: "Quick Links",
-          links: [
-            { label: "Privacy Policy", href: "/privacy" },
-            { label: "Terms of Service", href: "/terms" },
-            { label: "FAQ", href: "/faq" },
-          ],
-        },
-      ],
+      icon: Instagram,
+      href: "https://www.instagram.com/ajxtechnologies/",
+      label: "Instagram",
     },
     {
-      title: "Connect",
-      links: [
-        { label: "Facebook", href: "https://www.facebook.com/ajxtechnologies" },
-        { label: "Twitter", href: "https://x.com/ajxtechnologies" },
-        { label: "Instagram", href: "https://www.instagram.com/ajxtechnologies/" },
-        { label: "LinkedIn", href: "https://www.linkedin.com/company/ajxtechnologies" },
-        { label: "YouTube", href: "https://www.youtube.com/@ajxtechnologies" },
-      ],
+      icon: Youtube,
+      href: "https://www.youtube.com/@ajxtechnologies",
+      label: "YouTube",
+    },
+    {
+      icon: Linkedin,
+      href: "https://www.linkedin.com/company/ajxtechnologies",
+      label: "LinkedIn",
     },
   ];
 
   return (
-    <footer className="mxd-demo-footer">
-      {/* Background */}
-      <div className="mxd-demo-footer__bg">
-        <Image
-          src="/01-footer.webp"
-          alt="AJX Technologies"
-          width={1920}
-          height={580}
-        />
-      </div>
+    <footer className="bg-[#1c1c1c] text-white w-full">
+      <div className="w-full max-w-[1400px] mx-auto px-6 lg:px-16 xl:px-20 pt-20 pb-12">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-20 mb-20">
+          <div className="lg:col-span-5 anim-uni-in-up">
+            <h2 className="text-white text-[2rem] sm:text-[2.5rem] lg:text-[4rem] xl:text-[5rem] font-bold leading-[1.3] mb-8 lg:mb-10">
+              Ready to Start
+              <br />
+              Your Project?
+            </h2>
+         
 
-      <div className="mxd-container grid-container">
-        <div className="mxd-block">
-          <div className="container-fluid p-0">
-            <div className="row g-0">
-              {/* LEFT */}
-              <div className="col-12 col-xl-3 mxd-demo-footer__item mxd-grid-item">
-                <div className="mxd-demo-footer__logo anim-uni-in-up">
+          <AnimatedButton
+          text="Let's talk"
+          className="btn slide-right-up btn-outline btn-small anim-uni-in-up"
+          href={`/contact`}
+          >
+          <ArrowUpRight className="w-[18px] h-[18px] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-300" />
+          </AnimatedButton> 
+          </div>
+
+          <div className="lg:col-span-3">
+            <ul className="space-y-3.5">
+              {services.map((service, index) => (
+                <li key={index} className="anim-uni-in-up">
                   <Link
-                    href="/"
-                    className="mxd-logo flex items-center gap-3"
+                    href={service.href}
+                    className="text-[#a8a8a8] hover:text-white transition-colors duration-200 text-[15px] block leading-relaxed"
                   >
-                    <Image
-                      src="/AJX-black-logo.png"
-                      alt="AJX Technologies Logo"
-                      width={130}
-                      height={130}
-                      className="w-auto logo-light"
-                    />
-                    <Image
-                      src="/AJX-white-logo.png"
-                      alt="AJX Technologies Logo"
-                      width={130}
-                      height={130}
-                      className="w-auto logo-dark"
-                    />
-
+                    {service.label}
                   </Link>
-                </div>
+                </li>
+              ))}
+            </ul>
+          </div>
 
-                <p className="t-small t-bright anim-uni-in-up">
-                  We build stunning, user-friendly websites and applications that engage your audience and elevate your brand.
+          <div className="lg:col-span-4">
+            <div className="space-y-8 lg:space-y-9">
+              {/* Email */}
+              <div className="anim-uni-in-up">
+                <h3 className="text-[#a8a8a8] text-[13px] mb-2.5 font-normal">
+                  Email -
+                </h3>
+                <Link
+                  href="mailto:connect@ajxtechnologies.com"
+                  className="text-white hover:text-[#9ca3af] transition-colors duration-200 text-[15px] block"
+                >
+                  connect@ajxtechnologies.com
+                </Link>
+              </div>
 
-
+              <div className="anim-uni-in-up">
+                <h3 className="text-[#a8a8a8] text-[13px] mb-2.5 font-normal">
+                  Address -
+                </h3>
+                <p className="text-white text-[15px] leading-relaxed">
+                  117, Skye Privilon Tulsi Nagar,
+                  <br />
+                  Nipania, Indore, MP (452010) INDIA
                 </p>
+              </div>
 
-                <div className="mxd-demo-footer__btn anim-uni-in-up mt-[10px]">
-                  <AnimatedButton
-                    as="a"
-                    href="/contact"
-                    className="btn btn-anim btn-default btn-small btn-accent slide-right"
+              <div className="flex gap-2.5 anim-uni-in-up">
+                {socialLinks.map((social, index) => (
+                  <Link
+                    key={index}
+                    href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={social.label}
+                    className="w-[38px] h-[38px] rounded-full border border-[#4a4a4a] flex items-center justify-center hover:bg-white hover:border-white hover:text-[#1c1c1c] transition-all duration-300"
                   >
-                    <span className="flex items-center gap-2 ">
-                      Get Started
-                      <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-                    </span>
-                  </AnimatedButton>
-                </div>
-              </div>
-
-              {/* CENTER */}
-              <div className="col-12 col-xl-6 mxd-demo-footer__item">
-                <nav className="mxd-demo-footer__nav">
-                  <div className="row g-0">
-                    {footerNavData.map((section, index) => (
-                      <div
-                        key={index}
-                        className="col-12 col-md-4 mxd-grid-item mxd-footer-nav__item"
-                      >
-                        {section.groups ? (
-                          section.groups.map((group, gIndex) => (
-                            <div key={gIndex} className="mxd-footer-nav__block">
-                              <p className="t-140 t-bright t-caption anim-uni-in-up">
-                                {group.title}
-                              </p>
-                              <ul className="mxd-footer-nav__list">
-                                {group.links.map((link, i) => (
-                                  <li key={i}>
-                                    <Link
-                                      href={link.href}
-                                      className="group inline-flex items-center anim-uni-in-up"
-                                    >
-                                      {link.label}
-                                      <ArrowRight className="w-3 h-3 ml-2 rotate-45 opacity-0 group-hover:opacity-100 transition-opacity" />
-                                    </Link>
-                                  </li>
-                                ))}
-                              </ul>
-                            </div>
-                          ))
-                        ) : (
-                          <div className="mxd-footer-nav__block">
-                            <p className="t-140 t-bright t-caption anim-uni-in-up">
-                              {section.title}
-                            </p>
-                            <ul className="mxd-footer-nav__list">
-                              {section.links.map((link, i) => (
-                                <li key={i}>
-                                  <Link
-                                    href={link.href}
-                                    target={link.href.startsWith("http") ? "_blank" : undefined}
-                                    className="group inline-flex items-center anim-uni-in-up"
-                                  >
-                                    {link.label}
-                                    <ArrowRight className="w-3 h-3 ml-2 rotate-45 opacity-0 group-hover:opacity-100 transition-opacity" />
-                                  </Link>
-                                </li>
-                              ))}
-                            </ul>
-                          </div>
-                        )}
-                      </div>
-                    ))}
-                  </div>
-                </nav>
-              </div>
-
-              {/* RIGHT */}
-              <div className="col-12 col-xl-3 mxd-demo-footer__item mxd-grid-item">
-                <p className="t-140 t-bright t-caption anim-uni-in-up">
-                  Get in touch:
-                </p>
-
-                <div className="mxd-footer-promo__list">
-                  <p className="t-small t-bright anim-uni-in-up flex items-center gap-2">
-                    <Mail className="icon-shine w-5 h-5" />
-                    <a href="mailto:connect@ajxtechnologies.com">
-                      connect@ajxtechnologies.com
-                    </a>
-                  </p>
-
-                  <p className="t-small t-bright anim-uni-in-up flex items-center gap-2">
-                    <MapPin className="icon-shine w-7 h-7" />
-                    Address - 117, Skye Privilon Tulsi Nagar, Nipania, Indore, MP (452010) INDIA
-                  </p>
-                </div>
+                    <social.icon className="w-[17px] h-[17px]" />
+                  </Link>
+                ))}
               </div>
             </div>
           </div>
         </div>
 
-        {/* BIG TEXT */}
-        <div className="mxd-block">
-          <div className="mxd-demo-footer__mixdesign mxd-grid-item no-margin">
-          </div>
-          <div className="copyright-section"
-            style={{
-              fontSize: "16px",
-              fontWeight: 300,
-              textAlign: "center",
-              // opacity: 0.1,
-            }}
-          >
-            Copyright © 2025 AjxTechnologies.com
+        <div className="border-t border-[#2a2a2a] mb-7"></div>
 
+        <div className="space-y-5">
+          <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-5 lg:gap-4 border-bottom border-gray-400 pb-4">
+            <div className="anim-uni-in-up">
+              <h4 className="text-[19px] font-bold text-white tracking-tight">
+                Transparent.
+              </h4>
+            </div>
+
+            <nav className="flex flex-wrap gap-x-7 gap-y-2.5">
+              {navLinks.map((link, index) => (
+                <Link
+                  key={index}
+                  href={link.href}
+                  className={`text-[15px] transition-colors duration-200 anim-uni-in-up ${
+                    link.active
+                      ? "text-[#84cc16]"
+                      : "text-[#a8a8a8] hover:text-white"
+                  }`}
+                >
+                  {link.name}
+                </Link>
+              ))}
+            </nav>
+          </div>
+
+          <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-3 text-[13px]">
+            <p className="text-[#6b7280] anim-uni-in-up">
+              Copyright © 2025 AjxTechnologies.com
+            </p>
+
+            <div className="flex items-center gap-3.5 text-[#6b7280] anim-uni-in-up">
+              <Link
+                href="/privacy"
+                className="hover:text-white transition-colors duration-200"
+              >
+                Privacy Policy
+              </Link>
+              <span className="text-[#3a3a3a]">|</span>
+              <Link
+                href="/terms"
+                className="hover:text-white transition-colors duration-200"
+              >
+                Terms Conditions
+              </Link>
+            </div>
           </div>
         </div>
-        <div className="next_page mxd-block ">
-          <div className="mxd-demo-footer__mixdesign mxd-grid-item no-margin">
-          </div>
-        </div>
-        <ScrollNextSection />
+      </div>
+
+      <div className="w-full text-center py-10 lg:py-12 md:pt-8 pt-0 overflow-hidden bg-[#1c1c1c]">
+        <h1 className="text-[3rem] sm:text-[5rem] md:text-[6.5rem] lg:text-[9rem] xl:text-[9rem] 2xl:text-[10rem] font-black tracking-[0.02em] text-white/90 select-none leading-none whitespace-nowrap">
+          AJX TECHNOLOGIES
+        </h1>
       </div>
     </footer>
   );
