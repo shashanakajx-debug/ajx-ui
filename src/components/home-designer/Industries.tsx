@@ -2,16 +2,17 @@
 
 import React, { useState } from "react";
 import {
-  Heart,
+  Stethoscope,
   Wallet,
   ShoppingCart,
   Settings,
-  Cloud,
+  CloudCog,
   ChevronRight,
   ChevronDown,
   CheckCircle2,
-  TrendingUp,
+  ChartNoAxesCombined,
   ArrowRight,
+  Cloud,
 } from "lucide-react";
 import SectionHeader from "./SectionHeader";
 
@@ -33,7 +34,7 @@ const INDUSTRIES: Industry[] = [
     title: "Healthcare",
     description:
       "Intelligent features, user behavior analysis, and automated customer support",
-    icon: Heart,
+    icon: Stethoscope,
     useCases: ["Feature Intelligence", "User Analytics", "Chatbot Support"],
     metric: {
       label: "Average ROI",
@@ -89,7 +90,7 @@ const INDUSTRIES: Industry[] = [
     title: "SaaS",
     description:
       "Intelligent features, user behavior analysis, and automated customer support",
-    icon: Cloud,
+    icon: CloudCog,
     useCases: [
       "User Behavior Analytics",
       "Churn Prediction",
@@ -142,26 +143,26 @@ export default function Industries() {
                       <div className="flex items-center justify-between gap-4">
                         <div className="flex items-center gap-4 flex-1">
                           <div
-                            className={`flex-shrink-0 w-12 h-12 rounded-lg flex items-center justify-center transition-colors ${
+                            className={`flex-shrink-0 w-16 h-16 rounded-lg flex items-center justify-center transition-colors ${
                               isSelected
                                 ? "bg-green-500 text-white"
                                 : "bg-gray-100 text-gray-700 group-hover:bg-green-100 group-hover:text-green-600"
                             }`}
                           >
                             <IconComponent
-                              className="w-6 h-6"
+                              className="w-9 h-9"
                               strokeWidth={2}
                             />
                           </div>
                           <div className="flex-1">
                             <h3
-                              className={`font-semibold text-base mb-1 ${
+                              className={`font-semibold text-2xl mb-1 ${
                                 isSelected ? "text-gray-900" : "text-gray-800"
                               }`}
                             >
                               {industry.title}
                             </h3>
-                            <p className="text-sm text-gray-600 line-clamp-1">
+                            <p className="text-xl text-gray-600 line-clamp-1">
                               {industry.description}
                             </p>
                           </div>
@@ -186,7 +187,7 @@ export default function Industries() {
               </div>
 
               {currentIndustry && (
-                <div className="bg-white rounded-2xl border-2 border-gray-100 p-8 shadow-sm">
+                <div className="bg-white rounded-2xl border-2 border-gray-100 p-7 shadow-sm">
                   <h2 className="text-3xl font-bold text-gray-900 mb-6">
                     {currentIndustry.title}
                   </h2>
@@ -194,7 +195,6 @@ export default function Industries() {
                     {currentIndustry.description}
                   </p>
 
-                  {/* Key Use Cases */}
                   <div className="mb-8">
                     <h3 className="text-lg font-semibold text-gray-900 mb-4">
                       Key Use Cases
@@ -214,7 +214,7 @@ export default function Industries() {
 
                   <div className="mb-8">
                     <div className="flex items-center gap-2 mb-2">
-                      <TrendingUp
+                      <ChartNoAxesCombined
                         className="w-4 h-4 text-green-600"
                         strokeWidth={2}
                       />

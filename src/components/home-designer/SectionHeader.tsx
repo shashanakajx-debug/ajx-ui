@@ -23,7 +23,7 @@ export default function SectionHeader({
 }: SectionHeaderProps) {
     return (
         <div
-            className={`mb-12 md:mb-16 pb-6 lg:flex md:flex items-center gap-3 text-center justify-between relative ${className}`}
+            className={`mb-12 md:mb-16 pb-6 lg:flex md:flex items-center gap-3 text-center border-bottom justify-between relative ${className}`}
         >
             <div className="left-content">
                 <p className="mxd-point-subtitle">
@@ -66,16 +66,6 @@ export default function SectionHeader({
                     </AnimatedButton>
                 </div>
             )}
-            <div style={{
-                position: 'absolute',
-                bottom: '-30px',
-                left: '50%',
-                transform: 'translateX(-50%)',
-                width: '100vw',
-                height: '1px',
-                backgroundColor: 'rgba(128, 128, 128, 0.3)',
-                pointerEvents: 'none'
-            }} />
         </div>
     );
 }

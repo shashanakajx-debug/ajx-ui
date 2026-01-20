@@ -754,10 +754,9 @@ textarea::placeholder {
 
 
 /* Section Background Theming */
-.light[color-scheme="dark"] .home-aboutus {
+.dark[color-scheme="dark"] .home-aboutus {
   background-color: var(--base--dark);
 }
-
 /* Color Switcher Fix */
 .mxd-color-switcher {
   display: inline-flex;

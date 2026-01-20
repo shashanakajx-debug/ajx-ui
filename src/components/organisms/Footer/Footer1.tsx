@@ -1,15 +1,23 @@
+"use client";
+
 import React from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import AnimatedButton from "@/components/animation/AnimatedButton";
 import {
+  ArrowUpRight,
+  Mail,
+  Phone,
+  MapPin,
   Facebook,
-  Instagram,
   Youtube,
   Linkedin,
-  ArrowUpRight,
+  Instagram,
 } from "lucide-react";
 
 export default function Footer() {
+  const pathname = usePathname();
+
   const services = [
     { label: "AI / ML", href: "#ai-ml" },
     { label: "Digital Engg", href: "#digital-engg" },
@@ -20,7 +28,7 @@ export default function Footer() {
   ];
 
   const navLinks = [
-    { name: "Home", href: "/", active: true },
+    { name: "Home", href: "/" },
     { name: "About", href: "/about-us" },
     { name: "Portfolios", href: "/our-portfolio" },
     { name: "Services", href: "/our-services" },
@@ -33,21 +41,39 @@ export default function Footer() {
       icon: Facebook,
       href: "https://www.facebook.com/ajxtechnologies",
       label: "Facebook",
+      type: "lucide",
     },
     {
       icon: Instagram,
       href: "https://www.instagram.com/ajxtechnologies/",
       label: "Instagram",
+      type: "lucide",
+    },
+    {
+      href: "https://x.com/ajxtechnologies",
+      label: "X (Twitter)",
+      type: "custom",
+      customIcon: (
+        <svg
+          viewBox="0 0 24 24"
+          className="w-[17px] h-[17px]"
+          fill="currentColor"
+        >
+          <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+        </svg>
+      ),
     },
     {
       icon: Youtube,
       href: "https://www.youtube.com/@ajxtechnologies",
       label: "YouTube",
+      type: "lucide",
     },
     {
       icon: Linkedin,
       href: "https://www.linkedin.com/company/ajxtechnologies",
       label: "LinkedIn",
+      type: "lucide",
     },
   ];
 
@@ -89,28 +115,39 @@ export default function Footer() {
 
           <div className="lg:col-span-4">
             <div className="space-y-8 lg:space-y-9">
-              {/* Email */}
-              <div className="anim-uni-in-up">
-                <h3 className="text-[#a8a8a8] text-[13px] mb-2.5 font-normal">
-                  Email -
-                </h3>
+
+              <div className="anim-uni-in-up flex items-center gap-3">
+                <div className="w-[38px] h-[38px] rounded-full border border-[#4a4a4a] flex items-center justify-center flex-shrink-0">
+                  <Mail className="w-[17px] h-[17px]" />
+                </div>
                 <Link
                   href="mailto:connect@ajxtechnologies.com"
-                  className="text-white hover:text-[#9ca3af] transition-colors duration-200 text-[15px] block"
+                  className="text-white hover:text-[#9ca3af] transition-colors duration-200 text-[15px]"
                 >
                   connect@ajxtechnologies.com
                 </Link>
               </div>
 
-              <div className="anim-uni-in-up">
-                <h3 className="text-[#a8a8a8] text-[13px] mb-2.5 font-normal">
-                  Address -
-                </h3>
-                <p className="text-white text-[15px] leading-relaxed">
-                  117, Skye Privilon Tulsi Nagar,
-                  <br />
-                  Nipania, Indore, MP (452010) INDIA
+              <div className="flex items-center gap-3">
+                <div className="w-[38px] h-[38px] rounded-full border border-[#4a4a4a] flex items-center justify-center flex-shrink-0">
+                  <Phone className="w-[17px] h-[17px]" />
+                </div>
+                <p className="text-white text-[15px]">
+                  +91 98270 44444
                 </p>
+              </div>
+
+              <div className="anim-uni-in-up flex items-start gap-3">
+                <div className="w-[38px] h-[38px] rounded-full border border-[#4a4a4a] flex items-center justify-center flex-shrink-0">
+                  <MapPin className="w-[17px] h-[17px]" />
+                </div>
+                <div>
+                  <p className="text-white text-[15px] leading-relaxed">
+                    117, Skye Privilon Tulsi Nagar,
+                    <br />
+                    Nipania, Indore, MP (452010) INDIA
+                  </p>
+                </div>
               </div>
 
               <div className="flex gap-2.5 anim-uni-in-up">
@@ -123,7 +160,11 @@ export default function Footer() {
                     aria-label={social.label}
                     className="w-[38px] h-[38px] rounded-full border border-[#4a4a4a] flex items-center justify-center hover:bg-white hover:border-white hover:text-[#1c1c1c] transition-all duration-300"
                   >
-                    <social.icon className="w-[17px] h-[17px]" />
+                    {social.type === "custom" ? (
+                      social.customIcon
+                    ) : (
+                      <social.icon className="w-[17px] h-[17px]" />
+                    )}
                   </Link>
                 ))}
               </div>
@@ -137,7 +178,7 @@ export default function Footer() {
           <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-5 lg:gap-4 border-bottom border-gray-400 pb-4">
             <div className="anim-uni-in-up">
               <h4 className="text-[19px] font-bold text-white tracking-tight">
-                Transparent.
+                Automate. Innovate. Scale.
               </h4>
             </div>
 
@@ -147,7 +188,7 @@ export default function Footer() {
                   key={index}
                   href={link.href}
                   className={`text-[15px] transition-colors duration-200 anim-uni-in-up ${
-                    link.active
+                    pathname === link.href
                       ? "text-[#84cc16]"
                       : "text-[#a8a8a8] hover:text-white"
                   }`}
@@ -159,8 +200,8 @@ export default function Footer() {
           </div>
 
           <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-3 text-[13px]">
-            <p className="text-[#6b7280] anim-uni-in-up">
-              Copyright © 2025 AjxTechnologies.com
+            <p className="hover:text-white text-[#6b7280] anim-uni-in-up">
+              Copyright © {new Date().getFullYear()} AJX Technologies Pvt Ltd. All rights reserved.
             </p>
 
             <div className="flex items-center gap-3.5 text-[#6b7280] anim-uni-in-up">

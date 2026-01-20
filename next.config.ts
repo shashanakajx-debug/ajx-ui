@@ -22,6 +22,14 @@ const nextConfig = {
         ignoreBuildErrors: true,
     },
     experimental: {
+        optimizePackageImports: [
+            'lucide-react',
+            'date-fns',
+            'framer-motion',
+            'gsap',
+            '@headlessui/react',
+            '@heroicons/react',
+        ],
         serverActions: {
             bodySizeLimit: '2mb',
         },

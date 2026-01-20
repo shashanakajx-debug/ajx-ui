@@ -34,6 +34,28 @@ const testimonialsData = [
     text: "Working with the Rayo team was an absolute pleasure! They took the time to understand our business needs and translated them into a beautifully designed, user-friendly website.",
     link: "#",
   },
+  {
+    id: 3,
+    authorName: "Sarah Mitchell",
+    authorPosition: "Marketing Head",
+    authorCompany: "Creative Studios",
+    authorPhoto: "/testimonials/dainial.jpg",
+    rating: 5,
+    tags: ["BRANDING", "STRATEGY"],
+    text: "Exceptional service and outstanding results! The team's creativity and technical expertise helped us achieve our goals beyond expectations.",
+    link: "#",
+  },
+  {
+    id: 4,
+    authorName: "John Anderson",
+    authorPosition: "CEO",
+    authorCompany: "Digital Ventures",
+    authorPhoto: "/testimonials/samual.jpg",
+    rating: 5,
+    tags: ["UI/UX", "DEVELOPMENT"],
+    text: "Professional, innovative, and reliable. They transformed our digital presence and delivered a solution that truly resonates with our audience.",
+    link: "#",
+  },
 ];
 
 export default function Testimonials() {
@@ -58,9 +80,9 @@ export default function Testimonials() {
           />
 
           <div className="w-full mt-8 md:mt-12">
-            <div className="flex flex-col lg:flex-row gap-8 items-stretch">
-              <div className="w-full lg:w-[34%] flex-shrink-0">
-                <div className="h-full min-h-[400px] bg-gray-100 rounded-[28px] p-8 md:p-12 flex flex-col justify-center items-center text-center text-black">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
+              <div className="w-full lg:col-span-1">
+                <div className="h-full min-h-[500px] bg-gray-100 rounded-[28px] p-8 md:p-12 flex flex-col justify-center items-center text-center text-black">
                   <div className="mb-4">
                     <span className="text-[64px] md:text-[80px] font-medium leading-none tracking-tight">
                       5.0
@@ -120,7 +142,7 @@ export default function Testimonials() {
                 </div>
               </div>
 
-              <div className="w-full lg:w-[66%] min-w-0 relative">
+              <div className="w-full lg:col-span-2 min-w-0 overflow-hidden">
                 <Swiper
                   onSwiper={setSwiperInstance}
                   onSlideChange={(swiper) => setActiveIndex(swiper.activeIndex)}
@@ -128,26 +150,26 @@ export default function Testimonials() {
                   slidesPerView={1}
                   modules={[Autoplay]}
                   autoplay={{ delay: 6000, disableOnInteraction: true }}
-                  loop={true}
+                  loop={false}
                   allowTouchMove={true}
                   breakpoints={{
-                    640: { slidesPerView: 1.1 },
-                    900: { slidesPerView: 1.5 },
-                    1200: { slidesPerView: 1.8 },
+                    640: { slidesPerView: 1, spaceBetween: 0 },
+                    1024: { slidesPerView: 2, spaceBetween: 0 },
                   }}
-                  className="h-full !pb-10 !pr-4"
+                  className=""
                 >
                   {testimonialsData.map((item, idx) => (
                     <SwiperSlide
                       key={item.id}
-                      className="h-full !filter-none !opacity-100 relative"
+                      className="!filter-none !opacity-100 relative"
                     >
                       {idx !== testimonialsData.length - 1 && (
-                        <div className="absolute right-0 top-8 bottom-8 w-[2px] bg-gray-200"></div>
+                        <div className="absolute right-0 top-12 bottom-12 w-[1px] bg-gray-300"></div>
                       )}
 
-                      <div className="h-full flex items-stretch px-8 md:px-12">
-                        <div className="w-full h-full flex flex-col bg-transparent justify-between min-h-[400px]">
+                      <div className="flex items-stretch px-8 md:px-12">
+
+                        <div className="w-full flex flex-col bg-transparent justify-between h-full min-h-[500px]">
                           <div className="flex flex-col items-start gap-4 mb-8">
                             <Image
                               src="/clutch.png"

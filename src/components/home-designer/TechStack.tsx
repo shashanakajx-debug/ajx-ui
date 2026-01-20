@@ -1,5 +1,8 @@
+"use client";
+
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import SectionHeader from "./SectionHeader";
 import {
   Layers,
@@ -8,7 +11,6 @@ import {
   FileCode,
   Webhook,
   Activity,
-  CircleDot,
   Atom,
 } from "lucide-react";
 
@@ -249,6 +251,10 @@ const categories = ["UI/UX", "WEB DESIGN", "PACKAGING", "3D MODELS"];
 export default function Techstack() {
   const [activeFilter, setActiveFilter] = useState("WEB DESIGN");
 
+  useEffect(() => {
+    ScrollTrigger.refresh();
+  }, [activeFilter]);
+
   const filteredTech = techstack.filter(
     (item) => item.category === activeFilter,
   );
@@ -278,11 +284,10 @@ export default function Techstack() {
               <button
                 key={category}
                 onClick={() => setActiveFilter(category)}
-                className={`px-6 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 border-2 whitespace-nowrap ${
-                  activeFilter === category
-                    ? "bg-[#10B981] text-white border-[#10B981] shadow-md"
-                    : "bg-white dark:bg-darkmode-surface text-gray-700 dark:text-text-light-secondary border-gray-300 dark:border-darkmode-border hover:border-[#10B981] hover:text-[#10B981]"
-                }`}
+                className={`px-6 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 border-2 whitespace-nowrap ${activeFilter === category
+                  ? "bg-[#10B981] text-white border-[#10B981] shadow-md"
+                  : "bg-white dark:bg-darkmode-surface text-black dark:text-text-light-secondary border-gray-300 dark:border-darkmode-border hover:border-[#10B981] hover:text-[#10B981]"
+                  }`}
                 style={{ letterSpacing: "0.5px" }}
               >
                 {category}
