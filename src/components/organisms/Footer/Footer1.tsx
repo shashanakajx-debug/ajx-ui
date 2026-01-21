@@ -14,6 +14,7 @@ import {
   Linkedin,
   Instagram,
 } from "lucide-react";
+import ScrollNextSection from "@/components/ScrollNextSection";
 
 export default function Footer() {
   const pathname = usePathname();
@@ -228,6 +229,7 @@ export default function Footer() {
           AJX TECHNOLOGIES
         </h1>
       </div>
+      <ScrollNextSection />
     </footer>
   );
 }
