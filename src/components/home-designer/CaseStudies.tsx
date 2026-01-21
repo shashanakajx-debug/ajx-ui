@@ -157,10 +157,10 @@ export default function CaseStudies() {
               <button
                 key={cat}
                 onClick={() => handleFilterClick(cat)}
-                className={`px-6 py-2.5 rounded-full border text-sm font-medium transition-all duration-300 ${
+                className={`px-6 py-2.5 rounded-full border font-medium transition-all duration-300 ${
                   activeCategory === cat
-                    ? "border-[var(--color-text)] bg-[var(--color-text)] text-[var(--color-surface)]"
-                    : "border-[var(--color-border)] bg-transparent text-[var(--color-text)] hover:border-[var(--color-text)] hover:bg-[var(--color-text)] hover:text-[var(--color-surface)]"
+                    ? "border-[#119000] bg-[#119000] text-white"
+                    : "border-[var(--color-border)] bg-transparent text-[var(--color-text)] hover:border-[#119000] hover:bg-[#119000]"
                 }`}
               >
                 {cat}
@@ -240,33 +240,42 @@ export default function CaseStudies() {
                   key={`${study.id}-${index}`}
                   onMouseEnter={() => setHoveredId(study.id)}
                   onMouseLeave={() => setHoveredId(null)}
-                  className={`rounded-[2rem] overflow-hidden shadow-sm hover:shadow-xl transition-shadow duration-300 border border-[var(--color-border)] flex flex-col bg-[var(--color-surface)] ${visibilityClass}`}
-                  style={{ height: '400px' }}
+                  className={`rounded-[2rem] overflow-hidden shadow-sm hover:shadow-xl transition-all duration-700 ease-in-out border border-[var(--color-border)] flex flex-col bg-[var(--color-surface)] ${visibilityClass}`}
+                  style={{ height: '425px' }}
                 >
                   {/* Image - shrinks on hover */}
                   <div
-                    className="relative group overflow-hidden flex-shrink-0 transition-all duration-500 ease-out"
-                    style={{ height: isExpanded ? '160px' : '320px' }}
+                    className="relative overflow-hidden flex-shrink-0 transition-all duration-700 ease-in-out"
+                    style={{ height: isExpanded ? '150px' : '320px' }}
                   >
                     <Link
                       href={`/case-studies/${study.id}`}
-                      className={`absolute inset-0 w-full h-full ${study.previewClass} bg-center bg-cover transition-transform duration-500 group-hover:scale-110`}
+                      className={`absolute inset-0 w-full h-full ${study.previewClass} bg-center bg-cover`}
+                      style={{ 
+                        transform: isExpanded ? 'scale(1)' : 'scale(1)',
+                        transition: 'transform 0.7s ease-in-out'
+                      }}
                     >
-                      <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors duration-300" />
+                      <div 
+                        className="absolute inset-0 transition-colors duration-700"
+                        style={{
+                          backgroundColor: isExpanded ? 'rgba(0, 0, 0, 0.3)' : 'rgba(0, 0, 0, 0.2)'
+                        }}
+                      />
                     </Link>
                   </div>
 
                   {/* Content - fills remaining space */}
                   <div
-                    className="p-8 flex flex-col overflow-auto"
-                    style={{ height: isExpanded ? '350px' : '250px' }}
+                    className="p-8 flex flex-col transition-all duration-700 ease-in-out"
+                    style={{ height: isExpanded ? '300px' : '200px' }}
                   >
                     <div className="flex justify-between items-start gap-4 mb-4">
                       <div>
-                        <h3 className="text-2xl font-bold text-[var(--color-text)] mb-2 leading-tight">
+                        <h3 className="text-[var(--color-text)] mb-2 leading-tight">
                           {study.title}
                         </h3>
-                        <p className="text-sm text-[var(--color-text-muted)] font-medium">
+                        <p className="text-[var(--color-text-muted)] font-medium">
                           {study.description}
                         </p>
                       </div>
@@ -295,7 +304,7 @@ export default function CaseStudies() {
                     </div>
 
                     {isExpanded && (
-                      <div className="transition-opacity duration-300">
+                      <div className="transition-all duration-700 ease-in-out opacity-100">
                         <div className="flex flex-wrap gap-2 mb-6">
                           {study.tags.map((tag, i) => (
                             <span

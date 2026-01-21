@@ -3,16 +3,15 @@
 import React, { useState } from "react";
 import {
   Stethoscope,
-  Wallet,
+  Banknote,
   ShoppingCart,
-  Settings,
+  Cog,
   CloudCog,
   ChevronRight,
   ChevronDown,
   CheckCircle2,
   ChartNoAxesCombined,
   ArrowRight,
-  Cloud,
 } from "lucide-react";
 import SectionHeader from "./SectionHeader";
 
@@ -46,7 +45,7 @@ const INDUSTRIES: Industry[] = [
     title: "Finance",
     description:
       "Intelligent features, user behavior analysis, and automated customer support",
-    icon: Wallet,
+    icon: Banknote,
     useCases: ["Fraud Detection", "Risk Assessment", "Automated Trading"],
     metric: {
       label: "Average ROI",
@@ -74,7 +73,7 @@ const INDUSTRIES: Industry[] = [
     title: "Manufacturing",
     description:
       "Intelligent features, user behavior analysis, and automated customer support",
-    icon: Settings,
+    icon: Cog,
     useCases: [
       "Predictive Maintenance",
       "Quality Control",
@@ -111,7 +110,7 @@ export default function Industries() {
   const currentIndustry = INDUSTRIES.find((ind) => ind.id === selectedIndustry);
 
   return (
-    <div className="mxd-section overflow-hidden padding-grid-pre-mtext mt-12 md:mt-20">
+    <div className="mxd-section overflow-hidden padding-grid-pre-mtext">
       <div className="mxd-container">
         <div className="mx-auto row gx-0">
           <SectionHeader
@@ -156,13 +155,13 @@ export default function Industries() {
                           </div>
                           <div className="flex-1">
                             <h3
-                              className={`font-semibold text-2xl mb-1 ${
+                              className={`md:text-[24px] text-[18px] mb-1 ${
                                 isSelected ? "text-gray-900" : "text-gray-800"
                               }`}
                             >
                               {industry.title}
                             </h3>
-                            <p className="text-xl text-gray-600 line-clamp-1">
+                            <p className="text-black line-clamp-1">
                               {industry.description}
                             </p>
                           </div>
@@ -187,16 +186,14 @@ export default function Industries() {
               </div>
 
               {currentIndustry && (
-                <div className="bg-white rounded-2xl border-2 border-gray-100 p-7 shadow-sm">
-                  <h2 className="text-3xl font-bold text-gray-900 mb-6">
-                    {currentIndustry.title}
-                  </h2>
-                  <p className="text-gray-600 mb-8">
+                <div className="bg-white rounded-2xl border-2 border-gray-100 p-7 shadow-sm flex flex-col justify-end">
+                  <h2 className="text-black mb-6">{currentIndustry.title}</h2>
+                  <p className="text-black mb-8">
                     {currentIndustry.description}
                   </p>
 
                   <div className="mb-8">
-                    <h3 className="text-lg font-semibold text-gray-900 mb-4">
+                    <h3 className="text-[18px] lg:text-[24px] text-black mb-4">
                       Key Use Cases
                     </h3>
                     <div className="space-y-3">
@@ -215,16 +212,14 @@ export default function Industries() {
                   <div className="mb-8">
                     <div className="flex items-center gap-2 mb-2">
                       <ChartNoAxesCombined
-                        className="w-4 h-4 text-green-600"
+                        className="w-8 h-8 text-green-600"
                         strokeWidth={2}
                       />
-                      <span className="text-sm text-green-600 font-medium">
+                      <span className="text-[16px] text-green-600 font-medium">
                         {currentIndustry.metric.label}
                       </span>
                     </div>
-                    <p className="text-2xl font-bold text-gray-900">
-                      {currentIndustry.metric.value}
-                    </p>
+                    <p className="text-black">{currentIndustry.metric.value}</p>
                   </div>
                   <button className="w-full bg-green-600 hover:bg-green-700 text-white font-semibold py-4 px-6 rounded-lg transition-colors duration-300 flex items-center justify-center gap-2 group">
                     <span>Explore {currentIndustry.title} Solutions</span>

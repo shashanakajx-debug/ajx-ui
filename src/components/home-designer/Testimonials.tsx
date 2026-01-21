@@ -120,9 +120,9 @@ export default function Testimonials() {
                       <ArrowLeft className="w-6 h-6 group-hover:stroke-current" />
                     </button>
 
-                    <div className="text-lg font-medium">
-                      <span className="text-black">{activeIndex + 1}</span>
-                      <span className="text-black/40">/{totalSlides}</span>
+                    <div className=" font-medium">
+                      <span className="text-black"> {activeIndex + 1} </span>
+                      <span className="text-black/40"> / {totalSlides} </span>
                     </div>
 
                     <button
@@ -165,7 +165,7 @@ export default function Testimonials() {
                         <div className="w-full flex flex-col bg-transparent justify-between h-full">
                           <div className="flex flex-col items-start gap-4 mb-8">
                             <Image
-                              src="/clutch.png"
+                              src="/clutch1.png"
                               alt="Clutch"
                               width={100}
                               height={32}

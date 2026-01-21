@@ -3,94 +3,50 @@
 @import "./css/loaders/loader.min.css";
 @import "./css/styles.css";
 
+
 @font-face {
-  font-family: 'Gilroy';
-  src: url('/fonts/gilroy/Gilroy-Thin.woff2') format('woff2');
+    font-family: 'GT Ultra';
+    src: url('/fonts/GTUltra-Thin.woff2') format('woff2'),
+        url('/fonts/GTUltra-Thin.woff') format('woff');
+    font-weight: 100;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'GT Ultra';
+    src: url('/fonts/GTUltra-Regular.woff2') format('woff2'),
+        url('/fonts/GTUltra-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'GT Ultra';
+    src: url('/fonts/GTUltra-Bold.woff2') format('woff2'),
+        url('/fonts/GTUltra-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Schibsted Grotesk';
+    src: url('/fonts/SchibstedGrotesk-Regular.woff2') format('woff2'),
+        url('/fonts/SchibstedGrotesk-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+.heading-ultra{
+  font-family: 'GT Ultra';
+}
+.heading-ultra-thin{
   font-weight: 100;
-  font-style: normal;
-  font-display: swap;
 }
-
-@font-face {
-  font-family: 'Gilroy';
-  src: url('/fonts/gilroy/Gilroy-UltraLight.woff2') format('woff2');
-  font-weight: 200;
-  font-style: normal;
-  font-display: swap;
+.heading-ultra-bold{
+  font-weight: bold;
 }
-
-@font-face {
-  font-family: 'Gilroy';
-  src: url('/fonts/gilroy/Gilroy-Light.woff2') format('woff2');
-  font-weight: 300;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Gilroy';
-  src: url('/fonts/gilroy/Gilroy-Regular.woff2') format('woff2');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Gilroy';
-  src: url('/fonts/gilroy/Gilroy-Medium.woff2') format('woff2');
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Gilroy';
-  src: url('/fonts/gilroy/Gilroy-SemiBold.woff2') format('woff2');
-  font-weight: 600;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Gilroy';
-  src: url('/fonts/gilroy/Gilroy-Bold.woff2') format('woff2');
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Gilroy';
-  src: url('/fonts/gilroy/Gilroy-ExtraBold.woff2') format('woff2');
-  font-weight: 800;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Gilroy';
-  src: url('/fonts/gilroy/Gilroy-Black.woff2') format('woff2');
-  font-weight: 900;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Gilroy';
-  src: url('/fonts/gilroy/Gilroy-Heavy.woff2') format('woff2');
-  font-weight: 950;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-    font-family: 'GT Ultra Fine Regular';
-    src: url('/fonts/GTUltraFine-Regular.eot');
-    src: url('/fonts/GTUltraFine-Regular.eot?#iefix') format('embedded-opentype'),
-         url('/fonts/GTUltraFine-Regular.woff2') format('woff2'),
-         url('/fonts/GTUltraFine-Regular.woff') format('woff'),
-         url('/fonts/GTUltraFine-Regular.ttf')  format('truetype'),
-         url('/fonts/GTUltraFine-Regular.svg#GT Ultra Fine Regular') format('svg');
+.peragraph-font{
+  font-family: 'Schibsted Grotesk';
 }
 /* ===========================
    CRITICAL OVERRIDES - Header Visibility Fix
@@ -394,12 +350,13 @@ body {
 }
 
 body {
-  font-family: "Montserrat", sans-serif;
+  font-family: 'Schibsted Grotesk';
   font-size: 16px;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   transition: background-color 0.3s ease, color 0.3s ease;
+  letter-spacing: normal;
 }
 
 /* ===========================
@@ -412,8 +369,8 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: 'GT Ultra Fine Regular';
-  font-weight: 700;
+  font-family: 'GT Ultra';
+  font-weight: 400;
   line-height: 1.2;
   transition: color 0.3s ease;
 }
@@ -443,10 +400,11 @@ h6 {
 }
 
 p {
-  font-family: "Montserrat", sans-serif;
+  font-family: 'Schibsted Grotesk';
   font-size: 16px;
   line-height: 1.6;
   transition: color 0.3s ease;
+  letter-spacing: normal;
 }
 
 small,
@@ -763,9 +721,9 @@ textarea::placeholder {
 
 
 /* Section Background Theming */
-.dark[color-scheme="dark"] .home-aboutus {
+/* .dark[color-scheme="dark"] .home-aboutus {
   background-color: var(--base--dark);
-}
+} */
 /* Color Switcher Fix */
 .mxd-color-switcher {
   display: inline-flex;
@@ -865,7 +823,7 @@ footer.mxd-demo-footer {
 
 /* ======= TEch Css ========= */
 .techicon.padding-grid-pre-pinned {
-  margin-top: 5rem;
+  margin-top: 0rem;
   padding-bottom: 5rem;
 }
 
@@ -1298,6 +1256,8 @@ section.process .pathStage {
   z-index: 1;
 }
 
+
+
 /* ======== End ======== */
 @media (min-width: 1400px) {
   .mega-menu-box h4 {
@@ -1415,6 +1375,9 @@ span.ai_tesxt {
 }
 
 @media (max-width: 590px) {
+.mxd-hero-00__wrap {
+  margin-top: 8rem;
+}
   .container-custom-box img {
     max-width: 86px;
     height: auto;
@@ -1450,13 +1413,11 @@ span.ai_tesxt {
   .mxd-pinned-projects__scroll-inner {
     gap: 1rem;
   }
-
   .hero-00-title {
     font-size: 50px;
     line-height: normal;
     margin-bottom: 1rem;
   }
-
   .hero-00-title span.ai_tesxt {
     max-width: 100%;
     display: block;
@@ -1464,28 +1425,22 @@ span.ai_tesxt {
     margin-top: 8px;
     padding: 3px 0px;
   }
-
   .mxd-hero-00bottom .mxd-manifestcontrols {
     margin-top: 0rem;
     text-align: center;
   }
-
   .mxd-manifest__controls {
     margin: 0;
     text-align: center;
   }
-
   .hero-00-title br {
     display: contents;
   }
-
   .mxd-hero-00__bottom {
     margin-bottom: 5rem;
   }
-
   .mxd-manifest {
-    font: normal var(--fw-regular) 2rem / 1.6 var(--_font-accent);
-    margin-bottom: 1rem;
+    margin-bottom: 2rem;
   }
 
   .mxd-section.padding-pre-manifest.mobile-point-subtitle {

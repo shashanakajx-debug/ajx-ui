@@ -60,7 +60,9 @@ const AnimatedCounter: React.FC<AnimatedCounterProps> = ({
 };
 export default function About() {
   return (
-    <section className="mxd-container our-experties home-aboutus container_ser lg:pt-10 lg:pb-[100px] pt-10 pb-[50px] bg-[#f5f8fb]">
+    <div className="home-aboutus lg:pt-[40px]">
+    <section className="mxd-container our-experties container_ser lg:pt-10 lg:pb-[100px] pt-10 pb-[50px]">
+      
       <div className="mx-auto row gx-0">
         <SectionHeader
           subtitle="ABOUT US"
@@ -172,6 +174,8 @@ export default function About() {
           </div>
         </div>
       </div>
+      
     </section>
+    </div>
   );
 }

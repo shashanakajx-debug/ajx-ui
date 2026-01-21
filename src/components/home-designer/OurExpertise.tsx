@@ -1,9 +1,10 @@
 "use client";
 
-import React from "react";
+import React, { useRef, useEffect } from "react";
 import AnimatedButton from "@/components/animation/AnimatedButton";
 import Image from "next/image";
 import SectionHeader from "./SectionHeader";
+import { useInView } from "framer-motion";
 
 type ExpertiseItem = {
   id: string;
@@ -117,15 +118,101 @@ const EXPERTISE: ExpertiseItem[] = [
   },
 ];
 
+const ExpertiseRow = ({
+  item,
+  activeId,
+  setActiveId,
+}: {
+  item: ExpertiseItem;
+  activeId: string;
+  setActiveId: (id: string) => void;
+}) => {
+  const ref = useRef(null);
+  // Trigger when element is in the center of the viewport (50% margin top/bottom)
+  const isInView = useInView(ref, { margin: "-50% 0px -50% 0px" });
+
+  useEffect(() => {
+    if (isInView) {
+      setActiveId(item.id);
+    }
+  }, [isInView, item.id, setActiveId]);
+
+  const isActive = item.id === activeId;
+
+  return (
+    <div
+      ref={ref}
+      className={`border-b border-black/10 py-6 transition-all duration-500 ${isActive ? "py-20" : "py-6"
+        }`} // Add padding when active to give "pause" time, or just consistent spacing
+    >
+      <div className="flex items-start gap-6">
+        <div className="min-w-[54px] text-right">
+          <span className="number-aor-exprties">{item.number}</span>
+        </div>
+
+        <div className="flex-1">
+          <button
+            type="button"
+            onClick={() => setActiveId(item.id)}
+            className="group heading-ultra w-full text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-black/40 focus-visible:ring-offset-2"
+            aria-expanded={isActive}
+          >
+            <div
+              className="relative inline-block text-4xl font-extrabold leading-[1.05] tracking-tight sm:text-5xl after:content-[''] after:absolute after:left-0 after:-bottom-2.5 after:w-full after:h-[3px] after:bg-[#119000] after:rounded-full after:scale-x-0 after:origin-left after:transition-transform after:duration-260 after:ease-out group-hover:after:scale-x-100 data-[active=true]:after:scale-x-100"
+              data-active={isActive ? "true" : "false"}
+            >
+              {item.title}
+            </div>
+          </button>
+
+          {/* Active expanded block */}
+          <div
+            className={`grid transition-all duration-200 ease-out ${isActive
+              ? "mt-4 grid-rows-[1fr] opacity-100"
+              : "mt-0 grid-rows-[0fr] opacity-0"
+              }`}
+          >
+            <div className="overflow-hidden">
+              <div className="flex flex-wrap gap-2 pt-2">
+                {item.tags.map((tag) => (
+                  <span
+                    key={tag}
+                    className="rounded-full border px-3 py-1 text-xs font-semibold uppercase tracking-wide"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+
+              <p className="mt-4 leading-7">{item.description}</p>
+
+              <div className="mt-5">
+                <AnimatedButton
+                  text="Learn more"
+                  className="btn experties-button slide-right-up anim-uni-in-up"
+                  href={`#`}
+                >
+                  <i className="ph-bold ph-arrow-up-right" />
+                </AnimatedButton>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
 export default function OurExpertise() {
   const [activeId, setActiveId] = React.useState<string>(EXPERTISE[0].id);
+
   const active = React.useMemo(
     () => EXPERTISE.find((i) => i.id === activeId) ?? EXPERTISE[0],
     [activeId]
   );
 
   return (
-    <section className="mxd-container our-experties container_ser py-12 lg:pt-20 lg:pb-5">
+    <section className="mxd-container our-experties container_ser py-12 lg:pt-20 lg:pb-5 relative">
       <div className="mx-auto row gx-0">
         <SectionHeader
           subtitle="OUR EXPERTISE"
@@ -136,136 +223,58 @@ export default function OurExpertise() {
           className=""
         />
 
-        <div className="grid grid-cols-1 gap-10 lg:grid-cols-2 lg:items-start">
+        <div className="grid grid-cols-1 gap-10 lg:grid-cols-2 lg:items-start relative">
           {/* left: List + Active content */}
           <div className="flex flex-col">
-            {EXPERTISE.map((item) => {
-              const isActive = item.id === activeId;
-
-              return (
-                <div key={item.id} className="border-b border-black/10 py-6">
-                  <div className="flex items-start gap-6">
-                    <div className="min-w-[54px] text-right">
-                      <span className="number-aor-exprties">{item.number}</span>
-                    </div>
-
-                    <div className="flex-1">
-                      <button
-                        type="button"
-                        onClick={() => setActiveId(item.id)}
-                        className="group w-full text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-black/40 focus-visible:ring-offset-2"
-                        aria-expanded={isActive}
-                      >
-                        <div
-                          className="oe-title-underline text-4xl font-extrabold leading-[1.05] tracking-tight sm:text-5xl"
-                          data-active={isActive ? "true" : "false"}
-                        >
-                          {item.title}
-                        </div>
-                      </button>
-
-                      {/* Active expanded block */}
-                      <div
-                        className={`grid transition-all duration-200 ease-out ${isActive
-                          ? "mt-4 grid-rows-[1fr] opacity-100"
-                          : "mt-0 grid-rows-[0fr] opacity-0"
-                          }`}
-                      >
-                        <div className="overflow-hidden">
-                          <div className="flex flex-wrap gap-2 pt-2">
-                            {item.tags.map((tag) => (
-                              <span
-                                key={tag}
-                                className="rounded-full border px-3 py-1 text-xs font-semibold uppercase tracking-wide"
-                              >
-                                {tag}
-                              </span>
-                            ))}
-                          </div>
-
-                          <p className="mt-4 leading-7">{item.description}</p>
-
-                          <div className="mt-5">
-                            <AnimatedButton
-                              text="Learn more"
-                              className="btn experties-button slide-right-up anim-uni-in-up"
-                              href={`#`}
-                            >
-                              <i className="ph-bold ph-arrow-up-right" />
-                            </AnimatedButton>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              );
-            })}
+            {EXPERTISE.map((item) => (
+              <ExpertiseRow
+                key={item.id}
+                item={item}
+                activeId={activeId}
+                setActiveId={setActiveId}
+              />
+            ))}
           </div>
 
-          {/* Right: Image */}
-          <div className="relative">
-            <div className="relative aspect-[4/3] w-full overflow-hidden shadow-sm">
-              {/* Fade swap */}
-              <div
-                key={active.image.src}
-                className="absolute inset-0 animate-[fadeIn_220ms_ease-out]"
-              >
-                <div className={`relative w-full h-full flex justify-center items-center ${active.class}`}>
-                  <Image
-                    src={active.image.src}
-                    alt={active.image.alt}
-                    fill
-                    className="object-contain p-3 sm:p-6 border-icon"
-                    priority
-                  />
+          {/* Right: Image - Sticky */}
+          <div className="relative hidden lg:block">
+            {/* Sticky container matching the view height approximately */}
+            <div className="sticky top-24 h-[calc(100vh-6rem)] flex items-center justify-center">
+              <div className="relative aspect-[4/3] w-full overflow-hidden">
+                {/* Fade swap */}
+                <div
+                  key={active.image.src}
+                  className="absolute inset-0 animate-fade-in"
+                >
+                  <div className={`relative w-full h-full flex justify-center items-center ${active.class}`}>
+                    <Image
+                      src={active.image.src}
+                      alt={active.image.alt}
+                      fill
+                      className="object-contain p-3 sm:p-6 border-icon"
+                      priority
+                    />
+                  </div>
                 </div>
+              </div>
+            </div>
+          </div>
+          {/* Mobile Image Fallback (Simple) - optional, keeping desktop focused logic */}
+          <div className="relative lg:hidden">
+            <div className="relative aspect-[4/3] w-full overflow-hidden shadow-sm">
+              <div className={`relative w-full h-full flex justify-center items-center ${active.class}`}>
+                <Image
+                  src={active.image.src}
+                  alt={active.image.alt}
+                  fill
+                  className="object-contain p-3 sm:p-6 border-icon"
+                  priority
+                />
               </div>
             </div>
           </div>
         </div>
       </div>
-
-      <style jsx global>{`
-        @keyframes fadeIn {
-          from {
-            opacity: 0;
-            transform: translateY(4px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-
-        /* Bottom line hover animation + active underline */
-        .oe-title-underline {
-          position: relative;
-          display: inline-block;
-        }
-
-        .oe-title-underline::after {
-          content: "";
-          position: absolute;
-          left: 0;
-          bottom: -10px;
-          width: 100%;
-          height: 3px;
-          background: #119000;
-          border-radius: 999px;
-          transform: scaleX(0);
-          transform-origin: left;
-          transition: transform 260ms ease;
-        }
-
-        button.group:hover .oe-title-underline::after {
-          transform: scaleX(1);
-        }
-
-        .oe-title-underline[data-active="true"]::after {
-          transform: scaleX(1);
-        }
-      `}</style>
     </section>
   );
 }

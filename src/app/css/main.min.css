@@ -2144,8 +2144,8 @@ p.t-semibold {
   -ms-flex-pack: left;
   justify-content: left;
   gap: 1rem;
-  font: normal var(--fw-regular) 2.2rem/1.2 var(--_font-accent);
   color: var(--t-bright);
+  font-size: 20px;
 }
 .mxd-point-subtitle svg {
   width: 1.9rem;
@@ -2163,7 +2163,6 @@ p.t-semibold {
   color: var(--t-medium);
 }
 .mxd-manifest {
-  font: normal var(--fw-regular) 2.8rem/1.6 var(--_font-accent);
   color: var(--t-bright);
 }
 @media only screen and (min-width: 768px) {
@@ -2180,7 +2179,6 @@ p.t-semibold {
   }
 }
 .mxd-stats-number {
-  font: normal var(--fw-medium) 7rem/0.8 var(--_font-accent);
   color: var(--t-bright);
   letter-spacing: -0.1rem;
 }

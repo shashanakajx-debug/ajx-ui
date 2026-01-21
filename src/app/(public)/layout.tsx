@@ -14,13 +14,13 @@ export default function PublicLayout({
     children: React.ReactNode;
 }) {
     return (
-        <div className="loading-wrap">
+        <div className="loading-wrap !overflow-visible">
             <Loader />
             <InitScroll />
             <LenisSmoothScroll />
             <MobileMenu />
             <Header />
-            <main className="min-h-screen">{children}</main>
+            <main className="min-h-screen !overflow-visible">{children}</main>
             <ChatWidget />
             <Footer />
         </div>

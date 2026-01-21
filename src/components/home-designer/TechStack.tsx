@@ -267,7 +267,7 @@ export default function Techstack() {
   return (
     <div>
       <div className="mxd-section techicon padding-grid-pre-pinned">
-        <div className="mxd-container">
+        <div className="mxd-container pb-[40px]">
           <div className="mx-auto row gx-0">
             <SectionHeader
               subtitle="TECH STACK"
@@ -284,9 +284,9 @@ export default function Techstack() {
               <button
                 key={category}
                 onClick={() => setActiveFilter(category)}
-                className={`px-6 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 border-2 whitespace-nowrap ${activeFilter === category
-                  ? "bg-[#10B981] text-white border-[#10B981] shadow-md"
-                  : "bg-white dark:bg-darkmode-surface text-black dark:text-text-light-secondary border-gray-300 dark:border-darkmode-border hover:border-[#10B981] hover:text-[#10B981]"
+                className={`px-6 py-2.5 rounded-full border font-medium transition-all duration-300 ${activeFilter === category
+                  ? "border-[#119000] bg-[#119000] text-white"
+                  : "border-[var(--color-border)] bg-transparent text-[var(--color-text)] hover:border-[#119000] hover:bg-[#119000]"
                   }`}
                 style={{ letterSpacing: "0.5px" }}
               >
@@ -307,7 +307,7 @@ export default function Techstack() {
                       key={tech.id}
                       className="flex items-center gap-5 bg-gray-100 rounded-3xl p-6 shadow-sm hover:shadow-md hover:bg-gray-200 transition-all duration-300 min-h-[100px] border border-gray-200"
                     >
-                      <div className="flex-shrink-0 w-16 h-16 flex items-center justify-center">
+                      <div className="flex-shrink-0 w-22 h-22 flex items-center justify-center">
                         {tech.icon ? (
                           <Image
                             src={tech.icon}
@@ -326,7 +326,7 @@ export default function Techstack() {
 
                       <div className="flex-1">
                         <div
-                          className="text-gray-500 text-lg font-mono tracking-wide"
+                          className="text-black text-[16px] font-mono tracking-wide text-right"
                           style={{ fontWeight: 600, letterSpacing: "0.5px" }}
                         >
                           [{tech.displayName}]
