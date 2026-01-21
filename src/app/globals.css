@@ -1282,7 +1282,7 @@ section.process .pathStage {
   text-align: center;
   margin: 0 auto;
   position: relative;
-  z-index: 99;
+  z-index: 1;
 }
 
 .circle-animation:before {
