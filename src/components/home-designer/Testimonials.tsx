@@ -7,10 +7,6 @@ import SectionHeader from "./SectionHeader";
 import type { Swiper as SwiperType } from "swiper";
 import { Star, ArrowRight, ArrowLeft, ArrowUpRight } from "lucide-react";
 
-import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/pagination";
-
 const testimonialsData = [
   {
     id: 1,
@@ -82,7 +78,7 @@ export default function Testimonials() {
           <div className="w-full mt-8 md:mt-12">
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
               <div className="w-full lg:col-span-1">
-                <div className="h-full min-h-[500px] bg-gray-100 rounded-[28px] p-8 md:p-12 flex flex-col justify-center items-center text-center text-black">
+                <div className="h-full  bg-gray-100 rounded-[28px] p-8 md:p-12 flex flex-col justify-center items-center text-center text-black">
                   <div className="mb-4">
                     <span className="text-[64px] md:text-[80px] font-medium leading-none tracking-tight">
                       5.0
@@ -156,20 +152,17 @@ export default function Testimonials() {
                     640: { slidesPerView: 1, spaceBetween: 0 },
                     1024: { slidesPerView: 2, spaceBetween: 0 },
                   }}
-                  className=""
+                  className="h-100 flex"
                 >
                   {testimonialsData.map((item, idx) => (
                     <SwiperSlide
                       key={item.id}
-                      className="!filter-none !opacity-100 relative"
+                      className="!filter-none h-100 !opacity-100 relative flex border-r-2"
                     >
-                      {idx !== testimonialsData.length - 1 && (
-                        <div className="absolute right-0 top-12 bottom-12 w-[1px] bg-gray-300"></div>
-                      )}
-
+                    
                       <div className="flex items-stretch px-8 md:px-12">
 
-                        <div className="w-full flex flex-col bg-transparent justify-between h-full min-h-[500px]">
+                        <div className="w-full flex flex-col bg-transparent justify-between h-full">
                           <div className="flex flex-col items-start gap-4 mb-8">
                             <Image
                               src="/clutch.png"

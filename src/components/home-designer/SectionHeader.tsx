@@ -51,9 +51,9 @@ export default function SectionHeader({
                     <span>{subtitle}</span>
                 </p>
             </div>
-            <div className="heading">
-                <h2 className="text-left">{title}</h2>
-                <h2 className="text-right ml-[100px]">{description}</h2>
+            <div className="heading text-center">
+                <h2 className="">{title}</h2>
+                <h2 className="">{description}</h2>
             </div>
             {showButton && (
                 <div className="">

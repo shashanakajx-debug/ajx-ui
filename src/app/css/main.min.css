@@ -1130,8 +1130,8 @@ html.lenis body {
 .mxd-container {
   position: relative;
   width: 100%;
-  max-width: 1920px;
-  padding: 0 3rem;
+  max-width: 1460px;
+  padding: 0 2rem;
   margin: 0 auto;
 }
 .mxd-container.fullwidth-container {
@@ -1152,9 +1152,6 @@ html.lenis body {
   padding: 0 1.5rem;
 }
 @media only screen and (min-width: 768px) {
-  .mxd-container {
-    padding: 0 6rem;
-  }
   .mxd-container.grid-container {
     padding: 0 4.5rem;
   }
@@ -1171,9 +1168,6 @@ html.lenis body {
   }
 }
 @media only screen and (min-width: 1600px) {
-  .mxd-container {
-    padding: 0 9rem;
-  }
   .mxd-container.grid-container {
     padding: 0 7.5rem;
   }

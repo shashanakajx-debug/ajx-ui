@@ -114,7 +114,7 @@ export default function Footer() {
           </div>
 
           <div className="lg:col-span-4">
-            <div className="space-y-8 lg:space-y-9">
+            <div className="space-y-4 lg:space-y-4">
 
               <div className="anim-uni-in-up flex items-center gap-3">
                 <div className="w-[38px] h-[38px] rounded-full border border-[#4a4a4a] flex items-center justify-center flex-shrink-0">

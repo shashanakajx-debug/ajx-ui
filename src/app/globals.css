@@ -83,6 +83,15 @@
   font-display: swap;
 }
 
+@font-face {
+    font-family: 'GT Ultra Fine Regular';
+    src: url('/fonts/GTUltraFine-Regular.eot');
+    src: url('/fonts/GTUltraFine-Regular.eot?#iefix') format('embedded-opentype'),
+         url('/fonts/GTUltraFine-Regular.woff2') format('woff2'),
+         url('/fonts/GTUltraFine-Regular.woff') format('woff'),
+         url('/fonts/GTUltraFine-Regular.ttf')  format('truetype'),
+         url('/fonts/GTUltraFine-Regular.svg#GT Ultra Fine Regular') format('svg');
+}
 /* ===========================
    CRITICAL OVERRIDES - Header Visibility Fix
    =========================== */
@@ -403,7 +412,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "Gilroy", sans-serif;
+  font-family: 'GT Ultra Fine Regular';
   font-weight: 700;
   line-height: 1.2;
   transition: color 0.3s ease;
@@ -1399,6 +1408,10 @@ span.ai_tesxt {
   position: fixed;
   z-index: 12;
   transition: all 0.3s ease;
+}
+
+#testimonials .swiper-slide-active {
+  border-right: 1px solid var(--t-bright);
 }
 
 @media (max-width: 590px) {
