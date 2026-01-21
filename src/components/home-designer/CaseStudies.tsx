@@ -94,8 +94,6 @@ const caseStudies: CaseStudy[] = [
 export default function CaseStudies() {
   const [activeCategory, setActiveCategory] = useState("UI/UX");
   const [currentSlide, setCurrentSlide] = useState(0);
-
-  // NEW: track which card is hovered (by id)
   const [hoveredId, setHoveredId] = useState<number | null>(null);
 
   const categories = ["UI/UX", "WEB DESIGN", "PACKAGING", "3D MODELS"];
@@ -129,6 +127,21 @@ export default function CaseStudies() {
 
   return (
     <section className="py-12 md:py-20 px-5 overflow-hidden transition-colors duration-300">
+      <style jsx>{`
+        @keyframes smoothFadeIn {
+          from {
+            opacity: 0;
+            transform: translateY(10px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+        .animation-fade-in {
+          animation: smoothFadeIn 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+      `}</style>
       <div className="max-w-[1400px] mx-auto">
         <SectionHeader
           subtitle="CASE STUDIES"
@@ -144,10 +157,11 @@ export default function CaseStudies() {
               <button
                 key={cat}
                 onClick={() => handleFilterClick(cat)}
-                className={`px-6 py-2.5 rounded-full border text-sm font-medium transition-all duration-300 ${activeCategory === cat
-                  ? "border-[var(--color-text)] bg-[var(--color-text)] text-[var(--color-surface)]"
-                  : "border-[var(--color-border)] bg-transparent text-[var(--color-text)] hover:border-[var(--color-text)] hover:bg-[var(--color-text)] hover:text-[var(--color-surface)]"
-                  }`}
+                className={`px-6 py-2.5 rounded-full border text-sm font-medium transition-all duration-300 ${
+                  activeCategory === cat
+                    ? "border-[var(--color-text)] bg-[var(--color-text)] text-[var(--color-surface)]"
+                    : "border-[var(--color-border)] bg-transparent text-[var(--color-text)] hover:border-[var(--color-text)] hover:bg-[var(--color-text)] hover:text-[var(--color-surface)]"
+                }`}
               >
                 {cat}
               </button>
@@ -159,30 +173,53 @@ export default function CaseStudies() {
               onClick={prevSlide}
               disabled={currentSlide === 0}
               aria-label="Previous slide"
-              className={`w-12 h-12 rounded-full border border-[var(--color-border)] bg-[var(--color-surface)] flex items-center justify-center transition-all ${currentSlide === 0
-                ? "opacity-50 cursor-not-allowed text-[var(--color-text-muted)]"
-                : "hover:bg-[var(--color-text)] hover:text-[var(--color-surface)] hover:border-[var(--color-text)] text-[var(--color-text)]"
-                }`}
+              className={`w-12 h-12 rounded-full border border-[var(--color-border)] bg-[var(--color-surface)] flex items-center justify-center transition-all ${
+                currentSlide === 0
+                  ? "opacity-50 cursor-not-allowed text-[var(--color-text-muted)]"
+                  : "hover:bg-[var(--color-text)] hover:text-[var(--color-surface)] hover:border-[var(--color-text)] text-[var(--color-text)]"
+              }`}
             >
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
                 <path d="M19 12H5M12 19l-7-7 7-7" />
               </svg>
             </button>
 
             <span className="text-xl font-semibold tabular-nums text-[var(--color-text)]">
-              {currentSlide + 1}<span className="text-[var(--color-text-muted)]">/{totalSlides}</span>
+              {currentSlide + 1}
+              <span className="text-[var(--color-text-muted)]">
+                /{totalSlides}
+              </span>
             </span>
 
             <button
               onClick={nextSlide}
               disabled={currentSlide >= totalSlides - 1}
               aria-label="Next slide"
-              className={`w-12 h-12 rounded-full border border-[var(--color-border)] bg-[var(--color-surface)] flex items-center justify-center transition-all ${currentSlide >= totalSlides - 1
-                ? "opacity-50 cursor-not-allowed text-[var(--color-text-muted)]"
-                : "hover:bg-[var(--color-text)] hover:text-[var(--color-surface)] hover:border-[var(--color-text)] text-[var(--color-text)]"
-                }`}
+              className={`w-12 h-12 rounded-full border border-[var(--color-border)] bg-[var(--color-surface)] flex items-center justify-center transition-all ${
+                currentSlide >= totalSlides - 1
+                  ? "opacity-50 cursor-not-allowed text-[var(--color-text-muted)]"
+                  : "hover:bg-[var(--color-text)] hover:text-[var(--color-surface)] hover:border-[var(--color-text)] text-[var(--color-text)]"
+              }`}
             >
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
                 <path d="M5 12h14M12 5l7 7-7 7" />
               </svg>
             </button>
@@ -190,13 +227,9 @@ export default function CaseStudies() {
         </div>
 
         <div className="relative">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-start">
             {getVisibleSlides().map((study, index) => {
-              // index is local: 0 => primary visible card
-              const isPrimary = index === 0;
-
-              // NEW: expanded either when primary OR when hovered
-              const isExpanded = isPrimary || hoveredId === study.id;
+              const isExpanded = hoveredId === study.id;
 
               let visibilityClass = "block";
               if (index === 1) visibilityClass = "hidden md:block";
@@ -205,12 +238,16 @@ export default function CaseStudies() {
               return (
                 <div
                   key={`${study.id}-${index}`}
-                  // NEW: set hovered id on enter/leave
                   onMouseEnter={() => setHoveredId(study.id)}
                   onMouseLeave={() => setHoveredId(null)}
-                  className={`rounded-[2rem] overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-[var(--color-border)] flex flex-col h-full bg-[var(--color-surface)] ${visibilityClass}`}
+                  className={`rounded-[2rem] overflow-hidden shadow-sm hover:shadow-xl transition-shadow duration-300 border border-[var(--color-border)] flex flex-col bg-[var(--color-surface)] ${visibilityClass}`}
+                  style={{ height: '400px' }}
                 >
-                  <div className={`relative group overflow-hidden ${isExpanded ? "h-64" : "flex-1 min-h-[300px]"}`}>
+                  {/* Image - shrinks on hover */}
+                  <div
+                    className="relative group overflow-hidden flex-shrink-0 transition-all duration-500 ease-out"
+                    style={{ height: isExpanded ? '160px' : '320px' }}
+                  >
                     <Link
                       href={`/case-studies/${study.id}`}
                       className={`absolute inset-0 w-full h-full ${study.previewClass} bg-center bg-cover transition-transform duration-500 group-hover:scale-110`}
@@ -219,8 +256,12 @@ export default function CaseStudies() {
                     </Link>
                   </div>
 
-                  <div className="p-8 flex flex-col">
-                    <div className="flex justify-between items-start gap-4">
+                  {/* Content - fills remaining space */}
+                  <div
+                    className="p-8 flex flex-col overflow-auto"
+                    style={{ height: isExpanded ? '350px' : '250px' }}
+                  >
+                    <div className="flex justify-between items-start gap-4 mb-4">
                       <div>
                         <h3 className="text-2xl font-bold text-[var(--color-text)] mb-2 leading-tight">
                           {study.title}
@@ -230,8 +271,6 @@ export default function CaseStudies() {
                         </p>
                       </div>
 
-                      {/* SHOW small floating icon only when NOT expanded.
-                          When expanded, we show the full CTA below (same as selected card). */}
                       {!isExpanded && (
                         <Link
                           href={`/case-studies/${study.id}`}
@@ -255,10 +294,9 @@ export default function CaseStudies() {
                       )}
                     </div>
 
-                    {/* Show tags, metrics and full CTA when expanded (either selected or hovered) */}
                     {isExpanded && (
-                      <div className="mt-6 animation-fade-in">
-                        <div className="flex flex-wrap gap-2 mb-8">
+                      <div className="transition-opacity duration-300">
+                        <div className="flex flex-wrap gap-2 mb-6">
                           {study.tags.map((tag, i) => (
                             <span
                               key={i}
@@ -270,7 +308,7 @@ export default function CaseStudies() {
                         </div>
 
                         {study.metrics && (
-                          <div className="grid grid-cols-2 gap-4 mb-8">
+                          <div className="grid grid-cols-2 gap-4 mb-6">
                             <div>
                               <div className="text-3xl font-bold text-[#119000] mb-1">
                                 {study.metrics.percentage}
@@ -292,7 +330,7 @@ export default function CaseStudies() {
 
                         <Link
                           href={`/case-studies/${study.id}`}
-                          className="w-full bg-[#119000] hover:bg-[#0e7500] text-white font-bold py-4 rounded-full flex items-center justify-between px-8 transition-colors group"
+                          className="w-full bg-[#119000] hover:bg-[#0e7500] text-white font-bold py-4 rounded-full flex items-center justify-between px-8 transition-colors group mt-auto"
                         >
                           <span>View Full Case Study</span>
                           <svg

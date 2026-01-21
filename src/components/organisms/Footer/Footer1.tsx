@@ -88,15 +88,14 @@ export default function Footer() {
               <br />
               Your Project?
             </h2>
-         
 
-          <AnimatedButton
-          text="Let's talk"
-          className="btn slide-right-up btn-outline btn-small anim-uni-in-up"
-          href={`/contact`}
-          >
-          <ArrowUpRight className="w-[18px] h-[18px] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-300" />
-          </AnimatedButton> 
+            <AnimatedButton
+              text="Let's talk"
+              className="btn slide-right-up btn-outline btn-small anim-uni-in-up"
+              href={`/contact`}
+            >
+              <ArrowUpRight className="w-[18px] h-[18px] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-300" />
+            </AnimatedButton>
           </div>
 
           <div className="lg:col-span-3">
@@ -116,7 +115,6 @@ export default function Footer() {
 
           <div className="lg:col-span-4">
             <div className="space-y-4 lg:space-y-4">
-
               <div className="anim-uni-in-up flex items-center gap-3">
                 <div className="w-[38px] h-[38px] rounded-full border border-[#4a4a4a] flex items-center justify-center flex-shrink-0">
                   <Mail className="w-[17px] h-[17px]" />
@@ -133,9 +131,7 @@ export default function Footer() {
                 <div className="w-[38px] h-[38px] rounded-full border border-[#4a4a4a] flex items-center justify-center flex-shrink-0">
                   <Phone className="w-[17px] h-[17px]" />
                 </div>
-                <p className="text-white text-[15px]">
-                  +91 98270 44444
-                </p>
+                <p className="text-white text-[15px]">+91 98270 44444</p>
               </div>
 
               <div className="anim-uni-in-up flex items-start gap-3">
@@ -202,7 +198,8 @@ export default function Footer() {
 
           <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-3 text-[13px]">
             <p className="hover:text-white text-[#6b7280] anim-uni-in-up">
-              Copyright © {new Date().getFullYear()} AJX Technologies Pvt Ltd. All rights reserved.
+              Copyright © {new Date().getFullYear()} AJX Technologies Pvt Ltd.
+              All rights reserved.
             </p>
 
             <div className="flex items-center gap-3.5 text-[#6b7280] anim-uni-in-up">
@@ -223,7 +220,6 @@ export default function Footer() {
           </div>
         </div>
       </div>
-
       <div className="w-full text-center py-10 lg:py-12 md:pt-8 pt-0 overflow-hidden bg-[#1c1c1c]">
         <h1 className="text-[3rem] sm:text-[5rem] md:text-[6.5rem] lg:text-[9rem] xl:text-[9rem] 2xl:text-[10rem] font-black tracking-[0.02em] text-white/90 select-none leading-none whitespace-nowrap">
           AJX TECHNOLOGIES
