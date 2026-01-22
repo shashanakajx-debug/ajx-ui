@@ -830,10 +830,10 @@ footer.mxd-demo-footer {
 .techicon .marquee-item .flex-shrink-0 {
   min-height: fit-content;
 }
-
+/* 
 .navbar-box {
   position: relative;
-}
+} */
 
 .navbar-box .menu-item {
   color: var(--t-bright);

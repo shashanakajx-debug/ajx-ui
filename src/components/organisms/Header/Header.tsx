@@ -6,14 +6,14 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 
-type SubLink = { label: string; des: string; href: string };
+
+type SubLink = { label: string; des: string; href: string; };
 type NavLink = {
   label: string;
   href: string;
   submenu?: SubLink[];
   img: string;
-  head: string;
-  subline: string;
+  head: string; subline: string;
 };
 
 export default function Header(): React.ReactElement {
@@ -21,7 +21,7 @@ export default function Header(): React.ReactElement {
   const [isHidden, setIsHidden] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [openMobileSubmenu, setOpenMobileSubmenu] = useState<string | null>(
-    null,
+    null
   );
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const [hideTimeout, setHideTimeout] = useState<NodeJS.Timeout | null>(null);
@@ -32,29 +32,22 @@ export default function Header(): React.ReactElement {
       href: "/our-services#AI-ML",
       img: "/llmAiImage.png",
       head: "AI & Machine Learning Strategy Consulting",
-      subline:
-        "Build smart, scalable AI/ML solutions that drive real business results.",
+      subline: "Build smart, scalable AI/ML solutions that drive real business results.",
       submenu: [
-        {
-          label: "AI & ML Readiness Assessment",
-          href: "/our-services#AI-ML",
-          des: "Evaluate data quality, availability, governance, infrastructure, and ML maturity to determine feasibility.",
+        { label: "AI & ML Readiness Assessment", href: "/our-services#AI-ML",
+           des: "Evaluate data quality, availability, governance, infrastructure, and ML maturity to determine feasibility."
         },
-        {
-          label: "Model & Technology Stack Recommendations",
-          href: "/our-services#AI-ML",
-          des: "Recommend appropriate ML models, frameworks, cloud platforms, MLOps tools, and integration architectures.",
-        },
+        { label: "Model & Technology Stack Recommendations", href: "/our-services#AI-ML", 
+          des: "Recommend appropriate ML models, frameworks, cloud platforms, MLOps tools, and integration architectures."
+         },
         {
           label: "AI/ML Roadmap & Use-Case Prioritization",
           href: "/our-services#AI-ML",
-          des: "Define and prioritize ML use cases based on business value, technical complexity, and deployment timelines. ",
+          des: "Define and prioritize ML use cases based on business value, technical complexity, and deployment timelines. "
         },
-        {
-          label: "Strategic Roadmap Development",
-          href: "/our-services#AI-ML",
-          des: "Estimate performance gains, cost savings, and scalability benefits to justify AI/ML investments with clear.",
-        },
+        { label: "Strategic Roadmap Development", href: "/our-services#AI-ML",
+          des:"Estimate performance gains, cost savings, and scalability benefits to justify AI/ML investments with clear."
+         },
       ],
     },
     {
@@ -62,24 +55,19 @@ export default function Header(): React.ReactElement {
       href: "/our-services#Digital-Engg",
       img: "/llmAiImage.png",
       head: "AI & Machine Learning Strategy Consulting",
-      subline:
-        "Build smart, scalable AI/ML solutions that drive real business results.",
+      subline: "Build smart, scalable AI/ML solutions that drive real business results.",
       submenu: [
-        {
-          label: "AR/VR",
-          href: "/our-services#Digital-Engg",
-          des: "Evaluate data quality, availability, governance, infrastructure, and ML maturity to determine feasibility.",
+        { label: "AR/VR", href: "/our-services#Digital-Engg",
+           des: "Evaluate data quality, availability, governance, infrastructure, and ML maturity to determine feasibility."
         },
-        {
-          label: "IoT",
-          href: "/our-services#Digital-Engg",
-          des: "Evaluate data quality, availability, governance, infrastructure, and ML maturity to determine feasibility.",
-        },
-        {
-          label: "Blockchain",
-          href: "/our-services#Digital-Engg",
-          des: "Evaluate data quality, availability, governance, infrastructure, and ML maturity to determine feasibility.",
-        },
+        { label: "IoT", href: "/our-services#Digital-Engg",
+          des: "Evaluate data quality, availability, governance, infrastructure, and ML maturity to determine feasibility."
+
+         },
+        { label: "Blockchain", href: "/our-services#Digital-Engg",
+          des: "Evaluate data quality, availability, governance, infrastructure, and ML maturity to determine feasibility."
+
+         },
       ],
     },
     {
@@ -87,23 +75,20 @@ export default function Header(): React.ReactElement {
       href: "/our-services#DevOps",
       img: "/llmAiImage.png",
       head: "AI & Machine Learning Strategy Consulting",
-      subline:
-        "Build smart, scalable AI/ML solutions that drive real business results.",
+      subline: "Build smart, scalable AI/ML solutions that drive real business results.",
       submenu: [
-        {
-          label: "CI/CD",
-          href: "/our-services#DevOps",
-          des: "Evaluate data quality, availability, governance, infrastructure, and ML maturity to determine feasibility.",
-        },
+        { label: "CI/CD", href: "/our-services#DevOps", 
+          des: "Evaluate data quality, availability, governance, infrastructure, and ML maturity to determine feasibility."
+         },
         {
           label: "Infrastructure as Code",
           href: "/our-services#DevOps",
-          des: "Evaluate data quality, availability, governance, infrastructure, and ML maturity to determine feasibility.",
+          des: "Evaluate data quality, availability, governance, infrastructure, and ML maturity to determine feasibility."
         },
         {
           label: "Monitoring & Logging",
           href: "/our-services#DevOps",
-          des: "Evaluate data quality, availability, governance, infrastructure, and ML maturity to determine feasibility.",
+          des: "Evaluate data quality, availability, governance, infrastructure, and ML maturity to determine feasibility."
         },
       ],
     },
@@ -112,24 +97,17 @@ export default function Header(): React.ReactElement {
       href: "/our-services#Web3",
       img: "/llmAiImage.png",
       head: "AI & Machine Learning Strategy Consulting",
-      subline:
-        "Build smart, scalable AI/ML solutions that drive real business results.",
+      subline: "Build smart, scalable AI/ML solutions that drive real business results.",
       submenu: [
-        {
-          label: "DApp Development",
-          href: "/our-services#Web3",
-          des: "Evaluate data quality, availability, governance, infrastructure, and ML maturity to determine feasibility.",
-        },
-        {
-          label: "Smart Contracts",
-          href: "/our-services#Web3",
-          des: "Evaluate data quality, availability, governance, infrastructure, and ML maturity to determine feasibility.",
-        },
-        {
-          label: "NFT Marketplaces",
-          href: "/our-services#Web3",
-          des: "Evaluate data quality, availability, governance, infrastructure, and ML maturity to determine feasibility.",
-        },
+        { label: "DApp Development", href: "/our-services#Web3", 
+          des: "Evaluate data quality, availability, governance, infrastructure, and ML maturity to determine feasibility."
+         },
+        { label: "Smart Contracts", href: "/our-services#Web3",
+          des: "Evaluate data quality, availability, governance, infrastructure, and ML maturity to determine feasibility."
+         },
+        { label: "NFT Marketplaces", href: "/our-services#Web3",
+          des: "Evaluate data quality, availability, governance, infrastructure, and ML maturity to determine feasibility."
+         },
       ],
     },
     {
@@ -137,24 +115,17 @@ export default function Header(): React.ReactElement {
       href: "/our-services#Cloud",
       img: "/llmAiImage.png",
       head: "AI & Machine Learning Strategy Consulting",
-      subline:
-        "Build smart, scalable AI/ML solutions that drive real business results.",
+      subline: "Build smart, scalable AI/ML solutions that drive real business results.",
       submenu: [
-        {
-          label: "AWS",
-          href: "/our-services#Cloud",
-          des: "Evaluate data quality, availability, governance, infrastructure, and ML maturity to determine feasibility.",
-        },
-        {
-          label: "Azure",
-          href: "/our-services#Cloud",
-          des: "Evaluate data quality, availability, governance, infrastructure, and ML maturity to determine feasibility.",
-        },
-        {
-          label: "Google Cloud",
-          href: "/our-services#Cloud",
-          des: "Evaluate data quality, availability, governance, infrastructure, and ML maturity to determine feasibility.",
-        },
+        { label: "AWS", href: "/our-services#Cloud",
+         des: "Evaluate data quality, availability, governance, infrastructure, and ML maturity to determine feasibility."
+         },
+        { label: "Azure", href: "/our-services#Cloud",
+          des: "Evaluate data quality, availability, governance, infrastructure, and ML maturity to determine feasibility."
+         },
+        { label: "Google Cloud", href: "/our-services#Cloud",
+          des: "Evaluate data quality, availability, governance, infrastructure, and ML maturity to determine feasibility."
+         },
       ],
     },
     {
@@ -162,24 +133,35 @@ export default function Header(): React.ReactElement {
       href: "/our-services#SaaS",
       img: "/llmAiImage.png",
       head: "AI & Machine Learning Strategy Consulting",
-      subline:
-        "Build smart, scalable AI/ML solutions that drive real business results.",
+      subline: "Build smart, scalable AI/ML solutions that drive real business results.",
       submenu: [
-        {
-          label: "SaaS Development",
-          href: "/our-services#SaaS",
-          des: "Evaluate data quality, availability, governance, infrastructure, and ML maturity to determine feasibility.",
-        },
-        {
-          label: "SaaS Integration",
-          href: "/our-services#SaaS",
-          des: "Evaluate data quality, availability, governance, infrastructure, and ML maturity to determine feasibility.",
-        },
-        {
-          label: "SaaS Migration",
-          href: "/our-services#SaaS",
-          des: "Evaluate data quality, availability, governance, infrastructure, and ML maturity to determine feasibility.",
-        },
+        { label: "SaaS Development", href: "/our-services#SaaS",
+          des: "Evaluate data quality, availability, governance, infrastructure, and ML maturity to determine feasibility."
+         },
+        { label: "SaaS Integration", href: "/our-services#SaaS",
+          des: "Evaluate data quality, availability, governance, infrastructure, and ML maturity to determine feasibility."
+         },
+        { label: "SaaS Migration", href: "/our-services#SaaS",
+          des: "Evaluate data quality, availability, governance, infrastructure, and ML maturity to determine feasibility."
+         },
+      ],
+    },
+    {
+      label: "SEO",
+      href: "/our-services#SEO",
+      img: "/llmAiImage.png",
+      head: "AI & Machine Learning Strategy Consulting",
+      subline: "Build smart, scalable AI/ML solutions that drive real business results.",
+      submenu: [
+        { label: "On-Page SEO", href: "/our-services#SEO",
+          des: "Evaluate data quality, availability, governance, infrastructure, and ML maturity to determine feasibility."
+         },
+        { label: "Off-Page SEO", href: "/our-services#SEO",
+          des: "Evaluate data quality, availability, governance, infrastructure, and ML maturity to determine feasibility."
+         },
+        { label: "Technical SEO", href: "/our-services#SEO",
+          des: "Evaluate data quality, availability, governance, infrastructure, and ML maturity to determine feasibility."
+         },
       ],
     },
   ];
@@ -201,17 +183,17 @@ export default function Header(): React.ReactElement {
   };
 
   const handleMouseLeave = () => {
-    const timeout = setTimeout(() => {
-      setActiveDropdown(null);
-    }, 120); // better UX
-    setHideTimeout(timeout);
-  };
+  const timeout = setTimeout(() => {
+    setActiveDropdown(null);
+  }, 120); // better UX
+  setHideTimeout(timeout);
+};
+
 
   return (
     <header
-      className={`mxd-header top-0 w-full z-50 transition-all duration-300 ${
-        isHidden ? "mxd-header--scrolled backdrop-blur-lg py-2" : "py-4"
-      }`}
+      className={`mxd-header top-0 w-full z-50 transition-all duration-300 ${isHidden ? "mxd-header--scrolled backdrop-blur-lg py-2" : "py-4"
+        }`}
     >
       <nav className="container-custom-box navbar-box flex items-center justify-between">
         {/* Logo */}
@@ -247,98 +229,107 @@ export default function Header(): React.ReactElement {
             >
               <Link
                 href={link.href}
-                className={`font-medium transition-colors] menu-item flex items-center ${
-                  pathname === link.href ? "" : ""
-                }`}
+                className={`font-medium transition-colors] menu-item flex items-center ${pathname === link.href
+                  ? ""
+                  : ""
+                  }`}
               >
                 {link.label}
-                {link.submenu && (
-                  <svg
-                    className="w-8 h-8 transition-transform"
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.24 4.25a.75.75 0 01-1.06 0L5.21 8.29a.75.75 0 01.02-1.08z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
-                )}
+                  {link.submenu && (
+    <svg
+      className="w-8 h-8 transition-transform"
+      viewBox="0 0 20 20"
+      fill="currentColor"
+    >
+      <path
+        fillRule="evenodd"
+        d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.24 4.25a.75.75 0 01-1.06 0L5.21 8.29a.75.75 0 01.02-1.08z"
+        clipRule="evenodd"
+      />
+    </svg>
+  )}
               </Link>
 
               {/* Individual Dropdown for each service */}
               {link.submenu && (
-                <div
-                  className={`absolute top-full border mt-0 rounded-2xl z-50 mega-menu-box
+  <div
+    className={`absolute top-full mt-0 z-50 mega-menu-box
       transition-all duration-200 ease-out
-      ${
-        activeDropdown === link.label
-          ? "opacity-100 scale-100 translate-y-2 visible"
-          : "opacity-0 scale-95 translate-y-2 invisible"
+      ${activeDropdown === link.label
+        ? "opacity-100 scale-100 translate-y-2 visible"
+        : "opacity-0 scale-95 translate-y-2 invisible"
       }`}
-                  onMouseEnter={() => handleMouseEnter(link.label)}
-                  onMouseLeave={handleMouseLeave}
-                >
-                  <div className="row ">
-                    <div className="col-12 col-xl-8 p-10 right-border">
-                      <div className="grid grid-cols-2 gap-10">
-                        {link.submenu.map((sublink, index) => (
-                          <Link
-                            key={`${link.label}-${index}`}
-                            href={sublink.href}
-                            className="group flex items-start gap-6 p-7 rounded-xl hover:pl-4 transition-all duration-200 ease-out menu-item"
-                          >
-                            <div className="menu-icon-hovers mt-1 w-14 h-14 rounded-[50px] flex items-center justify-center transition-colors flex-shrink-0 bg-[#119000]">
-                              <svg
-                                width="20"
-                                height="20"
-                                viewBox="0 0 24 24"
-                                fill="none"
-                                stroke="currentColor"
-                                strokeWidth="2"
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                aria-hidden="true"
-                                className="w-8 h-8 text-white"
-                              >
-                                <path d="M7 17L17 7M17 7H7M17 7V17" />
-                              </svg>
-                            </div>
-                            <div className="flex-1">
-                              <h4 className="font-bold text-2xl mb-3 transition-colors">
-                                {sublink.label}
-                              </h4>
-                              <p className="leading-[1.3]">{sublink.des}</p>
-                            </div>
-                          </Link>
-                        ))}
-                      </div>
-                    </div>
+    onMouseEnter={() => handleMouseEnter(link.label)}
+    onMouseLeave={handleMouseLeave}
+  >
+    <div className="mxd-container">
+    <div className="row ">
+      <div className="col-12 col-xl-8 p-10 right-border">
+        <div className="grid grid-cols-2 gap-10">
+          {link.submenu.map((sublink, index) => (
+            <Link
+              key={`${link.label}-${index}`}
+              href={sublink.href}
+              className="group flex items-start gap-6 p-7 rounded-xl hover:pl-4 transition-all duration-200 ease-out menu-item"
+            >
+              <div className="menu-icon-hovers mt-1 w-14 h-14 rounded-[50px] flex items-center justify-center transition-colors flex-shrink-0 bg-[#119000]">
+              <svg
+                          width="20"
+                          height="20"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          aria-hidden="true"
+                          className="w-8 h-8 text-white"
+                        >
+                          <path d="M7 17L17 7M17 7H7M17 7V17" />
+                        </svg>
+              </div>
+              <div className="flex-1">
+                <h4 className="font-bold text-2xl mb-3 transition-colors">
+                  {sublink.label}
+                </h4>
+                <p className="leading-[1.3]">
+                  {sublink.des}
+                </p>
+              </div>
+            </Link>
+          ))}
+        </div>
+      </div>
 
-                    <div className="col-12 col-xl-4 p-16 mega-menu-img">
-                      <h4 className="font-bold text-2xl mb-3 transition-colors">
-                        {link.head}
-                      </h4>
-                      <p className="leading-[1.3] mb-12">{link.subline}</p>
-                      <Image
-                        src={link.img}
-                        alt="mega-menu"
-                        width={500}
-                        height={500}
-                        className="w-auto h-auto rounded-[15px]"
-                        priority
-                      />
-                    </div>
-                  </div>
-                </div>
-              )}
+      <div className="col-12 col-xl-4 p-16 mega-menu-img">
+        <h4 className="font-bold text-2xl mb-3 transition-colors">
+                  {link.head}
+                </h4>
+                <p className="leading-[1.3] mb-12">
+                  {link.subline}
+                </p>
+        <Image
+          src={link.img}
+          alt="mega-menu"
+          width={500}
+          height={500}
+          className="w-auto h-auto rounded-[15px]"
+          priority
+        />
+      </div>
+    </div>
+    </div>
+  </div>
+)}
+
             </div>
           ))}
         </div>
 
         {/* Controls: Theme + Mobile Toggle */}
         <div className="flex items-center gap-4">
+
+
           {/* Mobile Toggle */}
           <button
             className="lg:hidden hidden p-2"
@@ -373,7 +364,7 @@ export default function Header(): React.ReactElement {
                   <button
                     onClick={() =>
                       setOpenMobileSubmenu((open) =>
-                        open === link.label ? null : link.label,
+                        open === link.label ? null : link.label
                       )
                     }
                     aria-expanded={openMobileSubmenu === link.label}
