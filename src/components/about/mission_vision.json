@@ -10,7 +10,7 @@
         "counterId": "mission-card",
         "descrClass": "mxd-counter__descr t-140 t-medium",
         "imageClass": "mxd-stats-cards__image mxd-stats-cards-image-1",
-        "colClass": "col-12 col-xl-6 mxd-stats-cards__item mxd-grid-item anim-uni-scale-in-left"
+        "colClass": "col-12 col-xl-6 mxd-stats-cards__item mxd-grid-item anim-uni-in-up"
     },
     {
         "title": "Our Values",
@@ -23,6 +23,6 @@
         "counterId": "values-card",
         "descrClass": "mxd-counter__descr t-140 t-medium",
         "imageClass": "mxd-stats-cards__image mxd-stats-cards-image-2",
-        "colClass": "col-12 col-xl-6 mxd-stats-cards__item mxd-grid-item anim-uni-scale-in-right"
+        "colClass": "col-12 col-xl-6 mxd-stats-cards__item mxd-grid-item anim-uni-in-up"
     }
 ]

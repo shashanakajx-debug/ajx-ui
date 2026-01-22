@@ -4,7 +4,6 @@ import React, { useRef, useEffect } from "react";
 import AnimatedButton from "@/components/animation/AnimatedButton";
 import Image from "next/image";
 import SectionHeader from "./SectionHeader";
-import { useInView } from "framer-motion";
 
 type ExpertiseItem = {
   id: string;
@@ -128,14 +127,6 @@ const ExpertiseRow = ({
   setActiveId: (id: string) => void;
 }) => {
   const ref = useRef(null);
-  // Trigger when element is in the center of the viewport (50% margin top/bottom)
-  const isInView = useInView(ref, { margin: "-50% 0px -50% 0px" });
-
-  useEffect(() => {
-    if (isInView) {
-      setActiveId(item.id);
-    }
-  }, [isInView, item.id, setActiveId]);
 
   const isActive = item.id === activeId;
 
@@ -143,7 +134,7 @@ const ExpertiseRow = ({
     <div
       ref={ref}
       className={`border-b border-black/10 py-6 transition-all duration-500 ${isActive ? "py-20" : "py-6"
-        }`} // Add padding when active to give "pause" time, or just consistent spacing
+        }`}
     >
       <div className="flex items-start gap-6">
         <div className="min-w-[54px] text-right">
@@ -261,7 +252,7 @@ export default function OurExpertise() {
           </div>
           {/* Mobile Image Fallback (Simple) - optional, keeping desktop focused logic */}
           <div className="relative lg:hidden">
-            <div className="relative aspect-[4/3] w-full overflow-hidden shadow-sm">
+            <div className="relative aspect-[4/3] w-full overflow-hidden circle-animation-w">
               <div className={`relative w-full h-full flex justify-center items-center ${active.class}`}>
                 <Image
                   src={active.image.src}

@@ -83,7 +83,7 @@ export default function Footer() {
       <div className="w-full max-w-[1400px] mx-auto px-6 lg:px-16 xl:px-20 pt-20 pb-12">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-20 mb-20">
           <div className="lg:col-span-5 anim-uni-in-up">
-            <h2 className="text-white text-[2rem] sm:text-[2.5rem] lg:text-[4rem] xl:text-[5rem] font-bold leading-[1.3] mb-8 lg:mb-10">
+            <h2 className="text-white text-[4rem] md:text-[4rem] xl:text-[5rem] font-bold leading-[1] mb-8 lg:mb-10">
               Ready to Start
               <br />
               Your Project?

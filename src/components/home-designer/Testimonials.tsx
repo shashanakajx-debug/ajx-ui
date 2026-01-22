@@ -62,7 +62,7 @@ export default function Testimonials() {
   return (
     <div
       id="testimonials"
-      className="mxd-section overflow-hidden padding-default"
+      className="mxd-section overflow-hidden padding-default "
     >
       <div className="mxd-container">
         <div className="mx-auto row gx-0">

@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import AnimatedButton from "@/components/animation/AnimatedButton";
 import {
   Stethoscope,
   Banknote,
@@ -133,20 +134,18 @@ export default function Industries() {
                     <button
                       key={industry.id}
                       onClick={() => setSelectedIndustry(industry.id)}
-                      className={`w-full text-left p-4 rounded-xl border-2 transition-all duration-300 group hover:border-green-500 ${
-                        isSelected
-                          ? "bg-green-50 border-green-500"
-                          : "bg-white border-gray-200 hover:bg-gray-50"
-                      }`}
+                      className={`w-full text-left p-4 rounded-xl border-2 transition-all duration-300 group hover:border-green-500 ${isSelected
+                        ? "bg-green-50 border-green-500"
+                        : "bg-white border-gray-200 hover:bg-gray-50"
+                        }`}
                     >
                       <div className="flex items-center justify-between gap-4">
                         <div className="flex items-center gap-4 flex-1">
                           <div
-                            className={`flex-shrink-0 w-16 h-16 rounded-lg flex items-center justify-center transition-colors ${
-                              isSelected
-                                ? "bg-green-500 text-white"
-                                : "bg-gray-100 text-gray-700 group-hover:bg-green-100 group-hover:text-green-600"
-                            }`}
+                            className={`flex-shrink-0 w-14 h-14 rounded-lg flex items-center justify-center transition-colors ${isSelected
+                              ? "bg-green-500 text-white"
+                              : "bg-gray-100 text-gray-700 group-hover:bg-green-100 group-hover:text-green-600"
+                              }`}
                           >
                             <IconComponent
                               className="w-9 h-9"
@@ -155,9 +154,8 @@ export default function Industries() {
                           </div>
                           <div className="flex-1">
                             <h3
-                              className={`md:text-[24px] text-[18px] mb-1 ${
-                                isSelected ? "text-gray-900" : "text-gray-800"
-                              }`}
+                              className={`md:text-[24px] text-[18px] mb-1 ${isSelected ? "text-gray-900" : "text-gray-800"
+                                }`}
                             >
                               {industry.title}
                             </h3>
@@ -221,13 +219,16 @@ export default function Industries() {
                     </div>
                     <p className="text-black">{currentIndustry.metric.value}</p>
                   </div>
-                  <button className="w-full bg-green-600 hover:bg-green-700 text-white font-semibold py-4 px-6 rounded-lg transition-colors duration-300 flex items-center justify-center gap-2 group">
-                    <span>Explore {currentIndustry.title} Solutions</span>
+                  <AnimatedButton
+                    as="button"
+                    text={`Explore ${currentIndustry.title} Solutions`}
+                    className="w-full bg-green-600 hover:bg-green-700 text-white py-2 px-6 rounded-full transition-colors duration-300 flex items-center justify-center gap-2 group [&_.btn-anim__letter]:text-xl [&_.btn-anim__letter]:font-medium"
+                  >
                     <ArrowRight
-                      className="w-5 h-5 group-hover:translate-x-1 transition-transform"
-                      strokeWidth={2}
+                      className="w-8 h-8 group-hover:translate-x-1 transition-transform"
+                      strokeWidth={3}
                     />
-                  </button>
+                  </AnimatedButton>
                 </div>
               )}
             </div>

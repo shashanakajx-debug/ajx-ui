@@ -11,7 +11,7 @@ export default function Services() {
             <div className="container-fluid px-0">
               <div className="row gx-0">
                 {/* item */}
-                <div className="col-12 col-xl-4 mxd-services-cards__item mxd-grid-item anim-uni-scale-in-right">
+                <div className="col-12 col-xl-4 mxd-services-cards__item mxd-grid-item anim-uni-in-up">
                   <div className="mxd-services-cards__inner align-end bg-base-opp radius-l padding-5x4">
                     <div className="mxd-services-cards__controls">
                       <Link
@@ -57,7 +57,7 @@ export default function Services() {
                   </div>
                 </div>
                 {/* item */}
-                <div className="col-12 col-xl-4 mxd-services-cards__item mxd-grid-item anim-uni-scale-in-left">
+                <div className="col-12 col-xl-4 mxd-services-cards__item mxd-grid-item anim-uni-in-up">
                   <div className="mxd-services-cards__inner align-end bg-accent radius-l padding-5x4">
                     <div className="mxd-services-cards__controls">
                       <Link
@@ -102,9 +102,9 @@ export default function Services() {
                   </div>
                 </div>
                 {/* item */}
-                
+
                 {/* item */}
-                <div className="col-12 col-xl-4 mxd-services-cards__item mxd-grid-item anim-uni-scale-in-right">
+                <div className="col-12 col-xl-4 mxd-services-cards__item mxd-grid-item anim-uni-in-up">
                   <div className="mxd-services-cards__inner justify-end bg-base-opp radius-l padding-5x4">
                     <div className="mxd-services-cards__controls">
                       <Link
@@ -148,8 +148,8 @@ export default function Services() {
                     </div>
                   </div>
                 </div>
-                
-                
+
+
               </div>
             </div>
           </div>

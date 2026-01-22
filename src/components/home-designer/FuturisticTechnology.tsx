@@ -11,7 +11,7 @@ export default function FuturisticTechnology() {
             <div className="container-fluid px-0">
               <div className="row gx-0">
                 {/* item */}
-                <div className="col-12 col-xl-8 mxd-services-cards-s__item mxd-grid-item anim-uni-scale-in-right">
+                <div className="col-12 col-xl-8 mxd-services-cards-s__item mxd-grid-item anim-uni-in-up">
                   <div className="mxd-services-cards-s__inner justify-between bg-base-tint radius-l padding-4">
                     <div className="mxd-services-cards__controls">
                       <Link
@@ -59,9 +59,9 @@ export default function FuturisticTechnology() {
                   </div>
                 </div>
                 {/* item */}
-                <div className="col-12 col-xl-4 mxd-services-cards-s__item mxd-grid-item anim-uni-scale-in-left">
+                <div className="col-12 col-xl-4 mxd-services-cards-s__item mxd-grid-item anim-uni-in-up">
                   <div className="mxd-services-cards-s__inner justify-end bg-accent radius-l padding-4">
-                                        <div className="mxd-services-cards__controls">
+                    <div className="mxd-services-cards__controls">
                       <Link
                         className="btn btn-round btn-round-large btn-additional slide-right-up anim-no-delay"
                         href="/services"
@@ -100,9 +100,9 @@ export default function FuturisticTechnology() {
                   </div>
                 </div>
                 {/* item */}
-                <div className="col-12 col-xl-4 mxd-services-cards-s__item mxd-grid-item anim-uni-scale-in-right">
+                <div className="col-12 col-xl-4 mxd-services-cards-s__item mxd-grid-item anim-uni-in-up">
                   <div className="mxd-services-cards-s__inner bg-additional radius-l padding-4">
-                                        <div className="mxd-services-cards__controls">
+                    <div className="mxd-services-cards__controls">
                       <Link
                         className="btn btn-round btn-round-large btn-additional slide-right-up anim-no-delay"
                         href="/services"
@@ -141,7 +141,7 @@ export default function FuturisticTechnology() {
                   </div>
                 </div>
                 {/* item */}
-                <div className="col-12 col-xl-4 mxd-services-cards-s__item mxd-grid-item anim-uni-scale-in">
+                <div className="col-12 col-xl-4 mxd-services-cards-s__item mxd-grid-item anim-uni-in-up">
                   <div className="mxd-services-cards-s__inner bg-base-opp radius-l padding-4">
                     <div className="mxd-services-cards__controls">
                       <Link
@@ -181,9 +181,9 @@ export default function FuturisticTechnology() {
                   </div>
                 </div>
                 {/* item */}
-                <div className="col-12 col-xl-4 mxd-services-cards-s__item mxd-grid-item anim-uni-scale-in-left">
+                <div className="col-12 col-xl-4 mxd-services-cards-s__item mxd-grid-item anim-uni-in-up">
                   <div className="mxd-services-cards-s__inner justify-end bg-base-tint radius-l padding-4">
-                                        <div className="mxd-services-cards__controls">
+                    <div className="mxd-services-cards__controls">
                       <Link
                         className="btn btn-round btn-round-large btn-additional slide-right-up anim-no-delay"
                         href="/services"

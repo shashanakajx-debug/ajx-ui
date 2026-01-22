@@ -44,7 +44,7 @@ export default function Hero() {
 
               <h1 className="hero-00-title heading-ultra heading-ultra-bold">
                 <span className="hero_title text-center loading__item">
-                  Crafting <span className="ai_tesxt heading-ultra heading-ultra-bold">Ai Experiences</span>
+                  Crafting <span className="text-white ai_tesxt heading-ultra heading-ultra-bold">Ai Experiences</span>
                   <br></br>
                   Automating Future
                 </span>

@@ -25,7 +25,7 @@ export default function SectionHeader({
         <div
             className={`mb-12 md:mb-16 pb-[40px] lg:flex md:flex items-center gap-3 text-center border-bottom justify-between relative ${className}`}
         >
-            <div className="left-content">
+            <div className="left-content ">
                 <p className="mxd-point-subtitle">
                     <svg
                         version="1.1"
@@ -51,9 +51,9 @@ export default function SectionHeader({
                     <span>{subtitle}</span>
                 </p>
             </div>
-            <div className="heading text-center">
+            <div className="heading text-center anim-uni-in-up">
                 <h2 className="">{title}</h2>
-                <h2 className="">{description}</h2>
+                <h2 className="md:mb-3 mb-3">{description}</h2>
             </div>
             {showButton && (
                 <div className="">
