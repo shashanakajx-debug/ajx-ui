@@ -1189,11 +1189,6 @@ section.process .pathStage {
   border-right: 1px solid var(--bs-border-color);
 }
 
-.mega-menu-img img {
-  max-width: 85%;
-  margin: 0 auto;
-}
-
 /*========= AI ======= */
 .ai-heading-box {
   background-color: var(--t-bright);
