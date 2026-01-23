@@ -30,7 +30,7 @@ export default function Header(): React.ReactElement {
     {
       label: "AI / ML",
       href: "/our-services#AI-ML",
-      img: "/llmAiImage.png",
+      img: "/mega-menu/AI & Machine Learning Strategy Consulting.png",
       head: "AI & Machine Learning Strategy Consulting",
       subline:
         "Build smart, scalable AI/ML solutions that drive real business results.",
@@ -38,129 +38,149 @@ export default function Header(): React.ReactElement {
         {
           label: "AI & ML Readiness Assessment",
           href: "/our-services#AI-ML",
-          des: "Evaluate data quality, availability, governance, infrastructure, and ML maturity to determine feasibility.",
+          des: "AI & ML Readiness Assessment: Evaluate data quality, availability, governance, infrastructure, and ML maturity to determine feasibility.",
         },
         {
           label: "Model & Technology Stack Recommendations",
           href: "/our-services#AI-ML",
-          des: "Recommend appropriate ML models, frameworks, cloud platforms, MLOps tools, and integration architectures.",
+          des: "Model & Technology Stack Recommendations :Recommend appropriate ML models, frameworks, cloud platforms, MLOps tools, and integration architectures.",
         },
         {
           label: "AI/ML Roadmap & Use-Case Prioritization",
           href: "/our-services#AI-ML",
-          des: "Define and prioritize ML use cases based on business value, technical complexity, and deployment timelines. ",
+          des: "AI/ML Roadmap & Use-Case Prioritization: Define and prioritize ML use cases based on business value, technical complexity, and deployment timelines.",
         },
         {
           label: "Strategic Roadmap Development",
           href: "/our-services#AI-ML",
-          des: "Estimate performance gains, cost savings, and scalability benefits to justify AI/ML investments with clear.",
+          des: "Strategic Roadmap Development: Estimate performance gains, cost savings, and scalability benefits to justify AI/ML investments with clear.",
         },
       ],
     },
     {
       label: "Digital Engg",
       href: "/our-services#Digital-Engg",
-      img: "/llmAiImage.png",
+      img: "/mega-menu/Digital Engineering Solutions.png",
       head: "AI & Machine Learning Strategy Consulting",
       subline:
         "Build smart, scalable AI/ML solutions that drive real business results.",
       submenu: [
         {
-          label: "AR/VR",
+          label: "E-Commerce & Web Development",
           href: "/our-services#Digital-Engg",
-          des: "Evaluate data quality, availability, governance, infrastructure, and ML maturity to determine feasibility.",
+          des: " From concept to launch, we build scalable, high-performance eCommerce platforms and custom websites tailored for enterprises and SMEs.",
         },
         {
-          label: "IoT",
+          label: "Software & Enterprise Solutions",
           href: "/our-services#Digital-Engg",
-          des: "Evaluate data quality, availability, governance, infrastructure, and ML maturity to determine feasibility.",
+          des: " Custom software development and enterprise application integration to solve complex business challenges with secure, scalable systems.",
         },
         {
-          label: "Blockchain",
+          label: "Mobile Application Development",
           href: "/our-services#Digital-Engg",
-          des: "Evaluate data quality, availability, governance, infrastructure, and ML maturity to determine feasibility.",
+          des: " Design, develop, and modernize high-quality mobile applications that deliver speed, performance, and seamless user experiences.",
+        },
+        {
+          label: "User Experience & Digital Design",
+          href: "/our-services#Digital-Engg",
+          des: " Craft intuitive, engaging, and conversion-focused user experiences through strategic UX/UI design and digital innovation.",
         },
       ],
     },
     {
       label: "DevOps",
       href: "/our-services#DevOps",
-      img: "/llmAiImage.png",
+      img: "/mega-menu/Devops.png",
       head: "AI & Machine Learning Strategy Consulting",
       subline:
         "Build smart, scalable AI/ML solutions that drive real business results.",
       submenu: [
         {
-          label: "CI/CD",
+          label: "DevOps Consulting & Strategy",
           href: "/our-services#DevOps",
-          des: "Evaluate data quality, availability, governance, infrastructure, and ML maturity to determine feasibility.",
+          des: "Expert DevOps consulting to design, optimize, and implement CI/CD pipelines, workflows, and best practices across teams.",
         },
         {
-          label: "Infrastructure as Code",
+          label: "Cloud & Infrastructure DevOps",
           href: "/our-services#DevOps",
-          des: "Evaluate data quality, availability, governance, infrastructure, and ML maturity to determine feasibility.",
+          des: " AWS and Azure DevOps setup, infrastructure automation, Kubernetes orchestration, and containerized environments built for scale.",
         },
         {
-          label: "Monitoring & Logging",
+          label: "DevOps Support & Operations",
           href: "/our-services#DevOps",
-          des: "Evaluate data quality, availability, governance, infrastructure, and ML maturity to determine feasibility.",
+          des: " 24/7 DevOps support, monitoring, testing, maintenance, and management to ensure high availability and performance.",
+        },
+        {
+          label: "Migration, Automation & AIOps",
+          href: "/our-services#DevOps",
+          des: " Docker and Azure DevOps migrations, intelligent automation, and AIOps solutions to reduce downtime and operational complexity.",
         },
       ],
     },
     {
       label: "Web3",
       href: "/our-services#Web3",
-      img: "/llmAiImage.png",
-      head: "AI & Machine Learning Strategy Consulting",
+      img: "/mega-menu/Web3.png",
+      head: "Web3 & Decentralized Solutions",
       subline:
-        "Build smart, scalable AI/ML solutions that drive real business results.",
+        "Build secure, scalable, and decentralized Web3 products powered by blockchain technology.",
       submenu: [
         {
-          label: "DApp Development",
+          label: "Smart Contract Development & Audits",
           href: "/our-services#Web3",
-          des: "Evaluate data quality, availability, governance, infrastructure, and ML maturity to determine feasibility.",
+          des: " Design, develop, and audit secure smart contracts to power decentralized applications and on-chain logic.",
         },
         {
-          label: "Smart Contracts",
+          label: "Apps & Web3 Application Development",
           href: "/our-services#Web3",
-          des: "Evaluate data quality, availability, governance, infrastructure, and ML maturity to determine feasibility.",
+          des: " End-to-end development of decentralized applications with seamless wallet integration and intuitive user experiences.",
         },
         {
-          label: "NFT Marketplaces",
+          label: "Blockchain Infrastructure & Integrations",
           href: "/our-services#Web3",
-          des: "Evaluate data quality, availability, governance, infrastructure, and ML maturity to determine feasibility.",
+          des: "Set up and manage blockchain nodes, APIs, and Web3 integrations for reliable and scalable decentralized systems.",
+        },
+        {
+          label: "Tokenization, NFTs & DeFi Solutions",
+          href: "/our-services#Web3",
+          des: "Build token ecosystems, NFT platforms, and DeFi solutions that enable transparent, trustless digital economies.",
         },
       ],
     },
     {
       label: "Cloud",
       href: "/our-services#Cloud",
-      img: "/llmAiImage.png",
-      head: "AI & Machine Learning Strategy Consulting",
+      img: "/mega-menu/Cloud.png",
+      head: "Cloud Services & Platforms",
       subline:
-        "Build smart, scalable AI/ML solutions that drive real business results.",
+        "Scalable, secure, and cloud-native solutions to modernize infrastructure and accelerate growth.",
       submenu: [
         {
-          label: "AWS",
+          label: "Cloud Migration & Data Management",
           href: "/our-services#Cloud",
-          des: "Evaluate data quality, availability, governance, infrastructure, and ML maturity to determine feasibility.",
+          des: " Seamless data migration and cloud transformation services to modernize IT environments with minimal downtime.",
         },
         {
-          label: "Azure",
+          label: "Cloud Computing & Architecture",
           href: "/our-services#Cloud",
-          des: "Evaluate data quality, availability, governance, infrastructure, and ML maturity to determine feasibility.",
+          des: " End-to-end cloud computing solutions powered by certified cloud experts, designed for performance, scalability, and reliability.",
         },
         {
-          label: "Google Cloud",
+          label: "Cloud Marketplaces & Startup Enablement",
           href: "/our-services#Cloud",
-          des: "Evaluate data quality, availability, governance, infrastructure, and ML maturity to determine feasibility.",
+          des: " Launch cloud-native applications and SaaS products on trusted cloud marketplaces, helping startups reduce time-to-market.",
+        },
+        {
+          label: "Cloud Support & Operations",
+          href: "/our-services#Cloud",
+          des: "  Ongoing cloud support, monitoring, and management to ensure optimized performance, security, and business continuity.",
         },
       ],
     },
     {
       label: "SaaS",
       href: "/our-services#SaaS",
-      img: "/llmAiImage.png",
+      img: "/mega-menu/SaaS.png",
       head: "AI & Machine Learning Strategy Consulting",
       subline:
         "Build smart, scalable AI/ML solutions that drive real business results.",
@@ -179,6 +199,11 @@ export default function Header(): React.ReactElement {
           label: "SaaS Migration",
           href: "/our-services#SaaS",
           des: "Evaluate data quality, availability, governance, infrastructure, and ML maturity to determine feasibility.",
+        },
+        {
+          label: "Cloud Support & Operations",
+          href: "/our-services#SaaS",
+          des: "Ongoing cloud support, monitoring, and management to ensure optimized performance, security, and business continuity.",
         },
       ],
     },
@@ -274,7 +299,7 @@ export default function Header(): React.ReactElement {
       transition-all duration-200 ease-out
       ${
         activeDropdown === link.label
-          ? "opacity-100 scale-100 translate-y-0 visible"
+          ? "opacity-100 scale-100 translate-y-2 visible"
           : "opacity-0 scale-95 translate-y-2 invisible"
       }`}
                   onMouseEnter={() => handleMouseEnter(link.label)}
@@ -310,7 +335,9 @@ export default function Header(): React.ReactElement {
                                 <h4 className="font-bold text-2xl mb-3 transition-colors">
                                   {sublink.label}
                                 </h4>
-                                <p className="leading-[1.3]">{sublink.des}</p>
+                                <p className="leading-[1.3] three-row">
+                                  {sublink.des}
+                                </p>
                               </div>
                             </Link>
                           ))}
@@ -321,7 +348,9 @@ export default function Header(): React.ReactElement {
                         <h4 className="font-bold text-2xl mb-3 transition-colors">
                           {link.head}
                         </h4>
-                        <p className="leading-[1.3] mb-12">{link.subline}</p>
+                        <p className="leading-[1.3] mb-12 three-row">
+                          {link.subline}
+                        </p>
                         <Image
                           src={link.img}
                           alt="mega-menu"

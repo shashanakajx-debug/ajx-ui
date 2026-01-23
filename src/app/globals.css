@@ -858,47 +858,47 @@ footer.mxd-demo-footer {
   color: var(--t-bright);
 }
 
-.link-box-menu .menu-icon-hovers{
+.link-box-menu .menu-icon-hovers {
   transition: all 0.4s ease;
 }
 .link-box-menu:hover .menu-icon-hovers {
-    transform: rotate(45deg);
-    transition: all 0.4s ease;
+  transform: rotate(45deg);
+  transition: all 0.4s ease;
 }
-.mxd-header{
- transition: all 0.4s ease;
- background: var(--base);
+.mxd-header {
+  transition: all 0.4s ease;
+  background: var(--base);
 }
 [color-scheme="light"] .mxd-header:hover {
   background: #161616;
   transition: all 0.4s ease;
 }
-[color-scheme="light"] .mxd-header:hover .navbar-box .menu-item{
-  color:#fff;
+[color-scheme="light"] .mxd-header:hover .navbar-box .menu-item {
+  color: #fff;
 }
-[color-scheme="light"] .mxd-header:hover .logo-light{
+[color-scheme="light"] .mxd-header:hover .logo-light {
   display: none;
 }
-[color-scheme="light"] .mxd-header:hover .logo-dark{
+[color-scheme="light"] .mxd-header:hover .logo-dark {
   display: block;
 }
-[color-scheme="light"] .mxd-header:hover .hamburger__base{
- background-attachment: #fff;
+[color-scheme="light"] .mxd-header:hover .hamburger__base {
+  background-attachment: #fff;
 }
-[color-scheme="light"] .mxd-header:hover .hamburger__line{
- background-color: #000;
+[color-scheme="light"] .mxd-header:hover .hamburger__line {
+  background-color: #000;
 }
 [color-scheme="dark"] .mxd-header:hover {
   background: #faf7f6;
   transition: all 0.4s ease;
 }
-[color-scheme="dark"] .mxd-header:hover .navbar-box .menu-item{
+[color-scheme="dark"] .mxd-header:hover .navbar-box .menu-item {
   color: #000;
 }
-[color-scheme="dark"] .mxd-header:hover .logo-light{
+[color-scheme="dark"] .mxd-header:hover .logo-light {
   display: block;
 }
-[color-scheme="dark"] .mxd-header:hover .logo-dark{
+[color-scheme="dark"] .mxd-header:hover .logo-dark {
   display: none;
 }
 
@@ -1431,13 +1431,20 @@ span.ai_tesxt {
 main.min-h-screen {
   position: relative;
   background-color: var(--base);
-  margin-bottom: 700px;
+  margin-bottom: 600px;
   z-index: 1;
 }
 footer {
   position: fixed;
   bottom: 0;
   z-index: 0;
+}
+.three-row {
+  display: -webkit-box;
+  -webkit-line-clamp: 3; /* number of rows */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 @media (max-width: 590px) {

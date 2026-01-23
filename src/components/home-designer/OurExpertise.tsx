@@ -28,7 +28,7 @@ const EXPERTISE: ExpertiseItem[] = [
     tags: ["ML", "LLMs", "Analytics", "Automation", "Dashboards", "MLOps"],
     description:
       "Turn raw data into decisions using analytics, automation, and AI systems built for real business impact.",
-    href: "/expertise/data-science-ai",
+    href: "/our-services/data-science-ai",
     image: {
       src: "/FuturisticTechnology/ArtificialIntelligenceCircle.png",
       alt: "Data science & AI preview",
@@ -42,9 +42,9 @@ const EXPERTISE: ExpertiseItem[] = [
     tags: ["Next.js", "React", "Node.js", "CMS", "Headless", "Ecommerce"],
     description:
       "High-performance web experiences with modern stacks, SEO-first structure, and scalable architecture.",
-    href: "/expertise/web-development",
+    href: "/our-services/web-development",
     image: {
-      src: "/FuturisticTechnology/image (2).webp",
+      src: "/FuturisticTechnology/Untitled design 1 (2).png",
       alt: "Web development preview",
     },
   },
@@ -56,9 +56,9 @@ const EXPERTISE: ExpertiseItem[] = [
     tags: ["iOS", "Android", "React Native", "Flutter", "APIs", "UI/UX"],
     description:
       "Build reliable mobile apps with clean UI, fast performance, and secure backend integrations.",
-    href: "/expertise/mobile-app-development",
+    href: "/our-services/mobile-app-development",
     image: {
-      src: "/FuturisticTechnology/image (2).webp",
+      src: "/FuturisticTechnology/ArtificialIntelligenceCircle.png",
       alt: "Mobile app development preview",
     },
   },
@@ -80,10 +80,10 @@ const EXPERTISE: ExpertiseItem[] = [
     ],
     description:
       "Streamline all your interactions with customers through the launch of an individual CRM system made by your team.",
-    href: "/expertise/software",
+    href: "/our-services/software",
     class: "",
     image: {
-      src: "/FuturisticTechnology/image (2).webp",
+      src: "/FuturisticTechnology/ArtificialIntelligenceCircle.png",
       alt: "Software expertise preview",
     },
   },
@@ -95,9 +95,9 @@ const EXPERTISE: ExpertiseItem[] = [
     tags: ["Manual", "Automation", "Cypress", "Playwright", "API Testing"],
     description:
       "Ensure stability and quality through structured QA cycles, automation suites, and regression coverage.",
-    href: "/expertise/qa-testing",
+    href: "/our-services/qa-testing",
     image: {
-      src: "/FuturisticTechnology/image (2).webp",
+      src: "/FuturisticTechnology/ArtificialIntelligenceCircle.png",
       alt: "QA & testing preview",
     },
   },
@@ -109,10 +109,24 @@ const EXPERTISE: ExpertiseItem[] = [
     tags: ["Wireframes", "Design Systems", "Figma", "Prototyping", "UX Audit"],
     description:
       "Human-first interfaces with strong visual hierarchy, clean layouts, and conversion-focused UX.",
-    href: "/expertise/ux-ui-design",
+    href: "/our-services/ux-ui-design",
     image: {
-      src: "/FuturisticTechnology/image (2).webp",
+      src: "/FuturisticTechnology/ArtificialIntelligenceCircle.png",
       alt: "UX/UI design preview",
+    },
+  },
+    {
+    id: "E-Commerce",
+    number: "07/",
+    title: "E-Commerce and CMS",
+    class: "",
+    tags: ["Wireframes", "Design Systems", "Figma", "Prototyping", "UX Audit"],
+    description:
+      "Human-first interfaces with strong visual hierarchy, clean layouts, and conversion-focused UX.",
+    href: "/our-services/ux-ui-design",
+    image: {
+      src: "/FuturisticTechnology/ArtificialIntelligenceCircle.png",
+      alt: "E-Commerce and CMS design preview",
     },
   },
 ];
@@ -180,8 +194,8 @@ const ExpertiseRow = ({
               <div className="mt-5">
                 <AnimatedButton
                   text="Learn more"
-                  className="btn experties-button slide-right-up anim-uni-in-up"
-                  href={`#`}
+                  className="btn experties-button slide-right-up"
+                  href={`our-services`}
                 >
                   <i className="ph-bold ph-arrow-up-right" />
                 </AnimatedButton>
@@ -210,7 +224,7 @@ export default function OurExpertise() {
           title="Advanced AI Services"
           description="for Digital-First Companies"
           buttonText="View More"
-          buttonLink="#"
+          buttonLink="our-services"
           className=""
         />
 

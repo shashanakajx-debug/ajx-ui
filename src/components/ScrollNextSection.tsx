@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import { useRouter, usePathname } from "next/navigation";
 import { motion, useSpring, useTransform, useMotionValue } from "framer-motion";
 
@@ -33,9 +33,9 @@ export default function ScrollNextSection() {
   const progress = useMotionValue(0);
 
   const smoothProgress = useSpring(progress, {
-    stiffness: 60,
-    damping: 25,
-    mass: 0.8,
+    stiffness: 50,
+    damping: 20,
+    mass: 1.0,
   });
 
   const nextPath = ROUTE_MAP[pathname || "/"] ?? ROUTE_MAP["/"];
@@ -66,11 +66,11 @@ export default function ScrollNextSection() {
 
       if (e.deltaY > 0 || currentProgress > 0) {
         setIsActive(true);
-
         if (currentProgress > 0 && currentProgress < 1) {
           e.preventDefault();
         }
-        const delta = e.deltaY * 0.0015;
+        const sensitivity = e.deltaY > 0 ? 0.0015 : 0.0012;
+        const delta = e.deltaY * sensitivity;
 
         currentProgress = Math.min(Math.max(currentProgress + delta, 0), 1.05);
 
@@ -78,13 +78,13 @@ export default function ScrollNextSection() {
 
         if (currentProgress >= 1 && !isLocked) {
           isLocked = true;
-
           window.history.pushState({}, "", nextPath);
           router.push(nextPath);
         }
 
         if (currentProgress <= 0) {
           setIsActive(false);
+          currentProgress = 0;
         }
       }
     };
@@ -108,9 +108,8 @@ export default function ScrollNextSection() {
           y,
           scale,
           borderRadius,
-          display: isActive || hasNavigated ? "flex" : "none",
         }}
-        className="fixed inset-0 z-[99999] bg-white flex-col overflow-hidden origin-bottom shadow-[0_-50px_100px_rgba(0,0,0,0.5)]"
+        className={`fixed inset-0 z-[99999] bg-white flex-col overflow-hidden origin-bottom shadow-[0_-50px_100px_rgba(0,0,0,0.5)] ${isActive || hasNavigated ? "flex pointer-events-auto" : "flex pointer-events-none"}`}
       >
         <motion.div
           style={{ opacity: shadowOpacity }}

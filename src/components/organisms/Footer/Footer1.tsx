@@ -78,7 +78,7 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="bg-[#1c1c1c] text-white w-full">
+    <footer className="bg-[#1d1f24] text-white w-full">
       <div className="w-full max-w-[1400px] mx-auto px-6 lg:px-16 xl:px-20 pt-20 pb-12">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-20 mb-20">
           <div className="lg:col-span-5 anim-uni-in-up">
@@ -218,7 +218,7 @@ export default function Footer() {
           </div>
         </div>
       </div>
-      <div className="w-full text-center py-10 lg:py-12 md:pt-8 pt-0 overflow-hidden bg-[#1c1c1c]">
+      <div className="w-full text-center py-10 lg:py-12 md:pt-8 pt-0 overflow-hidden bg-[#1d1f24]">
         <h1 className="text-[3rem] sm:text-[5rem] md:text-[6.5rem] lg:text-[9rem] xl:text-[9rem] 2xl:text-[10rem] font-black tracking-[0.02em] text-white/90 select-none leading-none whitespace-nowrap">
           AJX TECHNOLOGIES
         </h1>

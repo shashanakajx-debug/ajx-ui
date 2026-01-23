@@ -146,7 +146,7 @@ export default function CaseStudies() {
         <SectionHeader
           subtitle="CASE STUDIES"
           title="Proven Results"
-          description="View More"
+          description="Across Industries"
           buttonText="View More"
           buttonLink="/case-studies"
         />

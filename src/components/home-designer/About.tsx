@@ -66,8 +66,8 @@ export default function About() {
         <div className="mx-auto row gx-0">
           <SectionHeader
             subtitle="ABOUT US"
-            title="Advanced AI Services"
-            description="for Digital-First Companies"
+            title="AJX Technologies"
+            description=" The Software Company"
             buttonText="View More"
             buttonLink="/services"
             className=""
@@ -119,7 +119,7 @@ export default function About() {
                 <div className="flex justify-center xl:justify-start pt-12 xl:pt-0 pr-0 xl:pr-8 anim-uni-in-up">
                   <div className="relative w-full max-w-[500px] xl:max-w-full rounded-[2.5rem] overflow-hidden aspect-[3/4] xl:aspect-auto">
                     <Image
-                      src="/about-us/about-front.png"
+                      src="/about-us/Untitled design.jpg"
                       alt="Person working at desk"
                       width={600}
                       height={850}
