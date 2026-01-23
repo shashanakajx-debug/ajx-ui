@@ -1,9 +1,13 @@
 "use client";
 
-import React, { useCallback, useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useRouter, usePathname } from "next/navigation";
+import { motion, useSpring, useTransform, useMotionValue } from "framer-motion";
 
-// Define the sequence of pages
+import AboutHero from "@/components/about/Hero2";
+import ServicesHero from "@/app/(public)/our-services/Hero";
+import PortfolioHero from "@/app/(public)/our-portfolio/Portfolios1";
+
 const ROUTE_MAP: Record<string, string> = {
   "/": "/about-us",
   "/about-us": "/our-services",
@@ -14,253 +18,115 @@ const ROUTE_MAP: Record<string, string> = {
   "/contact": "/",
 };
 
-type Props = {
-  nextHref?: string;
+const HERO_MAP: Record<string, React.ComponentType<any>> = {
+  "/about-us": AboutHero,
+  "/our-services": ServicesHero,
+  "/our-portfolio": PortfolioHero,
 };
 
-export default function ScrollNextSection({ nextHref }: Props) {
+export default function ScrollNextSection() {
   const router = useRouter();
   const pathname = usePathname();
-  const sectionRef = useRef<HTMLDivElement | null>(null);
+  const [hasNavigated, setHasNavigated] = useState(false);
+  const [isActive, setIsActive] = useState(false);
 
-  const [inView, setInView] = useState(false);
-  const [scrollState, setScrollState] = useState<"idle" | "confirming">("idle");
-  const [progress, setProgress] = useState(0);
-  const [isLoading, setIsLoading] = useState(false);
+  const progress = useMotionValue(0);
 
-  const isNavigatingRef = useRef(false);
-  const confirmTimeoutRef = useRef<number | null>(null);
-  const progressRafRef = useRef<number | null>(null);
-  const progressStartRef = useRef<number | null>(null);
+  const smoothProgress = useSpring(progress, {
+    stiffness: 60,
+    damping: 25,
+    mass: 0.8,
+  });
 
-  // Tweakable timings (feel free to adjust)
-  const CONFIRM_DURATION = 4500; 
-  const NAV_DELAY = 450; 
-  const POST_NAV_RESET = 700; 
+  const nextPath = ROUTE_MAP[pathname || "/"] ?? ROUTE_MAP["/"];
+  const NextHeroComponent = HERO_MAP[nextPath];
 
-  const targetPath = nextHref ?? ROUTE_MAP[pathname || "/"] ?? ROUTE_MAP["/"];
+  const y = useTransform(smoothProgress, [0, 1], ["100vh", "0vh"]);
+  const scale = useTransform(smoothProgress, [0, 1], [0.85, 1.0]);
+  const borderRadius = useTransform(smoothProgress, [0, 1], ["40px", "0px"]);
+  const shadowOpacity = useTransform(smoothProgress, [0, 0.5], [0, 0.6]);
 
-  const getPageName = (path: string) => {
-    if (path === "/") return "Home";
-    return path
-      .replace(/\//g, "")
-      .split("-")
-      .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
-      .join(" ");
-  };
+  useEffect(() => {
+    let currentProgress = 0;
+    let isLocked = false;
 
-  const nextTitle = getPageName(targetPath);
+    const handleWheel = (e: WheelEvent) => {
+      const isAtBottom =
+        window.innerHeight + window.scrollY >=
+        document.documentElement.scrollHeight - 20;
 
-  // Minimal, subtle loading indicator and optimized timing
-  const triggerNavigation = useCallback(() => {
-    if (!targetPath || isNavigatingRef.current) return;
+      if (!isAtBottom) {
+        if (currentProgress > 0) {
+          currentProgress = 0;
+          progress.set(0);
+          setIsActive(false);
+        }
+        return;
+      }
 
-    isNavigatingRef.current = true;
-    setIsLoading(true);
+      if (e.deltaY > 0 || currentProgress > 0) {
+        setIsActive(true);
 
-    // small polish delay then navigate
-    window.setTimeout(() => {
-      // Use Next.js navigation
-      router.push(targetPath);
+        if (currentProgress > 0 && currentProgress < 1) {
+          e.preventDefault();
+        }
+        const delta = e.deltaY * 0.0015;
 
-      // In case navigation doesn't immediately unmount (e.g. shallow), reset after a short delay
-      window.setTimeout(() => {
-        isNavigatingRef.current = false;
-        setIsLoading(false);
-      }, POST_NAV_RESET);
-    }, NAV_DELAY);
-  }, [router, targetPath]);
+        currentProgress = Math.min(Math.max(currentProgress + delta, 0), 1.05);
 
-  // Smooth progress with requestAnimationFrame
-  const startProgress = useCallback(() => {
-    // reset
-    if (progressRafRef.current) {
-      cancelAnimationFrame(progressRafRef.current);
-      progressRafRef.current = null;
-    }
-    progressStartRef.current = performance.now();
+        progress.set(currentProgress);
 
-    const step = (now: number) => {
-      if (!progressStartRef.current) progressStartRef.current = now;
-      const elapsed = now - progressStartRef.current;
-      const pct = Math.min((elapsed / CONFIRM_DURATION) * 100, 100);
-      setProgress(pct);
+        if (currentProgress >= 1 && !isLocked) {
+          isLocked = true;
 
-      if (pct < 100) {
-        progressRafRef.current = requestAnimationFrame(step);
-      } else {
-        // stop raf
-        if (progressRafRef.current) {
-          cancelAnimationFrame(progressRafRef.current);
-          progressRafRef.current = null;
+          window.history.pushState({}, "", nextPath);
+          router.push(nextPath);
+        }
+
+        if (currentProgress <= 0) {
+          setIsActive(false);
         }
       }
     };
 
-    progressRafRef.current = requestAnimationFrame(step);
-  }, [CONFIRM_DURATION]);
+    window.addEventListener("wheel", handleWheel, { passive: false });
+    return () => window.removeEventListener("wheel", handleWheel);
+  }, [progress, nextPath, router]);
 
-  const stopProgress = useCallback(() => {
-    if (progressRafRef.current) {
-      cancelAnimationFrame(progressRafRef.current);
-      progressRafRef.current = null;
-    }
-    progressStartRef.current = null;
-    setProgress(0);
-  }, []);
-
-  const handleScrollAction = useCallback(() => {
-    if (isNavigatingRef.current) return;
-
-    if (scrollState === "idle") {
-      setScrollState("confirming");
-      setProgress(0);
-
-      // start smooth progress
-      startProgress();
-
-      // auto-hide after the confirm duration
-      if (confirmTimeoutRef.current) {
-        window.clearTimeout(confirmTimeoutRef.current);
-      }
-      confirmTimeoutRef.current = window.setTimeout(() => {
-        setScrollState("idle");
-        stopProgress();
-      }, CONFIRM_DURATION);
-    } else if (scrollState === "confirming") {
-      // second scroll or interaction triggers navigation immediately
-      if (confirmTimeoutRef.current) {
-        window.clearTimeout(confirmTimeoutRef.current);
-        confirmTimeoutRef.current = null;
-      }
-      stopProgress();
-      triggerNavigation();
-    }
-  }, [scrollState, startProgress, stopProgress, triggerNavigation]);
-
-  // Intersection observer to detect when the page bottom/footer area is visible
   useEffect(() => {
-    const el = sectionRef.current;
-    if (!el) return;
-
-    const io = new IntersectionObserver(
-      ([entry]) => {
-        // small threshold — we want to react quickly when user reaches footer area
-        setInView(entry.isIntersecting);
-      },
-      { threshold: 0.15 }
-    );
-
-    io.observe(el);
-    return () => io.disconnect();
-  }, []);
-
-  // Add scroll/wheel/touch/keyboard handlers only when in view
-  useEffect(() => {
-    if (!inView) {
-      // clean state
-      setScrollState("idle");
-      setProgress(0);
-      if (confirmTimeoutRef.current) {
-        window.clearTimeout(confirmTimeoutRef.current);
-        confirmTimeoutRef.current = null;
-      }
-      if (progressRafRef.current) {
-        cancelAnimationFrame(progressRafRef.current);
-        progressRafRef.current = null;
-      }
-      return;
-    }
-
-    let touchStartY = 0;
-
-    const onWheel = (e: WheelEvent) => {
-      if (e.deltaY > 12) handleScrollAction();
-    };
-
-    const onKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "ArrowDown" || e.key === "PageDown" || e.key === " " || e.key === "Enter") {
-        handleScrollAction();
-      }
-    };
-
-    const onTouchStart = (e: TouchEvent) => {
-      touchStartY = e.touches[0]?.clientY ?? 0;
-    };
-
-    const onTouchMove = (e: TouchEvent) => {
-      const y = e.touches[0]?.clientY ?? 0;
-      if (touchStartY - y > 24) handleScrollAction();
-    };
-
-    window.addEventListener("wheel", onWheel, { passive: true });
-    window.addEventListener("keydown", onKeyDown);
-    window.addEventListener("touchstart", onTouchStart, { passive: true });
-    window.addEventListener("touchmove", onTouchMove, { passive: true });
-
-    return () => {
-      window.removeEventListener("wheel", onWheel);
-      window.removeEventListener("keydown", onKeyDown);
-      window.removeEventListener("touchstart", onTouchStart);
-      window.removeEventListener("touchmove", onTouchMove);
-      if (confirmTimeoutRef.current) {
-        window.clearTimeout(confirmTimeoutRef.current);
-        confirmTimeoutRef.current = null;
-      }
-      if (progressRafRef.current) {
-        cancelAnimationFrame(progressRafRef.current);
-        progressRafRef.current = null;
-      }
-    };
-  }, [inView, handleScrollAction]);
+    setHasNavigated(false);
+    setIsActive(false);
+    progress.set(0);
+  }, [pathname, progress]);
 
   return (
     <>
-      {/* invisible trigger area */}
-      <div ref={sectionRef} className="w-full h-24 opacity-0 pointer-events-none" aria-hidden="true" />
+      <div className="w-full h-0" aria-hidden="true" />
 
-      {/* popup */}
-      <div
-        className={`fixed bottom-8 left-1/2 -translate-x-1/2 z-[9999] transition-all duration-300
-          ${scrollState === "confirming" ? "translate-y-0 opacity-100" : "translate-y-6 opacity-0 pointer-events-none"}
-        `}
+      <motion.div
+        style={{
+          y,
+          scale,
+          borderRadius,
+          display: isActive || hasNavigated ? "flex" : "none",
+        }}
+        className="fixed inset-0 z-[99999] bg-white flex-col overflow-hidden origin-bottom shadow-[0_-50px_100px_rgba(0,0,0,0.5)]"
       >
-        <button onClick={triggerNavigation} className="relative group focus:outline-none">
-          <div className="relative bg-black/85 backdrop-blur-md text-white px-6 py-3 rounded-lg shadow-lg flex items-center gap-4 border border-white/10">
+        <motion.div
+          style={{ opacity: shadowOpacity }}
+          className="absolute inset-0 bg-black/5 pointer-events-none z-10"
+        />
 
-            {/* subtle progress bar (minimal) */}
-            <div className="absolute bottom-0 left-0 right-0 h-[3px] bg-white/6 rounded-b-md overflow-hidden">
-              <div
-                className="h-full bg-white/70 transition-all duration-100"
-                style={{ width: `${progress}%` }}
-              />
+        <div className="relative w-full h-full overflow-hidden bg-white">
+          {NextHeroComponent ? (
+            <NextHeroComponent />
+          ) : (
+            <div className="flex items-center justify-center w-full h-full text-4xl font-bold bg-gray-50">
+              {nextPath}
             </div>
-
-            <div className="flex items-center gap-3">
-              <div className="flex flex-col text-left">
-                {isLoading ? (
-                  <span className="text-xs text-white/60 uppercase tracking-wider">Loading</span>
-                ) : (
-                  <span className="text-xs text-white/60 uppercase tracking-wider">Next Page</span>
-                )}
-                <span className="text-sm font-medium">{nextTitle}</span>
-              </div>
-
-              {/* Minimal loading cue: a small pulsing dot beside the title when loading */}
-              <div className="flex-shrink-0">
-                {isLoading ? (
-                  <div className="w-3 h-3 rounded-full bg-white animate-pulse" aria-hidden="true" />
-                ) : (
-                  // small chevron that nudges on hover/focus — very subtle
-                  <svg className="w-4 h-4 text-white/70 transform group-hover:translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
-                  </svg>
-                )}
-              </div>
-            </div>
-          </div>
-        </button>
-      </div>
+          )}
+        </div>
+      </motion.div>
     </>
   );
 }

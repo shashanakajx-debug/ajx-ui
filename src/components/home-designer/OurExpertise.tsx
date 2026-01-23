@@ -175,7 +175,7 @@ const ExpertiseRow = ({
                 ))}
               </div>
 
-              <p className="mt-4 leading-7">{item.description}</p>
+              <p className="mt-4 leading text-[18px]">{item.description}</p>
 
               <div className="mt-5">
                 <AnimatedButton
@@ -230,7 +230,7 @@ export default function OurExpertise() {
           {/* Right: Image - Sticky */}
           <div className="relative hidden lg:block">
             {/* Sticky container matching the view height approximately */}
-            <div className="sticky top-24 h-[calc(100vh-6rem)] flex items-center justify-center">
+            <div className="flex items-center justify-center">
               <div className="relative aspect-[4/3] w-full overflow-hidden">
                 {/* Fade swap */}
                 <div

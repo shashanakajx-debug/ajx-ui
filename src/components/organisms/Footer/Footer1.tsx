@@ -14,7 +14,6 @@ import {
   Linkedin,
   Instagram,
 } from "lucide-react";
-import ScrollNextSection from "@/components/ScrollNextSection";
 
 export default function Footer() {
   const pathname = usePathname();
@@ -184,11 +183,10 @@ export default function Footer() {
                 <Link
                   key={index}
                   href={link.href}
-                  className={`text-[15px] transition-colors duration-200 anim-uni-in-up ${
-                    pathname === link.href
-                      ? "text-[#84cc16]"
-                      : "text-[#a8a8a8] hover:text-white"
-                  }`}
+                  className={`text-[15px] transition-colors duration-200 anim-uni-in-up ${pathname === link.href
+                    ? "text-[#84cc16]"
+                    : "text-[#a8a8a8] hover:text-white"
+                    }`}
                 >
                   {link.name}
                 </Link>
@@ -225,7 +223,6 @@ export default function Footer() {
           AJX TECHNOLOGIES
         </h1>
       </div>
-      <ScrollNextSection />
     </footer>
   );
 }

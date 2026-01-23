@@ -3,50 +3,53 @@
 @import "./css/loaders/loader.min.css";
 @import "./css/styles.css";
 
-
 @font-face {
-    font-family: 'GT Ultra';
-    src: url('/fonts/GTUltra-Thin.woff2') format('woff2'),
-        url('/fonts/GTUltra-Thin.woff') format('woff');
-    font-weight: 100;
-    font-style: normal;
-    font-display: swap;
-}
-@font-face {
-    font-family: 'GT Ultra';
-    src: url('/fonts/GTUltra-Regular.woff2') format('woff2'),
-        url('/fonts/GTUltra-Regular.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
+  font-family: "GT Ultra";
+  src:
+    url("/fonts/GTUltra-Thin.woff2") format("woff2"),
+    url("/fonts/GTUltra-Thin.woff") format("woff");
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
 }
 @font-face {
-    font-family: 'GT Ultra';
-    src: url('/fonts/GTUltra-Bold.woff2') format('woff2'),
-        url('/fonts/GTUltra-Bold.woff') format('woff');
-    font-weight: bold;
-    font-style: normal;
-    font-display: swap;
+  font-family: "GT Ultra";
+  src:
+    url("/fonts/GTUltra-Regular.woff2") format("woff2"),
+    url("/fonts/GTUltra-Regular.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
 }
 @font-face {
-    font-family: 'Schibsted Grotesk';
-    src: url('/fonts/SchibstedGrotesk-Regular.woff2') format('woff2'),
-        url('/fonts/SchibstedGrotesk-Regular.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
+  font-family: "GT Ultra";
+  src:
+    url("/fonts/GTUltra-Bold.woff2") format("woff2"),
+    url("/fonts/GTUltra-Bold.woff") format("woff");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
 }
-.heading-ultra{
-  font-family: 'GT Ultra';
+@font-face {
+  font-family: "Schibsted Grotesk";
+  src:
+    url("/fonts/SchibstedGrotesk-Regular.woff2") format("woff2"),
+    url("/fonts/SchibstedGrotesk-Regular.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
 }
-.heading-ultra-thin{
+.heading-ultra {
+  font-family: "GT Ultra";
+}
+.heading-ultra-thin {
   font-weight: 100;
 }
-.heading-ultra-bold{
+.heading-ultra-bold {
   font-weight: bold;
 }
-.peragraph-font{
-  font-family: 'Schibsted Grotesk';
+.peragraph-font {
+  font-family: "Schibsted Grotesk";
 }
 /* ===========================
    CRITICAL OVERRIDES - Header Visibility Fix
@@ -56,7 +59,6 @@
 .mxd-header,
 .mxd-demo-header,
 #header {
-
   top: 0 !important;
   width: 100% !important;
   display: block !important;
@@ -311,7 +313,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
 /* ===========================
    COLOR TOKENS - LIGHT & DARK MODE
    =========================== */
@@ -350,12 +351,14 @@ body {
 }
 
 body {
-  font-family: 'Schibsted Grotesk';
+  font-family: "Schibsted Grotesk";
   font-size: 16px;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
   letter-spacing: normal;
 }
 
@@ -369,7 +372,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: 'GT Ultra';
+  font-family: "GT Ultra";
   font-weight: 400;
   line-height: 1.2;
   transition: color 0.3s ease;
@@ -400,7 +403,7 @@ h6 {
 }
 
 p {
-  font-family: 'Schibsted Grotesk';
+  font-family: "Schibsted Grotesk";
   font-size: 16px;
   line-height: 1.6;
   transition: color 0.3s ease;
@@ -516,7 +519,9 @@ html {
 }
 
 .hover-lift {
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 .hover-lift:hover {
@@ -580,7 +585,6 @@ html {
 
 /* Outline Button */
 .btn-outline {
-
   border: 2px solid var(--color-primary);
   color: var(--t-bright--dark);
 }
@@ -594,9 +598,6 @@ html {
 .dark .btn-outline:hover {
   background-color: var(--color-primary);
 }
-
-
-
 
 /* ===========================
    CARD STYLES
@@ -671,7 +672,6 @@ textarea::placeholder {
 }
 
 @media (min-width: 768px) {
-
   .padding-hero-01,
   .padding-pre-manifest,
   .padding-grid-pre-mtext,
@@ -719,7 +719,6 @@ textarea::placeholder {
   color: var(--color-text-secondary);
 }
 
-
 /* Section Background Theming */
 /* .dark[color-scheme="dark"] .home-aboutus {
   background-color: var(--base--dark);
@@ -752,7 +751,6 @@ textarea::placeholder {
   border-color: var(--accent);
 }
 
-
 /* Animation Util */
 .fade-in-elm {
   animation: fadeIn 0.5s forwards;
@@ -779,7 +777,6 @@ textarea::placeholder {
 footer.mxd-demo-footer {
   padding-top: 100px;
 }
-
 
 footer.mxd-demo-footer {
   padding-top: 100px;
@@ -861,11 +858,54 @@ footer.mxd-demo-footer {
   color: var(--t-bright);
 }
 
-footer a.btn-anim.btn {
-    background: transparent;
-    border: 1px solid #fff;
+.link-box-menu .menu-icon-hovers{
+  transition: all 0.4s ease;
+}
+.link-box-menu:hover .menu-icon-hovers {
+    transform: rotate(45deg);
+    transition: all 0.4s ease;
+}
+.mxd-header{
+ transition: all 0.4s ease;
+ background: var(--base);
+}
+[color-scheme="light"] .mxd-header:hover {
+  background: #161616;
+  transition: all 0.4s ease;
+}
+[color-scheme="light"] .mxd-header:hover .navbar-box .menu-item{
+  color:#fff;
+}
+[color-scheme="light"] .mxd-header:hover .logo-light{
+  display: none;
+}
+[color-scheme="light"] .mxd-header:hover .logo-dark{
+  display: block;
+}
+[color-scheme="light"] .mxd-header:hover .hamburger__base{
+ background-attachment: #fff;
+}
+[color-scheme="light"] .mxd-header:hover .hamburger__line{
+ background-color: #000;
+}
+[color-scheme="dark"] .mxd-header:hover {
+  background: #faf7f6;
+  transition: all 0.4s ease;
+}
+[color-scheme="dark"] .mxd-header:hover .navbar-box .menu-item{
+  color: #000;
+}
+[color-scheme="dark"] .mxd-header:hover .logo-light{
+  display: block;
+}
+[color-scheme="dark"] .mxd-header:hover .logo-dark{
+  display: none;
 }
 
+footer a.btn-anim.btn {
+  background: transparent;
+  border: 1px solid #fff;
+}
 
 @media only screen and (min-width: 768px) {
   .mxd-header .container-custom-box {
@@ -944,8 +984,12 @@ footer a.btn-anim.btn {
 }
 
 .mxd-hero-section-bg {
-  animation: ripple 6s linear infinite, ring 6s ease-in-out infinite alternate;
-  transition: --ring-x 3s ease, --ring-y 3s ease;
+  animation:
+    ripple 6s linear infinite,
+    ring 6s ease-in-out infinite alternate;
+  transition:
+    --ring-x 3s ease,
+    --ring-y 3s ease;
 
   /* Fixed position (Center) and Permanent */
   --ring-x: 50;
@@ -1001,11 +1045,16 @@ footer a.btn-anim.btn {
   font-size: 16px;
   letter-spacing: 0.2px;
   color: #fff;
-  box-shadow: 0 12px 0 rgba(0, 0, 0, 0.55), 0 18px 26px rgba(0, 0, 0, 0.25);
+  box-shadow:
+    0 12px 0 rgba(0, 0, 0, 0.55),
+    0 18px 26px rgba(0, 0, 0, 0.25);
   border: 2px solid rgba(0, 0, 0, 0.65);
   opacity: 0.88;
   filter: saturate(0.9);
-  transition: transform 0.2s ease, opacity 0.2s ease, filter 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    opacity 0.2s ease,
+    filter 0.2s ease;
 }
 
 /* 3D bottom face */
@@ -1061,37 +1110,49 @@ footer a.btn-anim.btn {
 
 /* ============ Road MAp CSS ======== */
 .done:nth-child(1) {
-  box-shadow: 0 12px 0 #f3722e, 0 18px 26px #f3722e;
+  box-shadow:
+    0 12px 0 #f3722e,
+    0 18px 26px #f3722e;
   border: 2px solid #339f9d;
   opacity: 1;
 }
 
 .done:nth-child(2) {
-  box-shadow: 0 12px 0 #f3722e, 0 18px 26px #f3722e;
+  box-shadow:
+    0 12px 0 #f3722e,
+    0 18px 26px #f3722e;
   border: 2px solid #339f9d;
   opacity: 1;
 }
 
 .done:nth-child(3) {
-  box-shadow: 0 12px 0 #f3722e, 0 18px 26px #f3722e;
+  box-shadow:
+    0 12px 0 #f3722e,
+    0 18px 26px #f3722e;
   border: 2px solid #339f9d;
   opacity: 1;
 }
 
 .done:nth-child(4) {
-  box-shadow: 0 12px 0 #f3722e, 0 18px 26px #f3722e;
+  box-shadow:
+    0 12px 0 #f3722e,
+    0 18px 26px #f3722e;
   border: 2px solid #339f9d;
   opacity: 1;
 }
 
 .done:nth-child(5) {
-  box-shadow: 0 12px 0 #f3722e, 0 18px 26px #f3722e;
+  box-shadow:
+    0 12px 0 #f3722e,
+    0 18px 26px #f3722e;
   border: 2px solid #339f9d;
   opacity: 1;
 }
 
 .done:nth-child(6) {
-  box-shadow: 0 12px 0 #f3722e, 0 18px 26px #f3722e;
+  box-shadow:
+    0 12px 0 #f3722e,
+    0 18px 26px #f3722e;
   border: 2px solid #339f9d;
   opacity: 1;
 }
@@ -1208,7 +1269,7 @@ section.process .pathStage {
 }
 
 .chat-clr {
-  color: var(--t-opp-bright)
+  color: var(--t-opp-bright);
 }
 
 /* ============ our-experties ============ */
@@ -1250,8 +1311,6 @@ section.process .pathStage {
   animation: spinClockwise 10s linear infinite;
   z-index: 1;
 }
-
-
 
 /* ======== End ======== */
 @media (min-width: 1400px) {
@@ -1369,31 +1428,43 @@ span.ai_tesxt {
   border-right: 1px solid var(--t-bright);
 }
 
+main.min-h-screen {
+  position: relative;
+  background-color: var(--base);
+  margin-bottom: 700px;
+  z-index: 1;
+}
+footer {
+  position: fixed;
+  bottom: 0;
+  z-index: 0;
+}
+
 @media (max-width: 590px) {
-.circle-animation-w{
-  max-height: 430px;
-  height: 430px;
-}  
-.hamburger__base{
-  padding-top: 2rem;
-}  
-#testimonials .swiper-slide-active {
-  border-right: none;
-}
-.mxd-hero-00__wrap {
-  margin-top: 8rem;
-}
-.mxd-divider .mxd-divider__image{
-  height: 500px !important;
-  min-height: 500px !important;
-  max-height: max-content !important;
-}  
-.padding-hero-01 {
-  padding-top: 0rem !important;
-}
-.mxd-hero-00__wrap {
-  margin-top: 8rem;
-}
+  .circle-animation-w {
+    max-height: 430px;
+    height: 430px;
+  }
+  .hamburger__base {
+    padding-top: 2rem;
+  }
+  #testimonials .swiper-slide-active {
+    border-right: none;
+  }
+  .mxd-hero-00__wrap {
+    margin-top: 8rem;
+  }
+  .mxd-divider .mxd-divider__image {
+    height: 500px !important;
+    min-height: 500px !important;
+    max-height: max-content !important;
+  }
+  .padding-hero-01 {
+    padding-top: 0rem !important;
+  }
+  .mxd-hero-00__wrap {
+    margin-top: 8rem;
+  }
   .container-custom-box img {
     max-width: 86px;
     height: auto;

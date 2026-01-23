@@ -7,6 +7,7 @@ import LenisSmoothScroll from '@/components/scroll/LenisSmoothScroll';
 import Loader from '@/components/common/Loader';
 
 import ChatWidget from '@/components/ai-chatbot/ChatWidget';
+import ScrollNextSection from '@/components/ScrollNextSection';
 
 export default function PublicLayout({
     children,
@@ -23,6 +24,7 @@ export default function PublicLayout({
             <main className="min-h-screen !overflow-visible">{children}</main>
             <ChatWidget />
             <Footer />
+            <ScrollNextSection />
         </div>
     );
 }
