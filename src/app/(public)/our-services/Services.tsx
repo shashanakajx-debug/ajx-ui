@@ -2,7 +2,6 @@
 import Image from "next/image";
 import { useState } from "react";
 
-// Define local type based on usage and user requirement
 export interface ServiceItem {
   image: string;
   title: string;
@@ -44,7 +43,6 @@ export default function Services({ items }: ServicesProps) {
   return (
     <div className="mxd-section overflow-hidden padding-default">
       <div className="mxd-container grid-container">
-        {/* Block - Services List Start */}
         <div className="mxd-block">
           <div className="mxd-services-list grid-top hover-reveal">
             {items.map((s, idx) => (
@@ -114,7 +112,6 @@ export default function Services({ items }: ServicesProps) {
             ))}
           </div>
         </div>
-        {/* Block - Services List End */}
       </div>
     </div>
   );

@@ -27,7 +27,7 @@ const EXPERTISE: ExpertiseItem[] = [
     title: "AI & Automation Solution",
     tags: ["ML", "LLMs", "Analytics", "Automation", "Dashboards", "MLOps"],
     description:
-      "Turn raw data into decisions using analytics, automation, and AI systems built for real business impact.",
+      "Turn your data into revenue-driving decisions. We build scalable AI systems that automate operations, surface real-time insights, reduce costs, and accelerate business growth—without complexity.",
     href: "/our-services/data-science-ai",
     image: {
       src: "/FuturisticTechnology/ArtificialIntelligenceCircle.png",
@@ -41,7 +41,7 @@ const EXPERTISE: ExpertiseItem[] = [
     title: "Web Development",
     tags: ["Next.js", "React", "Node.js", "CMS", "Headless", "Ecommerce"],
     description:
-      "High-performance web experiences with modern stacks, SEO-first structure, and scalable architecture.",
+      "We build fast, SEO-optimized, and conversion-ready websites using modern stacks—designed to scale, load instantly, and turn visitors into customers.",
     href: "/our-services/web-development",
     image: {
       src: "/FuturisticTechnology/Untitled design 1 (2).png",
@@ -55,7 +55,7 @@ const EXPERTISE: ExpertiseItem[] = [
     title: "Mobile App Development",
     tags: ["iOS", "Android", "React Native", "Flutter", "APIs", "UI/UX"],
     description:
-      "Build reliable mobile apps with clean UI, fast performance, and secure backend integrations.",
+      "We build high-performance, user-friendly mobile apps with clean UI, smooth performance, and secure backend integrations—designed to engage users and drive real business growth.",
     href: "/our-services/mobile-app-development",
     image: {
       src: "/FuturisticTechnology/ArtificialIntelligenceCircle.png",
@@ -65,21 +65,18 @@ const EXPERTISE: ExpertiseItem[] = [
   {
     id: "software",
     number: "04/",
-    title: "Software",
+    title: "Software Development ",
     tags: [
-      "Chicago",
-      "New York",
-      "Houston",
-      "IT Consulting",
-      "Scoping Session",
-      "Product Development",
-      "Product Management",
+      "IT Consulting ",
+      "Scoping Sessions ",
+      "Product Strategy",
       "MVP Development",
-      "Maintenance & Support",
-      "SaaS",
+      "SaaS Solutions",
+      "Product Management",
+      "Ongoing Support",
     ],
     description:
-      "Streamline all your interactions with customers through the launch of an individual CRM system made by your team.",
+      "We design and build custom software and CRM systems that streamline customer interactions, accelerate product launches, and scale seamlessly as your business grows.",
     href: "/our-services/software",
     class: "",
     image: {
@@ -92,9 +89,9 @@ const EXPERTISE: ExpertiseItem[] = [
     number: "05/",
     class: "",
     title: "QA & Software Testing",
-    tags: ["Manual", "Automation", "Cypress", "Playwright", "API Testing"],
+    tags: ["Manual Testing", "Automation", "Cypress", "Playwright", "API Testing","Regression Suites"],
     description:
-      "Ensure stability and quality through structured QA cycles, automation suites, and regression coverage.",
+      "We ensure stable, secure, and release-ready software through structured QA cycles, automated test coverage, and continuous regression testing—so you ship faster with confidence.",
     href: "/our-services/qa-testing",
     image: {
       src: "/FuturisticTechnology/ArtificialIntelligenceCircle.png",
@@ -108,21 +105,21 @@ const EXPERTISE: ExpertiseItem[] = [
     class: "",
     tags: ["Wireframes", "Design Systems", "Figma", "Prototyping", "UX Audit"],
     description:
-      "Human-first interfaces with strong visual hierarchy, clean layouts, and conversion-focused UX.",
+      "We design human-first, conversion-focused interfaces with clear visual hierarchy, intuitive flows, and clean layouts—turning user experiences into measurable business results.",
     href: "/our-services/ux-ui-design",
     image: {
       src: "/FuturisticTechnology/ArtificialIntelligenceCircle.png",
       alt: "UX/UI design preview",
     },
   },
-    {
+  {
     id: "E-Commerce",
     number: "07/",
     title: "E-Commerce and CMS",
     class: "",
     tags: ["Wireframes", "Design Systems", "Figma", "Prototyping", "UX Audit"],
     description:
-      "Human-first interfaces with strong visual hierarchy, clean layouts, and conversion-focused UX.",
+      "We architect robust commerce and CMS ecosystems that support high traffic, complex catalogs, and long-term business expansion.",
     href: "/our-services/ux-ui-design",
     image: {
       src: "/FuturisticTechnology/ArtificialIntelligenceCircle.png",
@@ -195,7 +192,7 @@ const ExpertiseRow = ({
                 <AnimatedButton
                   text="Learn more"
                   className="btn experties-button slide-right-up"
-                  href={`our-services`}
+                  href={item.href}
                 >
                   <i className="ph-bold ph-arrow-up-right" />
                 </AnimatedButton>
