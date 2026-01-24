@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 
-export default function ThemeSwitcherButton({}) {
+export default function ThemeSwitcherButton({ }) {
   const [showSwitcher, setShowSwitcher] = useState(false);
   const [colorScheme, setColorScheme] = useState<"light" | "dark">(() => {
     if (typeof window !== "undefined") {
@@ -40,6 +40,8 @@ export default function ThemeSwitcherButton({}) {
           aria-label="light/dark mode"
           aria-checked={colorScheme === "dark"}
           onClick={handleColorSwitch}
+          data-magnetic
+          data-tooltip={colorScheme === "dark" ? "Light Mode" : "Dark Mode"}
         >
           <i
             className={

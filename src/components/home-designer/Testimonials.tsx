@@ -116,6 +116,7 @@ export default function Testimonials() {
                       }}
                       className="w-14 h-14 rounded-full border border-gray-300 flex items-center justify-center transition-all hover:bg-black hover:text-white group"
                       aria-label="Previous Slide"
+                      data-magnetic
                     >
                       <ArrowLeft className="w-6 h-6 group-hover:stroke-current" />
                     </button>
@@ -131,6 +132,7 @@ export default function Testimonials() {
                       }}
                       className="w-14 h-14 rounded-full border border-gray-300 flex items-center justify-center transition-all hover:bg-black hover:text-white group"
                       aria-label="Next Slide"
+                      data-magnetic
                     >
                       <ArrowRight className="w-6 h-6 group-hover:stroke-current" />
                     </button>
@@ -159,7 +161,7 @@ export default function Testimonials() {
                       key={item.id}
                       className="!filter-none h-100 !opacity-100 relative flex border-r-2"
                     >
-                    
+
                       <div className="flex items-stretch px-8 md:px-12">
 
                         <div className="w-full flex flex-col bg-transparent justify-between h-full">

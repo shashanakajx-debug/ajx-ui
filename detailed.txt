@@ -1,0 +1,1062 @@
+# Advanced Magnetic Cursor Implementation - Complete Details (Line-by-Line)
+
+## 📋 Summary (Overview)
+Aapke website mein ek **custom magnetic cursor** implement kiya gaya hai jo mouse ke movement ko smooth banata hai aur interactive elements (buttons, links) ke paas magnetic attraction aur repulsion effect deta hai.
+
+---
+
+## 🆕 Nayi File Banai Gayi
+
+### `src/components/CustomCursor.tsx` (NEW FILE - 157 lines)
+
+**Kya hai ye?**
+Ye ek custom cursor component hai jo default mouse cursor ko replace karta hai ek beautiful, glowing, magnetic cursor se.
+
+**Complete Code Breakdown:**
+
+**Lines 1-4: Imports**
+```tsx
+'use client';
+import { useEffect, useRef, useState } from 'react';
+import { motion, useMotionValue, useSpring } from 'framer-motion';
+```
+- `'use client'` - Next.js ko batata hai ye client-side component hai
+- React hooks import kiye (useEffect, useRef, useState)
+- Framer Motion se animation tools import kiye
+
+**Lines 6-10: State Variables**
+```tsx
+const cursorRef = useRef<HTMLDivElement>(null);
+const [isVisible, setIsVisible] = useState(false);
+const [isHovering, setIsHovering] = useState(false);
+```
+- `cursorRef` - Cursor element ka reference store karta hai
+- `isVisible` - Cursor visible hai ya nahi
+- `isHovering` - Kisi magnetic element par hover hai ya nahi
+
+**Lines 12-38: Motion Values aur Springs**
+```tsx
+const mouseX = useMotionValue(0);
+const mouseY = useMotionValue(0);
+
+const cursorX = useSpring(mouseX, {
+    damping: 30,
+    stiffness: 200,
+    mass: 0.5
+});
+```
+- **mouseX/mouseY** - Actual mouse position (instant update)
+- **cursorX/cursorY** - Spring-based smooth position (inertia effect)
+- **damping: 30** - Jitna zyada, utna slow movement
+- **stiffness: 200** - Jitna zyada, utna responsive
+- **mass: 0.5** - Cursor ka "weight" feeling
+- **trailX/trailY** - Trail ke liye alag spring (zyada lag ke saath)
+
+**Lines 40-115: Main Logic (useEffect)**
+
+**Lines 41-44: Touch Device Detection**
+```tsx
+if (window.matchMedia('(pointer: coarse)').matches) {
+    return;
+}
+```
+**Kyu:** Touch devices (mobile/tablet) par custom cursor nahi chahiye, system cursor hi better hai
+
+**Lines 46-100: Mouse Move Handler**
+
+**Lines 51-54: Magnetic Elements Find Karo**
+```tsx
+const magneticElements = document.querySelectorAll('[data-magnetic]');
+let attracted = false;
+let finalX = clientX;
+let finalY = clientY;
+```
+**Kyu:** Sabhi magnetic elements find karke unke saath attraction/repulsion calculate karenge
+
+**Lines 58-93: Attraction & Repulsion Physics**
+```tsx
+const rect = element.getBoundingClientRect();
+const centerX = rect.left + rect.width / 2;
+const centerY = rect.top + rect.height / 2;
+
+const deltaX = centerX - clientX;
+const deltaY = centerY - clientY;
+const distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
+```
+**Physics Calculation:**
+1. Element ka center nikala
+2. Cursor se element center tak ka distance (Pythagorean theorem)
+3. Agar distance < attractionRadius (80% of element size):
+   - Attraction apply karo (cursor ko center ki taraf khicho)
+4. Agar distance < 30px:
+   - Repulsion apply karo (overlap prevent karne ke liye)
+
+**Lines 73-85: Attraction/Repulsion Force**
+```tsx
+if (distance < repulsionRadius) {
+    // REPULSION
+    const repulsionForce = (repulsionRadius - distance) / repulsionRadius;
+    finalX = clientX - (deltaX / distance) * repulsionForce * 20;
+} else {
+    // ATTRACTION
+    const attractionForce = 0.15;
+    finalX = clientX + deltaX * attractionForce;
+}
+```
+**Kyu:** 
+- Repulsion = Jab bahut paas hai, to cursor ko thoda door push karo
+- Attraction = Jab moderate distance par hai, to cursor ko element ki taraf khicho
+
+**Lines 120-138: Cursor Rendering**
+```tsx
+<motion.div
+    style={{
+        borderColor: '#fff',
+        backgroundColor: isHovering ? 'rgba(255, 255, 255, 0.1)' : 'transparent',
+        boxShadow: isHovering 
+            ? '0 0 25px rgba(255, 255, 255, 0.5)' 
+            : '0 0 15px rgba(255, 255, 255, 0.4)',
+    }}
+    animate={{
+        width: isHovering ? 60 : 24,
+        height: isHovering ? 60 : 24,
+    }}
+/>
+```
+**Visual Changes on Hover:**
+- Size: 24px → 60px
+- Background: transparent → slight white tint
+- Glow: 15px → 25px radius
+
+**Lines 140-150: Glowing Trail**
+```tsx
+<motion.div
+    style={{
+        width: 12,
+        height: 12,
+        background: 'radial-gradient(circle, rgba(255,255,255,0.6) 0%, ...)',
+        opacity: 0.7,
+    }}
+/>
+```
+**Kyu:** Trail cursor ke peeche follow karti hai, smooth lagging effect deti hai
+
+---
+
+## 📝 Modified Files - Line by Line Changes
+
+### 1. `src/app/globals.css`
+
+**Line 5 (ADDED):**
+```css
+/* BEFORE: Nothing */
+
+/* AFTER: */
+@import "./css/styles.css";
+
+/* Hide default cursor for desktop (fine pointer = mouse) */
+@media (pointer: fine) {
+  * {
+    cursor: none !important;
+  }
+}
+
+/* WHY: Default cursor hide karna tha taaki custom cursor ke saath interfere na kare */
+```
+
+**NOTE:** User ne baad mein ye CSS remove kar diya, isliye ab system cursor visible hai.
+
+---
+
+### 2. `src/app/layout.tsx`
+
+**Line 8 (ADDED):**
+```tsx
+/* BEFORE: */
+import ThemeSwitcherButton from '@/components/organisms/Header/ColorSwitcher';
+
+/* AFTER: */
+import ThemeSwitcherButton from '@/components/organisms/Header/ColorSwitcher';
+import CustomCursor from '@/components/CustomCursor';
+
+/* WHY: CustomCursor component ko import karna tha */
+```
+
+**Line 44 (ADDED):**
+```tsx
+/* BEFORE: */
+<ThemeProvider
+  attribute="class"
+  defaultTheme="system"
+  enableSystem
+  disableTransitionOnChange
+>
+  <ThemeSwitcherButton />
+  {children}
+</ThemeProvider>
+
+/* AFTER: */
+<ThemeProvider
+  attribute="class"
+  defaultTheme="system"
+  enableSystem
+  disableTransitionOnChange
+>
+  <CustomCursor />
+  <ThemeSwitcherButton />
+  {children}
+</ThemeProvider>
+
+/* WHY: CustomCursor ko render karna tha globally, sabhi pages par */
+```
+
+---
+
+### 3. `src/components/animation/AnimatedButton.tsx`
+
+**Lines 73-86 (MODIFIED):**
+```tsx
+/* BEFORE: */
+const tagProps = {
+  className: `btn-anim ${className}`,
+  "aria-label": text,
+  ...(href && !isInternalLink ? { href, target } : {}),
+  ...(isInternalLink ? { href } : {}),
+  ...rest,
+};
+
+/* AFTER: */
+const isCTA = !!href;
+
+const tagProps = {
+  className: `btn-anim ${className}`,
+  "aria-label": text,
+  ...(isCTA ? { "data-magnetic": true } : {}),
+  ...(isCTA && text ? { "data-tooltip": text.split(' ')[0] } : {}),
+  ...(href && !isInternalLink ? { href, target } : {}),
+  ...(isInternalLink ? { href } : {}),
+  ...rest,
+};
+
+/* WHY:
+   - isCTA check: Sirf link wale buttons par magnetic effect
+   - data-magnetic: true lagaya automatically
+   - data-tooltip: Text ka first word tooltip ke liye
+   - Isse har CTA button par manually data-magnetic likhne ki zarurat nahi
+*/
+```
+
+**NOTE:** User ne baad mein tooltip remove kar diya, to ab sirf `data-magnetic` reh gaya.
+
+---
+
+### 4. `src/components/organisms/Header/Header.tsx`
+
+**Line 244 (MODIFIED - Logo):**
+```tsx
+/* BEFORE: */
+<Link href="/" className="flex items-center gap-2">
+
+/* AFTER: */
+<Link href="/" className="flex items-center gap-2" data-magnetic>
+
+/* WHY: Logo par magnetic effect chahiye tha */
+```
+
+**Lines 273-277 (MODIFIED - Nav Links):**
+```tsx
+/* BEFORE: */
+<Link
+  href={link.href}
+  className={`font-medium transition-colors] menu-item flex items-center ${
+    pathname === link.href ? "" : ""
+  }`}
+>
+
+/* AFTER: */
+<Link
+  href={link.href}
+  className={`font-medium transition-colors] menu-item flex items-center ${
+    pathname === link.href ? "" : ""
+  }`}
+  data-magnetic
+>
+
+/* WHY: Main navigation links par magnetic effect */
+```
+
+**Line 373 (MODIFIED - Mobile Menu Button):**
+```tsx
+/* BEFORE: */
+<button
+  className="lg:hidden hidden p-2"
+  onClick={() => setMobileMenuOpen((s) => !s)}
+  type="button"
+  aria-label="Toggle menu"
+  aria-expanded={mobileMenuOpen}
+>
+
+/* AFTER: */
+<button
+  className="lg:hidden p-2"
+  onClick={() => setMobileMenuOpen((s) => !s)}
+  type="button"
+  aria-label="Toggle menu"
+  aria-expanded={mobileMenuOpen}
+  data-magnetic
+>
+
+/* WHY:
+   - "hidden hidden" bug fix - pehle button completely hidden tha
+   - Ab sirf "lg:hidden" hai (desktop par hide, mobile par visible)
+   - data-magnetic add kiya
+*/
+```
+
+---
+
+### 5. `src/components/organisms/Header/ColorSwitcher.tsx`
+
+**Lines 43-44 (ADDED):**
+```tsx
+/* BEFORE: */
+<button
+  id="color-switcher"
+  className="mxd-color-switcher"
+  type="button"
+  role="switch"
+  aria-label="light/dark mode"
+  aria-checked={colorScheme === "dark"}
+  onClick={handleColorSwitch}
+>
+
+/* AFTER: */
+<button
+  id="color-switcher"
+  className="mxd-color-switcher"
+  type="button"
+  role="switch"
+  aria-label="light/dark mode"
+  aria-checked={colorScheme === "dark"}
+  onClick={handleColorSwitch}
+  data-magnetic
+  data-tooltip={colorScheme === "dark" ? "Light" : "Dark"}
+>
+
+/* WHY:
+   - Theme button important UI control hai
+   - Tooltip dynamic hai - current mode ke opposite dikhata hai
+   - Agar dark mode hai to "Light" dikhega (switch karne par Light mode ho jayega)
+*/
+```
+
+**NOTE:** User ne baad mein tooltip remove kar diya.
+
+---
+
+### 6. `src/components/organisms/Footer/Footer1.tsx`
+
+**Lines 121-124 (MODIFIED - Email Link):**
+```tsx
+/* BEFORE: */
+<Link
+  href="mailto:connect@ajxtechnologies.com"
+  className="text-white hover:text-[#9ca3af] transition-colors duration-200 text-[15px]"
+>
+
+/* AFTER: */
+<Link
+  href="mailto:connect@ajxtechnologies.com"
+  className="text-white hover:text-[#9ca3af] transition-colors duration-200 text-[15px]"
+  data-magnetic
+>
+
+/* WHY: Email link important contact method hai */
+```
+
+**Lines 151-158 (MODIFIED - Social Icons):**
+```tsx
+/* BEFORE: */
+<Link
+  key={index}
+  href={social.href}
+  target="_blank"
+  rel="noopener noreferrer"
+  aria-label={social.label}
+  className="w-[38px] h-[38px] rounded-full border ..."
+>
+
+/* AFTER: */
+<Link
+  key={index}
+  href={social.href}
+  target="_blank"
+  rel="noopener noreferrer"
+  aria-label={social.label}
+  className="w-[38px] h-[38px] rounded-full border ..."
+  data-magnetic
+>
+
+/* WHY: Social media icons par magnetic effect */
+```
+
+---
+
+### 7. `src/components/ai-chatbot/ChatWidget.tsx`
+
+**Line 191 (MODIFIED - Clear Button):**
+```tsx
+/* BEFORE: */
+<button
+  onClick={clearChat}
+  className="p-2 bg-[#108a00] rounded-full transition-all duration-200"
+  title="Clear conversation"
+>
+
+/* AFTER: */
+<button
+  onClick={clearChat}
+  className="p-2 bg-[#108a00] rounded-full transition-all duration-200"
+  title="Clear conversation"
+  data-magnetic
+>
+
+/* WHY: Chat controls par magnetic effect */
+```
+
+**Line 198 (MODIFIED - Close Button):**
+```tsx
+/* BEFORE: */
+<button
+  onClick={() => setOpen(false)}
+  className="p-2 bg-[#108a00] rounded-full transition-all duration-200"
+>
+
+/* AFTER: */
+<button
+  onClick={() => setOpen(false)}
+  className="p-2 bg-[#108a00] rounded-full transition-all duration-200"
+  data-magnetic
+>
+```
+
+**Line 228 (MODIFIED - Quick Prompt Buttons):**
+```tsx
+/* BEFORE: */
+<button
+  key={index}
+  onClick={() => send(prompt)}
+  className="w-full text-left px-4 py-3 rounded-xl ..."
+>
+
+/* AFTER: */
+<button
+  key={index}
+  onClick={() => send(prompt)}
+  className="w-full text-left px-4 py-3 rounded-xl ..."
+  data-magnetic
+>
+
+/* WHY: Quick prompts clickable elements hain */
+```
+
+**Lines 359-362 (MODIFIED - Main Chat Button):**
+```tsx
+/* BEFORE: */
+<button
+  className="pointer-events-auto h-20 w-20 md:h-24 md:w-24 rounded-full ..."
+  onClick={() => setOpen(!open)}
+>
+
+/* AFTER: */
+<button
+  className="pointer-events-auto h-20 w-20 md:h-24 md:w-24 rounded-full ..."
+  onClick={() => setOpen(!open)}
+  data-magnetic
+  data-tooltip="Chat"
+>
+
+/* WHY: Main chat trigger button hai, tooltip se user ko pata chalega */
+```
+
+---
+
+### 8. `src/components/home-designer/Services.tsx`
+
+**Line 17-20 (MODIFIED - Service Card 1):**
+```tsx
+/* BEFORE: */
+<Link
+  className="btn btn-round btn-round-large btn-additional slide-right-up anim-no-delay"
+  href={`/services`}
+>
+
+/* AFTER: */
+<Link
+  className="btn btn-round btn-round-large btn-additional slide-right-up anim-no-delay"
+  href={`/services`}
+  data-magnetic
+>
+
+/* WHY: Service card arrow buttons par magnetic */
+```
+
+*Similar changes service card 2 (line 63) aur card 3 (line 110) par bhi*
+
+---
+
+### 9. `src/components/home-designer/CaseStudies.tsx`
+
+**Line 157 (MODIFIED - Category Filter):**
+```tsx
+/* BEFORE: */
+<button
+  key={cat}
+  onClick={() => handleFilterClick(cat)}
+  className={`px-6 py-2.5 rounded-full border ...`}
+>
+
+/* AFTER: */
+<button
+  key={cat}
+  onClick={() => handleFilterClick(cat)}
+  data-magnetic
+  className={`px-6 py-2.5 rounded-full border ...`}
+>
+
+/* WHY: Filter buttons interactive elements hain */
+```
+
+**Line 172 (MODIFIED - Previous Arrow):**
+```tsx
+/* BEFORE: */
+<button
+  onClick={prevSlide}
+  disabled={currentSlide === 0}
+  aria-label="Previous slide"
+  className={`w-12 h-12 rounded-full ...`}
+>
+
+/* AFTER: */
+<button
+  onClick={prevSlide}
+  disabled={currentSlide === 0}
+  aria-label="Previous slide"
+  data-magnetic
+  className={`w-12 h-12 rounded-full ...`}
+>
+
+/* WHY: Navigation arrow */
+```
+
+*Similar change Next arrow (line 203) par bhi*
+
+---
+
+### 10. `src/components/home-designer/OurExpertise.tsx`
+
+**Line 156-160 (MODIFIED - Expertise Title Buttons):**
+```tsx
+/* BEFORE: */
+<button
+  type="button"
+  onClick={() => setActiveId(item.id)}
+  className="group heading-ultra w-full text-left ..."
+  aria-expanded={isActive}
+>
+
+/* AFTER: */
+<button
+  type="button"
+  onClick={() => setActiveId(item.id)}
+  className="group heading-ultra w-full text-left ..."
+  aria-expanded={isActive}
+  data-magnetic
+>
+
+/* WHY: Expertise titles clickable hain, expand/collapse karte hain */
+```
+
+---
+
+### 11. `src/components/home-designer/Testimonials.tsx`
+
+**Line 113-119 (MODIFIED - Prev Button):**
+```tsx
+/* BEFORE: */
+<button
+  onClick={() => { if (swiperInstance) swiperInstance.slidePrev(); }}
+  className="w-14 h-14 rounded-full border ..."
+  aria-label="Previous Slide"
+>
+
+/* AFTER: */
+<button
+  onClick={() => { if (swiperInstance) swiperInstance.slidePrev(); }}
+  className="w-14 h-14 rounded-full border ..."
+  aria-label="Previous Slide"
+  data-magnetic
+>
+
+/* WHY: Testimonial slider navigation */
+```
+
+*Similar change Next button (line 128) par bhi*
+
+---
+
+### 12. `src/components/home-designer/Industries.tsx`
+
+**Line 134-137 (MODIFIED - Industry Selector):**
+```tsx
+/* BEFORE: */
+<button
+  key={industry.id}
+  onClick={() => setSelectedIndustry(industry.id)}
+  className={`w-full text-left p-4 rounded-xl ...`}
+>
+
+/* AFTER: */
+<button
+  key={industry.id}
+  onClick={() => setSelectedIndustry(industry.id)}
+  data-magnetic
+  className={`w-full text-left p-4 rounded-xl ...`}
+>
+
+/* WHY: Industry selection buttons */
+```
+
+---
+
+### 13. `src/components/home-designer/TechStack.tsx`
+
+**Line 464-467 (MODIFIED - Tech Category Filters):**
+```tsx
+/* BEFORE: */
+<button
+  key={category}
+  onClick={() => setActiveFilter(category)}
+  className={`px-6 py-2.5 rounded-full border ...`}
+>
+
+/* AFTER: */
+<button
+  key={category}
+  onClick={() => setActiveFilter(category)}
+  data-magnetic
+  className={`px-6 py-2.5 rounded-full border ...`}
+>
+
+/* WHY: Tech stack category filters */
+```
+
+---
+
+## 🎯 Summary of Changes
+
+### Pattern Jo Follow Kiya:
+1. **Import Statement** - Nayi file ko import kiya
+2. **Component Rendering** - Global level par render kiya
+3. **Data Attributes** - `data-magnetic` har interactive element par
+4. **Automatic Addition** - AnimatedButton mein smart logic
+5. **Bug Fixes** - Mobile menu button visibility fix
+
+### Kyu Ye Approach?
+- **data-magnetic** attribute = Simple, declarative way
+- **Ek hi central component** (CustomCursor) sab handle karta hai
+- **No wrapper components** needed
+- **Easy to maintain** - add/remove easily
+- **Performance efficient** - sirf ek component track kar raha hai
+
+### Total Stats:
+- **Lines Added:** ~200 (CustomCursor) + ~50 (attributes across files)
+- **Lines Modified:** ~25-30 (various files)
+- **New Concepts:** Magnetic cursor, Spring physics, Data attributes
+- **Technologies:** React, TypeScript, Framer Motion, CSS, DOM APIs
+
+---
+
+**Har change justified hai aur targeted approach follow kiya gaya hai!**
+
+
+## 📋 Summary (Overview)
+Aapke website mein ek **custom magnetic cursor** implement kiya gaya hai jo mouse ke movement ko smooth banata hai aur interactive elements (buttons, links) ke paas magnetic attraction aur repulsion effect deta hai.
+
+---
+
+## 🆕 Nayi File Banai Gayi
+
+### `src/components/CustomCursor.tsx`
+
+**Kya hai ye?**
+Ye ek custom cursor component hai jo default mouse cursor ko replace karta hai ek beautiful, glowing, magnetic cursor se.
+
+**Kyu banaya?**
+- Modern websites (jaise Apple, Awwwards winners) mein aisa cursor hota hai
+- User experience ko premium feel dene ke liye
+- Interactive elements ko highlight karne ke liye
+- Website ko visually attractive banane ke liye
+
+**Kaise banaya? (Technologies/Concepts Used)**
+
+1. **React Hooks**
+   - `useState` - cursor visibility, hovering state track karne ke liye
+   - `useRef` - cursor DOM element ko reference karne ke liye
+   - `useEffect` - mouse events ko listen karne ke liye
+
+2. **Framer Motion** (Animation Library)
+   - `useMotionValue` - mouse position ko instantly track karta hai
+   - `useSpring` - smooth, physics-based movement ke liye (inertia effect)
+   - `motion.div` - animated cursor circle aur trail banane ke liye
+   - Spring Physics Parameters:
+     * damping: 30 (kitna resistance hai movement mein)
+     * stiffness: 200 (kitna tight/responsive hai)
+     * mass: 0.5 (cursor ka "weight")
+
+3. **Physics-Based Magnetic Effect**
+   
+   **Attraction Logic:**
+   ```
+   - Jab cursor kisi magnetic element ke 80% radius ke andar aata hai
+   - Cursor ko element ke center ki taraf khichta hai
+   - Force = 0.15 × distance (15% attraction strength)
+   ```
+   
+   **Repulsion Logic:**
+   ```
+   - Jab cursor element ke bahut paas (30px se kam) aata hai
+   - Cursor ko element se door dhakelta hai (overlap nahi hone deta)
+   - Repulsion force dynamically calculate hota hai distance ke basis par
+   ```
+
+4. **DOM Query aur Data Attributes**
+   - `document.querySelectorAll('[data-magnetic]')` - sabhi magnetic elements find karta hai
+   - Real-time distance calculation har element ke liye
+   - `getBoundingClientRect()` - element ki position/size calculate karne ke liye
+
+5. **Responsive Design**
+   - Touch devices par auto-hide (mobile par system cursor hi rahega)
+   - `window.matchMedia('(pointer: coarse)')` - touch device detect karta hai
+
+**Code Flow:**
+```
+Mouse Move → 
+Find Magnetic Elements → 
+Calculate Distance → 
+Apply Attraction/Repulsion Force → 
+Update Cursor Position with Spring Animation → 
+Render Cursor + Trail
+```
+
+---
+
+## 📝 Modified Files Explanation
+
+### 1. `src/app/globals.css`
+**Kya kiya:**
+- Default system cursor ko hide kiya (non-touch devices ke liye)
+
+**Kyu kiya:**
+- Taaki humare custom cursor ke sath system cursor interfere na kare
+- Sirf ek hi cursor dikhega screen par
+
+**Code:**
+```css
+@media (pointer: fine) {
+  * {
+    cursor: none !important;
+  }
+}
+```
+*Note: User ne baad mein ye remove kar diya, to ab system cursor + custom cursor dono dikhenge*
+
+---
+
+### 2. `src/app/layout.tsx`
+**Kya kiya:**
+- `<CustomCursor />` component ko root layout mein add kiya
+
+**Kyu kiya:**
+- Taaki cursor poori website par available rahe (global component)
+- Root level par render hone se highest z-index par rahega
+
+**Code:**
+```tsx
+import CustomCursor from '@/components/CustomCursor';
+
+<ThemeProvider>
+  <CustomCursor />  // ← Added here
+  <ThemeSwitcherButton />
+  {children}
+</ThemeProvider>
+```
+
+---
+
+### 3. `src/components/animation/AnimatedButton.tsx`
+**Kya kiya:**
+- Automatically `data-magnetic` attribute add karta hai har CTA button par
+- Pehle word ko tooltip ke liye use karta hai
+
+**Kyu kiya:**
+- Manual har button par `data-magnetic` likhne ki zarurat na ho
+- Consistent magnetic effect sabhi CTA buttons par
+
+**Logic:**
+```tsx
+const isCTA = !!href; // Sirf link wale buttons
+if (isCTA) {
+  tagProps["data-magnetic"] = true;
+  tagProps["data-tooltip"] = text.split(' ')[0]; // First word
+}
+```
+
+**Technology:** TypeScript spread operators, conditional props
+
+---
+
+### 4. `src/components/organisms/Header/Header.tsx`
+**Kya kiya:**
+- Logo par `data-magnetic` attribute
+- Main navigation links par `data-magnetic`
+- Mobile menu button par `data-magnetic`
+- Mobile menu button ka visibility fix (`hidden hidden` → `hidden` only on lg+)
+
+**Kyu kiya:**
+- Header ke important elements par magnetic effect chahiye tha
+- Mobile menu button pehle completely hidden tha (bug fix)
+
+**Changes:**
+```tsx
+// Logo
+<Link href="/" data-magnetic>
+
+// Nav Links
+<Link href={link.href} data-magnetic>
+
+// Mobile Button
+<button className="lg:hidden p-2" data-magnetic>
+```
+
+---
+
+### 5. `src/components/organisms/Header/ColorSwitcher.tsx`
+**Kya kiya:**
+- Theme switch button par `data-magnetic` aur `data-tooltip` add kiya
+
+**Kyu kiya:**
+- Important UI control hai, magnetic effect se better UX
+
+**Code:**
+```tsx
+<button 
+  data-magnetic
+  data-tooltip={colorScheme === "dark" ? "Light" : "Dark"}
+>
+```
+*Tooltip dynamically change hota hai - agar dark mode hai to "Light" dikhata hai (matlab Light mode mein switch hoga)*
+
+---
+
+### 6. `src/components/organisms/Footer/Footer1.tsx`
+**Kya kiya:**
+- Email link par `data-magnetic`
+- Social icons par `data-magnetic`
+- Footer navigation links se magnetic/tooltip remove kiya (unnecessary)
+
+**Kyu kiya:**
+- Important contact links par magnetic effect
+- Footer ke regular links par nahi (clutter avoid karne ke liye)
+
+**Approach:** Minimalist - sirf important elements par effect
+
+---
+
+### 7. `src/components/ai-chatbot/ChatWidget.tsx`
+**Kya kiya:**
+- Main chat button par `data-magnetic` + `data-tooltip="Chat"`
+- Close button par `data-magnetic`
+- Clear button par `data-magnetic`
+- Quick prompt buttons par `data-magnetic`
+
+**Kyu kiya:**
+- Chat widget ek key interaction point hai
+- Sabhi interactive buttons ko magnetic banana tha
+
+**Changes:**
+```tsx
+// Main button
+<button data-magnetic data-tooltip="Chat">
+
+// Quick prompts
+<button data-magnetic onClick={() => send(prompt)}>
+```
+
+---
+
+### 8. `src/components/home-designer/Services.tsx`
+**Kya kiya:**
+- Teeno service cards ke arrow buttons par `data-magnetic`
+
+**Kyu kiya:**
+- Service cards important CTAs hain
+- Arrows interactive elements hain
+
+```tsx
+<Link className="btn btn-round" href="/services" data-magnetic>
+  <i className="ph-bold ph-arrow-up-right" />
+</Link>
+```
+
+---
+
+### 9. `src/components/home-designer/CaseStudies.tsx`
+**Kya kiya:**
+- Category filter buttons par `data-magnetic`
+- Previous/Next navigation arrows par `data-magnetic`
+
+**Kyu kiya:**
+- Filters aur navigation important user interactions hain
+
+```tsx
+// Filter buttons
+<button onClick={() => handleFilterClick(cat)} data-magnetic>
+
+// Nav arrows
+<button onClick={prevSlide} data-magnetic aria-label="Previous slide">
+```
+
+---
+
+### 10. `src/components/home-designer/OurExpertise.tsx`
+**Kya kiya:**
+- Har expertise title button (accordion-style) par `data-magnetic`
+
+**Kyu kiya:**
+- User expertise titles par click karke expand karta hai
+- Important interactive elements hain
+
+```tsx
+<button 
+  onClick={() => setActiveId(item.id)} 
+  data-magnetic
+>
+  {item.title}
+</button>
+```
+
+---
+
+### 11. `src/components/home-designer/Testimonials.tsx`
+**Kya kiya:**
+- Testimonials slider ke prev/next arrows par `data-magnetic`
+
+**Kyu kiya:**
+- Slider navigation important hai
+
+```tsx
+<button onClick={slideNext} data-magnetic aria- label="Next Slide">
+```
+
+---
+
+### 12. `src/components/home-designer/Industries.tsx`
+**Kya kiya:**
+- Industry selector buttons par `data-magnetic`
+
+**Kyu kiya:**
+- User different industries select karne ke liye click karta hai
+
+```tsx
+<button onClick={() => setSelectedIndustry(id)} data-magnetic>
+```
+
+---
+
+### 13. `src/components/home-designer/TechStack.tsx`
+**Kya kiya:**
+- Tech stack category filter buttons par `data-magnetic`
+
+**Kyu kiya:**
+- User different tech categories browse karta hai
+
+```tsx
+<button onClick={() => setActiveFilter(category)} data-magnetic>
+```
+
+---
+
+## 🎯 Overall Concept
+
+### Magnetic Cursor Kya Hai?
+Ek cursor jo:
+1. **Smooth movement** - Spring physics se smooth follow karta hai
+2. **Magnetic attraction** - Interactive elements ke paas khichta hai
+3. **Repulsion** - Bahut paas jaane par thoda door hatata hai (overlap nahi hota)
+4. **Visual feedback** - Hover par bada ho jata hai, glow effect increase hota hai
+
+### Technologies Used (Summary)
+1. **React** - Component architecture
+2. **TypeScript** - Type safety
+3. **Framer Motion** - Advanced animations aur physics
+4. **CSS-in-JS** - Dynamic styling
+5. **DOM APIs** - Element querying aur positioning
+6. **Math/Physics** - Distance calculation, force vectors
+
+### Best Practices Followed
+1. **Performance** - Touch devices par auto-disable
+2. **Accessibility** - System cursor bhi visible (user ne choose kiya)
+3. **Selective Application** - Sirf important elements par magnetic
+4. **Smooth Physics** - Natural feeling movement
+5. **Visual Hierarchy** - Primary CTAs ko highlight karta hai
+
+---
+
+## 🔄 User Ne Baad Mein Kya Changes Kiye
+
+1. **Tooltip Feature Remove**
+   - Sabhi `data-tooltip` functionality remove kar di
+   - Kyunki shayad tooltips unnecessary lag rahe the
+
+2. **Color Change**
+   - Blue color (`#3a8dff`) se white (`#fff`) kar diya
+   - Classic look ke liye
+
+3. **Simplified Design**
+   - Ab sirf hollow white circle + trail hai
+   - No tooltips, simple magnetic effect
+
+---
+
+## ✅ Final Result
+
+**Kya hai ab website mein:**
+- White glowing cursor with smooth inertia
+- Magnetic attraction to all interactive elements
+- Subtle repulsion to prevent overlap
+- System cursor bhi visible hai
+- Pure website par consistent magnetic effect
+
+**User Experience:**
+- Modern, premium feel
+- Better visual feedback
+- Smooth, natural movements
+- Important elements easily discoverable
+
+---
+
+## 📚 Learning Points
+
+1. **Framer Motion** bahut powerful hai physics-based animations ke liye
+2. **Data attributes** (`data-magnetic`) se easily behavior add kar sakte hain
+3. **Distance calculations** aur **vector math** cursor effects ke liye zaroori hai
+4. **Spring physics** natural movement banate hain
+5. **Selective enhancement** - har cheez par effect lagane se better hai targeted approach
+
+---
+
+**Total Modified Files:** 13
+**New Files Created:** 1 (`CustomCursor.tsx`)
+**Lines of Code Added:** ~200
+**Technologies Used:** React, TypeScript, Framer Motion, CSS, DOM APIs, Physics/Math

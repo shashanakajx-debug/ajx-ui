@@ -17,6 +17,7 @@ export default function Services() {
                       <Link
                         className="btn btn-round btn-round-large btn-additional slide-right-up anim-no-delay"
                         href={`/services`}
+                        data-magnetic
                       >
                         <i className="ph-bold ph-arrow-up-right" />
                       </Link>
@@ -63,6 +64,7 @@ export default function Services() {
                       <Link
                         className="btn btn-round btn-round-large btn-base slide-right-up anim-no-delay"
                         href={`/services`}
+                        data-magnetic
                       >
                         <i className="ph-bold ph-arrow-up-right" />
                       </Link>
@@ -110,6 +112,7 @@ export default function Services() {
                       <Link
                         className="btn btn-round btn-round-large btn-additional slide-right-up anim-no-delay"
                         href={`/services`}
+                        data-magnetic
                       >
                         <i className="ph-bold ph-arrow-up-right" />
                       </Link>

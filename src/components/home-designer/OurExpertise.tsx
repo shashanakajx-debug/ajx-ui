@@ -89,7 +89,7 @@ const EXPERTISE: ExpertiseItem[] = [
     number: "05/",
     class: "",
     title: "QA & Software Testing",
-    tags: ["Manual Testing", "Automation", "Cypress", "Playwright", "API Testing","Regression Suites"],
+    tags: ["Manual Testing", "Automation", "Cypress", "Playwright", "API Testing", "Regression Suites"],
     description:
       "We ensure stable, secure, and release-ready software through structured QA cycles, automated test coverage, and continuous regression testing—so you ship faster with confidence.",
     href: "/our-services/qa-testing",
@@ -158,6 +158,7 @@ const ExpertiseRow = ({
             onClick={() => setActiveId(item.id)}
             className="group heading-ultra w-full text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-black/40 focus-visible:ring-offset-2"
             aria-expanded={isActive}
+            data-magnetic
           >
             <div
               className="relative inline-block text-4xl font-extrabold leading-[1.05] tracking-tight sm:text-5xl after:content-[''] after:absolute after:left-0 after:-bottom-2.5 after:w-full after:h-[3px] after:bg-[#119000] after:rounded-full after:scale-x-0 after:origin-left after:transition-transform after:duration-260 after:ease-out group-hover:after:scale-x-100 data-[active=true]:after:scale-x-100"

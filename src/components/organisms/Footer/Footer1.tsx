@@ -121,6 +121,7 @@ export default function Footer() {
                 <Link
                   href="mailto:connect@ajxtechnologies.com"
                   className="text-white hover:text-[#9ca3af] transition-colors duration-200 text-[15px]"
+                  data-magnetic
                 >
                   connect@ajxtechnologies.com
                 </Link>
@@ -155,6 +156,7 @@ export default function Footer() {
                     rel="noopener noreferrer"
                     aria-label={social.label}
                     className="w-[38px] h-[38px] rounded-full border border-[#4a4a4a] flex items-center justify-center hover:bg-white hover:border-white hover:text-[#1c1c1c] transition-all duration-300"
+                    data-magnetic
                   >
                     {social.type === "custom" ? (
                       social.customIcon

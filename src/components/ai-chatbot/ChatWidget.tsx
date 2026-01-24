@@ -191,12 +191,14 @@ export default function ChatWidget() {
                   onClick={clearChat}
                   className="p-2 bg-[#108a00] rounded-full transition-all duration-200"
                   title="Clear conversation"
+                  data-magnetic
                 >
                   <TrashIcon className="w-4 h-4" />
                 </button>
                 <button
                   onClick={() => setOpen(false)}
                   className="p-2 bg-[#108a00] rounded-full transition-all duration-200"
+                  data-magnetic
                 >
                   <XMarkIcon className="w-5 h-5" />
                 </button>
@@ -229,6 +231,7 @@ export default function ChatWidget() {
                         key={index}
                         onClick={() => send(prompt)}
                         className="w-full text-left px-4 py-3 rounded-xl bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 hover:border-black dark:hover:border-white hover:bg-white dark:hover:bg-gray-700 hover:shadow-md transition-all duration-200 text-xs text-gray-800 dark:text-gray-100 font-semibold group"
+                        data-magnetic
                       >
                         <span className="flex items-center justify-between">
                           {prompt}
@@ -359,6 +362,8 @@ export default function ChatWidget() {
       <button
         className="pointer-events-auto h-20 w-20 md:h-24 md:w-24 rounded-full shadow-2xl flex items-center justify-center transition-all duration-300 hover:scale-105 active:scale-95 overflow-hidden bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500 p-1"
         onClick={() => setOpen(!open)}
+        data-magnetic
+        data-tooltip="Chat"
       >
         {open ? (
           <div className="w-full h-full rounded-full bg-white dark:bg-gray-900 flex items-center justify-center">

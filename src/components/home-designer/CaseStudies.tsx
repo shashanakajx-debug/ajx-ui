@@ -157,11 +157,11 @@ export default function CaseStudies() {
               <button
                 key={cat}
                 onClick={() => handleFilterClick(cat)}
-                className={`px-6 py-2.5 rounded-full border font-medium transition-all duration-300 ${
-                  activeCategory === cat
-                    ? "border-[#119000] bg-[#119000] text-white"
-                    : "border-[var(--color-border)] bg-transparent text-[var(--color-text)] hover:border-[#119000] hover:bg-[#119000]"
-                }`}
+                data-magnetic
+                className={`px-6 py-2.5 rounded-full border font-medium transition-all duration-300 ${activeCategory === cat
+                  ? "border-[#119000] bg-[#119000] text-white"
+                  : "border-[var(--color-border)] bg-transparent text-[var(--color-text)] hover:border-[#119000] hover:bg-[#119000]"
+                  }`}
               >
                 {cat}
               </button>
@@ -173,11 +173,11 @@ export default function CaseStudies() {
               onClick={prevSlide}
               disabled={currentSlide === 0}
               aria-label="Previous slide"
-              className={`w-12 h-12 rounded-full border border-[var(--color-border)] bg-[var(--color-surface)] flex items-center justify-center transition-all ${
-                currentSlide === 0
-                  ? "opacity-50 cursor-not-allowed text-[var(--color-text-muted)]"
-                  : "hover:bg-[var(--color-text)] hover:text-[var(--color-surface)] hover:border-[var(--color-text)] text-[var(--color-text)]"
-              }`}
+              data-magnetic
+              className={`w-12 h-12 rounded-full border border-[var(--color-border)] bg-[var(--color-surface)] flex items-center justify-center transition-all ${currentSlide === 0
+                ? "opacity-50 cursor-not-allowed text-[var(--color-text-muted)]"
+                : "hover:bg-[var(--color-text)] hover:text-[var(--color-surface)] hover:border-[var(--color-text)] text-[var(--color-text)]"
+                }`}
             >
               <svg
                 width="20"
@@ -204,11 +204,11 @@ export default function CaseStudies() {
               onClick={nextSlide}
               disabled={currentSlide >= totalSlides - 1}
               aria-label="Next slide"
-              className={`w-12 h-12 rounded-full border border-[var(--color-border)] bg-[var(--color-surface)] flex items-center justify-center transition-all ${
-                currentSlide >= totalSlides - 1
-                  ? "opacity-50 cursor-not-allowed text-[var(--color-text-muted)]"
-                  : "hover:bg-[var(--color-text)] hover:text-[var(--color-surface)] hover:border-[var(--color-text)] text-[var(--color-text)]"
-              }`}
+              data-magnetic
+              className={`w-12 h-12 rounded-full border border-[var(--color-border)] bg-[var(--color-surface)] flex items-center justify-center transition-all ${currentSlide >= totalSlides - 1
+                ? "opacity-50 cursor-not-allowed text-[var(--color-text-muted)]"
+                : "hover:bg-[var(--color-text)] hover:text-[var(--color-surface)] hover:border-[var(--color-text)] text-[var(--color-text)]"
+                }`}
             >
               <svg
                 width="20"
@@ -251,12 +251,12 @@ export default function CaseStudies() {
                     <Link
                       href={`/case-studies/${study.id}`}
                       className={`absolute inset-0 w-full h-full ${study.previewClass} bg-center bg-cover`}
-                      style={{ 
+                      style={{
                         transform: isExpanded ? 'scale(1)' : 'scale(1)',
                         transition: 'transform 0.7s ease-in-out'
                       }}
                     >
-                      <div 
+                      <div
                         className="absolute inset-0 transition-colors duration-700"
                         style={{
                           backgroundColor: isExpanded ? 'rgba(0, 0, 0, 0.3)' : 'rgba(0, 0, 0, 0.2)'

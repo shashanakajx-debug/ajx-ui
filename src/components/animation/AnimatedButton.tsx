@@ -70,9 +70,14 @@ export default function AnimatedButton<As extends ElementType = "div">(
   }, []);
 
   // Build props based on tag type
+  // Only add magnetic to CTA buttons (those with links)
+  const isCTA = !!href;
+
   const tagProps = {
     className: `btn-anim ${className}`,
     "aria-label": text,
+    ...(isCTA ? { "data-magnetic": true } : {}),
+    ...(isCTA && text ? { "data-tooltip": text.split(' ')[0] } : {}), // Show first word for all CTAs
     ...(href && !isInternalLink ? { href, target } : {}),
     ...(isInternalLink ? { href } : {}),
     ...rest,

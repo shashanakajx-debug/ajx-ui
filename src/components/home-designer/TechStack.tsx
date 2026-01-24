@@ -464,6 +464,7 @@ export default function Techstack() {
               <button
                 key={category}
                 onClick={() => setActiveFilter(category)}
+                data-magnetic
                 className={`px-6 py-2.5 rounded-full border font-medium transition-all duration-300 ${activeFilter === category
                   ? "border-[#119000] bg-[#119000] text-white"
                   : "border-[var(--color-border)] bg-transparent text-[var(--color-text)] hover:border-[#119000] hover:bg-[#119000]"

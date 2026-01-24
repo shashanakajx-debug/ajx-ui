@@ -234,14 +234,13 @@ export default function Header(): React.ReactElement {
 
   return (
     <header
-      className={`mxd-header top-0 w-full z-50 transition-all duration-300 ${
-        isHidden ? "mxd-header--scrolled backdrop-blur-lg-1 py-2" : "py-4"
-      }`}
+      className={`mxd-header top-0 w-full z-50 transition-all duration-300 ${isHidden ? "mxd-header--scrolled backdrop-blur-lg-1 py-2" : "py-4"
+        }`}
     >
       <nav className="container-custom-box navbar-box flex items-center justify-between">
         {/* Logo */}
         <div className="flex items-center">
-          <Link href="/" className="flex items-center gap-2">
+          <Link href="/" className="flex items-center gap-2" data-magnetic>
             <Image
               src="/AJX-black-logo.png"
               alt="AJX Technologies"
@@ -272,9 +271,9 @@ export default function Header(): React.ReactElement {
             >
               <Link
                 href={link.href}
-                className={`font-medium transition-colors] menu-item flex items-center ${
-                  pathname === link.href ? "" : ""
-                }`}
+                className={`font-medium transition-colors] menu-item flex items-center ${pathname === link.href ? "" : ""
+                  }`}
+                data-magnetic
               >
                 {link.label}
                 {link.submenu && (
@@ -297,11 +296,10 @@ export default function Header(): React.ReactElement {
                 <div
                   className={`absolute top-full mt-0 z-50 mega-menu-box
       transition-all duration-200 ease-out
-      ${
-        activeDropdown === link.label
-          ? "opacity-100 scale-100 translate-y-2 visible"
-          : "opacity-0 scale-95 translate-y-2 invisible"
-      }`}
+      ${activeDropdown === link.label
+                      ? "opacity-100 scale-100 translate-y-2 visible"
+                      : "opacity-0 scale-95 translate-y-2 invisible"
+                    }`}
                   onMouseEnter={() => handleMouseEnter(link.label)}
                   onMouseLeave={handleMouseLeave}
                 >
@@ -372,11 +370,13 @@ export default function Header(): React.ReactElement {
         <div className="flex items-center gap-4">
           {/* Mobile Toggle */}
           <button
-            className="lg:hidden hidden p-2"
+            className="lg:hidden p-2"
             onClick={() => setMobileMenuOpen((s) => !s)}
             type="button"
             aria-label="Toggle menu"
             aria-expanded={mobileMenuOpen}
+            data-magnetic
+            data-tooltip="Menu"
           >
             <span className="sr-only">Toggle Menu</span>
             <div className="w-6 h-0.5 bg-current mb-1" />
