@@ -117,7 +117,7 @@ const EXPERTISE: ExpertiseItem[] = [
     number: "07/",
     title: "E-Commerce and CMS",
     class: "",
-    tags: ["Wireframes", "Design Systems", "Figma", "Prototyping", "UX Audit"],
+    tags: ["Shopify Development", "WooCommerce Solutions", "Custom CMS Development", " Headless CMS", "Product & Catalog Management"],
     description:
       "We architect robust commerce and CMS ecosystems that support high traffic, complex catalogs, and long-term business expansion.",
     href: "/our-services/ux-ui-design",

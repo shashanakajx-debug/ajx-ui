@@ -1134,6 +1134,15 @@ html.lenis body {
   padding: 0 20px;
   margin: 0 auto;
 }
+@media only screen and (min-width: 1200px) {
+.mxd-container {
+  position: relative;
+  width: 100%;
+  max-width: 1680px;
+  padding: 0 40px;
+  margin: 0 auto;
+}
+}
 .mxd-container.fullwidth-container {
   max-width: none;
   padding: 0;
@@ -20581,6 +20590,5 @@ form textarea:required:valid {
 @media only screen and (max-width: 1400px) {
 .mxd-container {
   max-width: 1440px;
-  padding: 0 20px;
 }
 }

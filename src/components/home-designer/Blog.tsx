@@ -1,144 +1,104 @@
 import Link from "next/link";
-import RevealText from "@/components/animation/RevealText";
-import AnimatedButton from "@/components/animation/AnimatedButton";
-import BackgroundParallax from "@/components/animation/BackgroundParallax";
-import { Calendar } from "lucide-react";
+import { Clock } from "lucide-react";
+import SectionHeader from "./SectionHeader";
 
 const BLOG_POSTS = [
   {
     id: "1",
-    title: "The Future of AI in Web Development",
-    excerpt:
-      "How artificial intelligence is revolutionizing the way we build and maintain websites.",
-    category: "Technology",
-    date: "Dec 20, 2024",
+    title: "12 Top Financial Analysis Software in 2026",
+    subtitle: "",
+    category: "SOFTWARE",
+    date: "January 5, 2026",
     image: "/blog/ai.png",
     slug: "/blog/future-of-ai-web-development",
+    author: "Serge Guzenko",
+    readTime: "",
   },
   {
     id: "2",
-    title: "Building Scalable SaaS Applications",
-    excerpt:
-      "Best practices for creating cloud-native applications that grow with your business.",
-    category: "Development",
-    date: "Dec 18, 2024",
+    title: "Embedded AI Explained: Use Cases and Practical Applications",
+    subtitle: "Use Cases and Practical Applications",
+    category: "AI & IOT",
+    date: "January 19, 2026",
     image: "/blog/saas.png",
     slug: "/blog/building-scalable-saas",
+    author: "Alex",
+    readTime: "10 min",
   },
   {
     id: "3",
-    title: "Blockchain Beyond Cryptocurrency",
-    excerpt:
-      "Exploring real-world applications of blockchain technology in business.",
-    category: "Innovation",
-    date: "Dec 15, 2024",
+    title: "Risk Management in Software Development",
+    subtitle: "",
+    category: "SOFTWARE",
+    date: "January 19, 2026",
     image: "/blog/blockchain.png",
     slug: "/blog/blockchain-beyond-crypto",
+    author: "Denis",
+    readTime: "",
   },
 ];
 
 export default function Blog() {
   return (
-    <div className="mxd-section padding-blog">
-      <div className="mxd-container">
-        {/* Section Title */}
-        <div className="mxd-block">
-          <div className="mxd-section-title pre-grid">
-            <div className="container-fluid p-0">
-              <div className="row g-0">
-                <div className="col-12 col-xl-5 mxd-grid-item no-margin p-0">
-                  <div className="mxd-section-title__hrtitle">
-                    <RevealText as="h2" className="reveal-type anim-uni-in-up">
-                      Latest insights
-                    </RevealText>
-                  </div>
-                </div>
-
-                <div className="col-12 col-xl-4 mxd-grid-item no-margin p-0">
-                  <div className="mxd-section-title__hrdescr">
-                    <p className="anim-uni-in-up">
-                      Inspiring ideas, creative insights, and the latest in
-                      design and tech. Fueling innovation for your digital
-                      journey.
-                    </p>
-                  </div>
-                </div>
-
-                <div className="col-12 col-xl-3 mxd-grid-item no-margin p-0">
-                  <div className="mxd-section-title__hrcontrols anim-uni-in-up">
-                    <AnimatedButton
-                      text="All Articles"
-                      className="btn btn-anim btn-default btn-outline slide-right-up"
-                      href="/blog"
+    <section className=" our-experties container_ser lg:pt-10 lg:pb-[100px] pt-10 pb-[50px]">
+      <div className="mx-auto row gx-0">
+        <SectionHeader
+          subtitle="THE BLOG"
+          title="AJX Technologies"
+          description="INSIGHTS"
+          buttonText="All Articles"
+          buttonLink="/blog"
+          className=""
+        />
+        <div className="mxd-container">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+            {BLOG_POSTS.map((post) => (
+              <article key={post.id} className="group">
+                <Link
+                  href={post.slug}
+                  className="block relative overflow-hidden rounded-3xl mb-4"
+                >
+                  <div className="relative aspect-[16/10] bg-black">
+                    <img
+                      src={post.image}
+                      alt={post.title}
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      loading="lazy"
                     />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
+                    {post.subtitle && (
+                      <div className="absolute inset-0 flex flex-col justify-end p-6 lg:p-8 text-white">
+                        <h2 className="text-2xl lg:text-3xl font-bold mb-2 leading-tight">
+                          {post.title.split(":")[0]}
+                        </h2>
+                        <p className=" lg:text-base opacity-90">
+                          {post.subtitle}
+                        </p>
+                      </div>
+                    )}
                   </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Blog Cards */}
-        <div className="mxd-block">
-          <div className="mxd-blog-preview">
-            <div className="container-fluid p-0">
-              <div className="row g-0">
-                {BLOG_POSTS.map((post) => (
-                  <div
-                    key={post.id}
-                    className="col-12 col-xl-4 mxd-blog-preview__item mxd-grid-item animate-card-3 p-0"
-                  >
-                    <Link href={post.slug} className="mxd-blog-preview__media">
-                      <BackgroundParallax
-                        className="mxd-blog-preview__image parallax-img-small"
-                        style={{
-                          backgroundImage: `url(${post.image})`,
-                        }}
-                      />
-
-                      <div className="mxd-preview-hover">
-                        <i className="mxd-preview-hover__icon">
-                          <svg
-                            width="38"
-                            height="21"
-                            viewBox="0 0 38 21"
-                            fill="none"
-                          >
-                            <path
-                              d="M19 0C11 0 4 5 1 11c3 6 10 11 18 11s15-5 18-11c-3-6-10-11-18-11zm0 18c-4 0-7-3-7-7s3-7 7-7 7 3 7 7-3 7-7 7zm0-11c-2 0-4 2-4 4s2 4 4 4 4-2 4-4-2-4-4-4z"
-                              fill="currentColor"
-                            />
-                          </svg>
-                        </i>
-                      </div>
-
-                      <div className="mxd-blog-preview__tags">
-                        <span className="tag tag-default tag-permanent">
-                          {post.category}
-                        </span>
-                      </div>
+                </Link>
+                <div className="space-y-3">
+                  <div className="flex items-center gap-3 anim-uni-in-up">
+                    <Link
+                      href={`/blog/category/${post.category.toLowerCase().replace(/\s+&\s+/g, "-")}`}
+                      className="inline-flex items-center px-4 py-1.5 bg-[#119000] hover:bg-[#119000] text-white text-xs font-bold rounded-lg uppercase tracking-wide transition-colors duration-200"
+                    >
+                      {post.category}
                     </Link>
-                    <div className="flex items-center gap-2 mb-3 text-xs anim-uni-in-up">
-                        <Calendar className="w-4 h-4" />
-                        <span>{post.date}</span>
-                      </div>
-                    <div className="mxd-blog-preview__data">
-                      <Link className="anim-uni-in-up" href={post.slug}>
-                        {post.title}
-                      </Link>
-
-                      <p className="anim-uni-in-up mt-2 text-sm">
-                        {post.excerpt}
-                      </p>
-
-                    </div>
+                    <span className="text-gray-600 ">{post.date}</span>
                   </div>
-                ))}
-              </div>
-            </div>
+                  <Link href={post.slug} className="block">
+                    <h3 className="transition-colors duration-200 anim-uni-in-up leading-tight">
+                      {post.title}
+                    </h3>
+                  </Link>
+                </div>
+              </article>
+            ))}
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 }
