@@ -25,7 +25,7 @@ const caseStudies: CaseStudy[] = [
     description: "template for modern agencies",
     category: "UI/UX",
     previewClass: "preview-image-1",
-    tags: ["UI/UX", "Web design", "Illustrations"],
+    tags: ["UI/UX", "AI", "Web design", "Illustrations"],
     anim: "anim-uni-in-up",
     metrics: {
       percentage: "100%",
@@ -96,7 +96,7 @@ export default function CaseStudies() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [hoveredId, setHoveredId] = useState<number | null>(null);
 
-  const categories = ["UI/UX", "WEB DESIGN", "PACKAGING", "3D MODELS"];
+  const categories = ["UI/UX", "AI", "WEB DESIGN", "PACKAGING", "3D MODELS"];
 
   const totalSlides = caseStudies.length;
 
@@ -158,6 +158,7 @@ export default function CaseStudies() {
                 key={cat}
                 onClick={() => handleFilterClick(cat)}
                 data-magnetic
+                data-tooltip={cat}
                 className={`px-6 py-2.5 rounded-full border font-medium transition-all duration-300 ${activeCategory === cat
                   ? "border-[#119000] bg-[#119000] text-white"
                   : "border-[var(--color-border)] bg-transparent text-[var(--color-text)] hover:border-[#119000] hover:bg-[#119000]"
@@ -174,6 +175,7 @@ export default function CaseStudies() {
               disabled={currentSlide === 0}
               aria-label="Previous slide"
               data-magnetic
+              data-tooltip="Previous Slide"
               className={`w-12 h-12 rounded-full border border-[var(--color-border)] bg-[var(--color-surface)] flex items-center justify-center transition-all ${currentSlide === 0
                 ? "opacity-50 cursor-not-allowed text-[var(--color-text-muted)]"
                 : "hover:bg-[var(--color-text)] hover:text-[var(--color-surface)] hover:border-[var(--color-text)] text-[var(--color-text)]"
@@ -205,6 +207,7 @@ export default function CaseStudies() {
               disabled={currentSlide >= totalSlides - 1}
               aria-label="Next slide"
               data-magnetic
+              data-tooltip="Next Slide"
               className={`w-12 h-12 rounded-full border border-[var(--color-border)] bg-[var(--color-surface)] flex items-center justify-center transition-all ${currentSlide >= totalSlides - 1
                 ? "opacity-50 cursor-not-allowed text-[var(--color-text-muted)]"
                 : "hover:bg-[var(--color-text)] hover:text-[var(--color-surface)] hover:border-[var(--color-text)] text-[var(--color-text)]"
@@ -241,25 +244,27 @@ export default function CaseStudies() {
                   onMouseEnter={() => setHoveredId(study.id)}
                   onMouseLeave={() => setHoveredId(null)}
                   className={`rounded-[2rem] overflow-hidden shadow-sm hover:shadow-xl transition-all duration-700 ease-in-out border border-[var(--color-border)] flex flex-col bg-[var(--color-surface)] ${visibilityClass}`}
-                  style={{ height: '425px' }}
+                  style={{ height: "425px" }}
                 >
                   {/* Image - shrinks on hover */}
                   <div
                     className="relative overflow-hidden flex-shrink-0 transition-all duration-700 ease-in-out"
-                    style={{ height: isExpanded ? '150px' : '320px' }}
+                    style={{ height: isExpanded ? "150px" : "320px" }}
                   >
                     <Link
                       href={`/case-studies/${study.id}`}
                       className={`absolute inset-0 w-full h-full ${study.previewClass} bg-center bg-cover`}
                       style={{
-                        transform: isExpanded ? 'scale(1)' : 'scale(1)',
-                        transition: 'transform 0.7s ease-in-out'
+                        transform: isExpanded ? "scale(1)" : "scale(1)",
+                        transition: "transform 0.7s ease-in-out",
                       }}
                     >
                       <div
                         className="absolute inset-0 transition-colors duration-700"
                         style={{
-                          backgroundColor: isExpanded ? 'rgba(0, 0, 0, 0.3)' : 'rgba(0, 0, 0, 0.2)'
+                          backgroundColor: isExpanded
+                            ? "rgba(0, 0, 0, 0.3)"
+                            : "rgba(0, 0, 0, 0.2)",
                         }}
                       />
                     </Link>
@@ -268,7 +273,7 @@ export default function CaseStudies() {
                   {/* Content - fills remaining space */}
                   <div
                     className="p-8 flex flex-col transition-all duration-700 ease-in-out"
-                    style={{ height: isExpanded ? '300px' : '200px' }}
+                    style={{ height: isExpanded ? "300px" : "200px" }}
                   >
                     <div className="flex justify-between items-start gap-4 mb-4">
                       <div>
@@ -341,7 +346,10 @@ export default function CaseStudies() {
                           href={`/case-studies/${study.id}`}
                           className="w-full bg-[#119000] hover:bg-[#0e7500] text-white font-bold py-4 rounded-full flex items-center justify-between px-8 transition-colors group mt-auto"
                         >
-                          <span>View Full Case Study</span>
+                          <span data-magnetic data-tooltip="View Full Case Study">
+                            View Full Case Study
+                          </span>
+
                           <svg
                             width="20"
                             height="20"

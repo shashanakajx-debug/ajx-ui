@@ -159,6 +159,7 @@ const ExpertiseRow = ({
             className="group heading-ultra w-full text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-black/40 focus-visible:ring-offset-2"
             aria-expanded={isActive}
             data-magnetic
+            data-tooltip={item.title}
           >
             <div
               className="relative inline-block text-4xl font-extrabold leading-[1.05] tracking-tight sm:text-5xl after:content-[''] after:absolute after:left-0 after:-bottom-2.5 after:w-full after:h-[3px] after:bg-[#119000] after:rounded-full after:scale-x-0 after:origin-left after:transition-transform after:duration-260 after:ease-out group-hover:after:scale-x-100 data-[active=true]:after:scale-x-100"

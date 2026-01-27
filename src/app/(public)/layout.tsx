@@ -5,6 +5,7 @@ import MobileMenu from '@/components/organisms/Header/MobileMenu';
 import InitScroll from '@/components/scroll/InitScroll';
 import LenisSmoothScroll from '@/components/scroll/LenisSmoothScroll';
 import Loader from '@/components/common/Loader';
+import CustomCursor from '@/components/CustomCursor';
 
 import ChatWidget from '@/components/ai-chatbot/ChatWidget';
 import ScrollNextSection from '@/components/ScrollNextSection';
@@ -17,6 +18,7 @@ export default function PublicLayout({
     return (
         <div className="loading-wrap !overflow-visible">
             <Loader />
+            <CustomCursor/>
             <InitScroll />
             <LenisSmoothScroll />
             <MobileMenu />

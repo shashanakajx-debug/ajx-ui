@@ -11,6 +11,7 @@ import CaseStudies from "@/components/home-designer/CaseStudies";
 import Testimonials from "@/components/home-designer/Testimonials";
 import Industries from "@/components/home-designer/Industries";
 import TechStack from "@/components/home-designer/TechStack";
+import {ProcessStepper} from "@/components/home-designer/process/ProcessStepper"
 // import FinalCta from "@/components/home-designer/FinalCta";
 
 
@@ -68,6 +69,7 @@ export default function HomePage() {
       <ParallaxDivider />
       <OurExpertise />
       <About />
+      <ProcessStepper/>
       <CaseStudies />
       <Testimonials />
       <Industries />

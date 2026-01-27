@@ -297,7 +297,7 @@ export default function Header(): React.ReactElement {
                   className={`absolute top-full mt-0 z-50 mega-menu-box
       transition-all duration-200 ease-out
       ${activeDropdown === link.label
-                      ? "opacity-100 scale-100 translate-y-2 visible"
+                      ? "opacity-100 scale-100 translate-y-0 visible"
                       : "opacity-0 scale-95 translate-y-2 invisible"
                     }`}
                   onMouseEnter={() => handleMouseEnter(link.label)}
@@ -370,7 +370,7 @@ export default function Header(): React.ReactElement {
         <div className="flex items-center gap-4">
           {/* Mobile Toggle */}
           <button
-            className="lg:hidden p-2"
+            className="lg:hidden p-2 hidden"
             onClick={() => setMobileMenuOpen((s) => !s)}
             type="button"
             aria-label="Toggle menu"

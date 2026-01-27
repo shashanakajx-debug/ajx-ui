@@ -135,6 +135,7 @@ export default function Industries() {
                       key={industry.id}
                       onClick={() => setSelectedIndustry(industry.id)}
                       data-magnetic
+                      data-tooltip={industry.id.charAt(0).toUpperCase() + industry.id.slice(1)}
                       className={`w-full text-left p-4 rounded-xl border-2 transition-all duration-300 group hover:border-green-500 ${isSelected
                         ? "bg-green-50 border-green-500"
                         : "bg-white border-gray-200 hover:bg-gray-50"

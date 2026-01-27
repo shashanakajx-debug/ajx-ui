@@ -19,7 +19,7 @@ export interface Portfolio {
     title: string;
     slug: string;
     description: string;
-    category: 'Shopify' | 'WordPress' | 'Squarespace' | 'E-commerce' | 'Custom';
+    category: 'Shopify' | 'WordPress' | 'Squarespace' | 'E-commerce' | 'Custom' | 'AI' | 'UI & UX';
     imageUrl: string;
     clientName: string;
     industry: string;

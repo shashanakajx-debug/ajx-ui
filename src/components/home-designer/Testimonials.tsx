@@ -62,7 +62,7 @@ export default function Testimonials() {
   return (
     <div
       id="testimonials"
-      className="mxd-section overflow-hidden padding-default "
+      className="mxd-section overflow-hidden padding-default"
     >
       <div className="mxd-container">
         <div className="mx-auto row gx-0">
@@ -78,7 +78,7 @@ export default function Testimonials() {
           <div className="w-full mt-8 md:mt-12">
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
               <div className="w-full lg:col-span-1">
-                <div className="h-full  bg-gray-100 rounded-[28px] p-8 md:p-12 flex flex-col justify-center items-center text-center text-black">
+                <div className="h-full bg-gray-100 rounded-[28px] p-8 md:p-12 flex flex-col justify-center items-center text-center text-black">
                   <div className="mb-4">
                     <span className="text-[64px] md:text-[80px] font-medium leading-none tracking-tight">
                       5.0
@@ -115,15 +115,15 @@ export default function Testimonials() {
                         if (swiperInstance) swiperInstance.slidePrev();
                       }}
                       className="w-14 h-14 rounded-full border border-gray-300 flex items-center justify-center transition-all hover:bg-black hover:text-white group"
-                      aria-label="Previous Slide"
-                      data-magnetic
+                      aria-label="Previous testimonial"
+                      title="Previous testimonial"
                     >
                       <ArrowLeft className="w-6 h-6 group-hover:stroke-current" />
                     </button>
 
-                    <div className=" font-medium">
-                      <span className="text-black"> {activeIndex + 1} </span>
-                      <span className="text-black/40"> / {totalSlides} </span>
+                    <div className="font-medium">
+                      <span className="text-black">{activeIndex + 1}</span>
+                      <span className="text-black/40"> / {totalSlides}</span>
                     </div>
 
                     <button
@@ -131,8 +131,8 @@ export default function Testimonials() {
                         if (swiperInstance) swiperInstance.slideNext();
                       }}
                       className="w-14 h-14 rounded-full border border-gray-300 flex items-center justify-center transition-all hover:bg-black hover:text-white group"
-                      aria-label="Next Slide"
-                      data-magnetic
+                      aria-label="Next testimonial"
+                      title="Next testimonial"
                     >
                       <ArrowRight className="w-6 h-6 group-hover:stroke-current" />
                     </button>
@@ -156,19 +156,17 @@ export default function Testimonials() {
                   }}
                   className="h-100 flex"
                 >
-                  {testimonialsData.map((item, idx) => (
+                  {testimonialsData.map((item) => (
                     <SwiperSlide
                       key={item.id}
                       className="!filter-none h-100 !opacity-100 relative flex border-r-2"
                     >
-
                       <div className="flex items-stretch px-8 md:px-12">
-
                         <div className="w-full flex flex-col bg-transparent justify-between h-full">
                           <div className="flex flex-col items-start gap-4 mb-8">
                             <Image
                               src="/clutch1.png"
-                              alt="Clutch"
+                              alt="Clutch Reviews"
                               width={100}
                               height={32}
                               className="h-7 w-auto object-contain"
@@ -177,7 +175,7 @@ export default function Testimonials() {
                               {item.tags.map((tag) => (
                                 <span
                                   key={tag}
-                                  className="px-3 py-1 rounded-full border border-gray-200 font-semibold tracking-wide"
+                                  className="px-3 py-1 rounded-full border border-gray-200 font-semibold tracking-wide text-sm"
                                 >
                                   {tag}
                                 </span>
@@ -186,32 +184,31 @@ export default function Testimonials() {
                           </div>
 
                           <div className="flex items-center gap-2 mb-6">
-                            <span className="text-2xl font-bold ">
+                            <span className="text-2xl font-bold">
                               {item.rating.toFixed(1)}
                             </span>
                             <div className="flex gap-1 text-[#FFB400]">
-                              {Array.from({ length: item.rating }).map(
-                                (_, i) => (
-                                  <Star
-                                    key={i}
-                                    className="w-6 h-6 fill-current"
-                                    strokeWidth={0}
-                                  />
-                                ),
-                              )}
+                              {Array.from({ length: item.rating }).map((_, i) => (
+                                <Star
+                                  key={i}
+                                  className="w-6 h-6 fill-current"
+                                  strokeWidth={0}
+                                />
+                              ))}
                             </div>
                           </div>
 
-                          <p className=" leading-relaxed mb-8">
+                          <p className="leading-relaxed mb-8 text-gray-700">
                             "{item.text}"
                           </p>
 
                           <div className="mt-auto">
                             <a
                               href={item.link}
-                              className="inline-flex items-center font-semibold hover:underline mb-8 text-lg"
+                              className="inline-flex items-center font-semibold hover:underline mb-8 text-lg transition-all"
+                              title={`View ${item.authorCompany} case study`}
                             >
-                              Case studies{" "}
+                              Case studies
                               <ArrowUpRight className="ml-1 w-5 h-5" />
                             </a>
 
@@ -219,7 +216,7 @@ export default function Testimonials() {
                               <div className="w-14 h-14 rounded-full overflow-hidden flex-shrink-0 bg-gray-200">
                                 <Image
                                   src={item.authorPhoto}
-                                  alt={item.authorName}
+                                  alt={`${item.authorName} profile picture`}
                                   width={56}
                                   height={56}
                                   className="w-full h-full object-cover"
@@ -229,7 +226,7 @@ export default function Testimonials() {
                                 <h4 className="font-bold m-0">
                                   {item.authorName}
                                 </h4>
-                                <p className="text-base m-0">
+                                <p className="text-base m-0 text-gray-600">
                                   {item.authorPosition}, {item.authorCompany}
                                 </p>
                               </div>

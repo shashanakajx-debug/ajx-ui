@@ -5485,7 +5485,7 @@ form textarea:required:valid {
 @media only screen and (min-width: 768px) {
   .mxd-nav__contain {
     min-height: 5.6rem;
-    margin-top: 1rem;
+    margin-top: 2rem;
     padding: 0 6rem;
   }
 }

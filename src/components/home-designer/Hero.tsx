@@ -72,6 +72,7 @@ export default function Hero() {
                   borderRadius: "50px",
                   padding: "12px 32px",
                 }}
+                tooltip="Get Started"
               >
                 <i className="ph-bold ph-arrow-up-right" />
               </AnimatedButton>

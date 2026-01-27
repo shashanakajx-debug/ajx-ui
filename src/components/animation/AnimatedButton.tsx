@@ -15,6 +15,7 @@ type OwnProps = {
   children?: React.ReactNode;
   href?: string;
   target?: string;
+  tooltip?: string;
 };
 
 type PolyProps<As extends ElementType> = OwnProps &
@@ -40,13 +41,10 @@ export default function AnimatedButton<As extends ElementType = "div">(
     position = "next",
     href,
     target,
+    tooltip,
     ...rest
-  } = props as PolyProps<ElementType>;
+  } = props as PolyProps<ElementType> & { tooltip?: string };
 
-  // Determine the tag to use
-  // If href is provided and it's internal (starts with /), use Link
-  // If href is provided and external or target="_blank", use 'a'
-  // Otherwise use the specified 'as' or default to 'div'
   let Tag: ElementType;
   let isInternalLink = false;
 
@@ -69,15 +67,15 @@ export default function AnimatedButton<As extends ElementType = "div">(
     setIsMounted(true);
   }, []);
 
-  // Build props based on tag type
-  // Only add magnetic to CTA buttons (those with links)
   const isCTA = !!href;
+
+  const userTooltip = tooltip !== undefined ? tooltip : (text ? text.split(' ')[0] : "");
 
   const tagProps = {
     className: `btn-anim ${className}`,
     "aria-label": text,
     ...(isCTA ? { "data-magnetic": true } : {}),
-    ...(isCTA && text ? { "data-tooltip": text.split(' ')[0] } : {}), // Show first word for all CTAs
+    ...(isCTA && userTooltip ? { "data-tooltip": userTooltip } : {}),
     ...(href && !isInternalLink ? { href, target } : {}),
     ...(isInternalLink ? { href } : {}),
     ...rest,
@@ -91,7 +89,6 @@ export default function AnimatedButton<As extends ElementType = "div">(
     onMouseLeave: () => setPlay(false),
   };
 
-  // Prevent hydration mismatch by rendering static content on server
   if (!isMounted) {
     return (
       <Tag {...tagProps}>

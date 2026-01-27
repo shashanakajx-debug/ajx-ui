@@ -139,6 +139,12 @@ export default function About() {
                       <p className="lg:text[28px] text-[20px] mb-8">We help businesses stand out and
                         every aspect of our projects is crafted with the highest
                         standards of quality.</p>
+                        <p className="lg:text[28px] text-[20px] mb-8">We help businesses stand out and
+                        every aspect of our projects is crafted with the highest
+                        standards of quality.</p>
+                        <p className="lg:text[28px] text-[20px] mb-8">We help businesses stand out and
+                        every aspect of our projects is crafted with the highest
+                        standards of quality.</p>
                     </RevealText>
                   </div>
                   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-6 w-full">

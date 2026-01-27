@@ -92,6 +92,7 @@ export default function Footer() {
               text="Let's talk"
               className="btn slide-right-up btn-outline btn-small anim-uni-in-up"
               href={`/contact`}
+              tooltip=""
             >
               <ArrowUpRight className="w-[18px] h-[18px] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-300" />
             </AnimatedButton>
