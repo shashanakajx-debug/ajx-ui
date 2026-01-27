@@ -64,9 +64,7 @@ export default function Testimonials() {
       id="testimonials"
       className="mxd-section overflow-hidden padding-default"
     >
-      <div className="mxd-container">
-        <div className="mx-auto row gx-0">
-          <SectionHeader
+      <SectionHeader
             subtitle="TESTIMONIALS"
             title="Ajx Technologies"
             description="Trusted by clients"
@@ -74,6 +72,9 @@ export default function Testimonials() {
             buttonLink="/testimonials"
             className="col-12"
           />
+      <div className="mxd-container">
+        <div className="mx-auto row gx-0">
+          
 
           <div className="w-full mt-8 md:mt-12">
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
@@ -165,8 +166,8 @@ export default function Testimonials() {
                         <div className="w-full flex flex-col bg-transparent justify-between h-full">
                           <div className="flex flex-col items-start gap-4 mb-8">
                             <Image
-                              src="/clutch1.png"
-                              alt="Clutch Reviews"
+                              src="/upworklogo-black.png"
+                              alt="Upwork Reviews"
                               width={100}
                               height={32}
                               className="h-7 w-auto object-contain"

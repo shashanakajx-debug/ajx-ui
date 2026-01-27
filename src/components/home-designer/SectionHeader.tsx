@@ -22,8 +22,10 @@ export default function SectionHeader({
     showButton = true,
 }: SectionHeaderProps) {
     return (
+       <div className="border-bottom mb-12 md:mb-16 pb-[40px]">
+        <div className="mxd-container">
         <div
-            className={`mb-12 md:mb-16 pb-[40px] lg:flex md:flex md:items-center items-left gap-3 md:text-center border-bottom justify-between relative ${className}`}
+            className={` lg:flex md:flex md:items-center items-left gap-3 md:text-center justify-between relative ${className}`}
         >
             <div className="left-content ">
                 <p className="mxd-point-subtitle">
@@ -51,7 +53,7 @@ export default function SectionHeader({
                     <span>{subtitle}</span>
                 </p>
             </div>
-            <div className="heading md:text-center anim-uni-in-up">
+            <div className="heading md:text-center">
                 <h2 className="">{title}</h2>
                 <h2 className="md:mb-3 mb-3">{description}</h2>
             </div>
@@ -66,6 +68,8 @@ export default function SectionHeader({
                     </AnimatedButton>
                 </div>
             )}
+        </div>
+        </div>
         </div>
     );
 }

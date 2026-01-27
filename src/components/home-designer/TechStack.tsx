@@ -447,9 +447,7 @@ export default function Techstack() {
   return (
     <div>
       <div className="mxd-section techicon padding-grid-pre-pinned">
-        <div className="mxd-container pb-[40px]">
-          <div className="mx-auto row gx-0">
-            <SectionHeader
+        <SectionHeader
               subtitle="TECH STACK"
               title="The Technology Stack"
               description="That Drives Results"
@@ -457,6 +455,9 @@ export default function Techstack() {
               buttonLink="/tech-stack"
               className="col-12"
             />
+        <div className="mxd-container pb-[40px]">
+          <div className="mx-auto row gx-0">
+            
           </div>
 
           <div className="flex md:justify-center items-center gap-3 mb-12 flex-wrap">

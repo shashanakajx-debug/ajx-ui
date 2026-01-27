@@ -1324,9 +1324,9 @@ section.process .pathStage {
   position: relative;
   z-index: 1;
 }
-
 .circle-animation:before {
-  content: url("/FuturisticTechnology/aiCircleService.png");
+  content: "";
+  background-image: url(/FuturisticTechnology/aiCircleService.png);
   position: absolute;
   width: 400px;
   height: 400px;
@@ -1503,13 +1503,9 @@ footer {
   font-size: 14px;
 }
 .circle-animation-w {
-    max-height: 330px;
     height: 330px;
   }
-  .circle-animation-w {
-    max-height: 430px;
-    height: 430px;
-  }
+ 
 
   .hamburger__base {
     padding-top: 2rem;

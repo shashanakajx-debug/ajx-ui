@@ -92,7 +92,7 @@ export default function MobileMenu() {
       data-lenis-prevent=""
     >
       {/* Hamburger Section */}
-      <div className="mxd-nav__contain loading__fade">
+      <div className="mxd-nav__contain loading__fade !hidden lg:!block">
         <a
           href="#"
           onClick={(e) => {

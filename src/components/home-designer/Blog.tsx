@@ -40,13 +40,13 @@ const BLOG_POSTS = [
 export default function Blog() {
   return (
     <div className="mxd-section padding-blog">
-      <div className="mxd-container grid-container">
+      <div className="mxd-container">
         {/* Section Title */}
         <div className="mxd-block">
           <div className="mxd-section-title pre-grid">
             <div className="container-fluid p-0">
               <div className="row g-0">
-                <div className="col-12 col-xl-5 mxd-grid-item no-margin">
+                <div className="col-12 col-xl-5 mxd-grid-item no-margin p-0">
                   <div className="mxd-section-title__hrtitle">
                     <RevealText as="h2" className="reveal-type anim-uni-in-up">
                       Latest insights
@@ -54,7 +54,7 @@ export default function Blog() {
                   </div>
                 </div>
 
-                <div className="col-12 col-xl-4 mxd-grid-item no-margin">
+                <div className="col-12 col-xl-4 mxd-grid-item no-margin p-0">
                   <div className="mxd-section-title__hrdescr">
                     <p className="anim-uni-in-up">
                       Inspiring ideas, creative insights, and the latest in
@@ -64,7 +64,7 @@ export default function Blog() {
                   </div>
                 </div>
 
-                <div className="col-12 col-xl-3 mxd-grid-item no-margin">
+                <div className="col-12 col-xl-3 mxd-grid-item no-margin p-0">
                   <div className="mxd-section-title__hrcontrols anim-uni-in-up">
                     <AnimatedButton
                       text="All Articles"
@@ -86,7 +86,7 @@ export default function Blog() {
                 {BLOG_POSTS.map((post) => (
                   <div
                     key={post.id}
-                    className="col-12 col-xl-4 mxd-blog-preview__item mxd-grid-item animate-card-3"
+                    className="col-12 col-xl-4 mxd-blog-preview__item mxd-grid-item animate-card-3 p-0"
                   >
                     <Link href={post.slug} className="mxd-blog-preview__media">
                       <BackgroundParallax

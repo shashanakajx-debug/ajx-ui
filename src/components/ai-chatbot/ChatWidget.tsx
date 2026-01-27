@@ -74,6 +74,12 @@ export default function ChatWidget() {
   }, [open]);
 
   useEffect(() => {
+    const handleToggle = () => setOpen((prev) => !prev);
+    window.addEventListener("AJX_TOGGLE_CHAT", handleToggle);
+    return () => window.removeEventListener("AJX_TOGGLE_CHAT", handleToggle);
+  }, []);
+
+  useEffect(() => {
     if (messages.length > 0) {
       window.localStorage.setItem(
         "ajx_ai_chat_messages",
@@ -360,7 +366,7 @@ export default function ChatWidget() {
 
 
       <button
-        className="pointer-events-auto h-20 w-20 md:h-24 md:w-24 rounded-full shadow-2xl flex items-center justify-center transition-all duration-300 hover:scale-105 active:scale-95 overflow-hidden bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500 p-1"
+        className="pointer-events-auto h-20 w-20 md:h-24 md:w-24 rounded-full shadow-2xl hidden md:flex items-center justify-center transition-all duration-300 hover:scale-105 active:scale-95 overflow-hidden bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500 p-1"
         onClick={() => setOpen(!open)}
         data-magnetic
         data-tooltip="Chat"

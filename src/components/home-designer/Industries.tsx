@@ -112,9 +112,7 @@ export default function Industries() {
 
   return (
     <div className="mxd-section overflow-hidden padding-grid-pre-mtext">
-      <div className="mxd-container">
-        <div className="mx-auto row gx-0">
-          <SectionHeader
+      <SectionHeader
             subtitle="INDUSTRY SOLUTIONS"
             title="AI Solutions"
             description="to Your Industry"
@@ -122,6 +120,8 @@ export default function Industries() {
             buttonLink="/industries"
             className="col-12"
           />
+      <div className="mxd-container">
+        <div className="mx-auto row gx-0">
 
           <div className="w-full mt-12">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">

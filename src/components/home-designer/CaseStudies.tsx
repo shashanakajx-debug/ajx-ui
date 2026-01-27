@@ -126,7 +126,15 @@ export default function CaseStudies() {
   };
 
   return (
-    <section className="py-12 md:py-20 px-5 overflow-hidden transition-colors duration-300">
+    <section className="py-12 md:py-20 overflow-hidden transition-colors duration-300">
+        <SectionHeader
+          subtitle="CASE STUDIES"
+          title="Proven Results"
+          description="Across Industries"
+          buttonText="View More"
+          buttonLink="/case-studies"
+        />
+      <div className="mxd-container">
       <style jsx>{`
         @keyframes smoothFadeIn {
           from {
@@ -142,14 +150,8 @@ export default function CaseStudies() {
           animation: smoothFadeIn 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
         }
       `}</style>
-      <div className="max-w-[1400px] mx-auto">
-        <SectionHeader
-          subtitle="CASE STUDIES"
-          title="Proven Results"
-          description="Across Industries"
-          buttonText="View More"
-          buttonLink="/case-studies"
-        />
+      <div className="">
+      
 
         <div className="flex flex-col md:flex-row justify-between items-center mb-10 gap-6">
           <div className="flex flex-wrap gap-3">
@@ -374,6 +376,7 @@ export default function CaseStudies() {
             })}
           </div>
         </div>
+      </div>
       </div>
     </section>
   );

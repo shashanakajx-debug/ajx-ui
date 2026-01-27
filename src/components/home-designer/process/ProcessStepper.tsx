@@ -4,7 +4,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 import { Clock, Check, ArrowRight, Layers } from "lucide-react";
-import { processSteps } from "./processSteps"; // <-- data imported
+import { processSteps } from "./processSteps";
+import SectionHeader from "../SectionHeader";
 
 function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -16,38 +17,21 @@ export const ProcessStepper = () => {
   const Icon = currentStep.icon;
 
   return (
-    <section className="mxd-container py-20 px-4 bg-gradient-to-b from-background via-primary/5 to-background">
-      <div className="mx-auto row gx-0">
-        {/* Header */}
-        <motion.div
-          className="text-center mb-16"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-        >
-          <span className="inline-block px-4 py-1.5 rounded-full bg-[#119000]/10 text-sm font-medium mb-4">
-            Design 7 — Interactive Stepper
-          </span>
-          <h2 className="text-4xl md:text-6xl font-bold text-foreground mb-4">
-            Step by Step Excellence
-          </h2>
-          <p className="text-lg text-muted-foreground">
-            Click any step to explore in detail
-          </p>
-        </motion.div>
-
+      <section className=" our-experties container_ser lg:pt-10 lg:pb-[100px] pt-10 pb-[50px]">
+         <SectionHeader
+            subtitle="PROCESS STEPPER"
+            title="Step by Step"
+            description="Excellence"
+            buttonText="View More"
+            buttonLink="/industries"
+            className="col-12"
+          />
+       <div className="mxd-container"> 
+        <div className="mx-auto row gx-0">
+         
         <div className="grid lg:grid-cols-[320px,1fr] gap-8">
           {/* Steps sidebar */}
           <div className="relative">
-            {/* Vertical progress line */}
-            <div className="absolute left-6 top-0 bottom-0 w-0.5 bg-border">
-              <motion.div
-                className="w-full bg-gradient-to-b from-accent bg-[#119000]"
-                initial={{ height: "0%" }}
-                animate={{ height: `${((activeStep + 1) / processSteps.length) * 100}%` }}
-                transition={{ duration: 0.5, ease: "easeInOut" }}
-              />
-            </div>
 
             <div className="space-y-2 relative">
               {processSteps.map((step, index) => (
@@ -60,7 +44,7 @@ export const ProcessStepper = () => {
                     "w-full flex items-center bg-[#fff] gap-4 p-4 rounded-2xl text-left transition-all duration-300",
                     index === activeStep
                       ? "bg-card border border-accent/50 bg-[#faf7f6] text-whiteshadow-card"
-                      : "hover:bg-card/50"
+                      : "hover:bg-card/50",
                   )}
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
@@ -75,7 +59,7 @@ export const ProcessStepper = () => {
                         ? " text-white bg-[#119000]"
                         : index < activeStep
                           ? "bg-step-complete"
-                          : " bg-border"
+                          : " bg-border",
                     )}
                     animate={index === activeStep ? { scale: [1, 1.1, 1] } : {}}
                     transition={{ duration: 0.5 }}
@@ -86,16 +70,20 @@ export const ProcessStepper = () => {
                       <step.icon
                         className={cn(
                           "w-5 h-5 transition-colors",
-                          index === activeStep ? "text-accent-foreground" : "text-muted-foreground"
+                          index === activeStep
+                            ? "text-accent-foreground"
+                            : "text-muted-foreground",
                         )}
                       />
                     )}
                   </motion.div>
-                  <div className="flex-1 min-w-0">
+                  <div className="flex-1 min-w-0 text-black">
                     <span
                       className={cn(
                         "text-xs font-semibold tracking-wider",
-                        index === activeStep ? "text-black" : "text-muted-foreground"
+                        index === activeStep
+                          ? "text-black"
+                          : "text-muted-foreground",
                       )}
                     >
                       STEP {step.id}
@@ -103,7 +91,9 @@ export const ProcessStepper = () => {
                     <h4
                       className={cn(
                         "font-semibold truncate transition-colors",
-                        index === activeStep ? "text-foreground" : "text-muted-foreground"
+                        index === activeStep
+                          ? "text-foreground text-black"
+                          : "text-muted-foreground text-black",
                       )}
                     >
                       {step.title}
@@ -130,7 +120,7 @@ export const ProcessStepper = () => {
                 animate={{ opacity: 1, y: 0, scale: 1 }}
                 exit={{ opacity: 0, y: -20, scale: 0.98 }}
                 transition={{ duration: 0.4, ease: "easeOut" }}
-                className="bg-card border border-border rounded-3xl p-8 md:p-10 shadow-elevated"
+                className="bg-card border border-border rounded-3xl p-14 md:p-14shadow-elevated"
               >
                 {/* Header with 3D icon */}
                 <div className="flex flex-col md:flex-row md:items-center gap-6 mb-8">
@@ -144,7 +134,11 @@ export const ProcessStepper = () => {
                       <motion.div
                         className="absolute inset-0 bg-gradient-to-tr from-white/20 to-transparent"
                         animate={{ x: ["-100%", "100%"] }}
-                        transition={{ duration: 2, repeat: Infinity, repeatDelay: 3 }}
+                        transition={{
+                          duration: 2,
+                          repeat: Infinity,
+                          repeatDelay: 3,
+                        }}
                       />
                       <Icon className="w-12 h-12 text-accent-foreground relative z-10" />
                     </div>
@@ -202,7 +196,9 @@ export const ProcessStepper = () => {
                       <div className="w-10 h-10 rounded-xl bg-accent/10 flex items-center justify-center">
                         <Layers className="w-5 h-5" />
                       </div>
-                      <h4 className="font-bold text-foreground">Key Activities</h4>
+                      <h4 className="font-bold text-foreground">
+                        Key Activities
+                      </h4>
                     </div>
                     <ul className="space-y-3">
                       {currentStep.details.activities.map((activity, i) => (
@@ -214,7 +210,9 @@ export const ProcessStepper = () => {
                           transition={{ delay: 0.45 + i * 0.05 }}
                         >
                           <ArrowRight className="w-4 h-4 mt-0.5 flex-shrink-0" />
-                          <span className="text-sm text-muted-foreground">{activity}</span>
+                          <span className="text-sm text-muted-foreground">
+                            {activity}
+                          </span>
                         </motion.li>
                       ))}
                     </ul>
@@ -230,33 +228,41 @@ export const ProcessStepper = () => {
                       <div className="w-10 h-10 rounded-xl bg-step-complete/20 flex items-center justify-center">
                         <Check className="w-5 h-5 text-step-complete" />
                       </div>
-                      <h4 className="font-bold text-foreground">Deliverables</h4>
+                      <h4 className="font-bold text-foreground">
+                        Deliverables
+                      </h4>
                     </div>
                     <ul className="space-y-3">
-                      {currentStep.details.deliverables.map((deliverable, i) => (
-                        <motion.li
-                          key={i}
-                          className="flex items-start gap-3 p-3 text-white bg-[#119000] rounded-xl"
-                          initial={{ opacity: 0, y: 10 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          transition={{ delay: 0.45 + i * 0.05 }}
-                        >
-                          <Check className="w-4 h-4 text-step-complete mt-0.5 flex-shrink-0" />
-                          <span className="text-sm text-muted-foreground">{deliverable}</span>
-                        </motion.li>
-                      ))}
+                      {currentStep.details.deliverables.map(
+                        (deliverable, i) => (
+                          <motion.li
+                            key={i}
+                            className="flex items-start gap-3 p-3 text-white bg-[#119000] rounded-xl"
+                            initial={{ opacity: 0, y: 10 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 0.45 + i * 0.05 }}
+                          >
+                            <Check className="w-4 h-4 text-step-complete mt-0.5 flex-shrink-0" />
+                            <span className="text-sm text-muted-foreground">
+                              {deliverable}
+                            </span>
+                          </motion.li>
+                        ),
+                      )}
                     </ul>
                   </motion.div>
                 </div>
 
                 {/* Navigation */}
-                <div className="flex justify-between items-center mt-10 pt-6 border-t border-border">
+                <div className="flex justify-between items-center mt-10 pt-6 border-t border-border text">
                   <motion.button
                     onClick={() => setActiveStep(Math.max(0, activeStep - 1))}
                     disabled={activeStep === 0}
                     className={cn(
-                      "btn-anim btn slide-left-up anim-uni-in-up ",
-                      activeStep === 0 ? "opacity-50 cursor-not-allowed" : "hover:bg-secondary"
+                      "btn-anim btn ",
+                      activeStep === 0
+                        ? "opacity-50 cursor-not-allowed"
+                        : "hover:bg-secondary",
                     )}
                     data-magnetic
                     data-tooltip="Previous Step"
@@ -273,7 +279,11 @@ export const ProcessStepper = () => {
                         onClick={() => setActiveStep(index)}
                         className={cn(
                           "w-2 h-2 rounded-full transition-all",
-                          index === activeStep ? "w-6 bg-[#119000]" : index < activeStep ? "bg-step-complete" : "bg-border"
+                          index === activeStep
+                            ? "w-6 bg-[#119000]"
+                            : index < activeStep
+                              ? "bg-step-complete"
+                              : "bg-border",
                         )}
                         whileHover={{ scale: 1.2 }}
                       />
@@ -281,17 +291,23 @@ export const ProcessStepper = () => {
                   </div>
 
                   <motion.button
-                    onClick={() => setActiveStep(Math.min(processSteps.length - 1, activeStep + 1))}
+                    onClick={() =>
+                      setActiveStep(
+                        Math.min(processSteps.length - 1, activeStep + 1),
+                      )
+                    }
                     disabled={activeStep === processSteps.length - 1}
                     className={cn(
-                      "btn-anim btn slide-right-up anim-uni-in-up ",
+                      "btn-anim btn ",
                       activeStep === processSteps.length - 1
                         ? "opacity-50 cursor-not-allowed"
-                        : "bg-[#119000] text-accent-foreground hover:bg-[#119000]/90"
+                        : "bg-[#119000] text-accent-foreground hover:bg-[#119000]/90",
                     )}
                     data-magnetic
                     data-tooltip="Next Step"
-                    whileHover={activeStep < processSteps.length - 1 ? { x: 5 } : {}}
+                    whileHover={
+                      activeStep < processSteps.length - 1 ? { x: 5 } : {}
+                    }
                   >
                     <span>Next Step</span>
                     <ArrowRight className="w-4 h-4" />
@@ -301,6 +317,7 @@ export const ProcessStepper = () => {
             </AnimatePresence>
           </div>
         </div>
+      </div>
       </div>
     </section>
   );

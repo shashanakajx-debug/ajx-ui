@@ -44,7 +44,7 @@ const EXPERTISE: ExpertiseItem[] = [
       "We build fast, SEO-optimized, and conversion-ready websites using modern stacks—designed to scale, load instantly, and turn visitors into customers.",
     href: "/our-services/web-development",
     image: {
-      src: "/FuturisticTechnology/Untitled design 1 (2).png",
+      src: "/FuturisticTechnology/Web_Development.png",
       alt: "Web development preview",
     },
   },
@@ -58,7 +58,7 @@ const EXPERTISE: ExpertiseItem[] = [
       "We build high-performance, user-friendly mobile apps with clean UI, smooth performance, and secure backend integrations—designed to engage users and drive real business growth.",
     href: "/our-services/mobile-app-development",
     image: {
-      src: "/FuturisticTechnology/ArtificialIntelligenceCircle.png",
+      src: "/FuturisticTechnology/Mobile_App.png",
       alt: "Mobile app development preview",
     },
   },
@@ -147,9 +147,9 @@ const ExpertiseRow = ({
       className={`border-b border-black/10 py-6 transition-all duration-500 ${isActive ? "py-20" : "py-6"
         }`}
     >
-      <div className="flex items-start gap-6">
-        <div className="min-w-[54px] text-right">
-          <span className="number-aor-exprties">{item.number}</span>
+      <div className="flex items-start md:gap-6 gap-4 ">
+        <div className="md:min-w-[40px] min-w-[30px]">
+          <span className="number-aor-exprties md:text-[18px]">{item.number}</span>
         </div>
 
         <div className="flex-1">
@@ -177,6 +177,19 @@ const ExpertiseRow = ({
               }`}
           >
             <div className="overflow-hidden">
+
+              <div className="relative aspect-[4/3] w-full overflow-hidden circle-animation-w lg:hidden md:hidden">
+              <div className={`relative w-full h-full flex justify-center items-center circle-animation`}>
+                <Image
+                  src={item.image.src}
+                  alt={item.image.alt}
+                  fill
+                  className="object-contain p-3 sm:p-6 border-icon"
+                  priority
+                />
+              </div>
+            </div>   
+
               <div className="flex flex-wrap gap-2 pt-2">
                 {item.tags.map((tag) => (
                   <span
@@ -216,9 +229,8 @@ export default function OurExpertise() {
   );
 
   return (
-    <section className="mxd-container our-experties container_ser py-12 lg:pt-20 lg:pb-5 relative">
-      <div className="mx-auto row gx-0">
-        <SectionHeader
+    <section className="our-experties container_ser py-12 lg:pt-20 lg:pb-5 relative">
+      <SectionHeader
           subtitle="OUR EXPERTISE"
           title="Advanced AI Services"
           description="for Digital-First Companies"
@@ -226,6 +238,9 @@ export default function OurExpertise() {
           buttonLink="our-services"
           className=""
         />
+      <div className="mxd-container">
+      <div className="mx-auto row gx-0">
+        
 
         <div className="grid grid-cols-1 gap-10 lg:grid-cols-2 lg:items-start relative">
           {/* left: List + Active content */}
@@ -250,7 +265,7 @@ export default function OurExpertise() {
                   key={active.image.src}
                   className="absolute inset-0 animate-fade-in"
                 >
-                  <div className={`relative w-full h-full flex justify-center items-center ${active.class}`}>
+                  <div className={`relative w-full h-full flex justify-center items-center circle-animation ${active.class}`}>
                     <Image
                       src={active.image.src}
                       alt={active.image.alt}
@@ -264,7 +279,7 @@ export default function OurExpertise() {
             </div>
           </div>
           {/* Mobile Image Fallback (Simple) - optional, keeping desktop focused logic */}
-          <div className="relative lg:hidden">
+          <div className="relative lg:hidden hidden">
             <div className="relative aspect-[4/3] w-full overflow-hidden circle-animation-w">
               <div className={`relative w-full h-full flex justify-center items-center ${active.class}`}>
                 <Image
@@ -278,6 +293,7 @@ export default function OurExpertise() {
             </div>
           </div>
         </div>
+      </div>
       </div>
     </section>
   );
