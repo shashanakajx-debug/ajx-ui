@@ -76,10 +76,12 @@
   padding-bottom: 1.5rem !important;
   padding-top: 1.5rem !important;
 }
-.mxd-container-full{
+
+.mxd-container-full {
   max-width: 1600px;
   margin: 0 auto;
 }
+
 /* Header hide-on-scroll animation */
 .mxd-header.is-hidden {
   transform: translateY(-100%) !important;
@@ -294,7 +296,16 @@
 .d-none {
   display: none !important;
 }
-
+.bg-card{
+ box-shadow: 0 20px 50px -12px rgba(0, 0, 0, 0.15);
+}
+.bg-gradient-to-b-border{
+  border: 1px solid #000;
+}
+.material-symbols-outlined svg {
+    width: 40px;
+    height: 40px;
+}
 /* Show on large screens and up (desktop) */
 @media (min-width: 992px) {
   .d-lg-none {
@@ -1324,6 +1335,7 @@ section.process .pathStage {
   position: relative;
   z-index: 1;
 }
+
 .circle-animation:before {
   content: "";
   background-image: url(/FuturisticTechnology/aiCircleService.png);
@@ -1336,6 +1348,10 @@ section.process .pathStage {
   opacity: 1;
   animation: spinClockwise 10s linear infinite;
   z-index: 1;
+  will-change: transform;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  perspective: 1000px;
 }
 
 /* ======== End ======== */
@@ -1475,37 +1491,41 @@ footer {
   overflow: hidden;
   text-overflow: ellipsis;
 }
+.bottom-menu{
+  background-color: var(--base);
+}
 
 @media (max-width: 590px) {
-.main.min-h-screen {
+ main.min-h-screen{
   margin-bottom: 0px;
-}  
-footer {
-  position: unset;
-}  
-.circle-animation:before {
-  width: 300px;
-  height: 300px;
-  top: 0px;
-}  
-.circle-animation img{
- margin: initial;
- text-align: left;
- max-width: 300px;
- max-height: 300px;
-}  
- .mxd-point-subtitle{
-  font-size: 14px;
-  margin-bottom: 1rem;
  }
- .experties-button {
-  padding: 2px 20px;
-  font-size: 14px;
-}
-.circle-animation-w {
+  footer {
+    position: unset;
+  }
+  .circle-animation:before {
+    width: 300px;
+    height: 300px;
+    top: 0px;
+  }
+  .circle-animation img {
+    margin: initial;
+    text-align: left;
+    max-width: 300px;
+    max-height: 300px;
+  }
+  .mxd-point-subtitle {
+    font-size: 14px;
+    margin-bottom: 1rem;
+  }
+  .experties-button {
+    padding: 2px 20px;
+    font-size: 14px;
+  }
+
+  .circle-animation-w {
     height: 330px;
   }
- 
+
 
   .hamburger__base {
     padding-top: 2rem;
@@ -1536,7 +1556,7 @@ footer {
   .container-custom-box img {
     max-width: 86px;
     height: auto;
-    margin-left: 30px;
+    margin-left: 20px;
   }
 
   .mxd-header {
@@ -1618,8 +1638,9 @@ footer {
   }
 
   .mxd-nav__contain {
-    margin-right: 4px;
+    margin-right: 0px;
     margin-top: 1.4rem;
+    padding: 0 2rem;
   }
 
   .mxd-hero-00__top {
@@ -1633,4 +1654,14 @@ footer {
   .mxd-section.padding-pre-pinned-img {
     padding-bottom: 2rem;
   }
+.material-symbols-outlined svg {
+    width: 30px;
+    height: 30px;
+}  
+}
+@media (max-width: 390px) {
+ .circle-animation:before {
+    width: 290px;
+    height: 290px;
+ }
 }

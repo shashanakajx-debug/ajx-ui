@@ -1,0 +1,35 @@
+# Implementation Plan - Production Optimization
+
+# Goal
+Execute a "Surgical Strike" on the performance bottlenecks and structural rot identified in the A-Z Audit.
+
+## User Review Required
+> [!IMPORTANT]
+> **Phase 1 is destructive to the current scroll behavior.** I will replace the "Scroll Locking/Jerk" with a smooth, non-blocking trigger. This changes the feel of the site but is necessary for speed.
+
+## Phase 1: Performance & Stability (High Priority)
+
+### 1. Fix the Scroll & Navigation "Jerk"
+#### [MODIFY] [ScrollNextSection.tsx](file:///c:/Users/Shashank/Desktop/Ajx-Tecnologies-Website/Ajx-Tecnologies-Website/src/components/ScrollNextSection.tsx)
+-   **Remove** `window.addEventListener("wheel", { passive: false })`.
+-   **Implement** `Framer Motion`'s `useScroll` to detect when user hits bottom.
+-   **Add** `router.prefetch(nextPath)` so the next page is ready instantly.
+
+### 2. Tame the GSAP Monster
+#### [MODIFY] [useGsapScrollScaleAnimations.ts](file:///c:/Users/Shashank/Desktop/Ajx-Tecnologies-Website/Ajx-Tecnologies-Website/src/hooks/useGsapScrollScaleAnimations.ts)
+-   **Refactor** entire hook to use `gsap.context()`.
+-   **Why?** This automatically handles cleanup of ALL animations inside it. We delete the manual filter logic (lines 258-282), preventing memory leaks forever.
+
+## Phase 2: Structural Cleanup
+
+### 3. Eliminate Duplication
+#### [DELETE] [MobileMenu.tsx](file:///c:/Users/Shashank/Desktop/Ajx-Tecnologies-Website/Ajx-Tecnologies-Website/src/components/MobileMenu.tsx)
+-   Verify imports first (`grep_search`), then point them to `organisms/Header/MobileMenu.tsx`.
+
+## Phase 3: CSS Triage (Lower Priority, High Effort)
+-   *Deferred*: Cleaning up `globals.css` requires visual regression testing. We will tackle this after Phase 1 & 2.
+
+## Verification
+-   **Frame Rate Test**: Scroll up/down rapidly. Should not stutter.
+-   **Memory Test**: Navigate between 5 pages. Memory usage should not climb endlessly.
+-   **Navigation Speed**: Click "Next Section". URL should change < 200ms.

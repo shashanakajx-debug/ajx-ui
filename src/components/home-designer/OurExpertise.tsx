@@ -148,7 +148,7 @@ const ExpertiseRow = ({
         }`}
     >
       <div className="flex items-start md:gap-6 gap-4 ">
-        <div className="md:min-w-[40px] min-w-[30px]">
+        <div className="md:min-w-[40px] min-w-[20px]">
           <span className="number-aor-exprties md:text-[18px]">{item.number}</span>
         </div>
 
@@ -178,7 +178,7 @@ const ExpertiseRow = ({
           >
             <div className="overflow-hidden">
 
-              <div className="relative aspect-[4/3] w-full overflow-hidden circle-animation-w lg:hidden md:hidden">
+              <div className="relative aspect-[4/3] w-full overflow-hidden circle-animation-w lg:hidden md:hidden mt-4">
               <div className={`relative w-full h-full flex justify-center items-center circle-animation`}>
                 <Image
                   src={item.image.src}

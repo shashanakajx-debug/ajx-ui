@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { Clock } from "lucide-react";
 import SectionHeader from "./SectionHeader";
 
 const BLOG_POSTS = [
@@ -86,7 +85,7 @@ export default function Blog() {
                     >
                       {post.category}
                     </Link>
-                    <span className="text-gray-600 ">{post.date}</span>
+                    <span className="">{post.date}</span>
                   </div>
                   <Link href={post.slug} className="block">
                     <h3 className="transition-colors duration-200 anim-uni-in-up leading-tight">

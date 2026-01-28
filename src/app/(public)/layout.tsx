@@ -2,7 +2,7 @@ import React from 'react';
 import Header from '@/components/organisms/Header/Header';
 import Footer from '@/components/organisms/Footer/Footer1';
 import MobileMenu from '@/components/organisms/Header/MobileMenu';
-// import BottomNavigation from '@/components/organisms/Header/BottomNavigation';
+import BottomNavigation from '@/components/organisms/Header/BottomNavigation';
 import InitScroll from '@/components/scroll/InitScroll';
 import LenisSmoothScroll from '@/components/scroll/LenisSmoothScroll';
 import Loader from '@/components/common/Loader';
@@ -26,7 +26,7 @@ export default function PublicLayout({
             <Header />
             <main className="min-h-screen !overflow-visible">{children}</main>
             <ChatWidget />
-            {/* <BottomNavigation /> */}
+            <BottomNavigation />
             <Footer />
             <ScrollNextSection />
         </div>

@@ -199,7 +199,7 @@ export default function Testimonials() {
                             </div>
                           </div>
 
-                          <p className="leading-relaxed mb-8 text-gray-700">
+                          <p className="leading-relaxed mb-8">
                             "{item.text}"
                           </p>
 

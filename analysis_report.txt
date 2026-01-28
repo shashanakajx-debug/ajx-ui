@@ -1,0 +1,67 @@
+# Project Deep Analysis Report (A-Z Audit)
+
+## EXECUTIVE SUMMARY
+This audit matches the "Production Grade" standard you requested.
+**Current Status:** The project suffers from "Death by a Thousand Cuts". While the core tech stack (Next.js 15, MongoDB) is solid, the **implementation details** are fighting against the framework, causing the "jerkiness" and "slowness".
+**Key Issues:**
+1.  **Performance**: Scroll locking (`ScrollNextSection`), Massive Animation Re-initialization (`useGsap...`), and Unoptimized CSS.
+2.  **Maintainability**: `globals.css` is overriding everything with `!important`, making it impossible to predict styles.
+3.  **Stability**: Manual DOM manipulation (GSAP) fighting with React's Virtual DOM.
+
+---
+
+## 1. PERFORMANCE DEEP DIVE
+
+### A. The "Jerk" & Slow Page Transition (CONFIRMED)
+-   **Blocking Wheel Listener**: `src/components/ScrollNextSection.tsx` uses `passive: false` to hijacking the scroll. This is the #1 cause of the jerk.
+-   **Transition Lag**: When navigating, the app:
+    1.  Waits for the user to hit the bottom.
+    2.  Plays a heavy spring animation.
+    3.  *Then* calls `router.push()`.
+    4.  *Then* fetches the new page code (No prefetching).
+    5.  *Then* `useGsapScrollScaleAnimations` kicks in and tries to query the DOM after `100ms`.
+    -   **Result**: The user feels a "freeze" between the scroll and the new page appearing.
+
+### B. The Animation "Monster": `useGsapScrollScaleAnimations.ts`
+-   **Inefficient Re-rendering**: This hook runs on *every route change*. It selects *hundreds* of elements by class name (`.anim-uni-in-up`, etc.) and attaches listeners.
+-   **Fragile Cleanup**: The cleanup function (lines 258-282) manually filters triggers by class name. If you add a new animation class but forget to add it to this filter, **memory leaks occur**. The browser has to track thousands of dead scroll triggers after a few navigations.
+-   **Race Conditions**: Uses `setTimeout(..., 100)` to wait for the DOM. This is unreliable and causes visual "pops" on slower devices.
+
+### C. CSS Bloat (`globals.css`)
+-   **File Size**: 28KB of global CSS is large for a Tailwind project.
+-   **`!important` Wars**: The file is full of `!important` (e.g., `.mxd-header { top: 0 !important; ... }`). This forces the browser to ignore its optimized styling engine and engage in expensive recalculations. It also overrides Tailwind classes, leading to confusion.
+
+---
+
+## 2. STRUCTURAL AUDIT
+
+### A. Folder Structure Consistency
+-   **Current State**: Confused Identity.
+    -   `src/components/atoms`, `molecules`: Mostly empty or unused.
+    -   `src/components/[feature]`: (e.g., `about`, `home-designer`) - This is where the real code is.
+    -   **Root Components**: `ScrollNextSection.tsx`, `MobileMenu.tsx` are floaters.
+-   **Recommendation**: **Officially abandon Atomic Design**. It is cluttering the project. Move everything to Feature-Based folders (`components/features/about`, `components/shared/ui`).
+
+### B. Duplicate code
+-   `MobileMenu.tsx` exists in two places (`components/MobileMenu.tsx` vs `components/organisms/Header/MobileMenu.tsx`). This increases bundle size and bugs (fixing one doesn't fix the other).
+
+---
+
+## 3. BACKEND & DATA AUDIT
+
+### A. API Quality
+-   **Route**: `src/app/api/blog/route.ts`
+-   **Status**: **Acceptable**. Uses `force-dynamic` (good for CMS data, bad for caching). Error handling exists.
+-   **Database**: `src/lib/mongodb.ts` uses the correct `global.mongoClientPromise` singleton pattern. **Good job here.**
+
+### B. Missing Validation
+-   The API routes take `req.json()` and pass it directly to the DB without validation (Zod). If a user sends `{ "title": 123 }` instead of a string, the app might crash or corrupt data.
+
+---
+
+## 4. ACTIONABLE RECOMMENDATIONS (Prioritized)
+
+1.  **Critical Fix (Immediate)**: Refactor `ScrollNextSection` to stop hijacking scroll. Use `useScroll` hook instead.
+2.  **Performance Fix**: Refactor `useGsapScrollScaleAnimations` to use `gsap.context()` for automatic, safe cleanup.
+3.  **Structure Fix**: Delete duplicate `MobileMenu`.
+4.  **Stability Fix**: Validation. Add `zod` to API routes.
